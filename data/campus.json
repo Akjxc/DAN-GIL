@@ -349,6 +349,97 @@
             "building_id": null,
             "floor": null,
             "kind": "outdoor_path"
+        },
+        {
+            "id": "boem-jung_social_JC",
+            "name": "범정관 사회과학관 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "boem-jung_entrance_JC",
+            "name": "범정관 입구 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "library_entrance_f1",
+            "name": "범정관 1층 출입구",
+            "building_id": "boem-jung",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "boem-jung_engineering_JC",
+            "name": "1공학관 2공학관 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "boem-jung_engineering_JC",
+            "name": "범정관 공학관 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "library_engineering_JC",
+            "name": "도서관, 2공학관, 3공학관 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "library_mainroad_JC",
+            "name": "도서관 중앙로 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "library_boem-jung_JC",
+            "name": "도서관 범정관 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "library_entrance_f1",
+            "name": "도서관 1층 출입구",
+            "building_id": "library",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "library_entrance_f2",
+            "name": "도서관 2층 출입구",
+            "building_id": "library",
+            "floor": 2,
+            "kind": "entrance"
+        },
+        {
+            "id": "library_entrance_f3",
+            "name": "도서관 3층 출입구",
+            "building_id": "library",
+            "floor": 3,
+            "kind": "entrance"
+        },
+        {
+            "id": "lab_JC",
+            "name": "종합실험동 앞 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "parking_JC",
+            "name": "주차빌딩 앞 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
         }
     ]
 }
