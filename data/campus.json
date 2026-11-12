@@ -447,6 +447,62 @@
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
+        },
+        {
+            "id": "Engineering1F1",
+            "name": "1공학관 1층 출입구",
+            "buildingId": "engineering1",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "Engineering1F2",
+            "name": "1공학관 2층 출입구",
+            "buildingId": "engineering1",
+            "floor": 2,
+            "kind": "entrance"
+        },
+        {
+            "id": "Engineering2F1",
+            "name": "2공학관 1층 출입구",
+            "buildingId": "engineering2",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "Engineering2F2",
+            "name": "2공학관 2층 출입구",
+            "buildingId": "engineering2",
+            "floor": 2,
+            "kind": "entrance"
+        },
+        {
+            "id": "Engineering3F1",
+            "name": "3공학관 1층 출입구",
+            "buildingId": "engineering3",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "Engineering3F3",
+            "name": "3공학관 3층 출입구",
+            "buildingId": "engineering3",
+            "floor": 3,
+            "kind": "entrance"
+        },
+        {
+            "id": "SocialF1",
+            "name": "사회과학관 1층 출입구",
+            "buildingId": "social",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "SocialF2",
+            "name": "사회과학관 2층 출입구",
+            "buildingId": "social",
+            "floor": 2,
+            "kind": "entrance"
         }
     ]
 }
