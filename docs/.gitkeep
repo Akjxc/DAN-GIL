@@ -1,0 +1,7 @@
+DAN-GIL(임시명칭입니다)/
+├── frontend/     # 프론트엔드
+├── backend/      # 백엔드
+├── data/         # 캠퍼스 지도 및 경로 데이터
+├── docs/         # API 명세 및 설계 문서
+├── .gitignore
+└── README.md
