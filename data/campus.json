@@ -1,0 +1,354 @@
+{
+    "schema_version": 3,
+    "status": "draft",
+    "notes": [
+        "교내 건물간 연결 정보, 야외 보행로/도로, 건물별 출입구"
+    ],
+    "buildings": [
+        {
+            "id": "software/media",
+            "name": "소프트웨어ICT관/미디어센터",
+            "floors": [
+                -1, 1, 2, 3, 4, 5
+            ]
+        },
+        {
+            "id": "humanity",
+            "name": "인문관",
+            "floors": [
+                1, 2, 3, 4, 5, 6
+            ]
+        },
+        {
+            "id": "business",
+            "name": "상경관",
+            "floors": [
+                1, 2, 3, 4, 5, 6
+            ]
+        },
+        {
+            "id": "education",
+            "name": "사범관",
+            "floors": [
+                1, 2, 3, 4, 5, 6
+            ]
+        },
+        {
+            "id": "law/graduate",
+            "name": "법학관/대학원동",
+            "floors": [
+                1, 2, 3, 4, 5, 6
+            ]
+        },
+        {
+            "id": "social",
+            "name": "사회과학관",
+            "floors": [
+                -1, 1, 2, 3, 4
+            ]
+        },
+        {
+            "id": "engineering1",
+            "name": "제1공학관",
+            "floors": [
+                1, 2, 3, 4, 5
+            ]
+        },
+        {
+            "id": "engineering2",
+            "name": "제2공학관",
+            "floors": [
+                1, 2, 3, 4, 5
+            ]
+        },
+        {
+            "id": "engineering3",
+            "name": "제3공학관",
+            "floors": [
+                1, 2, 3, 4, 5
+            ]
+        },
+        {
+            "id": "international",
+            "name": "국제관",
+            "floors": [
+                -1, 1, 2, 3, 4, 5, 6
+            ]
+        },
+        {
+            "id": "boem-jung",
+            "name": "범정관",
+            "floors": [
+                1, 2, 3, 4, 5
+            ]
+        },
+        {
+            "id": "library",
+            "name": "퇴계기념중앙도서관",
+            "floors": [
+                1, 2, 3, 4, 5, 6
+            ]
+        },
+        {
+            "id": "hye-dang",
+            "name": "혜당관",
+            "floors": [
+                1, 2, 3, 4, 5, 6
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "id": "main_gate",
+            "name": "단국대 정문",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "bear-statue",
+            "name": "곰상(평화의광장)",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "software_entrance_b1",
+            "name": "소프트웨어 ICT관 지하1층 출입구",
+            "building_id": "software/media",
+            "floor": -1,
+            "kind": "entrance"
+        },
+        {
+            "id": "software_entrance_f1",
+            "name": "소프트웨어 ICT관 1층 출입구",
+            "building_id": "software/media",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "software_entrance_f3",
+            "name": "소프트웨어 ICT관 3층 출입구",
+            "building_id": "software/media",
+            "floor": 3,
+            "kind": "entrance"
+        },
+        {
+            "id": "humanity_entrance_f1",
+            "name": "인문관 1층 출입구",
+            "building_id": "humanity",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "humanity_entrance_f1",
+            "name": "인문관 1층 출입구",
+            "building_id": "humanity",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "business_entrance_f1",
+            "name": "상경관 1층 출입구",
+            "building_id": "business",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "education_entrance_f1",
+            "name": "사범관 1층 출입구",
+            "building_id": "education",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "education_business_entrance_f5",
+            "name": "사범관 상경관 5층 출입구",
+            "building_id": null,
+            "floor": null,
+            "kind": "entrance"
+        },
+        {
+            "id": "business_humanity_entrance_f5",
+            "name": "상경관 인문관 5층 출입구",
+            "building_id": null,
+            "floor": null,
+            "kind": "entrance"
+        },
+        {
+            "id": "law/graduate_entrance_f1",
+            "name": "법학관/대학원동 1층 출입구",
+            "building_id": "law/graduate",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "law/graduate_entrance_f3",
+            "name": "법학관/대학원동 3층 출입구",
+            "building_id": "law/graduate",
+            "floor": 3,
+            "kind": "entrance"
+        },
+        {
+            "id": "social_entrance_f1",
+            "name": "사회과학관 1층 출입구",
+            "building_id": "social",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "social_entrance_f2",
+            "name": "사회과학관 2층 출입구",
+            "building_id": "social",
+            "floor": 2,
+            "kind": "entrance"
+        },
+        {
+            "id": "engineering1_entrance_f1",
+            "name": "제1공학관 1층 출입구",
+            "building_id": "engineering1",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "engineering1_entrance_f2",
+            "name": "제1공학관 2층 출입구",
+            "building_id": "engineering1",
+            "floor": 2,
+            "kind": "entrance"
+        },
+        {
+            "id": "engineering2_entrance_f1",
+            "name": "제2공학관 1층 출입구",
+            "building_id": "engineering2",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "engineering2_entrance_f2",
+            "name": "제2공학관 2층 출입구",
+            "building_id": "engineering2",
+            "floor": 2,
+            "kind": "entrance"
+        },
+        {
+            "id": "engineering3_entrance_f1",
+            "name": "제3공학관 1층 출입구",
+            "building_id": "engineering3",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "engineering3_entrance_f3",
+            "name": "제3공학관 3층 출입구",
+            "building_id": "engineering3",
+            "floor": 3,
+            "kind": "entrance"
+        },
+        {
+            "id": "hye-dang_entrance_f1",
+            "name": "혜당관 1층 출입구",
+            "building_id": "hye-dang",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "hye-dang_entrance_f2",
+            "name": "혜당관 2층 출입구",
+            "building_id": "hye-dang",
+            "floor": 2,
+            "kind": "entrance"
+        },
+        {
+            "id": "hye-dang_entrance_f4",
+            "name": "혜당관 4층 출입구",
+            "building_id": "hye-dang",
+            "floor": 4,
+            "kind": "entrance"
+        },
+        {
+            "id": "education_business_humanity_backward_jc",
+            "name": "인문관 상경관 사범관 뒤쪽 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "humanity_law/graduate_bear-statue_jc",
+            "name": "인문관 법학관/대학원동 곰상 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "main_gate_jc",
+            "name": "정문 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "dental_jc",
+            "name": "치과대학 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "software_entrance_b1_jc",
+            "name": "소프트웨어ICT관 지하1층 출입구 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "software_entrance_f3_jc",
+            "name": "소프트웨어ICT관 3층 출입구 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "education_business_jc",
+            "name": "사범관 상경관 계단 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "business_humanity_jc",
+            "name": "상경관 인문관 계단 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "library_business_humanity_jc",
+            "name": "인문관 정면 상경관 인문관 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "library_business_humanity_jc",
+            "name": "상경관 정면 사범관 상경관 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "law/graduate_hye-dang_bear-statue_jc",
+            "name": "법학관/대학원동 혜당관 곰상 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        },
+        {
+            "id": "hye-dang_bear-statue_jc",
+            "name": "혜당관 곰상 분기점",
+            "building_id": null,
+            "floor": null,
+            "kind": "outdoor_path"
+        }
+    ]
+}
