@@ -1,12 +1,12 @@
 {
-    "schema_version": 3,
+    "schemaVersion": 3,
     "status": "draft",
     "notes": [
         "교내 건물간 연결 정보, 야외 보행로/도로, 건물별 출입구"
     ],
     "buildings": [
         {
-            "id": "software/media",
+            "id": "softwareMedia",
             "name": "소프트웨어ICT관/미디어센터",
             "floors": [
                 -1, 1, 2, 3, 4, 5
@@ -34,7 +34,7 @@
             ]
         },
         {
-            "id": "law/graduate",
+            "id": "lawGraduate",
             "name": "법학관/대학원동",
             "floors": [
                 1, 2, 3, 4, 5, 6
@@ -76,7 +76,7 @@
             ]
         },
         {
-            "id": "boem-jung",
+            "id": "boemJung",
             "name": "범정관",
             "floors": [
                 1, 2, 3, 4, 5
@@ -90,7 +90,7 @@
             ]
         },
         {
-            "id": "hye-dang",
+            "id": "hyeDang",
             "name": "혜당관",
             "floors": [
                 1, 2, 3, 4, 5, 6
@@ -99,347 +99,354 @@
     ],
     "nodes": [
         {
-            "id": "main_gate",
+            "id": "mainGate",
             "name": "단국대 정문",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "bear-statue",
+            "id": "bearStatue",
             "name": "곰상(평화의광장)",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "software_entrance_b1",
+            "id": "softwareEntranceB1",
             "name": "소프트웨어 ICT관 지하1층 출입구",
-            "building_id": "software/media",
+            "buildingId": "softwareMedia",
             "floor": -1,
             "kind": "entrance"
         },
         {
-            "id": "software_entrance_f1",
+            "id": "softwareEntranceF1",
             "name": "소프트웨어 ICT관 1층 출입구",
-            "building_id": "software/media",
+            "buildingId": "softwareMedia",
             "floor": 1,
             "kind": "entrance"
         },
         {
-            "id": "software_entrance_f3",
+            "id": "softwareEntranceF3",
             "name": "소프트웨어 ICT관 3층 출입구",
-            "building_id": "software/media",
+            "buildingId": "softwareMedia",
             "floor": 3,
             "kind": "entrance"
         },
         {
-            "id": "humanity_entrance_f1",
+            "id": "humanityEntranceF1",
             "name": "인문관 1층 출입구",
-            "building_id": "humanity",
+            "buildingId": "humanity",
             "floor": 1,
             "kind": "entrance"
         },
         {
-            "id": "humanity_entrance_f1",
+            "id": "humanityEntranceF1",
             "name": "인문관 1층 출입구",
-            "building_id": "humanity",
+            "buildingId": "humanity",
             "floor": 1,
             "kind": "entrance"
         },
         {
-            "id": "business_entrance_f1",
+            "id": "businessEntranceF1",
             "name": "상경관 1층 출입구",
-            "building_id": "business",
+            "buildingId": "business",
             "floor": 1,
             "kind": "entrance"
         },
         {
-            "id": "education_entrance_f1",
+            "id": "educationEntranceF1",
             "name": "사범관 1층 출입구",
-            "building_id": "education",
+            "buildingId": "education",
             "floor": 1,
             "kind": "entrance"
         },
         {
-            "id": "education_business_entrance_f5",
+            "id": "educationBusinessEntranceF5",
             "name": "사범관 상경관 5층 출입구",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
             "kind": "entrance"
         },
         {
-            "id": "business_humanity_entrance_f5",
+            "id": "businessHumanityEntranceF5",
             "name": "상경관 인문관 5층 출입구",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
             "kind": "entrance"
         },
         {
-            "id": "law/graduate_entrance_f1",
+            "id": "lawGraduateEntranceF1",
             "name": "법학관/대학원동 1층 출입구",
-            "building_id": "law/graduate",
+            "buildingId": "lawGraduate",
             "floor": 1,
             "kind": "entrance"
         },
         {
-            "id": "law/graduate_entrance_f3",
+            "id": "lawGraduateEntranceF3",
             "name": "법학관/대학원동 3층 출입구",
-            "building_id": "law/graduate",
+            "buildingId": "lawGraduate",
             "floor": 3,
             "kind": "entrance"
         },
         {
-            "id": "social_entrance_f1",
+            "id": "socialEntranceF1",
             "name": "사회과학관 1층 출입구",
-            "building_id": "social",
+            "buildingId": "social",
             "floor": 1,
             "kind": "entrance"
         },
         {
-            "id": "social_entrance_f2",
+            "id": "socialEntranceF2",
             "name": "사회과학관 2층 출입구",
-            "building_id": "social",
+            "buildingId": "social",
             "floor": 2,
             "kind": "entrance"
         },
         {
-            "id": "engineering1_entrance_f1",
+            "id": "engineering1EntranceF1",
             "name": "제1공학관 1층 출입구",
-            "building_id": "engineering1",
+            "buildingId": "engineering1",
             "floor": 1,
             "kind": "entrance"
         },
         {
-            "id": "engineering1_entrance_f2",
+            "id": "engineering1EntranceF2",
             "name": "제1공학관 2층 출입구",
-            "building_id": "engineering1",
+            "buildingId": "engineering1",
             "floor": 2,
             "kind": "entrance"
         },
         {
-            "id": "engineering2_entrance_f1",
+            "id": "engineering2EntranceF1",
             "name": "제2공학관 1층 출입구",
-            "building_id": "engineering2",
+            "buildingId": "engineering2",
             "floor": 1,
             "kind": "entrance"
         },
         {
-            "id": "engineering2_entrance_f2",
+            "id": "engineering2EntranceF2",
             "name": "제2공학관 2층 출입구",
-            "building_id": "engineering2",
+            "buildingId": "engineering2",
             "floor": 2,
             "kind": "entrance"
         },
         {
-            "id": "engineering3_entrance_f1",
+            "id": "engineering3EntranceF1",
             "name": "제3공학관 1층 출입구",
-            "building_id": "engineering3",
+            "buildingId": "engineering3",
             "floor": 1,
             "kind": "entrance"
         },
         {
-            "id": "engineering3_entrance_f3",
+            "id": "engineering3EntranceF3",
             "name": "제3공학관 3층 출입구",
-            "building_id": "engineering3",
+            "buildingId": "engineering3",
             "floor": 3,
             "kind": "entrance"
         },
         {
-            "id": "hye-dang_entrance_f1",
-            "name": "혜당관 1층 출입구",
-            "building_id": "hye-dang",
+            "id": "internationalEntranceF1",
+            "name": "국제관 1층 출입구",
+            "buildingId": "international",
             "floor": 1,
             "kind": "entrance"
         },
         {
-            "id": "hye-dang_entrance_f2",
+            "id": "hyeDangEntranceF1",
+            "name": "혜당관 1층 출입구",
+            "buildingId": "hyeDang",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "hyeDangEntranceF2",
             "name": "혜당관 2층 출입구",
-            "building_id": "hye-dang",
+            "buildingId": "hyeDang",
             "floor": 2,
             "kind": "entrance"
         },
         {
-            "id": "hye-dang_entrance_f4",
+            "id": "hyeDangEntranceF4",
             "name": "혜당관 4층 출입구",
-            "building_id": "hye-dang",
+            "buildingId": "hyeDang",
             "floor": 4,
             "kind": "entrance"
         },
         {
-            "id": "education_business_humanity_backward_jc",
+            "id": "educationBusinessHumanityBackwardJc",
             "name": "인문관 상경관 사범관 뒤쪽 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "humanity_law/graduate_bear-statue_jc",
+            "id": "humanityLawGraduateBearStatueJc",
             "name": "인문관 법학관/대학원동 곰상 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "main_gate_jc",
+            "id": "mainGateJc",
             "name": "정문 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "dental_jc",
+            "id": "dentalJc",
             "name": "치과대학 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "software_entrance_b1_jc",
+            "id": "softwareEntranceB1Jc",
             "name": "소프트웨어ICT관 지하1층 출입구 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "software_entrance_f3_jc",
+            "id": "softwareEntranceF3Jc",
             "name": "소프트웨어ICT관 3층 출입구 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "education_business_jc",
+            "id": "educationBusinessJc",
             "name": "사범관 상경관 계단 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "business_humanity_jc",
+            "id": "businessHumanityJc",
             "name": "상경관 인문관 계단 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "library_business_humanity_jc",
+            "id": "libraryBusinessHumanityJc",
             "name": "인문관 정면 상경관 인문관 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "library_business_humanity_jc",
+            "id": "libraryBusinessHumanityJc",
             "name": "상경관 정면 사범관 상경관 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "law/graduate_hye-dang_bear-statue_jc",
+            "id": "lawGraduateHyeDangBearStatueJc",
             "name": "법학관/대학원동 혜당관 곰상 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "hye-dang_bear-statue_jc",
+            "id": "hyeDangBearStatueJc",
             "name": "혜당관 곰상 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "boem-jung_social_JC",
+            "id": "boemJungSocialJc",
             "name": "범정관 사회과학관 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "boem-jung_entrance_JC",
+            "id": "boemJungEntranceJc",
             "name": "범정관 입구 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "library_entrance_f1",
+            "id": "libraryEntranceF1",
             "name": "범정관 1층 출입구",
-            "building_id": "boem-jung",
+            "buildingId": "boemJung",
             "floor": 1,
             "kind": "entrance"
         },
         {
-            "id": "boem-jung_engineering_JC",
+            "id": "boemJungEngineeringJc",
             "name": "1공학관 2공학관 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "boem-jung_engineering_JC",
+            "id": "boemJungEngineeringJc",
             "name": "범정관 공학관 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "library_engineering_JC",
+            "id": "libraryEngineeringJc",
             "name": "도서관, 2공학관, 3공학관 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "library_mainroad_JC",
+            "id": "libraryMainroadJc",
             "name": "도서관 중앙로 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "library_boem-jung_JC",
+            "id": "libraryBoemJungJc",
             "name": "도서관 범정관 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "library_entrance_f1",
+            "id": "libraryEntranceF1",
             "name": "도서관 1층 출입구",
-            "building_id": "library",
+            "buildingId": "library",
             "floor": 1,
             "kind": "entrance"
         },
         {
-            "id": "library_entrance_f2",
+            "id": "libraryEntranceF2",
             "name": "도서관 2층 출입구",
-            "building_id": "library",
+            "buildingId": "library",
             "floor": 2,
             "kind": "entrance"
         },
         {
-            "id": "library_entrance_f3",
+            "id": "libraryEntranceF3",
             "name": "도서관 3층 출입구",
-            "building_id": "library",
+            "buildingId": "library",
             "floor": 3,
             "kind": "entrance"
         },
         {
-            "id": "lab_JC",
+            "id": "labJc",
             "name": "종합실험동 앞 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         },
         {
-            "id": "parking_JC",
+            "id": "parkingJc",
             "name": "주차빌딩 앞 분기점",
-            "building_id": null,
+            "buildingId": null,
             "floor": null,
-            "kind": "outdoor_path"
+            "kind": "outdoorPath"
         }
     ]
 }
