@@ -111,7 +111,7 @@
     ],
     "edges": [
         {
-            "id": "engineering1F1Hall",
+            "id": "engineering1F1HallToEntrance",
             "name": "제1공학관 1층 복도-출입구",
             "from": "engineering1F1Hall",
             "to": "engineering1EntranceF1",
