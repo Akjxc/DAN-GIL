@@ -13,10 +13,9 @@
             "kind": "hall"
         },
         {
-            "id": "educationElevatorF1",
-            "name": "사범관 1층 엘베",
+            "id": "educationElevator",
+            "name": "사범관 엘리베이터",
             "buildingId": "education",
-            "floor": 1,
             "kind": "elevator"
         },
         {
@@ -34,13 +33,6 @@
             "kind": "hall"
         },
         {
-            "id": "educationElevatorF2",
-            "name": "사범관 2층 엘베",
-            "buildingId": "education",
-            "floor": 2,
-            "kind": "elevator"
-        },
-        {
             "id": "educationStairF2",
             "name": "사범관 2층 계단",
             "buildingId": "education",
@@ -53,13 +45,6 @@
             "buildingId": "education",
             "floor": 3,
             "kind": "hall"
-        },
-        {
-            "id": "educationElevatorF3",
-            "name": "사범관 3층 엘베",
-            "buildingId": "education",
-            "floor": 3,
-            "kind": "elevator"
         },
         {
             "id": "educationStairF3",
@@ -76,13 +61,6 @@
             "kind": "hall"
         },
         {
-            "id": "educationElevatorF4",
-            "name": "사범관 4층 엘베",
-            "buildingId": "education",
-            "floor": 4,
-            "kind": "elevator"
-        },
-        {
             "id": "educationStairF4",
             "name": "사범관 4층 계단",
             "buildingId": "education",
@@ -95,13 +73,6 @@
             "buildingId": "education",
             "floor": 5,
             "kind": "hall"
-        },
-        {
-            "id": "educationElevatorF5",
-            "name": "사범관 5층 엘베",
-            "buildingId": "education",
-            "floor": 5,
-            "kind": "elevator"
         },
         {
             "id": "educationStairF5",
@@ -118,10 +89,9 @@
             "kind": "hall"
         },
         {
-            "id": "businessElevatorF1",
-            "name": "상경관 1층 엘베",
+            "id": "businessElevator",
+            "name": "상경관 엘리베이터",
             "buildingId": "business",
-            "floor": 1,
             "kind": "elevator"
         },
         {
@@ -139,13 +109,6 @@
             "kind": "hall"
         },
         {
-            "id": "businessElevatorF2",
-            "name": "상경관 2층 엘베",
-            "buildingId": "business",
-            "floor": 2,
-            "kind": "elevator"
-        },
-        {
             "id": "businessStairF2",
             "name": "상경관 2층 계단",
             "buildingId": "business",
@@ -158,13 +121,6 @@
             "buildingId": "business",
             "floor": 3,
             "kind": "hall"
-        },
-        {
-            "id": "businessElevatorF3",
-            "name": "상경관 3층 엘베",
-            "buildingId": "business",
-            "floor": 3,
-            "kind": "elevator"
         },
         {
             "id": "businessStairF3",
@@ -181,13 +137,6 @@
             "kind": "hall"
         },
         {
-            "id": "businessElevatorF4",
-            "name": "상경관 4층 엘베",
-            "buildingId": "business",
-            "floor": 4,
-            "kind": "elevator"
-        },
-        {
             "id": "businessStairF4",
             "name": "상경관 4층 계단",
             "buildingId": "business",
@@ -200,13 +149,6 @@
             "buildingId": "business",
             "floor": 5,
             "kind": "hall"
-        },
-        {
-            "id": "businessElevatorF5",
-            "name": "상경관 5층 엘베",
-            "buildingId": "business",
-            "floor": 5,
-            "kind": "elevator"
         },
         {
             "id": "businessStairF5",
@@ -223,10 +165,9 @@
             "kind": "hall"
         },
         {
-            "id": "humanityElevatorF1",
-            "name": "인문관 1층 엘베",
+            "id": "humanityElevator",
+            "name": "인문관 엘리베이터",
             "buildingId": "humanity",
-            "floor": 1,
             "kind": "elevator"
         },
         {
@@ -244,13 +185,6 @@
             "kind": "hall"
         },
         {
-            "id": "humanityElevatorF2",
-            "name": "인문관 2층 엘베",
-            "buildingId": "humanity",
-            "floor": 2,
-            "kind": "elevator"
-        },
-        {
             "id": "humanityStairF2",
             "name": "인문관 2층 계단",
             "buildingId": "humanity",
@@ -263,13 +197,6 @@
             "buildingId": "humanity",
             "floor": 3,
             "kind": "hall"
-        },
-        {
-            "id": "humanityElevatorF3",
-            "name": "인문관 3층 엘베",
-            "buildingId": "humanity",
-            "floor": 3,
-            "kind": "elevator"
         },
         {
             "id": "humanityStairF3",
@@ -286,13 +213,6 @@
             "kind": "hall"
         },
         {
-            "id": "humanityElevatorF4",
-            "name": "인문관 4층 엘베",
-            "buildingId": "humanity",
-            "floor": 4,
-            "kind": "elevator"
-        },
-        {
             "id": "humanityStairF4",
             "name": "인문관 4층 계단",
             "buildingId": "humanity",
@@ -305,13 +225,6 @@
             "buildingId": "humanity",
             "floor": 5,
             "kind": "hall"
-        },
-        {
-            "id": "humanityElevatorF5",
-            "name": "인문관 5층 엘베",
-            "buildingId": "humanity",
-            "floor": 5,
-            "kind": "elevator"
         },
         {
             "id": "humanityStairF5",
@@ -382,7 +295,7 @@
             "id": "educationF1HallToElevator",
             "name": "사범관 1층 복도-엘리베이터",
             "from": "educationF1Hall",
-            "to": "educationElevatorF1",
+            "to": "educationElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -398,7 +311,7 @@
             "id": "educationF2HallToElevator",
             "name": "사범관 2층 복도-엘리베이터",
             "from": "educationF2Hall",
-            "to": "educationElevatorF2",
+            "to": "educationElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -414,7 +327,7 @@
             "id": "educationF3HallToElevator",
             "name": "사범관 3층 복도-엘리베이터",
             "from": "educationF3Hall",
-            "to": "educationElevatorF3",
+            "to": "educationElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -430,7 +343,7 @@
             "id": "educationF4HallToElevator",
             "name": "사범관 4층 복도-엘리베이터",
             "from": "educationF4Hall",
-            "to": "educationElevatorF4",
+            "to": "educationElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -446,7 +359,7 @@
             "id": "educationF5HallToElevator",
             "name": "사범관 5층 복도-엘리베이터",
             "from": "educationF5Hall",
-            "to": "educationElevatorF5",
+            "to": "educationElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -467,28 +380,12 @@
             "condition": "flat"
         },
         {
-            "id": "educationElevatorF1ToF2",
-            "name": "사범관 엘리베이터 1층-2층",
-            "from": "educationElevatorF1",
-            "to": "educationElevatorF2",
-            "kind": "indoorPath",
-            "condition": "elevator"
-        },
-        {
             "id": "educationStairF1ToF2",
             "name": "사범관 계단 1층-2층",
             "from": "educationStairF1",
             "to": "educationStairF2",
             "kind": "indoorPath",
             "condition": "stair"
-        },
-        {
-            "id": "educationElevatorF2ToF3",
-            "name": "사범관 엘리베이터 2층-3층",
-            "from": "educationElevatorF2",
-            "to": "educationElevatorF3",
-            "kind": "indoorPath",
-            "condition": "elevator"
         },
         {
             "id": "educationStairF2ToF3",
@@ -499,28 +396,12 @@
             "condition": "stair"
         },
         {
-            "id": "educationElevatorF3ToF4",
-            "name": "사범관 엘리베이터 3층-4층",
-            "from": "educationElevatorF3",
-            "to": "educationElevatorF4",
-            "kind": "indoorPath",
-            "condition": "elevator"
-        },
-        {
             "id": "educationStairF3ToF4",
             "name": "사범관 계단 3층-4층",
             "from": "educationStairF3",
             "to": "educationStairF4",
             "kind": "indoorPath",
             "condition": "stair"
-        },
-        {
-            "id": "educationElevatorF4ToF5",
-            "name": "사범관 엘리베이터 4층-5층",
-            "from": "educationElevatorF4",
-            "to": "educationElevatorF5",
-            "kind": "indoorPath",
-            "condition": "elevator"
         },
         {
             "id": "educationStairF4ToF5",
@@ -534,7 +415,7 @@
             "id": "businessF1HallToElevator",
             "name": "상경관 1층 복도-엘리베이터",
             "from": "businessF1Hall",
-            "to": "businessElevatorF1",
+            "to": "businessElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -550,7 +431,7 @@
             "id": "businessF2HallToElevator",
             "name": "상경관 2층 복도-엘리베이터",
             "from": "businessF2Hall",
-            "to": "businessElevatorF2",
+            "to": "businessElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -566,7 +447,7 @@
             "id": "businessF3HallToElevator",
             "name": "상경관 3층 복도-엘리베이터",
             "from": "businessF3Hall",
-            "to": "businessElevatorF3",
+            "to": "businessElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -582,7 +463,7 @@
             "id": "businessF4HallToElevator",
             "name": "상경관 4층 복도-엘리베이터",
             "from": "businessF4Hall",
-            "to": "businessElevatorF4",
+            "to": "businessElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -598,7 +479,7 @@
             "id": "businessF5HallToElevator",
             "name": "상경관 5층 복도-엘리베이터",
             "from": "businessF5Hall",
-            "to": "businessElevatorF5",
+            "to": "businessElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -619,28 +500,12 @@
             "condition": "flat"
         },
         {
-            "id": "businessElevatorF1ToF2",
-            "name": "상경관 엘리베이터 1층-2층",
-            "from": "businessElevatorF1",
-            "to": "businessElevatorF2",
-            "kind": "indoorPath",
-            "condition": "elevator"
-        },
-        {
             "id": "businessStairF1ToF2",
             "name": "상경관 계단 1층-2층",
             "from": "businessStairF1",
             "to": "businessStairF2",
             "kind": "indoorPath",
             "condition": "stair"
-        },
-        {
-            "id": "businessElevatorF2ToF3",
-            "name": "상경관 엘리베이터 2층-3층",
-            "from": "businessElevatorF2",
-            "to": "businessElevatorF3",
-            "kind": "indoorPath",
-            "condition": "elevator"
         },
         {
             "id": "businessStairF2ToF3",
@@ -651,28 +516,12 @@
             "condition": "stair"
         },
         {
-            "id": "businessElevatorF3ToF4",
-            "name": "상경관 엘리베이터 3층-4층",
-            "from": "businessElevatorF3",
-            "to": "businessElevatorF4",
-            "kind": "indoorPath",
-            "condition": "elevator"
-        },
-        {
             "id": "businessStairF3ToF4",
             "name": "상경관 계단 3층-4층",
             "from": "businessStairF3",
             "to": "businessStairF4",
             "kind": "indoorPath",
             "condition": "stair"
-        },
-        {
-            "id": "businessElevatorF4ToF5",
-            "name": "상경관 엘리베이터 4층-5층",
-            "from": "businessElevatorF4",
-            "to": "businessElevatorF5",
-            "kind": "indoorPath",
-            "condition": "elevator"
         },
         {
             "id": "businessStairF4ToF5",
@@ -686,7 +535,7 @@
             "id": "humanityF1HallToElevator",
             "name": "인문관 1층 복도-엘리베이터",
             "from": "humanityF1Hall",
-            "to": "humanityElevatorF1",
+            "to": "humanityElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -702,7 +551,7 @@
             "id": "humanityF2HallToElevator",
             "name": "인문관 2층 복도-엘리베이터",
             "from": "humanityF2Hall",
-            "to": "humanityElevatorF2",
+            "to": "humanityElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -718,7 +567,7 @@
             "id": "humanityF3HallToElevator",
             "name": "인문관 3층 복도-엘리베이터",
             "from": "humanityF3Hall",
-            "to": "humanityElevatorF3",
+            "to": "humanityElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -734,7 +583,7 @@
             "id": "humanityF4HallToElevator",
             "name": "인문관 4층 복도-엘리베이터",
             "from": "humanityF4Hall",
-            "to": "humanityElevatorF4",
+            "to": "humanityElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -750,7 +599,7 @@
             "id": "humanityF5HallToElevator",
             "name": "인문관 5층 복도-엘리베이터",
             "from": "humanityF5Hall",
-            "to": "humanityElevatorF5",
+            "to": "humanityElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -771,28 +620,12 @@
             "condition": "flat"
         },
         {
-            "id": "humanityElevatorF1ToF2",
-            "name": "인문관 엘리베이터 1층-2층",
-            "from": "humanityElevatorF1",
-            "to": "humanityElevatorF2",
-            "kind": "indoorPath",
-            "condition": "elevator"
-        },
-        {
             "id": "humanityStairF1ToF2",
             "name": "인문관 계단 1층-2층",
             "from": "humanityStairF1",
             "to": "humanityStairF2",
             "kind": "indoorPath",
             "condition": "stair"
-        },
-        {
-            "id": "humanityElevatorF2ToF3",
-            "name": "인문관 엘리베이터 2층-3층",
-            "from": "humanityElevatorF2",
-            "to": "humanityElevatorF3",
-            "kind": "indoorPath",
-            "condition": "elevator"
         },
         {
             "id": "humanityStairF2ToF3",
@@ -803,28 +636,12 @@
             "condition": "stair"
         },
         {
-            "id": "humanityElevatorF3ToF4",
-            "name": "인문관 엘리베이터 3층-4층",
-            "from": "humanityElevatorF3",
-            "to": "humanityElevatorF4",
-            "kind": "indoorPath",
-            "condition": "elevator"
-        },
-        {
             "id": "humanityStairF3ToF4",
             "name": "인문관 계단 3층-4층",
             "from": "humanityStairF3",
             "to": "humanityStairF4",
             "kind": "indoorPath",
             "condition": "stair"
-        },
-        {
-            "id": "humanityElevatorF4ToF5",
-            "name": "인문관 엘리베이터 4층-5층",
-            "from": "humanityElevatorF4",
-            "to": "humanityElevatorF5",
-            "kind": "indoorPath",
-            "condition": "elevator"
         },
         {
             "id": "humanityStairF4ToF5",

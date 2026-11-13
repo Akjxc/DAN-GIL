@@ -11,10 +11,9 @@
             "kind": "hall"
         },
         {
-            "id": "softwareMediaElevatorB1",
-            "name": "소프트웨어ICT관/미디어센터 지하 1층 엘리베이터",
+            "id": "softwareMediaElevator",
+            "name": "소프트웨어ICT관/미디어센터 엘리베이터",
             "buildingId": "softwareMedia",
-            "floor": -1,
             "kind": "elevator"
         },
         {
@@ -32,13 +31,6 @@
             "kind": "hall"
         },
         {
-            "id": "softwareMediaElevatorF1",
-            "name": "소프트웨어ICT관/미디어센터 1층 엘리베이터",
-            "buildingId": "softwareMedia",
-            "floor": 1,
-            "kind": "elevator"
-        },
-        {
             "id": "softwareMediaStairF1",
             "name": "소프트웨어ICT관/미디어센터 1층 계단",
             "buildingId": "softwareMedia",
@@ -51,13 +43,6 @@
             "buildingId": "softwareMedia",
             "floor": 2,
             "kind": "hall"
-        },
-        {
-            "id": "softwareMediaElevatorF2",
-            "name": "소프트웨어ICT관/미디어센터 2층 엘리베이터",
-            "buildingId": "softwareMedia",
-            "floor": 2,
-            "kind": "elevator"
         },
         {
             "id": "softwareMediaStairF2",
@@ -74,13 +59,6 @@
             "kind": "hall"
         },
         {
-            "id": "softwareMediaElevatorF3",
-            "name": "소프트웨어ICT관/미디어센터 3층 엘리베이터",
-            "buildingId": "softwareMedia",
-            "floor": 3,
-            "kind": "elevator"
-        },
-        {
             "id": "softwareMediaStairF3",
             "name": "소프트웨어ICT관/미디어센터 3층 계단",
             "buildingId": "softwareMedia",
@@ -93,13 +71,6 @@
             "buildingId": "softwareMedia",
             "floor": 4,
             "kind": "hall"
-        },
-        {
-            "id": "softwareMediaElevatorF4",
-            "name": "소프트웨어ICT관/미디어센터 4층 엘리베이터",
-            "buildingId": "softwareMedia",
-            "floor": 4,
-            "kind": "elevator"
         },
         {
             "id": "softwareMediaStairF4",
@@ -116,13 +87,6 @@
             "kind": "hall"
         },
         {
-            "id": "softwareMediaElevatorF5",
-            "name": "소프트웨어ICT관/미디어센터 5층 엘리베이터",
-            "buildingId": "softwareMedia",
-            "floor": 5,
-            "kind": "elevator"
-        },
-        {
             "id": "softwareMediaStairF5",
             "name": "소프트웨어ICT관/미디어센터 5층 계단",
             "buildingId": "softwareMedia",
@@ -135,7 +99,7 @@
             "id": "softwareMediaB1HallToElevator",
             "name": "소프트웨어ICT관/미디어센터 지하 1층 복도-엘리베이터",
             "from": "softwareMediaB1Hall",
-            "to": "softwareMediaElevatorB1",
+            "to": "softwareMediaElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -159,7 +123,7 @@
             "id": "softwareMediaF1HallToElevator",
             "name": "소프트웨어ICT관/미디어센터 1층 복도-엘리베이터",
             "from": "softwareMediaF1Hall",
-            "to": "softwareMediaElevatorF1",
+            "to": "softwareMediaElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -183,7 +147,7 @@
             "id": "softwareMediaF2HallToElevator",
             "name": "소프트웨어ICT관/미디어센터 2층 복도-엘리베이터",
             "from": "softwareMediaF2Hall",
-            "to": "softwareMediaElevatorF2",
+            "to": "softwareMediaElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -199,7 +163,7 @@
             "id": "softwareMediaF3HallToElevator",
             "name": "소프트웨어ICT관/미디어센터 3층 복도-엘리베이터",
             "from": "softwareMediaF3Hall",
-            "to": "softwareMediaElevatorF3",
+            "to": "softwareMediaElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -223,7 +187,7 @@
             "id": "softwareMediaF4HallToElevator",
             "name": "소프트웨어ICT관/미디어센터 4층 복도-엘리베이터",
             "from": "softwareMediaF4Hall",
-            "to": "softwareMediaElevatorF4",
+            "to": "softwareMediaElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -239,7 +203,7 @@
             "id": "softwareMediaF5HallToElevator",
             "name": "소프트웨어ICT관/미디어센터 5층 복도-엘리베이터",
             "from": "softwareMediaF5Hall",
-            "to": "softwareMediaElevatorF5",
+            "to": "softwareMediaElevator",
             "kind": "indoorPath",
             "condition": "elevator"
         },
@@ -250,46 +214,6 @@
             "to": "softwareMediaStairF5",
             "kind": "indoorPath",
             "condition": "stair"
-        },
-        {
-            "id": "softwareMediaElevatorB1ToF1",
-            "name": "소프트웨어ICT관/미디어센터 지하 1층-1층 엘리베이터",
-            "from": "softwareMediaElevatorB1",
-            "to": "softwareMediaElevatorF1",
-            "kind": "indoorPath",
-            "condition": "elevator"
-        },
-        {
-            "id": "softwareMediaElevatorF1ToF2",
-            "name": "소프트웨어ICT관/미디어센터 1층-2층 엘리베이터",
-            "from": "softwareMediaElevatorF1",
-            "to": "softwareMediaElevatorF2",
-            "kind": "indoorPath",
-            "condition": "elevator"
-        },
-        {
-            "id": "softwareMediaElevatorF2ToF3",
-            "name": "소프트웨어ICT관/미디어센터 2층-3층 엘리베이터",
-            "from": "softwareMediaElevatorF2",
-            "to": "softwareMediaElevatorF3",
-            "kind": "indoorPath",
-            "condition": "elevator"
-        },
-        {
-            "id": "softwareMediaElevatorF3ToF4",
-            "name": "소프트웨어ICT관/미디어센터 3층-4층 엘리베이터",
-            "from": "softwareMediaElevatorF3",
-            "to": "softwareMediaElevatorF4",
-            "kind": "indoorPath",
-            "condition": "elevator"
-        },
-        {
-            "id": "softwareMediaElevatorF4ToF5",
-            "name": "소프트웨어ICT관/미디어센터 4층-5층 엘리베이터",
-            "from": "softwareMediaElevatorF4",
-            "to": "softwareMediaElevatorF5",
-            "kind": "indoorPath",
-            "condition": "elevator"
         },
         {
             "id": "softwareMediaStairB1ToF1",
