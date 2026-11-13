@@ -1,0 +1,115 @@
+{
+  "note": [
+    "3°øÇÐ°ü ³»ºÎ"
+  ],
+  "node": [
+    {
+      "id": "engineering3EntranceF1",
+      "name": "3°øÇÐ°ü 1Ãþ ÃâÀÔ±¸",
+      "floor": 1,
+      "kind": "entrance"
+    },
+    {
+      "id": "engineering3F1Jc",
+      "name": "3°øÇÐ°ü 1Ãþ ºÐ±âÁ¡",
+      "floor": 1,
+      "kind": "junction"
+    },
+    {
+      "id": "engineering3ElevatorF1",
+      "name": "3°øÇÐ°ü 1Ãþ ¿¤º£",
+      "floor": 1,
+      "kind": "elevator"
+    },
+    {
+      "id": "engineering3ElevatorF1",
+      "name": "3°øÇÐ°ü 1Ãþ °è´Ü",
+      "floor": 1,
+      "kind": "stair"
+    },
+    {
+      "id": "engineering3F2Jc",
+      "name": "3°øÇÐ°ü 2Ãþ ºÐ±âÁ¡",
+      "floor": 2,
+      "kind": "junction"
+    },
+    {
+      "id": "engineering3ElevatorF2",
+      "name": "3°øÇÐ°ü 2Ãþ ¿¤º£",
+      "floor": 2,
+      "kind": "elevator"
+    },
+    {
+      "id": "engineering3ElevatorF2",
+      "name": "3°øÇÐ°ü 2Ãþ °è´Ü",
+      "floor": 2,
+      "kind": "stair"
+    },
+    {
+      "id": "engineering3EntranceF3",
+      "name": "3°øÇÐ°ü 3Ãþ ÃâÀÔ±¸",
+      "floor": 3,
+      "kind": "entrance"
+    },
+    {
+      "id": "engineering3F3Jc",
+      "name": "3°øÇÐ°ü 3Ãþ ºÐ±âÁ¡",
+      "floor": 3,
+      "kind": "junction"
+    },
+    {
+      "id": "engineering3ElevatorF3",
+      "name": "3°øÇÐ°ü 3Ãþ ¿¤º£",
+      "floor": 3,
+      "kind": "elevator"
+    },
+    {
+      "id": "engineering3ElevatorF3",
+      "name": "3°øÇÐ°ü 3Ãþ °è´Ü",
+      "floor": 3,
+      "kind": "stair"
+    },
+    {
+      "id": "engineering3F4Jc",
+      "name": "3°øÇÐ°ü 4Ãþ ºÐ±âÁ¡",
+      "floor": 4,
+      "kind": "junction"
+    },
+    {
+      "id": "engineering3ElevatorF4",
+      "name": "3°øÇÐ°ü 4Ãþ ¿¤º£",
+      "floor": 4,
+      "kind": "elevator"
+    },
+    {
+      "id": "engineering3ElevatorF4",
+      "name": "3°øÇÐ°ü 4Ãþ °è´Ü",
+      "floor": 4,
+      "kind": "stair"
+    },
+    {
+      "id": "engineering3F5Jc",
+      "name": "3°øÇÐ°ü 5Ãþ ºÐ±âÁ¡",
+      "floor": 5,
+      "kind": "junction"
+    },
+    {
+      "id": "engineering3ElevatorF5",
+      "name": "3°øÇÐ°ü 5Ãþ ¿¤º£",
+      "floor": 5,
+      "kind": "elevator"
+    },
+    {
+      "id": "engineering3ElevatorF5",
+      "name": "3°øÇÐ°ü 5Ãþ °è´Ü",
+      "floor": 5,
+      "kind": "stair"
+    },
+    {
+      "id": "engineering3PortalF2",
+      "name": "3°øÇÐ°ü 2Ãþ Æ÷Å»",
+      "floor": 2,
+      "kind": "portal"
+    }
+  ]
+}

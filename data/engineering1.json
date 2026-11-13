@@ -1,0 +1,115 @@
+{
+    "note": [
+      "1°øÇÐ°ü ³»ºÎ"
+    ],
+    "node": [
+        {
+            "id": "engineering1EntranceF1",
+            "name": "1°øÇÐ°ü 1Ãþ ÃâÀÔ±¸",
+            "floor": 1,
+            "kind": "entrance"
+        },
+        {
+            "id": "engineering1F1Jc",
+            "name": "1°øÇÐ°ü 1Ãþ ºÐ±âÁ¡",
+            "floor": 1,
+            "kind": "junction"
+        },
+        {
+            "id": "engineering1ElevatorF1",
+            "name": "1°øÇÐ°ü 1Ãþ ¿¤º£",
+            "floor": 1,
+            "kind": "elevator"
+        },
+        {
+            "id": "engineering1ElevatorF1",
+            "name": "1°øÇÐ°ü 1Ãþ °è´Ü",
+            "floor": 1,
+            "kind": "stair"
+        },
+        {
+            "id": "engineering1EntranceF2",
+            "name": "1°øÇÐ°ü 2Ãþ ÃâÀÔ±¸",
+            "floor": 2,
+            "kind": "entrance"
+        },
+        {
+            "id": "engineering1F2Jc",
+            "name": "1°øÇÐ°ü 2Ãþ ºÐ±âÁ¡",
+            "floor": 2,
+            "kind": "junction"
+        },
+        {
+            "id": "engineering1ElevatorF2",
+            "name": "1°øÇÐ°ü 2Ãþ ¿¤º£",
+            "floor": 2,
+            "kind": "elevator"
+        },
+        {
+            "id": "engineering1ElevatorF2",
+            "name": "1°øÇÐ°ü 2Ãþ °è´Ü",
+            "floor": 2,
+            "kind": "stair"
+        },
+        {
+            "id": "engineering1F3Jc",
+            "name": "1°øÇÐ°ü 3Ãþ ºÐ±âÁ¡",
+            "floor": 3,
+            "kind": "junction"
+        },
+        {
+            "id": "engineering1ElevatorF3",
+            "name": "1°øÇÐ°ü 3Ãþ ¿¤º£",
+            "floor": 3,
+            "kind": "elevator"
+        },
+        {
+            "id": "engineering1ElevatorF3",
+            "name": "1°øÇÐ°ü 3Ãþ °è´Ü",
+            "floor": 3,
+            "kind": "stair"
+        },
+        {
+            "id": "engineering1F4Jc",
+            "name": "1°øÇÐ°ü 4Ãþ ºÐ±âÁ¡",
+            "floor": 4,
+            "kind": "junction"
+        },
+        {
+            "id": "engineering1ElevatorF4",
+            "name": "1°øÇÐ°ü 4Ãþ ¿¤º£",
+            "floor": 4,
+            "kind": "elevator"
+        },
+        {
+            "id": "engineering1ElevatorF4",
+            "name": "1°øÇÐ°ü 4Ãþ °è´Ü",
+            "floor": 4,
+            "kind": "stair"
+        },
+        {
+            "id": "engineering1F5Jc",
+            "name": "1°øÇÐ°ü 5Ãþ ºÐ±âÁ¡",
+            "floor": 5,
+            "kind": "junction"
+        },
+        {
+            "id": "engineering1ElevatorF5",
+            "name": "1°øÇÐ°ü 5Ãþ ¿¤º£",
+            "floor": 5,
+            "kind": "elevator"
+        },
+        {
+            "id": "engineering1ElevatorF5",
+            "name": "1°øÇÐ°ü 5Ãþ °è´Ü",
+            "floor": 5,
+            "kind": "stair"
+        },
+        {
+            "id": "engineering1PortalF4",
+            "name": "1°øÇÐ°ü 4Ãþ Æ÷Å»",
+            "floor": 4,
+            "kind": "portal"
+        }
+    ]
+}
