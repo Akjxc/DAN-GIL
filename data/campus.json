@@ -651,7 +651,7 @@
             "from": "hyeDangLibraryJc",
             "to": "hyeDangEngineering3Jc",
             "kind": "outdoorPath",
-            "condition": null
+            "condition": "flat"
         },
         {
             "id": "backwardJcToHumanityLawGraduateBearStatueJc",
