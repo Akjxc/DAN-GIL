@@ -475,13 +475,6 @@
             "kind": "outdoorPath"
         },
         {
-            "id": "beomJungEngineeringJc",
-            "name": "범정관 공학관 분기점",
-            "buildingId": null,
-            "floor": null,
-            "kind": "outdoorPath"
-        },
-        {
             "id": "libraryEngineeringJc",
             "name": "도서관, 제2공학관, 제3공학관 분기점",
             "buildingId": null,
