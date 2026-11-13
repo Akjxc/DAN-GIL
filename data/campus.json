@@ -302,13 +302,6 @@
             "kind": "outdoorPath"
         },
         {
-            "id": "softwareEntranceF3Jc",
-            "name": "소프트웨어ICT관 3층 출입구 분기점",
-            "buildingId": null,
-            "floor": null,
-            "kind": "outdoorPath"
-        },
-        {
             "id": "educationBusinessJc",
             "name": "사범관 상경관 계단 분기점",
             "buildingId": null,
@@ -428,7 +421,7 @@
             "kind": "outdoorPath"
         },
         {
-            "id": "librarybeomJungJc",
+            "id": "libraryBeomJungJc",
             "name": "도서관 범정관 분기점",
             "buildingId": null,
             "floor": null,
@@ -734,6 +727,102 @@
             "to": "hyeDangEngineering3Jc",
             "kind": "outdoorPath",
             "condition": "flat"
+        },
+        {
+            "id": "labJcToInternationalEntranceF1",
+            "name": "종합실험동 앞 분기점-국제관 1층 출입구",
+            "from": "labJc",
+            "to": "internationalEntranceF1",
+            "kind": "outdoorPath",
+            "condition": "slope"
+        },
+        {
+            "id": "InternationalEntranceF1ToHyeDangYardJc",
+            "name": "국제관 1층 출입구-혜당관 노천마당 분기점",
+            "from": "internationalEntranceF1",
+            "to": "hyeDangYardJc",
+            "kind": "outdoorPath",
+            "condition": "slope"
+        },
+        {
+            "id": "libraryEntranceF3ToHyeDangLibraryJc",
+            "name": "도서관 3층 출입구-혜당관 도서관 분기점",
+            "from": "libraryEntranceF3",
+            "to": "hyeDangLibraryJc",
+            "kind": "outdoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "libraryMainroadJcToHyeDangHumanityJc",
+            "name": "도서관 중앙로 분기점-혜당관 인문관 분기점",
+            "from": "libraryMainroadJc",
+            "to": "hyeDangHumanityJc",
+            "kind": "outdoorPath",
+            "condition": "slope"
+        },
+        {
+            "id": "softwareEntranceF3ToLibraryMainroadJc",
+            "name": "소프트웨어ICT관 3층 출입구-도서관 중앙로 분기점",
+            "from": "softwareEntranceF3",
+            "to": "librarybeomJungJc",
+            "kind": "outdoorPath",
+            "condition": "slope" 
+        },
+        {
+            "id": "softwareEntranceF3ToEducationBusinessJc",
+            "name": "소프트웨어ICT관 3층 출입구-사범관 상경관 계단 분기점",
+            "from": "softwareEntranceF3",
+            "to": "educationBusinessJc",
+            "kind": "outdoorPath",
+            "condition": "stair" 
+        },
+        {
+            "id": "softwareEntranceF3ToBusinessHumanityJc",
+            "name": "소프트웨어ICT관 3층 출입구-상경관 인문관 계단 분기점",
+            "from": "softwareEntranceF3",
+            "to": "businessHumanityJc",
+            "kind": "outdoorPath",
+            "condition": "stair" 
+        },
+        {
+            "id": "libraryMainroadJcToLibraryBeomJungJc",
+            "name": "도서관 중앙로 분기점-도서관 범정관 분기점",
+            "from": "libraryMainroadJc",
+            "to": "libraryBeomJungJc",
+            "kind": "outdoorPath",
+            "condition": "slope"
+        },
+        {
+            "id": "libraryBeomJungJcToEngineering1Engineering2Jc",
+            "name": "도서관 범정관 분기점-도서관, 제2공학관, 제3공학관 분기점",
+            "from": "libraryBeomJungJc",
+            "to": "engineering1Engineering2Jc",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "libraryBeomJungJcToBeomJungEntranceF1",
+            "name": "도서관 범정관 분기점-범정관 1층 출입구",
+            "from": "libraryBeomJungJc",
+            "to": "beomJungEntranceF1",
+            "kind": "outdoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "libraryBeomJungJcToLibraryEntranceF1",
+            "name": "도서관 범정관 분기점-도서관 1층 출입구",
+            "from": "libraryBeomJungJc",
+            "to": "libraryEntranceF1",
+            "kind": "outdoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "libraryBeomJungJcToLibraryEntranceF2",
+            "name": "도서관 범정관 분기점-도서관 2층 출입구",
+            "from": "libraryBeomJungJc",
+            "to": "libraryEntranceF2",
+            "kind": "outdoorPath",
+            "condition": "stair"
         }
     ]
 }
