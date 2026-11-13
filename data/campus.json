@@ -556,6 +556,102 @@
             "to": "beomJungEntranceF1",
             "kind": "outdoorPath",
             "condition": "slope" 
+        },
+        {
+            "id": "educationEntranceF1ToEducationBusinessJc",
+            "name": "사범관 1층 출입구-사범관 상경관 계단 분기점",
+            "from": "educationEntranceF1",
+            "to": "educationBusinessJc",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "educationBusinessJcToBusinessEntranceF1",
+            "name": "사범관 상경관 계단 분기점-상경관 1층 출입구",
+            "from": "educationBusinessJc",
+            "to": "businessEntranceF1",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "businessEntranceF1ToBusinessHumanityJc",
+            "name": "상경관 1층 출입구-상경관 인문관 계단 분기점",
+            "from": "businessEntranceF1",
+            "to": "businessHumanityJc",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "businessHumanityJcToHumanityEntranceF1",
+            "name": "상경관 인문관 계단 분기점-인문관 1층 출입구",
+            "from": "businessHumanityJc",
+            "to": "humanityEntranceF1",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "educationBusinessEntranceF5ToBusinessHumanityEntranceF5",
+            "name": "사범관 상경관 5층 출입구-상경관 인문관 5층 출입구",
+            "from": "educationBusinessEntranceF5",
+            "to": "businessHumanityEntranceF5",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "businessHumanityEntranceF5ToBackwardJc",
+            "name": "상경관 인문관 5층 출입구-인문관 상경관 사범관 뒤쪽 분기점",
+            "from": "businessHumanityEntranceF5",
+            "to": "educationBusinessHumanityBackwardJc",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "humanityEntranceF1ToHyeDangHumanityJc",
+            "name": "인문관 1층 출입구-혜당관 인문관 분기점",
+            "from": "humanityEntranceF1",
+            "to": "hyeDangHumanityJc",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "hyeDangHumanityJcToHyeDangLibraryJc",
+            "name": "혜당관 인문관 분기점-혜당관 도서관 분기점",
+            "from": "hyeDangHumanityJc",
+            "to": "hyeDangLibraryJc",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "hyeDangLibraryJcToHyeDangEntranceF1",
+            "name": "혜당관 도서관 분기점-혜당관 1층 출입구",
+            "from": "hyeDangLibraryJc",
+            "to": "hyeDangEntranceF1",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "hyeDangEntranceF4ToHyeDangBearStatueJc",
+            "name": "혜당관 4층 출입구-혜당관 곰상 분기점",
+            "from": "hyeDangEntranceF4",
+            "to": "hyeDangBearStatueJc",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "hyeDangBearStatueJcToBearStatue",
+            "name": "혜당관 곰상 분기점-곰상",
+            "from": "hyeDangBearStatueJc",
+            "to": "bearStatue",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "hyeDangLibraryJcToHyeDangEngineering3Jc",
+            "name": "혜당관 도서관 분기점-혜당관 제3공학관 분기점",
+            "from": "hyeDangLibraryJc",
+            "to": "hyeDangEngineering3Jc",
+            "kind": "outdoorPath",
+            "condition": null
         }
     ]
 }

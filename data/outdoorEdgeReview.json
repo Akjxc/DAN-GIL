@@ -1,0 +1,62 @@
+{
+    "source": "campus-node-map-confirmed-final.png",
+    "status": "needsConfirmation",
+    "rules": [
+        "빨간 선으로 직접 연결된 것이 확실한 노드만 campus.json에 추가",
+        "중간에 번호 없는 연두점이 있으면 기존 노드를 건너뛰어 연결하지 않음",
+        "확인되지 않은 condition은 null로 유지",
+        "실외 엣지는 기본 양방향으로 사용하는지 백엔드 규칙 확인 필요"
+    ],
+    "conditionPendingEdgeIds": [
+        "educationEntranceF1ToEducationBusinessJc",
+        "educationBusinessJcToBusinessEntranceF1",
+        "businessEntranceF1ToBusinessHumanityJc",
+        "businessHumanityJcToHumanityEntranceF1",
+        "educationBusinessEntranceF5ToBusinessHumanityEntranceF5",
+        "businessHumanityEntranceF5ToBackwardJc",
+        "humanityEntranceF1ToHyeDangHumanityJc",
+        "hyeDangHumanityJcToHyeDangLibraryJc",
+        "hyeDangLibraryJcToHyeDangEntranceF1",
+        "hyeDangEntranceF4ToHyeDangBearStatueJc",
+        "hyeDangBearStatueJcToBearStatue",
+        "hyeDangLibraryJcToHyeDangEngineering3Jc"
+    ],
+    "unresolvedConnections": [
+        {
+            "area": "인상사 뒤쪽-법학관/대학원동",
+            "reason": "번호 없는 중간 연두점이 있어 직접 연결 여부 확인 필요"
+        },
+        {
+            "area": "법학관/대학원동 3층 출입구-1층 출입구",
+            "reason": "건물 주변 경로에 여러 연두점이 있어 중간 노드 확인 필요"
+        },
+        {
+            "area": "인문관·법학관/대학원동·곰상 분기점 주변",
+            "reason": "7번, 12번, 15번, 20번 사이의 정확한 직접 연결 순서 확인 필요"
+        },
+        {
+            "area": "혜당관 곰상 분기점-법학관/대학원동·혜당관·곰상 분기점",
+            "reason": "두 분기점 사이에 중간 연두점이 있는지 확인 필요"
+        },
+        {
+            "area": "혜당관 노천마당 분기점 주변",
+            "reason": "혜당관 4층 출입구, 곰상, 노천마당 사이 직접 연결 순서 확인 필요"
+        },
+        {
+            "area": "혜당관 2층 출입구 실외 연결",
+            "reason": "1층·4층 출입구와의 이동은 실내 그래프로 처리하며, 2층 출입구가 연결되는 실외 분기점은 별도 확인 필요"
+        },
+        {
+            "area": "혜당관 제3공학관 분기점-제3공학관 출입구",
+            "reason": "제3공학관의 어느 층 출입구와 연결되는지 확인 필요"
+        },
+        {
+            "area": "혜당관 도서관 분기점-도서관 측 분기점",
+            "reason": "도서관 방향 중간 노드와 정확한 연결 대상 확인 필요"
+        },
+        {
+            "area": "기존 BeomJungSoftwareJcToLibraryMainroadJc 엣지",
+            "reason": "ID와 이름은 도서관 중앙로 분기점을 뜻하지만 실제 to는 librarybeomJungJc로 되어 있어 기존 데이터 확인 필요"
+        }
+    ]
+}
