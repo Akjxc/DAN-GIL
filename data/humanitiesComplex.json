@@ -1,1652 +1,966 @@
 {
-  "schemaVersion": 3,
-  "status": "mock",
-  "notes": [
-    "인문관·상경관·사범관 내부 이동 구조용 Mock 데이터입니다.",
-    "1층에서는 세 건물끼리 실내로 연결되지 않습니다.",
-    "2층부터 5층까지는 사범관-상경관-인문관 순서로 실내 연결됩니다.",
-    "각 건물의 1~5층에는 엘리베이터와 계단이 모두 있습니다.",
-    "확인되지 않은 거리와 예상 이동시간은 null입니다."
-  ],
-  "buildings": [
-    {
-      "id": "education",
-      "name": "사범관"
-    },
-    {
-      "id": "business",
-      "name": "상경관"
-    },
-    {
-      "id": "humanity",
-      "name": "인문관"
-    }
-  ],
-  "floors": [
-    1,
-    2,
-    3,
-    4,
-    5
-  ],
-  "nodes": [
-    {
-      "id": "educationJunctionF1",
-      "name": "사범관 1층 내부 분기점",
-      "buildingId": "education",
-      "floor": 1,
-      "kind": "junction",
-      "indoor": true
-    },
-    {
-      "id": "educationElevatorF1",
-      "name": "사범관 1층 엘리베이터",
-      "buildingId": "education",
-      "floor": 1,
-      "kind": "elevator",
-      "indoor": true
-    },
-    {
-      "id": "educationStairF1",
-      "name": "사범관 1층 계단",
-      "buildingId": "education",
-      "floor": 1,
-      "kind": "stair",
-      "indoor": true
-    },
-    {
-      "id": "educationJunctionF2",
-      "name": "사범관 2층 내부 분기점",
-      "buildingId": "education",
-      "floor": 2,
-      "kind": "junction",
-      "indoor": true
-    },
-    {
-      "id": "educationElevatorF2",
-      "name": "사범관 2층 엘리베이터",
-      "buildingId": "education",
-      "floor": 2,
-      "kind": "elevator",
-      "indoor": true
-    },
-    {
-      "id": "educationStairF2",
-      "name": "사범관 2층 계단",
-      "buildingId": "education",
-      "floor": 2,
-      "kind": "stair",
-      "indoor": true
-    },
-    {
-      "id": "educationJunctionF3",
-      "name": "사범관 3층 내부 분기점",
-      "buildingId": "education",
-      "floor": 3,
-      "kind": "junction",
-      "indoor": true
-    },
-    {
-      "id": "educationElevatorF3",
-      "name": "사범관 3층 엘리베이터",
-      "buildingId": "education",
-      "floor": 3,
-      "kind": "elevator",
-      "indoor": true
-    },
-    {
-      "id": "educationStairF3",
-      "name": "사범관 3층 계단",
-      "buildingId": "education",
-      "floor": 3,
-      "kind": "stair",
-      "indoor": true
-    },
-    {
-      "id": "educationJunctionF4",
-      "name": "사범관 4층 내부 분기점",
-      "buildingId": "education",
-      "floor": 4,
-      "kind": "junction",
-      "indoor": true
-    },
-    {
-      "id": "educationElevatorF4",
-      "name": "사범관 4층 엘리베이터",
-      "buildingId": "education",
-      "floor": 4,
-      "kind": "elevator",
-      "indoor": true
-    },
-    {
-      "id": "educationStairF4",
-      "name": "사범관 4층 계단",
-      "buildingId": "education",
-      "floor": 4,
-      "kind": "stair",
-      "indoor": true
-    },
-    {
-      "id": "educationJunctionF5",
-      "name": "사범관 5층 내부 분기점",
-      "buildingId": "education",
-      "floor": 5,
-      "kind": "junction",
-      "indoor": true
-    },
-    {
-      "id": "educationElevatorF5",
-      "name": "사범관 5층 엘리베이터",
-      "buildingId": "education",
-      "floor": 5,
-      "kind": "elevator",
-      "indoor": true
-    },
-    {
-      "id": "educationStairF5",
-      "name": "사범관 5층 계단",
-      "buildingId": "education",
-      "floor": 5,
-      "kind": "stair",
-      "indoor": true
-    },
-    {
-      "id": "educationEntranceF1",
-      "name": "사범관 1층 출입구",
-      "buildingId": "education",
-      "floor": 1,
-      "kind": "entrance",
-      "indoor": true
-    },
-    {
-      "id": "businessJunctionF1",
-      "name": "상경관 1층 내부 분기점",
-      "buildingId": "business",
-      "floor": 1,
-      "kind": "junction",
-      "indoor": true
-    },
-    {
-      "id": "businessElevatorF1",
-      "name": "상경관 1층 엘리베이터",
-      "buildingId": "business",
-      "floor": 1,
-      "kind": "elevator",
-      "indoor": true
-    },
-    {
-      "id": "businessStairF1",
-      "name": "상경관 1층 계단",
-      "buildingId": "business",
-      "floor": 1,
-      "kind": "stair",
-      "indoor": true
-    },
-    {
-      "id": "businessJunctionF2",
-      "name": "상경관 2층 내부 분기점",
-      "buildingId": "business",
-      "floor": 2,
-      "kind": "junction",
-      "indoor": true
-    },
-    {
-      "id": "businessElevatorF2",
-      "name": "상경관 2층 엘리베이터",
-      "buildingId": "business",
-      "floor": 2,
-      "kind": "elevator",
-      "indoor": true
-    },
-    {
-      "id": "businessStairF2",
-      "name": "상경관 2층 계단",
-      "buildingId": "business",
-      "floor": 2,
-      "kind": "stair",
-      "indoor": true
-    },
-    {
-      "id": "businessJunctionF3",
-      "name": "상경관 3층 내부 분기점",
-      "buildingId": "business",
-      "floor": 3,
-      "kind": "junction",
-      "indoor": true
-    },
-    {
-      "id": "businessElevatorF3",
-      "name": "상경관 3층 엘리베이터",
-      "buildingId": "business",
-      "floor": 3,
-      "kind": "elevator",
-      "indoor": true
-    },
-    {
-      "id": "businessStairF3",
-      "name": "상경관 3층 계단",
-      "buildingId": "business",
-      "floor": 3,
-      "kind": "stair",
-      "indoor": true
-    },
-    {
-      "id": "businessJunctionF4",
-      "name": "상경관 4층 내부 분기점",
-      "buildingId": "business",
-      "floor": 4,
-      "kind": "junction",
-      "indoor": true
-    },
-    {
-      "id": "businessElevatorF4",
-      "name": "상경관 4층 엘리베이터",
-      "buildingId": "business",
-      "floor": 4,
-      "kind": "elevator",
-      "indoor": true
-    },
-    {
-      "id": "businessStairF4",
-      "name": "상경관 4층 계단",
-      "buildingId": "business",
-      "floor": 4,
-      "kind": "stair",
-      "indoor": true
-    },
-    {
-      "id": "businessJunctionF5",
-      "name": "상경관 5층 내부 분기점",
-      "buildingId": "business",
-      "floor": 5,
-      "kind": "junction",
-      "indoor": true
-    },
-    {
-      "id": "businessElevatorF5",
-      "name": "상경관 5층 엘리베이터",
-      "buildingId": "business",
-      "floor": 5,
-      "kind": "elevator",
-      "indoor": true
-    },
-    {
-      "id": "businessStairF5",
-      "name": "상경관 5층 계단",
-      "buildingId": "business",
-      "floor": 5,
-      "kind": "stair",
-      "indoor": true
-    },
-    {
-      "id": "businessEntranceF1",
-      "name": "상경관 1층 출입구",
-      "buildingId": "business",
-      "floor": 1,
-      "kind": "entrance",
-      "indoor": true
-    },
-    {
-      "id": "humanityJunctionF1",
-      "name": "인문관 1층 내부 분기점",
-      "buildingId": "humanity",
-      "floor": 1,
-      "kind": "junction",
-      "indoor": true
-    },
-    {
-      "id": "humanityElevatorF1",
-      "name": "인문관 1층 엘리베이터",
-      "buildingId": "humanity",
-      "floor": 1,
-      "kind": "elevator",
-      "indoor": true
-    },
-    {
-      "id": "humanityStairF1",
-      "name": "인문관 1층 계단",
-      "buildingId": "humanity",
-      "floor": 1,
-      "kind": "stair",
-      "indoor": true
-    },
-    {
-      "id": "humanityJunctionF2",
-      "name": "인문관 2층 내부 분기점",
-      "buildingId": "humanity",
-      "floor": 2,
-      "kind": "junction",
-      "indoor": true
-    },
-    {
-      "id": "humanityElevatorF2",
-      "name": "인문관 2층 엘리베이터",
-      "buildingId": "humanity",
-      "floor": 2,
-      "kind": "elevator",
-      "indoor": true
-    },
-    {
-      "id": "humanityStairF2",
-      "name": "인문관 2층 계단",
-      "buildingId": "humanity",
-      "floor": 2,
-      "kind": "stair",
-      "indoor": true
-    },
-    {
-      "id": "humanityJunctionF3",
-      "name": "인문관 3층 내부 분기점",
-      "buildingId": "humanity",
-      "floor": 3,
-      "kind": "junction",
-      "indoor": true
-    },
-    {
-      "id": "humanityElevatorF3",
-      "name": "인문관 3층 엘리베이터",
-      "buildingId": "humanity",
-      "floor": 3,
-      "kind": "elevator",
-      "indoor": true
-    },
-    {
-      "id": "humanityStairF3",
-      "name": "인문관 3층 계단",
-      "buildingId": "humanity",
-      "floor": 3,
-      "kind": "stair",
-      "indoor": true
-    },
-    {
-      "id": "humanityJunctionF4",
-      "name": "인문관 4층 내부 분기점",
-      "buildingId": "humanity",
-      "floor": 4,
-      "kind": "junction",
-      "indoor": true
-    },
-    {
-      "id": "humanityElevatorF4",
-      "name": "인문관 4층 엘리베이터",
-      "buildingId": "humanity",
-      "floor": 4,
-      "kind": "elevator",
-      "indoor": true
-    },
-    {
-      "id": "humanityStairF4",
-      "name": "인문관 4층 계단",
-      "buildingId": "humanity",
-      "floor": 4,
-      "kind": "stair",
-      "indoor": true
-    },
-    {
-      "id": "humanityJunctionF5",
-      "name": "인문관 5층 내부 분기점",
-      "buildingId": "humanity",
-      "floor": 5,
-      "kind": "junction",
-      "indoor": true
-    },
-    {
-      "id": "humanityElevatorF5",
-      "name": "인문관 5층 엘리베이터",
-      "buildingId": "humanity",
-      "floor": 5,
-      "kind": "elevator",
-      "indoor": true
-    },
-    {
-      "id": "humanityStairF5",
-      "name": "인문관 5층 계단",
-      "buildingId": "humanity",
-      "floor": 5,
-      "kind": "stair",
-      "indoor": true
-    },
-    {
-      "id": "humanityEntranceF1",
-      "name": "인문관 1층 출입구",
-      "buildingId": "humanity",
-      "floor": 1,
-      "kind": "entrance",
-      "indoor": true
-    },
-    {
-      "id": "educationBusinessPassageF2",
-      "name": "사범관·상경관 2층 연결통로",
-      "buildingId": null,
-      "floor": 2,
-      "kind": "indoor_passage",
-      "indoor": true
-    },
-    {
-      "id": "businessHumanityPassageF2",
-      "name": "상경관·인문관 2층 연결통로",
-      "buildingId": null,
-      "floor": 2,
-      "kind": "indoor_passage",
-      "indoor": true
-    },
-    {
-      "id": "educationBusinessPassageF3",
-      "name": "사범관·상경관 3층 연결통로",
-      "buildingId": null,
-      "floor": 3,
-      "kind": "indoor_passage",
-      "indoor": true
-    },
-    {
-      "id": "businessHumanityPassageF3",
-      "name": "상경관·인문관 3층 연결통로",
-      "buildingId": null,
-      "floor": 3,
-      "kind": "indoor_passage",
-      "indoor": true
-    },
-    {
-      "id": "educationBusinessPassageF4",
-      "name": "사범관·상경관 4층 연결통로",
-      "buildingId": null,
-      "floor": 4,
-      "kind": "indoor_passage",
-      "indoor": true
-    },
-    {
-      "id": "businessHumanityPassageF4",
-      "name": "상경관·인문관 4층 연결통로",
-      "buildingId": null,
-      "floor": 4,
-      "kind": "indoor_passage",
-      "indoor": true
-    },
-    {
-      "id": "educationBusinessPassageF5",
-      "name": "사범관·상경관 5층 연결통로",
-      "buildingId": null,
-      "floor": 5,
-      "kind": "indoor_passage",
-      "indoor": true
-    },
-    {
-      "id": "businessHumanityPassageF5",
-      "name": "상경관·인문관 5층 연결통로",
-      "buildingId": null,
-      "floor": 5,
-      "kind": "indoor_passage",
-      "indoor": true
-    }
-  ],
-  "edges": [
-    {
-      "id": "education-f1-junction-elevator",
-      "from": "educationJunctionF1",
-      "to": "educationElevatorF1",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-f1-junction-stair",
-      "from": "educationJunctionF1",
-      "to": "educationStairF1",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-f2-junction-elevator",
-      "from": "educationJunctionF2",
-      "to": "educationElevatorF2",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-f2-junction-stair",
-      "from": "educationJunctionF2",
-      "to": "educationStairF2",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-f3-junction-elevator",
-      "from": "educationJunctionF3",
-      "to": "educationElevatorF3",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-f3-junction-stair",
-      "from": "educationJunctionF3",
-      "to": "educationStairF3",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-f4-junction-elevator",
-      "from": "educationJunctionF4",
-      "to": "educationElevatorF4",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-f4-junction-stair",
-      "from": "educationJunctionF4",
-      "to": "educationStairF4",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-f5-junction-elevator",
-      "from": "educationJunctionF5",
-      "to": "educationElevatorF5",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-f5-junction-stair",
-      "from": "educationJunctionF5",
-      "to": "educationStairF5",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-f1-entrance-junction",
-      "from": "educationEntranceF1",
-      "to": "educationJunctionF1",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-elevator-f1-f2",
-      "from": "educationElevatorF1",
-      "to": "educationElevatorF2",
-      "kind": "elevator",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": 0,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "elevator",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-stair-f1-f2",
-      "from": "educationStairF1",
-      "to": "educationStairF2",
-      "kind": "stairs",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": true,
-      "ramp": null,
-      "wheelchairAccessible": false,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-elevator-f2-f3",
-      "from": "educationElevatorF2",
-      "to": "educationElevatorF3",
-      "kind": "elevator",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": 0,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "elevator",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-stair-f2-f3",
-      "from": "educationStairF2",
-      "to": "educationStairF3",
-      "kind": "stairs",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": true,
-      "ramp": null,
-      "wheelchairAccessible": false,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-elevator-f3-f4",
-      "from": "educationElevatorF3",
-      "to": "educationElevatorF4",
-      "kind": "elevator",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": 0,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "elevator",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-stair-f3-f4",
-      "from": "educationStairF3",
-      "to": "educationStairF4",
-      "kind": "stairs",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": true,
-      "ramp": null,
-      "wheelchairAccessible": false,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-elevator-f4-f5",
-      "from": "educationElevatorF4",
-      "to": "educationElevatorF5",
-      "kind": "elevator",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": 0,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "elevator",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-stair-f4-f5",
-      "from": "educationStairF4",
-      "to": "educationStairF5",
-      "kind": "stairs",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": true,
-      "ramp": null,
-      "wheelchairAccessible": false,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f1-junction-elevator",
-      "from": "businessJunctionF1",
-      "to": "businessElevatorF1",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f1-junction-stair",
-      "from": "businessJunctionF1",
-      "to": "businessStairF1",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f2-junction-elevator",
-      "from": "businessJunctionF2",
-      "to": "businessElevatorF2",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f2-junction-stair",
-      "from": "businessJunctionF2",
-      "to": "businessStairF2",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f3-junction-elevator",
-      "from": "businessJunctionF3",
-      "to": "businessElevatorF3",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f3-junction-stair",
-      "from": "businessJunctionF3",
-      "to": "businessStairF3",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f4-junction-elevator",
-      "from": "businessJunctionF4",
-      "to": "businessElevatorF4",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f4-junction-stair",
-      "from": "businessJunctionF4",
-      "to": "businessStairF4",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f5-junction-elevator",
-      "from": "businessJunctionF5",
-      "to": "businessElevatorF5",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f5-junction-stair",
-      "from": "businessJunctionF5",
-      "to": "businessStairF5",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f1-entrance-junction",
-      "from": "businessEntranceF1",
-      "to": "businessJunctionF1",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-elevator-f1-f2",
-      "from": "businessElevatorF1",
-      "to": "businessElevatorF2",
-      "kind": "elevator",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": 0,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "elevator",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-stair-f1-f2",
-      "from": "businessStairF1",
-      "to": "businessStairF2",
-      "kind": "stairs",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": true,
-      "ramp": null,
-      "wheelchairAccessible": false,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-elevator-f2-f3",
-      "from": "businessElevatorF2",
-      "to": "businessElevatorF3",
-      "kind": "elevator",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": 0,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "elevator",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-stair-f2-f3",
-      "from": "businessStairF2",
-      "to": "businessStairF3",
-      "kind": "stairs",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": true,
-      "ramp": null,
-      "wheelchairAccessible": false,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-elevator-f3-f4",
-      "from": "businessElevatorF3",
-      "to": "businessElevatorF4",
-      "kind": "elevator",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": 0,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "elevator",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-stair-f3-f4",
-      "from": "businessStairF3",
-      "to": "businessStairF4",
-      "kind": "stairs",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": true,
-      "ramp": null,
-      "wheelchairAccessible": false,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-elevator-f4-f5",
-      "from": "businessElevatorF4",
-      "to": "businessElevatorF5",
-      "kind": "elevator",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": 0,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "elevator",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-stair-f4-f5",
-      "from": "businessStairF4",
-      "to": "businessStairF5",
-      "kind": "stairs",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": true,
-      "ramp": null,
-      "wheelchairAccessible": false,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-f1-junction-elevator",
-      "from": "humanityJunctionF1",
-      "to": "humanityElevatorF1",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-f1-junction-stair",
-      "from": "humanityJunctionF1",
-      "to": "humanityStairF1",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-f2-junction-elevator",
-      "from": "humanityJunctionF2",
-      "to": "humanityElevatorF2",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-f2-junction-stair",
-      "from": "humanityJunctionF2",
-      "to": "humanityStairF2",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-f3-junction-elevator",
-      "from": "humanityJunctionF3",
-      "to": "humanityElevatorF3",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-f3-junction-stair",
-      "from": "humanityJunctionF3",
-      "to": "humanityStairF3",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-f4-junction-elevator",
-      "from": "humanityJunctionF4",
-      "to": "humanityElevatorF4",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-f4-junction-stair",
-      "from": "humanityJunctionF4",
-      "to": "humanityStairF4",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-f5-junction-elevator",
-      "from": "humanityJunctionF5",
-      "to": "humanityElevatorF5",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-f5-junction-stair",
-      "from": "humanityJunctionF5",
-      "to": "humanityStairF5",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-f1-entrance-junction",
-      "from": "humanityEntranceF1",
-      "to": "humanityJunctionF1",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-elevator-f1-f2",
-      "from": "humanityElevatorF1",
-      "to": "humanityElevatorF2",
-      "kind": "elevator",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": 0,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "elevator",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-stair-f1-f2",
-      "from": "humanityStairF1",
-      "to": "humanityStairF2",
-      "kind": "stairs",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": true,
-      "ramp": null,
-      "wheelchairAccessible": false,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-elevator-f2-f3",
-      "from": "humanityElevatorF2",
-      "to": "humanityElevatorF3",
-      "kind": "elevator",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": 0,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "elevator",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-stair-f2-f3",
-      "from": "humanityStairF2",
-      "to": "humanityStairF3",
-      "kind": "stairs",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": true,
-      "ramp": null,
-      "wheelchairAccessible": false,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-elevator-f3-f4",
-      "from": "humanityElevatorF3",
-      "to": "humanityElevatorF4",
-      "kind": "elevator",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": 0,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "elevator",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-stair-f3-f4",
-      "from": "humanityStairF3",
-      "to": "humanityStairF4",
-      "kind": "stairs",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": true,
-      "ramp": null,
-      "wheelchairAccessible": false,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-elevator-f4-f5",
-      "from": "humanityElevatorF4",
-      "to": "humanityElevatorF5",
-      "kind": "elevator",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": 0,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "elevator",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-stair-f4-f5",
-      "from": "humanityStairF4",
-      "to": "humanityStairF5",
-      "kind": "stairs",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": true,
-      "ramp": null,
-      "wheelchairAccessible": false,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-f2-education-business-passage",
-      "from": "educationJunctionF2",
-      "to": "educationBusinessPassageF2",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f2-education-business-passage",
-      "from": "businessJunctionF2",
-      "to": "educationBusinessPassageF2",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f2-business-humanity-passage",
-      "from": "businessJunctionF2",
-      "to": "businessHumanityPassageF2",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-f2-business-humanity-passage",
-      "from": "humanityJunctionF2",
-      "to": "businessHumanityPassageF2",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-f3-education-business-passage",
-      "from": "educationJunctionF3",
-      "to": "educationBusinessPassageF3",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f3-education-business-passage",
-      "from": "businessJunctionF3",
-      "to": "educationBusinessPassageF3",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f3-business-humanity-passage",
-      "from": "businessJunctionF3",
-      "to": "businessHumanityPassageF3",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-f3-business-humanity-passage",
-      "from": "humanityJunctionF3",
-      "to": "businessHumanityPassageF3",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-f4-education-business-passage",
-      "from": "educationJunctionF4",
-      "to": "educationBusinessPassageF4",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f4-education-business-passage",
-      "from": "businessJunctionF4",
-      "to": "educationBusinessPassageF4",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f4-business-humanity-passage",
-      "from": "businessJunctionF4",
-      "to": "businessHumanityPassageF4",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-f4-business-humanity-passage",
-      "from": "humanityJunctionF4",
-      "to": "businessHumanityPassageF4",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "education-f5-education-business-passage",
-      "from": "educationJunctionF5",
-      "to": "educationBusinessPassageF5",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f5-education-business-passage",
-      "from": "businessJunctionF5",
-      "to": "educationBusinessPassageF5",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "business-f5-business-humanity-passage",
-      "from": "businessJunctionF5",
-      "to": "businessHumanityPassageF5",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    },
-    {
-      "id": "humanity-f5-business-humanity-passage",
-      "from": "humanityJunctionF5",
-      "to": "businessHumanityPassageF5",
-      "kind": "indoor_path",
-      "distance": null,
-      "estimatedTime": null,
-      "walkingDistance": null,
-      "stairs": false,
-      "ramp": null,
-      "wheelchairAccessible": true,
-      "lighting": "indoor",
-      "transport": "walk",
-      "available": true,
-      "bidirectional": true
-    }
-  ]
+    "note": [
+        "인문관 상경관 사범관 내부",
+        "1층에서는 세 건물끼리 실내로 연결되지 않음",
+        "2층부터 5층까지 사범관-상경관-인문관 순서로 실내 연결"
+    ],
+    "node": [
+        {
+            "id": "educationF1Jc",
+            "name": "사범관 1층 분기점",
+            "buildingId": "education",
+            "floor": 1,
+            "kind": "junction"
+        },
+        {
+            "id": "educationElevatorF1",
+            "name": "사범관 1층 엘베",
+            "buildingId": "education",
+            "floor": 1,
+            "kind": "elevator"
+        },
+        {
+            "id": "educationStairF1",
+            "name": "사범관 1층 계단",
+            "buildingId": "education",
+            "floor": 1,
+            "kind": "stair"
+        },
+        {
+            "id": "educationF2Jc",
+            "name": "사범관 2층 분기점",
+            "buildingId": "education",
+            "floor": 2,
+            "kind": "junction"
+        },
+        {
+            "id": "educationElevatorF2",
+            "name": "사범관 2층 엘베",
+            "buildingId": "education",
+            "floor": 2,
+            "kind": "elevator"
+        },
+        {
+            "id": "educationStairF2",
+            "name": "사범관 2층 계단",
+            "buildingId": "education",
+            "floor": 2,
+            "kind": "stair"
+        },
+        {
+            "id": "educationF3Jc",
+            "name": "사범관 3층 분기점",
+            "buildingId": "education",
+            "floor": 3,
+            "kind": "junction"
+        },
+        {
+            "id": "educationElevatorF3",
+            "name": "사범관 3층 엘베",
+            "buildingId": "education",
+            "floor": 3,
+            "kind": "elevator"
+        },
+        {
+            "id": "educationStairF3",
+            "name": "사범관 3층 계단",
+            "buildingId": "education",
+            "floor": 3,
+            "kind": "stair"
+        },
+        {
+            "id": "educationF4Jc",
+            "name": "사범관 4층 분기점",
+            "buildingId": "education",
+            "floor": 4,
+            "kind": "junction"
+        },
+        {
+            "id": "educationElevatorF4",
+            "name": "사범관 4층 엘베",
+            "buildingId": "education",
+            "floor": 4,
+            "kind": "elevator"
+        },
+        {
+            "id": "educationStairF4",
+            "name": "사범관 4층 계단",
+            "buildingId": "education",
+            "floor": 4,
+            "kind": "stair"
+        },
+        {
+            "id": "educationF5Jc",
+            "name": "사범관 5층 분기점",
+            "buildingId": "education",
+            "floor": 5,
+            "kind": "junction"
+        },
+        {
+            "id": "educationElevatorF5",
+            "name": "사범관 5층 엘베",
+            "buildingId": "education",
+            "floor": 5,
+            "kind": "elevator"
+        },
+        {
+            "id": "educationStairF5",
+            "name": "사범관 5층 계단",
+            "buildingId": "education",
+            "floor": 5,
+            "kind": "stair"
+        },
+        {
+            "id": "businessF1Jc",
+            "name": "상경관 1층 분기점",
+            "buildingId": "business",
+            "floor": 1,
+            "kind": "junction"
+        },
+        {
+            "id": "businessElevatorF1",
+            "name": "상경관 1층 엘베",
+            "buildingId": "business",
+            "floor": 1,
+            "kind": "elevator"
+        },
+        {
+            "id": "businessStairF1",
+            "name": "상경관 1층 계단",
+            "buildingId": "business",
+            "floor": 1,
+            "kind": "stair"
+        },
+        {
+            "id": "businessF2Jc",
+            "name": "상경관 2층 분기점",
+            "buildingId": "business",
+            "floor": 2,
+            "kind": "junction"
+        },
+        {
+            "id": "businessElevatorF2",
+            "name": "상경관 2층 엘베",
+            "buildingId": "business",
+            "floor": 2,
+            "kind": "elevator"
+        },
+        {
+            "id": "businessStairF2",
+            "name": "상경관 2층 계단",
+            "buildingId": "business",
+            "floor": 2,
+            "kind": "stair"
+        },
+        {
+            "id": "businessF3Jc",
+            "name": "상경관 3층 분기점",
+            "buildingId": "business",
+            "floor": 3,
+            "kind": "junction"
+        },
+        {
+            "id": "businessElevatorF3",
+            "name": "상경관 3층 엘베",
+            "buildingId": "business",
+            "floor": 3,
+            "kind": "elevator"
+        },
+        {
+            "id": "businessStairF3",
+            "name": "상경관 3층 계단",
+            "buildingId": "business",
+            "floor": 3,
+            "kind": "stair"
+        },
+        {
+            "id": "businessF4Jc",
+            "name": "상경관 4층 분기점",
+            "buildingId": "business",
+            "floor": 4,
+            "kind": "junction"
+        },
+        {
+            "id": "businessElevatorF4",
+            "name": "상경관 4층 엘베",
+            "buildingId": "business",
+            "floor": 4,
+            "kind": "elevator"
+        },
+        {
+            "id": "businessStairF4",
+            "name": "상경관 4층 계단",
+            "buildingId": "business",
+            "floor": 4,
+            "kind": "stair"
+        },
+        {
+            "id": "businessF5Jc",
+            "name": "상경관 5층 분기점",
+            "buildingId": "business",
+            "floor": 5,
+            "kind": "junction"
+        },
+        {
+            "id": "businessElevatorF5",
+            "name": "상경관 5층 엘베",
+            "buildingId": "business",
+            "floor": 5,
+            "kind": "elevator"
+        },
+        {
+            "id": "businessStairF5",
+            "name": "상경관 5층 계단",
+            "buildingId": "business",
+            "floor": 5,
+            "kind": "stair"
+        },
+        {
+            "id": "humanityF1Jc",
+            "name": "인문관 1층 분기점",
+            "buildingId": "humanity",
+            "floor": 1,
+            "kind": "junction"
+        },
+        {
+            "id": "humanityElevatorF1",
+            "name": "인문관 1층 엘베",
+            "buildingId": "humanity",
+            "floor": 1,
+            "kind": "elevator"
+        },
+        {
+            "id": "humanityStairF1",
+            "name": "인문관 1층 계단",
+            "buildingId": "humanity",
+            "floor": 1,
+            "kind": "stair"
+        },
+        {
+            "id": "humanityF2Jc",
+            "name": "인문관 2층 분기점",
+            "buildingId": "humanity",
+            "floor": 2,
+            "kind": "junction"
+        },
+        {
+            "id": "humanityElevatorF2",
+            "name": "인문관 2층 엘베",
+            "buildingId": "humanity",
+            "floor": 2,
+            "kind": "elevator"
+        },
+        {
+            "id": "humanityStairF2",
+            "name": "인문관 2층 계단",
+            "buildingId": "humanity",
+            "floor": 2,
+            "kind": "stair"
+        },
+        {
+            "id": "humanityF3Jc",
+            "name": "인문관 3층 분기점",
+            "buildingId": "humanity",
+            "floor": 3,
+            "kind": "junction"
+        },
+        {
+            "id": "humanityElevatorF3",
+            "name": "인문관 3층 엘베",
+            "buildingId": "humanity",
+            "floor": 3,
+            "kind": "elevator"
+        },
+        {
+            "id": "humanityStairF3",
+            "name": "인문관 3층 계단",
+            "buildingId": "humanity",
+            "floor": 3,
+            "kind": "stair"
+        },
+        {
+            "id": "humanityF4Jc",
+            "name": "인문관 4층 분기점",
+            "buildingId": "humanity",
+            "floor": 4,
+            "kind": "junction"
+        },
+        {
+            "id": "humanityElevatorF4",
+            "name": "인문관 4층 엘베",
+            "buildingId": "humanity",
+            "floor": 4,
+            "kind": "elevator"
+        },
+        {
+            "id": "humanityStairF4",
+            "name": "인문관 4층 계단",
+            "buildingId": "humanity",
+            "floor": 4,
+            "kind": "stair"
+        },
+        {
+            "id": "humanityF5Jc",
+            "name": "인문관 5층 분기점",
+            "buildingId": "humanity",
+            "floor": 5,
+            "kind": "junction"
+        },
+        {
+            "id": "humanityElevatorF5",
+            "name": "인문관 5층 엘베",
+            "buildingId": "humanity",
+            "floor": 5,
+            "kind": "elevator"
+        },
+        {
+            "id": "humanityStairF5",
+            "name": "인문관 5층 계단",
+            "buildingId": "humanity",
+            "floor": 5,
+            "kind": "stair"
+        },
+        {
+            "id": "educationBusinessPassageF2",
+            "name": "사범관 상경관 2층 연결통로",
+            "buildingId": null,
+            "floor": 2,
+            "kind": "junction"
+        },
+        {
+            "id": "businessHumanityPassageF2",
+            "name": "상경관 인문관 2층 연결통로",
+            "buildingId": null,
+            "floor": 2,
+            "kind": "junction"
+        },
+        {
+            "id": "educationBusinessPassageF3",
+            "name": "사범관 상경관 3층 연결통로",
+            "buildingId": null,
+            "floor": 3,
+            "kind": "junction"
+        },
+        {
+            "id": "businessHumanityPassageF3",
+            "name": "상경관 인문관 3층 연결통로",
+            "buildingId": null,
+            "floor": 3,
+            "kind": "junction"
+        },
+        {
+            "id": "educationBusinessPassageF4",
+            "name": "사범관 상경관 4층 연결통로",
+            "buildingId": null,
+            "floor": 4,
+            "kind": "junction"
+        },
+        {
+            "id": "businessHumanityPassageF4",
+            "name": "상경관 인문관 4층 연결통로",
+            "buildingId": null,
+            "floor": 4,
+            "kind": "junction"
+        },
+        {
+            "id": "educationBusinessPassageF5",
+            "name": "사범관 상경관 5층 연결통로",
+            "buildingId": null,
+            "floor": 5,
+            "kind": "junction"
+        },
+        {
+            "id": "businessHumanityPassageF5",
+            "name": "상경관 인문관 5층 연결통로",
+            "buildingId": null,
+            "floor": 5,
+            "kind": "junction"
+        }
+    ],
+    "edges": [
+        {
+            "id": "educationF1JcToElevator",
+            "name": "사범관 1층 분기점-엘리베이터",
+            "from": "educationF1Jc",
+            "to": "educationElevatorF1",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "educationF1JcToStair",
+            "name": "사범관 1층 분기점-계단",
+            "from": "educationF1Jc",
+            "to": "educationStairF1",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "educationF2JcToElevator",
+            "name": "사범관 2층 분기점-엘리베이터",
+            "from": "educationF2Jc",
+            "to": "educationElevatorF2",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "educationF2JcToStair",
+            "name": "사범관 2층 분기점-계단",
+            "from": "educationF2Jc",
+            "to": "educationStairF2",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "educationF3JcToElevator",
+            "name": "사범관 3층 분기점-엘리베이터",
+            "from": "educationF3Jc",
+            "to": "educationElevatorF3",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "educationF3JcToStair",
+            "name": "사범관 3층 분기점-계단",
+            "from": "educationF3Jc",
+            "to": "educationStairF3",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "educationF4JcToElevator",
+            "name": "사범관 4층 분기점-엘리베이터",
+            "from": "educationF4Jc",
+            "to": "educationElevatorF4",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "educationF4JcToStair",
+            "name": "사범관 4층 분기점-계단",
+            "from": "educationF4Jc",
+            "to": "educationStairF4",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "educationF5JcToElevator",
+            "name": "사범관 5층 분기점-엘리베이터",
+            "from": "educationF5Jc",
+            "to": "educationElevatorF5",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "educationF5JcToStair",
+            "name": "사범관 5층 분기점-계단",
+            "from": "educationF5Jc",
+            "to": "educationStairF5",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "educationF1JcToEntrance",
+            "name": "사범관 1층 분기점-출입구",
+            "from": "educationF1Jc",
+            "to": "educationEntranceF1",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "educationElevatorF1ToF2",
+            "name": "사범관 엘리베이터 1층-2층",
+            "from": "educationElevatorF1",
+            "to": "educationElevatorF2",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "educationStairF1ToF2",
+            "name": "사범관 계단 1층-2층",
+            "from": "educationStairF1",
+            "to": "educationStairF2",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "educationElevatorF2ToF3",
+            "name": "사범관 엘리베이터 2층-3층",
+            "from": "educationElevatorF2",
+            "to": "educationElevatorF3",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "educationStairF2ToF3",
+            "name": "사범관 계단 2층-3층",
+            "from": "educationStairF2",
+            "to": "educationStairF3",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "educationElevatorF3ToF4",
+            "name": "사범관 엘리베이터 3층-4층",
+            "from": "educationElevatorF3",
+            "to": "educationElevatorF4",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "educationStairF3ToF4",
+            "name": "사범관 계단 3층-4층",
+            "from": "educationStairF3",
+            "to": "educationStairF4",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "educationElevatorF4ToF5",
+            "name": "사범관 엘리베이터 4층-5층",
+            "from": "educationElevatorF4",
+            "to": "educationElevatorF5",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "educationStairF4ToF5",
+            "name": "사범관 계단 4층-5층",
+            "from": "educationStairF4",
+            "to": "educationStairF5",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "businessF1JcToElevator",
+            "name": "상경관 1층 분기점-엘리베이터",
+            "from": "businessF1Jc",
+            "to": "businessElevatorF1",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "businessF1JcToStair",
+            "name": "상경관 1층 분기점-계단",
+            "from": "businessF1Jc",
+            "to": "businessStairF1",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "businessF2JcToElevator",
+            "name": "상경관 2층 분기점-엘리베이터",
+            "from": "businessF2Jc",
+            "to": "businessElevatorF2",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "businessF2JcToStair",
+            "name": "상경관 2층 분기점-계단",
+            "from": "businessF2Jc",
+            "to": "businessStairF2",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "businessF3JcToElevator",
+            "name": "상경관 3층 분기점-엘리베이터",
+            "from": "businessF3Jc",
+            "to": "businessElevatorF3",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "businessF3JcToStair",
+            "name": "상경관 3층 분기점-계단",
+            "from": "businessF3Jc",
+            "to": "businessStairF3",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "businessF4JcToElevator",
+            "name": "상경관 4층 분기점-엘리베이터",
+            "from": "businessF4Jc",
+            "to": "businessElevatorF4",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "businessF4JcToStair",
+            "name": "상경관 4층 분기점-계단",
+            "from": "businessF4Jc",
+            "to": "businessStairF4",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "businessF5JcToElevator",
+            "name": "상경관 5층 분기점-엘리베이터",
+            "from": "businessF5Jc",
+            "to": "businessElevatorF5",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "businessF5JcToStair",
+            "name": "상경관 5층 분기점-계단",
+            "from": "businessF5Jc",
+            "to": "businessStairF5",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "businessF1JcToEntrance",
+            "name": "상경관 1층 분기점-출입구",
+            "from": "businessF1Jc",
+            "to": "businessEntranceF1",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "businessElevatorF1ToF2",
+            "name": "상경관 엘리베이터 1층-2층",
+            "from": "businessElevatorF1",
+            "to": "businessElevatorF2",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "businessStairF1ToF2",
+            "name": "상경관 계단 1층-2층",
+            "from": "businessStairF1",
+            "to": "businessStairF2",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "businessElevatorF2ToF3",
+            "name": "상경관 엘리베이터 2층-3층",
+            "from": "businessElevatorF2",
+            "to": "businessElevatorF3",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "businessStairF2ToF3",
+            "name": "상경관 계단 2층-3층",
+            "from": "businessStairF2",
+            "to": "businessStairF3",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "businessElevatorF3ToF4",
+            "name": "상경관 엘리베이터 3층-4층",
+            "from": "businessElevatorF3",
+            "to": "businessElevatorF4",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "businessStairF3ToF4",
+            "name": "상경관 계단 3층-4층",
+            "from": "businessStairF3",
+            "to": "businessStairF4",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "businessElevatorF4ToF5",
+            "name": "상경관 엘리베이터 4층-5층",
+            "from": "businessElevatorF4",
+            "to": "businessElevatorF5",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "businessStairF4ToF5",
+            "name": "상경관 계단 4층-5층",
+            "from": "businessStairF4",
+            "to": "businessStairF5",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "humanityF1JcToElevator",
+            "name": "인문관 1층 분기점-엘리베이터",
+            "from": "humanityF1Jc",
+            "to": "humanityElevatorF1",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "humanityF1JcToStair",
+            "name": "인문관 1층 분기점-계단",
+            "from": "humanityF1Jc",
+            "to": "humanityStairF1",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "humanityF2JcToElevator",
+            "name": "인문관 2층 분기점-엘리베이터",
+            "from": "humanityF2Jc",
+            "to": "humanityElevatorF2",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "humanityF2JcToStair",
+            "name": "인문관 2층 분기점-계단",
+            "from": "humanityF2Jc",
+            "to": "humanityStairF2",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "humanityF3JcToElevator",
+            "name": "인문관 3층 분기점-엘리베이터",
+            "from": "humanityF3Jc",
+            "to": "humanityElevatorF3",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "humanityF3JcToStair",
+            "name": "인문관 3층 분기점-계단",
+            "from": "humanityF3Jc",
+            "to": "humanityStairF3",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "humanityF4JcToElevator",
+            "name": "인문관 4층 분기점-엘리베이터",
+            "from": "humanityF4Jc",
+            "to": "humanityElevatorF4",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "humanityF4JcToStair",
+            "name": "인문관 4층 분기점-계단",
+            "from": "humanityF4Jc",
+            "to": "humanityStairF4",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "humanityF5JcToElevator",
+            "name": "인문관 5층 분기점-엘리베이터",
+            "from": "humanityF5Jc",
+            "to": "humanityElevatorF5",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "humanityF5JcToStair",
+            "name": "인문관 5층 분기점-계단",
+            "from": "humanityF5Jc",
+            "to": "humanityStairF5",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "humanityF1JcToEntrance",
+            "name": "인문관 1층 분기점-출입구",
+            "from": "humanityF1Jc",
+            "to": "humanityEntranceF1",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "humanityElevatorF1ToF2",
+            "name": "인문관 엘리베이터 1층-2층",
+            "from": "humanityElevatorF1",
+            "to": "humanityElevatorF2",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "humanityStairF1ToF2",
+            "name": "인문관 계단 1층-2층",
+            "from": "humanityStairF1",
+            "to": "humanityStairF2",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "humanityElevatorF2ToF3",
+            "name": "인문관 엘리베이터 2층-3층",
+            "from": "humanityElevatorF2",
+            "to": "humanityElevatorF3",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "humanityStairF2ToF3",
+            "name": "인문관 계단 2층-3층",
+            "from": "humanityStairF2",
+            "to": "humanityStairF3",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "humanityElevatorF3ToF4",
+            "name": "인문관 엘리베이터 3층-4층",
+            "from": "humanityElevatorF3",
+            "to": "humanityElevatorF4",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "humanityStairF3ToF4",
+            "name": "인문관 계단 3층-4층",
+            "from": "humanityStairF3",
+            "to": "humanityStairF4",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "humanityElevatorF4ToF5",
+            "name": "인문관 엘리베이터 4층-5층",
+            "from": "humanityElevatorF4",
+            "to": "humanityElevatorF5",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "humanityStairF4ToF5",
+            "name": "인문관 계단 4층-5층",
+            "from": "humanityStairF4",
+            "to": "humanityStairF5",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "educationF2JcToEducationBusinessPassage",
+            "name": "사범관 2층 분기점-상경관 연결통로",
+            "from": "educationF2Jc",
+            "to": "educationBusinessPassageF2",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "businessF2JcToEducationBusinessPassage",
+            "name": "상경관 2층 분기점-사범관 연결통로",
+            "from": "businessF2Jc",
+            "to": "educationBusinessPassageF2",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "businessF2JcToBusinessHumanityPassage",
+            "name": "상경관 2층 분기점-인문관 연결통로",
+            "from": "businessF2Jc",
+            "to": "businessHumanityPassageF2",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "humanityF2JcToBusinessHumanityPassage",
+            "name": "인문관 2층 분기점-상경관 연결통로",
+            "from": "humanityF2Jc",
+            "to": "businessHumanityPassageF2",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "educationF3JcToEducationBusinessPassage",
+            "name": "사범관 3층 분기점-상경관 연결통로",
+            "from": "educationF3Jc",
+            "to": "educationBusinessPassageF3",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "businessF3JcToEducationBusinessPassage",
+            "name": "상경관 3층 분기점-사범관 연결통로",
+            "from": "businessF3Jc",
+            "to": "educationBusinessPassageF3",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "businessF3JcToBusinessHumanityPassage",
+            "name": "상경관 3층 분기점-인문관 연결통로",
+            "from": "businessF3Jc",
+            "to": "businessHumanityPassageF3",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "humanityF3JcToBusinessHumanityPassage",
+            "name": "인문관 3층 분기점-상경관 연결통로",
+            "from": "humanityF3Jc",
+            "to": "businessHumanityPassageF3",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "educationF4JcToEducationBusinessPassage",
+            "name": "사범관 4층 분기점-상경관 연결통로",
+            "from": "educationF4Jc",
+            "to": "educationBusinessPassageF4",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "businessF4JcToEducationBusinessPassage",
+            "name": "상경관 4층 분기점-사범관 연결통로",
+            "from": "businessF4Jc",
+            "to": "educationBusinessPassageF4",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "businessF4JcToBusinessHumanityPassage",
+            "name": "상경관 4층 분기점-인문관 연결통로",
+            "from": "businessF4Jc",
+            "to": "businessHumanityPassageF4",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "humanityF4JcToBusinessHumanityPassage",
+            "name": "인문관 4층 분기점-상경관 연결통로",
+            "from": "humanityF4Jc",
+            "to": "businessHumanityPassageF4",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "educationF5JcToEducationBusinessPassage",
+            "name": "사범관 5층 분기점-상경관 연결통로",
+            "from": "educationF5Jc",
+            "to": "educationBusinessPassageF5",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "businessF5JcToEducationBusinessPassage",
+            "name": "상경관 5층 분기점-사범관 연결통로",
+            "from": "businessF5Jc",
+            "to": "educationBusinessPassageF5",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "businessF5JcToBusinessHumanityPassage",
+            "name": "상경관 5층 분기점-인문관 연결통로",
+            "from": "businessF5Jc",
+            "to": "businessHumanityPassageF5",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "humanityF5JcToBusinessHumanityPassage",
+            "name": "인문관 5층 분기점-상경관 연결통로",
+            "from": "humanityF5Jc",
+            "to": "businessHumanityPassageF5",
+            "kind": "indoorPath",
+            "condition": "flat"
+        }
+    ]
 }
