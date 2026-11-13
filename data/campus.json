@@ -414,13 +414,6 @@
             "kind": "outdoorPath"
         },
         {
-            "id": "beomJungEngineeringJc",
-            "name": "범정관 공학관 분기점",
-            "buildingId": null,
-            "floor": null,
-            "kind": "outdoorPath"
-        },
-        {
             "id": "libraryEngineeringJc",
             "name": "도서관, 2공학관, 3공학관 분기점",
             "buildingId": null,
@@ -559,7 +552,7 @@
             "condition": "slope" 
         },
         {
-            "id": "SoftwareEntranceB1JcToSoftwareEntranceB1",
+            "id": "softwareEntranceB1JcToSoftwareEntranceB1",
             "name": "소프트웨어ICT관 지하1층 출입구 분기점-소프트웨어ICT관 지하1층 출입구",
             "from": "softwareEntranceB1Jc",
             "to": "softwareEntranceB1",
@@ -567,7 +560,7 @@
             "condition": "slope" 
         },
         {
-            "id": "SoftwareEntranceB1JcToBeomJungSoftwareJc",
+            "id": "softwareEntranceB1JcToBeomJungSoftwareJc",
             "name": "소프트웨어ICT관 지하1층 출입구 분기점-범정관 소프트웨어ICT관 분기점",
             "from": "softwareEntranceB1Jc",
             "to": "beomJungSoftwareJc",
@@ -575,7 +568,7 @@
             "condition": "slope" 
         },
         {
-            "id": "BeomJungSoftwareJcToLibraryMainroadJc",
+            "id": "beomJungSoftwareJcToLibraryMainroadJc",
             "name": "범정관 소프트웨어ICT관 분기점-도서관 중앙로 분기점",
             "from": "beomJungSoftwareJc",
             "to": "librarybeomJungJc",
@@ -583,7 +576,7 @@
             "condition": "slope" 
         },
         {
-            "id": "BeomJungSoftwareJcToBeomJungEntranceJc",
+            "id": "beomJungSoftwareJcToBeomJungEntranceJc",
             "name": "범정관 소프트웨어ICT관 분기점-범정관 입구 분기점",
             "from": "beomJungSoftwareJc",
             "to": "beomJungEntranceJc",
@@ -591,20 +584,156 @@
             "condition": "slope" 
         },
         {
-            "id": "BeomJungEntranceJcToBeomJungSocialJc",
+            "id": "beomJungEntranceJcToBeomJungSocialJc",
             "name": "범정관 입구 분기점-범정관 사회과학관 분기점",
             "from": "beomJungEntranceJc",
             "to": "beomJungSocialJc",
             "kind": "outdoorPath",
-            "condition": "slope" 
+            "condition": "flat" 
         },
         {
-            "id": "BeomJungEntranceJcToBeomJungEntranceF1",
+            "id": "beomJungEntranceJcToBeomJungEntranceF1",
             "name": "범정관 입구 분기점-범정관 1층 출입구",
             "from": "beomJungEntranceJc",
             "to": "beomJungEntranceF1",
             "kind": "outdoorPath",
-            "condition": "slope" 
+            "condition": "flat" 
+        },
+        {
+            "id": "dentalJcToParkingJc",
+            "name": "치과대학 분기점-주차빌딩 앞 분기점",
+            "from": "dentalJc",
+            "to": "parkingJc",
+            "kind": "outdoorPath",
+            "condition": "slope"
+        },
+        {
+            "id": "dentalJcToSocialEntranceF1",
+            "name": "치과대학 분기점-사회과학관 1층 출입구",
+            "from": "dentalJc",
+            "to": "socialEntranceF1",
+            "kind": "outdoorPath",
+            "condition": "slope"
+        },
+        {
+            "id": "dentalJcToBeomJungSocialJc",
+            "name": "치과대학 분기점-범정관 사회과학관 분기점",
+            "from": "dentalJc",
+            "to": "beomJungSocialJc",
+            "kind": "outdoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "parkingJcToLabJc",
+            "name": "주차빌딩 앞 분기점-종합실험동 앞 분기점",
+            "from": "parkingJc",
+            "to": "labJc",
+            "kind": "outdoorPath",
+            "condition": "slope"
+        },
+        {
+            "id": "beomJungSocialJcToSocialEntranceF2",
+            "name": "범정관 사회과학관 분기점-사회과학관 2층 출입구",
+            "from": "beomJungSocialJc",
+            "to": "socialEntranceF2",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "beomJungSocialJcToEngineering1EntranceF1",
+            "name": "범정관 사회과학관 분기점-제1공학관 1층 출입구",
+            "from": "beomJungSocialJc",
+            "to": "engineering1EntranceF1",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "socialEntranceF2ToEngineering1EntranceF1",
+            "name": "사회과학관 2층 출입구-제1공학관 1층 출입구",
+            "from": "socialEntranceF2",
+            "to": "engineering1EntranceF1",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "beomJungSocialJcToEngineering1Engineering2Jc",
+            "name": "범정관 사회과학관 분기점-제1공학관 제2공학관 분기점",
+            "from": "beomJungSocialJc",
+            "to": "Engineering1Engineering2Jc",
+            "kind": "outdoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "Engineering1Engineering2JcToEngineering1EntranceF2",
+            "name": "제1공학관 제2공학관 분기점-제1공학관 2층 출입구",
+            "from": "Engineering1Engineering2Jc",
+            "to": "engineering1EntranceF2",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "Engineering1Engineering2JcToEngineering2EntranceF1",
+            "name": "제1공학관 제2공학관 분기점-제2공학관 1층 출입구",
+            "from": "Engineering1Engineering2Jc",
+            "to": "engineering2EntranceF1",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "engineering1EntranceF2ToEngineering2EntranceF1",
+            "name": "제1공학관 2층 출입구-제2공학관 1층 출입구",
+            "from": "engineering1EntranceF2",
+            "to": "engineering2EntranceF1",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "engineering1Engineering2JcToLibraryEngineeringJc",
+            "name": "제1공학관 제2공학관 분기점-도서관 2공학관 3공학관 분기점",
+            "from": "Engineering1Engineering2Jc",
+            "to": "libraryEngineeringJc",
+            "kind": "outdoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "libraryEngineeringJcToEngineering2EntranceF2",
+            "name": "도서관 2공학관 3공학관 분기점-제2공학관 2층 출입구",
+            "from": "libraryEngineeringJc",
+            "to": "engineering2EntranceF2",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "libraryEngineeringJcToEngineering3EntranceF1",
+            "name": "도서관 2공학관 3공학관 분기점-제3공학관 1층 출입구",
+            "from": "libraryEngineeringJc",
+            "to": "engineering3EntranceF1",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "engineering2EntranceF2ToEngineering3EntranceF1",
+            "name": "제2공학관 2층 출입구-제3공학관 1층 출입구",
+            "from": "engineering2EntranceF2",
+            "to": "engineering3EntranceF1",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "libraryEngineeringJcToHyeDangEngineering3Jc",
+            "name": "도서관 2공학관 3공학관 분기점-혜당관 제3공학관 분기점",
+            "from": "libraryEngineeringJc",
+            "to": "hyeDangEngineering3Jc",
+            "kind": "outdoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "engineering3EntranceF3ToHyeDangEngineering3Jc",
+            "name": "제3공학관 3층 출입구-혜당관 제3공학관 분기점",
+            "from": "engineering3EntranceF3",
+            "to": "hyeDangEngineering3Jc",
+            "kind": "outdoorPath",
+            "condition": "flat"
         }
     ]
 }
