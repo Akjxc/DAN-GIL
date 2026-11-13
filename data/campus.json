@@ -667,6 +667,22 @@
             "condition": "flat"
         },
         {
+            "id": "backwardJcToLawGraduateHyeDangBearStatueJc",
+            "name": "인문관 상경관 사범관 뒤쪽 분기점-법학관/대학원동 혜당관 곰상 분기점",
+            "from": "educationBusinessHumanityBackwardJc",
+            "to": "lawGraduateHyeDangBearStatueJc",
+            "kind": "outdoorPath",
+            "condition": "slope"
+        },
+        {
+            "id": "backwardJcToLawGraduateEntranceF3",
+            "name": "인문관 상경관 사범관 뒤쪽 분기점-법학관/대학원동 3층 출입구",
+            "from": "educationBusinessHumanityBackwardJc",
+            "to": "lawGraduateEntranceF3",
+            "kind": "outdoorPath",
+            "condition": "slope"
+        },
+        {
             "id": "humanityEntranceF1ToHyeDangHumanityJc",
             "name": "인문관 1층 출입구-혜당관 인문관 분기점",
             "from": "humanityEntranceF1",
@@ -715,26 +731,26 @@
             "condition": "flat"
         },
         {
-            "id": "backwardJcToHumanityLawGraduateBearStatueJc",
-            "name": "인문관 상경관 사범관 뒤쪽 분기점-인문관 법학관/대학원동 곰상 분기점",
-            "from": "educationBusinessHumanityBackwardJc",
-            "to": "humanityLawGraduateBearStatueJc",
-            "kind": "outdoorPath",
-            "condition": "slope"
-        },
-        {
-            "id": "lawGraduateEntranceF3ToHumanityLawGraduateBearStatueJc",
-            "name": "법학관/대학원동 3층 출입구-인문관 법학관/대학원동 곰상 분기점",
+            "id": "lawGraduateEntranceF3ToLawGraduateHyeDangBearStatueJc",
+            "name": "법학관/대학원동 3층 출입구-법학관/대학원동 혜당관 곰상 분기점",
             "from": "lawGraduateEntranceF3",
-            "to": "humanityLawGraduateBearStatueJc",
+            "to": "lawGraduateHyeDangBearStatueJc",
             "kind": "outdoorPath",
-            "condition": "flat"
+            "condition": null
         },
         {
-            "id": "humanityLawGraduateBearStatueJcToLawGraduateHyeDangBearStatueJc",
-            "name": "인문관 법학관/대학원동 곰상 분기점-법학관/대학원동 혜당관 곰상 분기점",
+            "id": "hyeDangHumanityJcToHumanityLawGraduateBearStatueJc",
+            "name": "혜당관 인문관 분기점-인문관 법학관/대학원동 곰상 분기점",
+            "from": "hyeDangHumanityJc",
+            "to": "humanityLawGraduateBearStatueJc",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "humanityLawGraduateBearStatueJcToLawGraduateEntranceF1",
+            "name": "인문관 법학관/대학원동 곰상 분기점-법학관/대학원동 1층 출입구",
             "from": "humanityLawGraduateBearStatueJc",
-            "to": "lawGraduateHyeDangBearStatueJc",
+            "to": "lawGraduateEntranceF1",
             "kind": "outdoorPath",
             "condition": null
         },
@@ -744,7 +760,7 @@
             "from": "lawGraduateHyeDangBearStatueJc",
             "to": "lawGraduateEntranceF1",
             "kind": "outdoorPath",
-            "condition": null
+            "condition": "slope"
         },
         {
             "id": "lawGraduateHyeDangBearStatueJcToHyeDangBearStatueJc",
@@ -752,15 +768,15 @@
             "from": "lawGraduateHyeDangBearStatueJc",
             "to": "hyeDangBearStatueJc",
             "kind": "outdoorPath",
-            "condition": null
+            "condition": "flat"
         },
         {
-            "id": "hyeDangEntranceF4ToHyeDangYardJc",
-            "name": "혜당관 4층 출입구-혜당관 노천마당 분기점",
-            "from": "hyeDangEntranceF4",
+            "id": "hyeDangBearStatueJcToHyeDangYardJc",
+            "name": "혜당관 곰상 분기점-혜당관 노천마당 분기점",
+            "from": "hyeDangBearStatueJc",
             "to": "hyeDangYardJc",
             "kind": "outdoorPath",
-            "condition": null
+            "condition": "flat"
         },
         {
             "id": "hyeDangEngineering3JcToEngineering3EntranceF3",
@@ -768,15 +784,15 @@
             "from": "hyeDangEngineering3Jc",
             "to": "engineering3EntranceF3",
             "kind": "outdoorPath",
-            "condition": null
+            "condition": "flat"
         },
         {
-            "id": "hyeDangEntranceF2ToHyeDangHumanityJc",
-            "name": "혜당관 2층 출입구-혜당관 인문관 분기점",
+            "id": "hyeDangEntranceF2ToHumanityLawGraduateBearStatueJc",
+            "name": "혜당관 2층 출입구-인문관 법학관/대학원동 곰상 분기점",
             "from": "hyeDangEntranceF2",
-            "to": "hyeDangHumanityJc",
+            "to": "humanityLawGraduateBearStatueJc",
             "kind": "outdoorPath",
-            "condition": null
+            "condition": "slope"
         },
         {
             "id": "hyeDangEntranceF2ToHyeDangEntranceF1",
@@ -787,9 +803,9 @@
             "condition": "stair"
         },
         {
-            "id": "educationBusinessJcToBackwardJc",
-            "name": "사범관 상경관 계단 분기점-인문관 상경관 사범관 뒤쪽 분기점",
-            "from": "educationBusinessJc",
+            "id": "educationBusinessEntranceF5ToBackwardJc",
+            "name": "사범관 상경관 5층 출입구-인문관 상경관 사범관 뒤쪽 분기점",
+            "from": "educationBusinessEntranceF5",
             "to": "educationBusinessHumanityBackwardJc",
             "kind": "outdoorPath",
             "condition": "flat"

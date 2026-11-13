@@ -8,12 +8,9 @@
         "실외 엣지는 기본 양방향으로 사용하는지 백엔드 규칙 확인 필요"
     ],
     "conditionPendingEdgeIds": [
-        "humanityLawGraduateBearStatueJcToLawGraduateHyeDangBearStatueJc",
-        "lawGraduateHyeDangBearStatueJcToLawGraduateEntranceF1",
-        "lawGraduateHyeDangBearStatueJcToHyeDangBearStatueJc",
-        "hyeDangEntranceF4ToHyeDangYardJc",
-        "hyeDangEngineering3JcToEngineering3EntranceF3",
-        "hyeDangEntranceF2ToHyeDangHumanityJc"
+        "lawGraduateEntranceF3ToLawGraduateHyeDangBearStatueJc",
+        "hyeDangHumanityJcToHumanityLawGraduateBearStatueJc",
+        "humanityLawGraduateBearStatueJcToLawGraduateEntranceF1"
     ],
     "confirmedNoDirectConnections": [
         {
@@ -23,14 +20,16 @@
         }
     ],
     "confirmedTopology": [
-        "법학관 주변 연결 순서는 7번-12번-15번-20번",
+        "6번과 20번 사이에는 12번이 위치하여 6번-12번-20번 순서로 직접 연결",
+        "7번은 11번 및 15번과 직접 연결",
+        "11번은 4번, 5번, 7번, 15번과 직접 연결",
         "15번과 16번 사이에는 중간 연두점 없이 직접 연결",
-        "곰상에서 노천마당 방향은 16번-혜당관 4층 출입구-18번 순서",
+        "16번 혜당관 곰상 분기점은 혜당관 4층 출입구, 15번, 18번 및 곰상과 직접 연결",
         "19번은 제3공학관 위쪽 3층 출입구와 연결",
-        "혜당관 2층 출입구는 6번과 8번에만 직접 연결",
+        "혜당관 2층 출입구인 9번은 8번 및 12번과 직접 연결하고 6번과는 직접 연결하지 않음",
         "혜당관 2층 출입구와 1층 출입구 사이는 계단",
         "17번 혜당관 도서관 분기점과 19번 혜당관 제3공학관 분기점 사이는 야외 평지",
-        "사범관 상경관 계단 분기점에서 인문관 상경관 사범관 뒤쪽 분기점 방향은 야외 평지"
+        "지도 이미지에서는 대체로 오른쪽 아래 방향일수록 실제 고도가 높다는 참고 정보가 있으나 엣지 조건은 현장 확인값만 사용"
     ],
     "unresolvedConnections": []
 }
