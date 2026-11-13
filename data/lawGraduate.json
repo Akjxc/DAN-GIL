@@ -4,7 +4,7 @@
         "1층부터 6층까지 엘리베이터와 계단 모두 이동 가능",
         "출입구는 campus.json의 1층, 3층 출입구를 참조"
     ],
-    "node": [
+    "nodes": [
         {
             "id": "lawGraduateF1Hall",
             "name": "법학관/대학원동 1층 복도",

@@ -2,7 +2,7 @@
     "note": [
         "도서관 내부"
     ],
-    "node": [
+    "nodes": [
         {
             "id": "libraryF1Hall",
             "name": "도서관 1층 복도",
