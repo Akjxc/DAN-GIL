@@ -1,115 +1,209 @@
 {
   "note": [
-    "3°øÇĞ°ü ³»ºÎ"
+    "ì œ3ê³µí•™ê´€ ë‚´ë¶€"
   ],
   "node": [
     {
-      "id": "engineering3EntranceF1",
-      "name": "3°øÇĞ°ü 1Ãş ÃâÀÔ±¸",
-      "floor": 1,
-      "kind": "entrance"
-    },
-    {
       "id": "engineering3F1Jc",
-      "name": "3°øÇĞ°ü 1Ãş ºĞ±âÁ¡",
+      "name": "ì œ3ê³µí•™ê´€ 1ì¸µ ë¶„ê¸°ì ",
       "floor": 1,
       "kind": "junction"
     },
     {
       "id": "engineering3ElevatorF1",
-      "name": "3°øÇĞ°ü 1Ãş ¿¤º£",
+      "name": "ì œ3ê³µí•™ê´€ 1ì¸µ ì—˜ë² ",
       "floor": 1,
       "kind": "elevator"
     },
     {
-      "id": "engineering3ElevatorF1",
-      "name": "3°øÇĞ°ü 1Ãş °è´Ü",
+      "id": "engineering3StairF1",
+      "name": "ì œ3ê³µí•™ê´€ 1ì¸µ ê³„ë‹¨",
       "floor": 1,
       "kind": "stair"
     },
     {
       "id": "engineering3F2Jc",
-      "name": "3°øÇĞ°ü 2Ãş ºĞ±âÁ¡",
+      "name": "ì œ3ê³µí•™ê´€ 2ì¸µ ë¶„ê¸°ì ",
       "floor": 2,
       "kind": "junction"
     },
     {
       "id": "engineering3ElevatorF2",
-      "name": "3°øÇĞ°ü 2Ãş ¿¤º£",
+      "name": "ì œ3ê³µí•™ê´€ 2ì¸µ ì—˜ë² ",
       "floor": 2,
       "kind": "elevator"
     },
     {
-      "id": "engineering3ElevatorF2",
-      "name": "3°øÇĞ°ü 2Ãş °è´Ü",
+      "id": "engineering3StairF2",
+      "name": "ì œ3ê³µí•™ê´€ 2ì¸µ ê³„ë‹¨",
       "floor": 2,
       "kind": "stair"
     },
     {
-      "id": "engineering3EntranceF3",
-      "name": "3°øÇĞ°ü 3Ãş ÃâÀÔ±¸",
-      "floor": 3,
-      "kind": "entrance"
-    },
-    {
       "id": "engineering3F3Jc",
-      "name": "3°øÇĞ°ü 3Ãş ºĞ±âÁ¡",
+      "name": "ì œ3ê³µí•™ê´€ 3ì¸µ ë¶„ê¸°ì ",
       "floor": 3,
       "kind": "junction"
     },
     {
       "id": "engineering3ElevatorF3",
-      "name": "3°øÇĞ°ü 3Ãş ¿¤º£",
+      "name": "ì œ3ê³µí•™ê´€ 3ì¸µ ì—˜ë² ",
       "floor": 3,
       "kind": "elevator"
     },
     {
-      "id": "engineering3ElevatorF3",
-      "name": "3°øÇĞ°ü 3Ãş °è´Ü",
+      "id": "engineering3StairF3",
+      "name": "ì œ3ê³µí•™ê´€ 3ì¸µ ê³„ë‹¨",
       "floor": 3,
       "kind": "stair"
     },
     {
       "id": "engineering3F4Jc",
-      "name": "3°øÇĞ°ü 4Ãş ºĞ±âÁ¡",
+      "name": "ì œ3ê³µí•™ê´€ 4ì¸µ ë¶„ê¸°ì ",
       "floor": 4,
       "kind": "junction"
     },
     {
       "id": "engineering3ElevatorF4",
-      "name": "3°øÇĞ°ü 4Ãş ¿¤º£",
+      "name": "ì œ3ê³µí•™ê´€ 4ì¸µ ì—˜ë² ",
       "floor": 4,
       "kind": "elevator"
     },
     {
-      "id": "engineering3ElevatorF4",
-      "name": "3°øÇĞ°ü 4Ãş °è´Ü",
+      "id": "engineering3StairF4",
+      "name": "ì œ3ê³µí•™ê´€ 4ì¸µ ê³„ë‹¨",
       "floor": 4,
       "kind": "stair"
     },
     {
       "id": "engineering3F5Jc",
-      "name": "3°øÇĞ°ü 5Ãş ºĞ±âÁ¡",
+      "name": "ì œ3ê³µí•™ê´€ 5ì¸µ ë¶„ê¸°ì ",
       "floor": 5,
       "kind": "junction"
     },
     {
       "id": "engineering3ElevatorF5",
-      "name": "3°øÇĞ°ü 5Ãş ¿¤º£",
+      "name": "ì œ3ê³µí•™ê´€ 5ì¸µ ì—˜ë² ",
       "floor": 5,
       "kind": "elevator"
     },
     {
-      "id": "engineering3ElevatorF5",
-      "name": "3°øÇĞ°ü 5Ãş °è´Ü",
+      "id": "engineering3StairF5",
+      "name": "ì œ3ê³µí•™ê´€ 5ì¸µ ê³„ë‹¨",
       "floor": 5,
       "kind": "stair"
     },
     {
       "id": "engineering3PortalF2",
-      "name": "3°øÇĞ°ü 2Ãş Æ÷Å»",
+      "name": "ì œ3ê³µí•™ê´€ 2ì¸µ í¬íƒˆ",
       "floor": 2,
       "kind": "portal"
+    }
+  ],
+  "edges": [
+    {
+      "id": "engineering3F1JcToElevator",
+      "name": "ì œ3ê³µí•™ê´€ 1ì¸µ ë¶„ê¸°ì -ì—˜ë¦¬ë² ì´í„°",
+      "from": "engineering3F1Jc",
+      "to": "engineering3ElevatorF1",
+      "kind": "indoorPath",
+      "condition": "elevator"
+    },
+    {
+      "id": "engineering3F1JcToStair",
+      "name": "ì œ3ê³µí•™ê´€ 1ì¸µ ë¶„ê¸°ì -ê³„ë‹¨",
+      "from": "engineering3F1Jc",
+      "to": "engineering3StairF1",
+      "kind": "indoorPath",
+      "condition": "stair"
+    },
+    {
+      "id": "engineering3F1JcToEntrance",
+      "name": "ì œ3ê³µí•™ê´€ 1ì¸µ ë¶„ê¸°ì -ì¶œì…êµ¬",
+      "from": "engineering3F1Jc",
+      "to": "engineering3EntranceF1",
+      "kind": "indoorPath",
+      "condition": "flat"
+    },
+    {
+      "id": "engineering3F2JcToElevator",
+      "name": "ì œ3ê³µí•™ê´€ 2ì¸µ ë¶„ê¸°ì -ì—˜ë¦¬ë² ì´í„°",
+      "from": "engineering3F2Jc",
+      "to": "engineering3ElevatorF2",
+      "kind": "indoorPath",
+      "condition": "elevator"
+    },
+    {
+      "id": "engineering3F2JcToStair",
+      "name": "ì œ3ê³µí•™ê´€ 2ì¸µ ë¶„ê¸°ì -ê³„ë‹¨",
+      "from": "engineering3F2Jc",
+      "to": "engineering3StairF2",
+      "kind": "indoorPath",
+      "condition": "stair"
+    },
+    {
+      "id": "engineering3F2JcToPortal",
+      "name": "ì œ3ê³µí•™ê´€ 2ì¸µ ë¶„ê¸°ì -í¬íƒˆ",
+      "from": "engineering3F2Jc",
+      "to": "engineering3PortalF2",
+      "kind": "indoorPath",
+      "condition": "portal"
+    },
+    {
+      "id": "engineering3F3JcToElevator",
+      "name": "ì œ3ê³µí•™ê´€ 3ì¸µ ë¶„ê¸°ì -ì—˜ë¦¬ë² ì´í„°",
+      "from": "engineering3F3Jc",
+      "to": "engineering3ElevatorF3",
+      "kind": "indoorPath",
+      "condition": "elevator"
+    },
+    {
+      "id": "engineering3F3JcToStair",
+      "name": "ì œ3ê³µí•™ê´€ 3ì¸µ ë¶„ê¸°ì -ê³„ë‹¨",
+      "from": "engineering3F3Jc",
+      "to": "engineering3StairF3",
+      "kind": "indoorPath",
+      "condition": "stair"
+    },
+    {
+      "id": "engineering3F3JcToEntrance",
+      "name": "ì œ3ê³µí•™ê´€ 3ì¸µ ë¶„ê¸°ì -ì¶œì…êµ¬",
+      "from": "engineering3F3Jc",
+      "to": "engineering3EntranceF3",
+      "kind": "indoorPath",
+      "condition": "flat"
+    },
+    {
+      "id": "engineering3F4JcToElevator",
+      "name": "ì œ3ê³µí•™ê´€ 4ì¸µ ë¶„ê¸°ì -ì—˜ë¦¬ë² ì´í„°",
+      "from": "engineering3F4Jc",
+      "to": "engineering3ElevatorF4",
+      "kind": "indoorPath",
+      "condition": "elevator"
+    },
+    {
+      "id": "engineering3F4JcToStair",
+      "name": "ì œ3ê³µí•™ê´€ 4ì¸µ ë¶„ê¸°ì -ê³„ë‹¨",
+      "from": "engineering3F4Jc",
+      "to": "engineering3StairF4",
+      "kind": "indoorPath",
+      "condition": "stair"
+    },
+    {
+      "id": "engineering3F5JcToElevator",
+      "name": "ì œ3ê³µí•™ê´€ 5ì¸µ ë¶„ê¸°ì -ì—˜ë¦¬ë² ì´í„°",
+      "from": "engineering3F5Jc",
+      "to": "engineering3ElevatorF5",
+      "kind": "indoorPath",
+      "condition": "elevator"
+    },
+    {
+      "id": "engineering3F5JcToStair",
+      "name": "ì œ3ê³µí•™ê´€ 5ì¸µ ë¶„ê¸°ì -ê³„ë‹¨",
+      "from": "engineering3F5Jc",
+      "to": "engineering3StairF5",
+      "kind": "indoorPath",
+      "condition": "stair"
     }
   ]
 }
