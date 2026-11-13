@@ -4,7 +4,7 @@
     ],
     "node": [
         {
-            "id": "socialB1Jc",
+            "id": "socialB1Hall",
             "name": "사회과학관 지하 1층 복도",
             "buildingId": "social",
             "floor": -1,
@@ -25,7 +25,7 @@
             "kind": "stair"
         },
         {
-            "id": "socialF1Jc",
+            "id": "socialF1Hall",
             "name": "사회과학관 1층 복도",
             "buildingId": "social",
             "floor": 1,
@@ -46,7 +46,7 @@
             "kind": "stair"
         },
         {
-            "id": "socialF2Jc",
+            "id": "socialF2Hall",
             "name": "사회과학관 2층 복도",
             "buildingId": "social",
             "floor": 2,
@@ -67,7 +67,7 @@
             "kind": "stair"
         },
         {
-            "id": "socialF3Jc",
+            "id": "socialF3Hall",
             "name": "사회과학관 3층 복도",
             "buildingId": "social",
             "floor": 3,
@@ -88,7 +88,7 @@
             "kind": "stair"
         },
         {
-            "id": "socialF4Jc",
+            "id": "socialF4Hall",
             "name": "사회과학관 4층 복도",
             "buildingId": "social",
             "floor": 4,
@@ -111,97 +111,97 @@
     ],
     "edges": [
         {
-            "id": "socialB1JcToElevator",
+            "id": "socialB1HallToElevator",
             "name": "사회과학관 지하 1층 복도-엘리베이터",
-            "from": "socialB1Jc",
+            "from": "socialB1Hall",
             "to": "socialElevatorB1",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "socialB1JcToStair",
+            "id": "socialB1HallToStair",
             "name": "사회과학관 지하 1층 복도-계단",
-            "from": "socialB1Jc",
+            "from": "socialB1Hall",
             "to": "socialStairB1",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "socialF1JcToElevator",
+            "id": "socialF1HallToElevator",
             "name": "사회과학관 1층 복도-엘리베이터",
-            "from": "socialF1Jc",
+            "from": "socialF1Hall",
             "to": "socialElevatorF1",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "socialF1JcToStair",
+            "id": "socialF1HallToStair",
             "name": "사회과학관 1층 복도-계단",
-            "from": "socialF1Jc",
+            "from": "socialF1Hall",
             "to": "socialStairF1",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "socialF1JcToEntrance",
+            "id": "socialF1HallToEntrance",
             "name": "사회과학관 1층 복도-출입구",
-            "from": "socialF1Jc",
+            "from": "socialF1Hall",
             "to": "socialEntranceF1",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "socialF2JcToElevator",
+            "id": "socialF2HallToElevator",
             "name": "사회과학관 2층 복도-엘리베이터",
-            "from": "socialF2Jc",
+            "from": "socialF2Hall",
             "to": "socialElevatorF2",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "socialF2JcToStair",
+            "id": "socialF2HallToStair",
             "name": "사회과학관 2층 복도-계단",
-            "from": "socialF2Jc",
+            "from": "socialF2Hall",
             "to": "socialStairF2",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "socialF2JcToEntrance",
+            "id": "socialF2HallToEntrance",
             "name": "사회과학관 2층 복도-출입구",
-            "from": "socialF2Jc",
+            "from": "socialF2Hall",
             "to": "socialEntranceF2",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "socialF3JcToElevator",
+            "id": "socialF3HallToElevator",
             "name": "사회과학관 3층 복도-엘리베이터",
-            "from": "socialF3Jc",
+            "from": "socialF3Hall",
             "to": "socialElevatorF3",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "socialF3JcToStair",
+            "id": "socialF3HallToStair",
             "name": "사회과학관 3층 복도-계단",
-            "from": "socialF3Jc",
+            "from": "socialF3Hall",
             "to": "socialStairF3",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "socialF4JcToElevator",
+            "id": "socialF4HallToElevator",
             "name": "사회과학관 4층 복도-엘리베이터",
-            "from": "socialF4Jc",
+            "from": "socialF4Hall",
             "to": "socialElevatorF4",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "socialF4JcToStair",
+            "id": "socialF4HallToStair",
             "name": "사회과학관 4층 복도-계단",
-            "from": "socialF4Jc",
+            "from": "socialF4Hall",
             "to": "socialStairF4",
             "kind": "indoorPath",
             "condition": "stair"
