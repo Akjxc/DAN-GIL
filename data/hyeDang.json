@@ -7,11 +7,11 @@
     ],
     "node": [
         {
-            "id": "hyeDangF1Jc",
-            "name": "혜당관 1층 분기점",
+            "id": "hyeDangF1Hall",
+            "name": "혜당관 1층 복도",
             "buildingId": "hyeDang",
             "floor": 1,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "hyeDangStairF1",
@@ -21,11 +21,11 @@
             "kind": "stair"
         },
         {
-            "id": "hyeDangF2Jc",
-            "name": "혜당관 2층 분기점",
+            "id": "hyeDangF2Hall",
+            "name": "혜당관 2층 복도",
             "buildingId": "hyeDang",
             "floor": 2,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "hyeDangStairF2",
@@ -35,11 +35,11 @@
             "kind": "stair"
         },
         {
-            "id": "hyeDangF3Jc",
-            "name": "혜당관 3층 분기점",
+            "id": "hyeDangF3Hall",
+            "name": "혜당관 3층 복도",
             "buildingId": "hyeDang",
             "floor": 3,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "hyeDangStairF3",
@@ -49,11 +49,11 @@
             "kind": "stair"
         },
         {
-            "id": "hyeDangF4Jc",
-            "name": "혜당관 4층 분기점",
+            "id": "hyeDangF4Hall",
+            "name": "혜당관 4층 복도",
             "buildingId": "hyeDang",
             "floor": 4,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "hyeDangStairF4",
@@ -63,11 +63,11 @@
             "kind": "stair"
         },
         {
-            "id": "hyeDangF5Jc",
-            "name": "혜당관 5층 분기점",
+            "id": "hyeDangF5Hall",
+            "name": "혜당관 5층 복도",
             "buildingId": "hyeDang",
             "floor": 5,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "hyeDangStairF5",
@@ -77,11 +77,11 @@
             "kind": "stair"
         },
         {
-            "id": "hyeDangF6Jc",
-            "name": "혜당관 6층 분기점",
+            "id": "hyeDangF6Hall",
+            "name": "혜당관 6층 복도",
             "buildingId": "hyeDang",
             "floor": 6,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "hyeDangStairF6",
@@ -128,113 +128,113 @@
     ],
     "edges": [
         {
-            "id": "hyeDangF1JcToStair",
-            "name": "혜당관 1층 분기점-계단",
-            "from": "hyeDangF1Jc",
+            "id": "hyeDangF1HallToStair",
+            "name": "혜당관 1층 복도-계단",
+            "from": "hyeDangF1Hall",
             "to": "hyeDangStairF1",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "hyeDangF2JcToStair",
-            "name": "혜당관 2층 분기점-계단",
-            "from": "hyeDangF2Jc",
+            "id": "hyeDangF2HallToStair",
+            "name": "혜당관 2층 복도-계단",
+            "from": "hyeDangF2Hall",
             "to": "hyeDangStairF2",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "hyeDangF3JcToStair",
-            "name": "혜당관 3층 분기점-계단",
-            "from": "hyeDangF3Jc",
+            "id": "hyeDangF3HallToStair",
+            "name": "혜당관 3층 복도-계단",
+            "from": "hyeDangF3Hall",
             "to": "hyeDangStairF3",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "hyeDangF4JcToStair",
-            "name": "혜당관 4층 분기점-계단",
-            "from": "hyeDangF4Jc",
+            "id": "hyeDangF4HallToStair",
+            "name": "혜당관 4층 복도-계단",
+            "from": "hyeDangF4Hall",
             "to": "hyeDangStairF4",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "hyeDangF5JcToStair",
-            "name": "혜당관 5층 분기점-계단",
-            "from": "hyeDangF5Jc",
+            "id": "hyeDangF5HallToStair",
+            "name": "혜당관 5층 복도-계단",
+            "from": "hyeDangF5Hall",
             "to": "hyeDangStairF5",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "hyeDangF6JcToStair",
-            "name": "혜당관 6층 분기점-계단",
-            "from": "hyeDangF6Jc",
+            "id": "hyeDangF6HallToStair",
+            "name": "혜당관 6층 복도-계단",
+            "from": "hyeDangF6Hall",
             "to": "hyeDangStairF6",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "hyeDangF2JcToElevator",
-            "name": "혜당관 2층 분기점-엘리베이터",
-            "from": "hyeDangF2Jc",
+            "id": "hyeDangF2HallToElevator",
+            "name": "혜당관 2층 복도-엘리베이터",
+            "from": "hyeDangF2Hall",
             "to": "hyeDangElevatorF2",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "hyeDangF3JcToElevator",
-            "name": "혜당관 3층 분기점-엘리베이터",
-            "from": "hyeDangF3Jc",
+            "id": "hyeDangF3HallToElevator",
+            "name": "혜당관 3층 복도-엘리베이터",
+            "from": "hyeDangF3Hall",
             "to": "hyeDangElevatorF3",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "hyeDangF4JcToElevator",
-            "name": "혜당관 4층 분기점-엘리베이터",
-            "from": "hyeDangF4Jc",
+            "id": "hyeDangF4HallToElevator",
+            "name": "혜당관 4층 복도-엘리베이터",
+            "from": "hyeDangF4Hall",
             "to": "hyeDangElevatorF4",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "hyeDangF5JcToElevator",
-            "name": "혜당관 5층 분기점-엘리베이터",
-            "from": "hyeDangF5Jc",
+            "id": "hyeDangF5HallToElevator",
+            "name": "혜당관 5층 복도-엘리베이터",
+            "from": "hyeDangF5Hall",
             "to": "hyeDangElevatorF5",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "hyeDangF6JcToElevator",
-            "name": "혜당관 6층 분기점-엘리베이터",
-            "from": "hyeDangF6Jc",
+            "id": "hyeDangF6HallToElevator",
+            "name": "혜당관 6층 복도-엘리베이터",
+            "from": "hyeDangF6Hall",
             "to": "hyeDangElevatorF6",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "hyeDangF1JcToEntrance",
-            "name": "혜당관 1층 분기점-출입구",
-            "from": "hyeDangF1Jc",
+            "id": "hyeDangF1HallToEntrance",
+            "name": "혜당관 1층 복도-출입구",
+            "from": "hyeDangF1Hall",
             "to": "hyeDangEntranceF1",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "hyeDangF2JcToEntrance",
-            "name": "혜당관 2층 분기점-출입구",
-            "from": "hyeDangF2Jc",
+            "id": "hyeDangF2HallToEntrance",
+            "name": "혜당관 2층 복도-출입구",
+            "from": "hyeDangF2Hall",
             "to": "hyeDangEntranceF2",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "hyeDangF4JcToEntrance",
-            "name": "혜당관 4층 분기점-출입구",
-            "from": "hyeDangF4Jc",
+            "id": "hyeDangF4HallToEntrance",
+            "name": "혜당관 4층 복도-출입구",
+            "from": "hyeDangF4Hall",
             "to": "hyeDangEntranceF4",
             "kind": "indoorPath",
             "condition": "flat"

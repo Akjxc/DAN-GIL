@@ -6,11 +6,11 @@
     ],
     "node": [
         {
-            "id": "educationF1Jc",
-            "name": "사범관 1층 분기점",
+            "id": "educationF1Hall",
+            "name": "사범관 1층 복도",
             "buildingId": "education",
             "floor": 1,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "educationElevatorF1",
@@ -27,11 +27,11 @@
             "kind": "stair"
         },
         {
-            "id": "educationF2Jc",
-            "name": "사범관 2층 분기점",
+            "id": "educationF2Hall",
+            "name": "사범관 2층 복도",
             "buildingId": "education",
             "floor": 2,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "educationElevatorF2",
@@ -48,11 +48,11 @@
             "kind": "stair"
         },
         {
-            "id": "educationF3Jc",
-            "name": "사범관 3층 분기점",
+            "id": "educationF3Hall",
+            "name": "사범관 3층 복도",
             "buildingId": "education",
             "floor": 3,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "educationElevatorF3",
@@ -69,11 +69,11 @@
             "kind": "stair"
         },
         {
-            "id": "educationF4Jc",
-            "name": "사범관 4층 분기점",
+            "id": "educationF4Hall",
+            "name": "사범관 4층 복도",
             "buildingId": "education",
             "floor": 4,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "educationElevatorF4",
@@ -90,11 +90,11 @@
             "kind": "stair"
         },
         {
-            "id": "educationF5Jc",
-            "name": "사범관 5층 분기점",
+            "id": "educationF5Hall",
+            "name": "사범관 5층 복도",
             "buildingId": "education",
             "floor": 5,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "educationElevatorF5",
@@ -111,11 +111,11 @@
             "kind": "stair"
         },
         {
-            "id": "businessF1Jc",
-            "name": "상경관 1층 분기점",
+            "id": "businessF1Hall",
+            "name": "상경관 1층 복도",
             "buildingId": "business",
             "floor": 1,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "businessElevatorF1",
@@ -132,11 +132,11 @@
             "kind": "stair"
         },
         {
-            "id": "businessF2Jc",
-            "name": "상경관 2층 분기점",
+            "id": "businessF2Hall",
+            "name": "상경관 2층 복도",
             "buildingId": "business",
             "floor": 2,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "businessElevatorF2",
@@ -153,11 +153,11 @@
             "kind": "stair"
         },
         {
-            "id": "businessF3Jc",
-            "name": "상경관 3층 분기점",
+            "id": "businessF3Hall",
+            "name": "상경관 3층 복도",
             "buildingId": "business",
             "floor": 3,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "businessElevatorF3",
@@ -174,11 +174,11 @@
             "kind": "stair"
         },
         {
-            "id": "businessF4Jc",
-            "name": "상경관 4층 분기점",
+            "id": "businessF4Hall",
+            "name": "상경관 4층 복도",
             "buildingId": "business",
             "floor": 4,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "businessElevatorF4",
@@ -195,11 +195,11 @@
             "kind": "stair"
         },
         {
-            "id": "businessF5Jc",
-            "name": "상경관 5층 분기점",
+            "id": "businessF5Hall",
+            "name": "상경관 5층 복도",
             "buildingId": "business",
             "floor": 5,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "businessElevatorF5",
@@ -216,11 +216,11 @@
             "kind": "stair"
         },
         {
-            "id": "humanityF1Jc",
-            "name": "인문관 1층 분기점",
+            "id": "humanityF1Hall",
+            "name": "인문관 1층 복도",
             "buildingId": "humanity",
             "floor": 1,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "humanityElevatorF1",
@@ -237,11 +237,11 @@
             "kind": "stair"
         },
         {
-            "id": "humanityF2Jc",
-            "name": "인문관 2층 분기점",
+            "id": "humanityF2Hall",
+            "name": "인문관 2층 복도",
             "buildingId": "humanity",
             "floor": 2,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "humanityElevatorF2",
@@ -258,11 +258,11 @@
             "kind": "stair"
         },
         {
-            "id": "humanityF3Jc",
-            "name": "인문관 3층 분기점",
+            "id": "humanityF3Hall",
+            "name": "인문관 3층 복도",
             "buildingId": "humanity",
             "floor": 3,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "humanityElevatorF3",
@@ -279,11 +279,11 @@
             "kind": "stair"
         },
         {
-            "id": "humanityF4Jc",
-            "name": "인문관 4층 분기점",
+            "id": "humanityF4Hall",
+            "name": "인문관 4층 복도",
             "buildingId": "humanity",
             "floor": 4,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "humanityElevatorF4",
@@ -300,11 +300,11 @@
             "kind": "stair"
         },
         {
-            "id": "humanityF5Jc",
-            "name": "인문관 5층 분기점",
+            "id": "humanityF5Hall",
+            "name": "인문관 5층 복도",
             "buildingId": "humanity",
             "floor": 5,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "humanityElevatorF5",
@@ -325,143 +325,143 @@
             "name": "사범관 상경관 2층 연결통로",
             "buildingId": null,
             "floor": 2,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "businessHumanityPassageF2",
             "name": "상경관 인문관 2층 연결통로",
             "buildingId": null,
             "floor": 2,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "educationBusinessPassageF3",
             "name": "사범관 상경관 3층 연결통로",
             "buildingId": null,
             "floor": 3,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "businessHumanityPassageF3",
             "name": "상경관 인문관 3층 연결통로",
             "buildingId": null,
             "floor": 3,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "educationBusinessPassageF4",
             "name": "사범관 상경관 4층 연결통로",
             "buildingId": null,
             "floor": 4,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "businessHumanityPassageF4",
             "name": "상경관 인문관 4층 연결통로",
             "buildingId": null,
             "floor": 4,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "educationBusinessPassageF5",
             "name": "사범관 상경관 5층 연결통로",
             "buildingId": null,
             "floor": 5,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "businessHumanityPassageF5",
             "name": "상경관 인문관 5층 연결통로",
             "buildingId": null,
             "floor": 5,
-            "kind": "junction"
+            "kind": "hall"
         }
     ],
     "edges": [
         {
-            "id": "educationF1JcToElevator",
-            "name": "사범관 1층 분기점-엘리베이터",
-            "from": "educationF1Jc",
+            "id": "educationF1HallToElevator",
+            "name": "사범관 1층 복도-엘리베이터",
+            "from": "educationF1Hall",
             "to": "educationElevatorF1",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "educationF1JcToStair",
-            "name": "사범관 1층 분기점-계단",
-            "from": "educationF1Jc",
+            "id": "educationF1HallToStair",
+            "name": "사범관 1층 복도-계단",
+            "from": "educationF1Hall",
             "to": "educationStairF1",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "educationF2JcToElevator",
-            "name": "사범관 2층 분기점-엘리베이터",
-            "from": "educationF2Jc",
+            "id": "educationF2HallToElevator",
+            "name": "사범관 2층 복도-엘리베이터",
+            "from": "educationF2Hall",
             "to": "educationElevatorF2",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "educationF2JcToStair",
-            "name": "사범관 2층 분기점-계단",
-            "from": "educationF2Jc",
+            "id": "educationF2HallToStair",
+            "name": "사범관 2층 복도-계단",
+            "from": "educationF2Hall",
             "to": "educationStairF2",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "educationF3JcToElevator",
-            "name": "사범관 3층 분기점-엘리베이터",
-            "from": "educationF3Jc",
+            "id": "educationF3HallToElevator",
+            "name": "사범관 3층 복도-엘리베이터",
+            "from": "educationF3Hall",
             "to": "educationElevatorF3",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "educationF3JcToStair",
-            "name": "사범관 3층 분기점-계단",
-            "from": "educationF3Jc",
+            "id": "educationF3HallToStair",
+            "name": "사범관 3층 복도-계단",
+            "from": "educationF3Hall",
             "to": "educationStairF3",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "educationF4JcToElevator",
-            "name": "사범관 4층 분기점-엘리베이터",
-            "from": "educationF4Jc",
+            "id": "educationF4HallToElevator",
+            "name": "사범관 4층 복도-엘리베이터",
+            "from": "educationF4Hall",
             "to": "educationElevatorF4",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "educationF4JcToStair",
-            "name": "사범관 4층 분기점-계단",
-            "from": "educationF4Jc",
+            "id": "educationF4HallToStair",
+            "name": "사범관 4층 복도-계단",
+            "from": "educationF4Hall",
             "to": "educationStairF4",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "educationF5JcToElevator",
-            "name": "사범관 5층 분기점-엘리베이터",
-            "from": "educationF5Jc",
+            "id": "educationF5HallToElevator",
+            "name": "사범관 5층 복도-엘리베이터",
+            "from": "educationF5Hall",
             "to": "educationElevatorF5",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "educationF5JcToStair",
-            "name": "사범관 5층 분기점-계단",
-            "from": "educationF5Jc",
+            "id": "educationF5HallToStair",
+            "name": "사범관 5층 복도-계단",
+            "from": "educationF5Hall",
             "to": "educationStairF5",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "educationF1JcToEntrance",
-            "name": "사범관 1층 분기점-출입구",
-            "from": "educationF1Jc",
+            "id": "educationF1HallToEntrance",
+            "name": "사범관 1층 복도-출입구",
+            "from": "educationF1Hall",
             "to": "educationEntranceF1",
             "kind": "indoorPath",
             "condition": "flat"
@@ -531,89 +531,89 @@
             "condition": "stair"
         },
         {
-            "id": "businessF1JcToElevator",
-            "name": "상경관 1층 분기점-엘리베이터",
-            "from": "businessF1Jc",
+            "id": "businessF1HallToElevator",
+            "name": "상경관 1층 복도-엘리베이터",
+            "from": "businessF1Hall",
             "to": "businessElevatorF1",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "businessF1JcToStair",
-            "name": "상경관 1층 분기점-계단",
-            "from": "businessF1Jc",
+            "id": "businessF1HallToStair",
+            "name": "상경관 1층 복도-계단",
+            "from": "businessF1Hall",
             "to": "businessStairF1",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "businessF2JcToElevator",
-            "name": "상경관 2층 분기점-엘리베이터",
-            "from": "businessF2Jc",
+            "id": "businessF2HallToElevator",
+            "name": "상경관 2층 복도-엘리베이터",
+            "from": "businessF2Hall",
             "to": "businessElevatorF2",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "businessF2JcToStair",
-            "name": "상경관 2층 분기점-계단",
-            "from": "businessF2Jc",
+            "id": "businessF2HallToStair",
+            "name": "상경관 2층 복도-계단",
+            "from": "businessF2Hall",
             "to": "businessStairF2",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "businessF3JcToElevator",
-            "name": "상경관 3층 분기점-엘리베이터",
-            "from": "businessF3Jc",
+            "id": "businessF3HallToElevator",
+            "name": "상경관 3층 복도-엘리베이터",
+            "from": "businessF3Hall",
             "to": "businessElevatorF3",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "businessF3JcToStair",
-            "name": "상경관 3층 분기점-계단",
-            "from": "businessF3Jc",
+            "id": "businessF3HallToStair",
+            "name": "상경관 3층 복도-계단",
+            "from": "businessF3Hall",
             "to": "businessStairF3",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "businessF4JcToElevator",
-            "name": "상경관 4층 분기점-엘리베이터",
-            "from": "businessF4Jc",
+            "id": "businessF4HallToElevator",
+            "name": "상경관 4층 복도-엘리베이터",
+            "from": "businessF4Hall",
             "to": "businessElevatorF4",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "businessF4JcToStair",
-            "name": "상경관 4층 분기점-계단",
-            "from": "businessF4Jc",
+            "id": "businessF4HallToStair",
+            "name": "상경관 4층 복도-계단",
+            "from": "businessF4Hall",
             "to": "businessStairF4",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "businessF5JcToElevator",
-            "name": "상경관 5층 분기점-엘리베이터",
-            "from": "businessF5Jc",
+            "id": "businessF5HallToElevator",
+            "name": "상경관 5층 복도-엘리베이터",
+            "from": "businessF5Hall",
             "to": "businessElevatorF5",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "businessF5JcToStair",
-            "name": "상경관 5층 분기점-계단",
-            "from": "businessF5Jc",
+            "id": "businessF5HallToStair",
+            "name": "상경관 5층 복도-계단",
+            "from": "businessF5Hall",
             "to": "businessStairF5",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "businessF1JcToEntrance",
-            "name": "상경관 1층 분기점-출입구",
-            "from": "businessF1Jc",
+            "id": "businessF1HallToEntrance",
+            "name": "상경관 1층 복도-출입구",
+            "from": "businessF1Hall",
             "to": "businessEntranceF1",
             "kind": "indoorPath",
             "condition": "flat"
@@ -683,89 +683,89 @@
             "condition": "stair"
         },
         {
-            "id": "humanityF1JcToElevator",
-            "name": "인문관 1층 분기점-엘리베이터",
-            "from": "humanityF1Jc",
+            "id": "humanityF1HallToElevator",
+            "name": "인문관 1층 복도-엘리베이터",
+            "from": "humanityF1Hall",
             "to": "humanityElevatorF1",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "humanityF1JcToStair",
-            "name": "인문관 1층 분기점-계단",
-            "from": "humanityF1Jc",
+            "id": "humanityF1HallToStair",
+            "name": "인문관 1층 복도-계단",
+            "from": "humanityF1Hall",
             "to": "humanityStairF1",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "humanityF2JcToElevator",
-            "name": "인문관 2층 분기점-엘리베이터",
-            "from": "humanityF2Jc",
+            "id": "humanityF2HallToElevator",
+            "name": "인문관 2층 복도-엘리베이터",
+            "from": "humanityF2Hall",
             "to": "humanityElevatorF2",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "humanityF2JcToStair",
-            "name": "인문관 2층 분기점-계단",
-            "from": "humanityF2Jc",
+            "id": "humanityF2HallToStair",
+            "name": "인문관 2층 복도-계단",
+            "from": "humanityF2Hall",
             "to": "humanityStairF2",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "humanityF3JcToElevator",
-            "name": "인문관 3층 분기점-엘리베이터",
-            "from": "humanityF3Jc",
+            "id": "humanityF3HallToElevator",
+            "name": "인문관 3층 복도-엘리베이터",
+            "from": "humanityF3Hall",
             "to": "humanityElevatorF3",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "humanityF3JcToStair",
-            "name": "인문관 3층 분기점-계단",
-            "from": "humanityF3Jc",
+            "id": "humanityF3HallToStair",
+            "name": "인문관 3층 복도-계단",
+            "from": "humanityF3Hall",
             "to": "humanityStairF3",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "humanityF4JcToElevator",
-            "name": "인문관 4층 분기점-엘리베이터",
-            "from": "humanityF4Jc",
+            "id": "humanityF4HallToElevator",
+            "name": "인문관 4층 복도-엘리베이터",
+            "from": "humanityF4Hall",
             "to": "humanityElevatorF4",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "humanityF4JcToStair",
-            "name": "인문관 4층 분기점-계단",
-            "from": "humanityF4Jc",
+            "id": "humanityF4HallToStair",
+            "name": "인문관 4층 복도-계단",
+            "from": "humanityF4Hall",
             "to": "humanityStairF4",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "humanityF5JcToElevator",
-            "name": "인문관 5층 분기점-엘리베이터",
-            "from": "humanityF5Jc",
+            "id": "humanityF5HallToElevator",
+            "name": "인문관 5층 복도-엘리베이터",
+            "from": "humanityF5Hall",
             "to": "humanityElevatorF5",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "humanityF5JcToStair",
-            "name": "인문관 5층 분기점-계단",
-            "from": "humanityF5Jc",
+            "id": "humanityF5HallToStair",
+            "name": "인문관 5층 복도-계단",
+            "from": "humanityF5Hall",
             "to": "humanityStairF5",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "humanityF1JcToEntrance",
-            "name": "인문관 1층 분기점-출입구",
-            "from": "humanityF1Jc",
+            "id": "humanityF1HallToEntrance",
+            "name": "인문관 1층 복도-출입구",
+            "from": "humanityF1Hall",
             "to": "humanityEntranceF1",
             "kind": "indoorPath",
             "condition": "flat"
@@ -835,130 +835,146 @@
             "condition": "stair"
         },
         {
-            "id": "educationF2JcToEducationBusinessPassage",
-            "name": "사범관 2층 분기점-상경관 연결통로",
-            "from": "educationF2Jc",
+            "id": "educationF2HallToEducationBusinessPassage",
+            "name": "사범관 2층 복도-상경관 연결통로",
+            "from": "educationF2Hall",
             "to": "educationBusinessPassageF2",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "businessF2JcToEducationBusinessPassage",
-            "name": "상경관 2층 분기점-사범관 연결통로",
-            "from": "businessF2Jc",
+            "id": "businessF2HallToEducationBusinessPassage",
+            "name": "상경관 2층 복도-사범관 연결통로",
+            "from": "businessF2Hall",
             "to": "educationBusinessPassageF2",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "businessF2JcToBusinessHumanityPassage",
-            "name": "상경관 2층 분기점-인문관 연결통로",
-            "from": "businessF2Jc",
+            "id": "businessF2HallToBusinessHumanityPassage",
+            "name": "상경관 2층 복도-인문관 연결통로",
+            "from": "businessF2Hall",
             "to": "businessHumanityPassageF2",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "humanityF2JcToBusinessHumanityPassage",
-            "name": "인문관 2층 분기점-상경관 연결통로",
-            "from": "humanityF2Jc",
+            "id": "humanityF2HallToBusinessHumanityPassage",
+            "name": "인문관 2층 복도-상경관 연결통로",
+            "from": "humanityF2Hall",
             "to": "businessHumanityPassageF2",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "educationF3JcToEducationBusinessPassage",
-            "name": "사범관 3층 분기점-상경관 연결통로",
-            "from": "educationF3Jc",
+            "id": "educationF3HallToEducationBusinessPassage",
+            "name": "사범관 3층 복도-상경관 연결통로",
+            "from": "educationF3Hall",
             "to": "educationBusinessPassageF3",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "businessF3JcToEducationBusinessPassage",
-            "name": "상경관 3층 분기점-사범관 연결통로",
-            "from": "businessF3Jc",
+            "id": "businessF3HallToEducationBusinessPassage",
+            "name": "상경관 3층 복도-사범관 연결통로",
+            "from": "businessF3Hall",
             "to": "educationBusinessPassageF3",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "businessF3JcToBusinessHumanityPassage",
-            "name": "상경관 3층 분기점-인문관 연결통로",
-            "from": "businessF3Jc",
+            "id": "businessF3HallToBusinessHumanityPassage",
+            "name": "상경관 3층 복도-인문관 연결통로",
+            "from": "businessF3Hall",
             "to": "businessHumanityPassageF3",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "humanityF3JcToBusinessHumanityPassage",
-            "name": "인문관 3층 분기점-상경관 연결통로",
-            "from": "humanityF3Jc",
+            "id": "humanityF3HallToBusinessHumanityPassage",
+            "name": "인문관 3층 복도-상경관 연결통로",
+            "from": "humanityF3Hall",
             "to": "businessHumanityPassageF3",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "educationF4JcToEducationBusinessPassage",
-            "name": "사범관 4층 분기점-상경관 연결통로",
-            "from": "educationF4Jc",
+            "id": "educationF4HallToEducationBusinessPassage",
+            "name": "사범관 4층 복도-상경관 연결통로",
+            "from": "educationF4Hall",
             "to": "educationBusinessPassageF4",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "businessF4JcToEducationBusinessPassage",
-            "name": "상경관 4층 분기점-사범관 연결통로",
-            "from": "businessF4Jc",
+            "id": "businessF4HallToEducationBusinessPassage",
+            "name": "상경관 4층 복도-사범관 연결통로",
+            "from": "businessF4Hall",
             "to": "educationBusinessPassageF4",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "businessF4JcToBusinessHumanityPassage",
-            "name": "상경관 4층 분기점-인문관 연결통로",
-            "from": "businessF4Jc",
+            "id": "businessF4HallToBusinessHumanityPassage",
+            "name": "상경관 4층 복도-인문관 연결통로",
+            "from": "businessF4Hall",
             "to": "businessHumanityPassageF4",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "humanityF4JcToBusinessHumanityPassage",
-            "name": "인문관 4층 분기점-상경관 연결통로",
-            "from": "humanityF4Jc",
+            "id": "humanityF4HallToBusinessHumanityPassage",
+            "name": "인문관 4층 복도-상경관 연결통로",
+            "from": "humanityF4Hall",
             "to": "businessHumanityPassageF4",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "educationF5JcToEducationBusinessPassage",
-            "name": "사범관 5층 분기점-상경관 연결통로",
-            "from": "educationF5Jc",
+            "id": "educationF5HallToEducationBusinessPassage",
+            "name": "사범관 5층 복도-상경관 연결통로",
+            "from": "educationF5Hall",
             "to": "educationBusinessPassageF5",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "businessF5JcToEducationBusinessPassage",
-            "name": "상경관 5층 분기점-사범관 연결통로",
-            "from": "businessF5Jc",
+            "id": "businessF5HallToEducationBusinessPassage",
+            "name": "상경관 5층 복도-사범관 연결통로",
+            "from": "businessF5Hall",
             "to": "educationBusinessPassageF5",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "businessF5JcToBusinessHumanityPassage",
-            "name": "상경관 5층 분기점-인문관 연결통로",
-            "from": "businessF5Jc",
+            "id": "businessF5HallToBusinessHumanityPassage",
+            "name": "상경관 5층 복도-인문관 연결통로",
+            "from": "businessF5Hall",
             "to": "businessHumanityPassageF5",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "humanityF5JcToBusinessHumanityPassage",
-            "name": "인문관 5층 분기점-상경관 연결통로",
-            "from": "humanityF5Jc",
+            "id": "humanityF5HallToBusinessHumanityPassage",
+            "name": "인문관 5층 복도-상경관 연결통로",
+            "from": "humanityF5Hall",
             "to": "businessHumanityPassageF5",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "educationBusinessPassageF5ToEntrance",
+            "name": "사범관·상경관 5층 연결통로-외부 출입구",
+            "from": "educationBusinessPassageF5",
+            "to": "educationBusinessEntranceF5",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "businessHumanityPassageF5ToEntrance",
+            "name": "상경관·인문관 5층 연결통로-외부 출입구",
+            "from": "businessHumanityPassageF5",
+            "to": "businessHumanityEntranceF5",
             "kind": "indoorPath",
             "condition": "flat"
         }

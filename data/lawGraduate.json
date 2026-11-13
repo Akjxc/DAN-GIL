@@ -6,11 +6,11 @@
     ],
     "node": [
         {
-            "id": "lawGraduateF1Jc",
-            "name": "법학관/대학원동 1층 분기점",
+            "id": "lawGraduateF1Hall",
+            "name": "법학관/대학원동 1층 복도",
             "buildingId": "lawGraduate",
             "floor": 1,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "lawGraduateElevatorF1",
@@ -27,11 +27,11 @@
             "kind": "stair"
         },
         {
-            "id": "lawGraduateF2Jc",
-            "name": "법학관/대학원동 2층 분기점",
+            "id": "lawGraduateF2Hall",
+            "name": "법학관/대학원동 2층 복도",
             "buildingId": "lawGraduate",
             "floor": 2,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "lawGraduateElevatorF2",
@@ -48,11 +48,11 @@
             "kind": "stair"
         },
         {
-            "id": "lawGraduateF3Jc",
-            "name": "법학관/대학원동 3층 분기점",
+            "id": "lawGraduateF3Hall",
+            "name": "법학관/대학원동 3층 복도",
             "buildingId": "lawGraduate",
             "floor": 3,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "lawGraduateElevatorF3",
@@ -69,11 +69,11 @@
             "kind": "stair"
         },
         {
-            "id": "lawGraduateF4Jc",
-            "name": "법학관/대학원동 4층 분기점",
+            "id": "lawGraduateF4Hall",
+            "name": "법학관/대학원동 4층 복도",
             "buildingId": "lawGraduate",
             "floor": 4,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "lawGraduateElevatorF4",
@@ -90,11 +90,11 @@
             "kind": "stair"
         },
         {
-            "id": "lawGraduateF5Jc",
-            "name": "법학관/대학원동 5층 분기점",
+            "id": "lawGraduateF5Hall",
+            "name": "법학관/대학원동 5층 복도",
             "buildingId": "lawGraduate",
             "floor": 5,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "lawGraduateElevatorF5",
@@ -111,11 +111,11 @@
             "kind": "stair"
         },
         {
-            "id": "lawGraduateF6Jc",
-            "name": "법학관/대학원동 6층 분기점",
+            "id": "lawGraduateF6Hall",
+            "name": "법학관/대학원동 6층 복도",
             "buildingId": "lawGraduate",
             "floor": 6,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "lawGraduateElevatorF6",
@@ -134,113 +134,113 @@
     ],
     "edges": [
         {
-            "id": "lawGraduateF1JcToElevator",
-            "name": "법학관/대학원동 1층 분기점-엘리베이터",
-            "from": "lawGraduateF1Jc",
+            "id": "lawGraduateF1HallToElevator",
+            "name": "법학관/대학원동 1층 복도-엘리베이터",
+            "from": "lawGraduateF1Hall",
             "to": "lawGraduateElevatorF1",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "lawGraduateF1JcToStair",
-            "name": "법학관/대학원동 1층 분기점-계단",
-            "from": "lawGraduateF1Jc",
+            "id": "lawGraduateF1HallToStair",
+            "name": "법학관/대학원동 1층 복도-계단",
+            "from": "lawGraduateF1Hall",
             "to": "lawGraduateStairF1",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "lawGraduateF2JcToElevator",
-            "name": "법학관/대학원동 2층 분기점-엘리베이터",
-            "from": "lawGraduateF2Jc",
+            "id": "lawGraduateF2HallToElevator",
+            "name": "법학관/대학원동 2층 복도-엘리베이터",
+            "from": "lawGraduateF2Hall",
             "to": "lawGraduateElevatorF2",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "lawGraduateF2JcToStair",
-            "name": "법학관/대학원동 2층 분기점-계단",
-            "from": "lawGraduateF2Jc",
+            "id": "lawGraduateF2HallToStair",
+            "name": "법학관/대학원동 2층 복도-계단",
+            "from": "lawGraduateF2Hall",
             "to": "lawGraduateStairF2",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "lawGraduateF3JcToElevator",
-            "name": "법학관/대학원동 3층 분기점-엘리베이터",
-            "from": "lawGraduateF3Jc",
+            "id": "lawGraduateF3HallToElevator",
+            "name": "법학관/대학원동 3층 복도-엘리베이터",
+            "from": "lawGraduateF3Hall",
             "to": "lawGraduateElevatorF3",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "lawGraduateF3JcToStair",
-            "name": "법학관/대학원동 3층 분기점-계단",
-            "from": "lawGraduateF3Jc",
+            "id": "lawGraduateF3HallToStair",
+            "name": "법학관/대학원동 3층 복도-계단",
+            "from": "lawGraduateF3Hall",
             "to": "lawGraduateStairF3",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "lawGraduateF4JcToElevator",
-            "name": "법학관/대학원동 4층 분기점-엘리베이터",
-            "from": "lawGraduateF4Jc",
+            "id": "lawGraduateF4HallToElevator",
+            "name": "법학관/대학원동 4층 복도-엘리베이터",
+            "from": "lawGraduateF4Hall",
             "to": "lawGraduateElevatorF4",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "lawGraduateF4JcToStair",
-            "name": "법학관/대학원동 4층 분기점-계단",
-            "from": "lawGraduateF4Jc",
+            "id": "lawGraduateF4HallToStair",
+            "name": "법학관/대학원동 4층 복도-계단",
+            "from": "lawGraduateF4Hall",
             "to": "lawGraduateStairF4",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "lawGraduateF5JcToElevator",
-            "name": "법학관/대학원동 5층 분기점-엘리베이터",
-            "from": "lawGraduateF5Jc",
+            "id": "lawGraduateF5HallToElevator",
+            "name": "법학관/대학원동 5층 복도-엘리베이터",
+            "from": "lawGraduateF5Hall",
             "to": "lawGraduateElevatorF5",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "lawGraduateF5JcToStair",
-            "name": "법학관/대학원동 5층 분기점-계단",
-            "from": "lawGraduateF5Jc",
+            "id": "lawGraduateF5HallToStair",
+            "name": "법학관/대학원동 5층 복도-계단",
+            "from": "lawGraduateF5Hall",
             "to": "lawGraduateStairF5",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "lawGraduateF6JcToElevator",
-            "name": "법학관/대학원동 6층 분기점-엘리베이터",
-            "from": "lawGraduateF6Jc",
+            "id": "lawGraduateF6HallToElevator",
+            "name": "법학관/대학원동 6층 복도-엘리베이터",
+            "from": "lawGraduateF6Hall",
             "to": "lawGraduateElevatorF6",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "lawGraduateF6JcToStair",
-            "name": "법학관/대학원동 6층 분기점-계단",
-            "from": "lawGraduateF6Jc",
+            "id": "lawGraduateF6HallToStair",
+            "name": "법학관/대학원동 6층 복도-계단",
+            "from": "lawGraduateF6Hall",
             "to": "lawGraduateStairF6",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "lawGraduateF1JcToEntrance",
-            "name": "법학관/대학원동 1층 분기점-출입구",
-            "from": "lawGraduateF1Jc",
+            "id": "lawGraduateF1HallToEntrance",
+            "name": "법학관/대학원동 1층 복도-출입구",
+            "from": "lawGraduateF1Hall",
             "to": "lawGraduateEntranceF1",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "lawGraduateF3JcToEntrance",
-            "name": "법학관/대학원동 3층 분기점-출입구",
-            "from": "lawGraduateF3Jc",
+            "id": "lawGraduateF3HallToEntrance",
+            "name": "법학관/대학원동 3층 복도-출입구",
+            "from": "lawGraduateF3Hall",
             "to": "lawGraduateEntranceF3",
             "kind": "indoorPath",
             "condition": "flat"
