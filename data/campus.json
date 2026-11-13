@@ -708,6 +708,22 @@
             "to": "engineering3EntranceF3",
             "kind": "outdoorPath",
             "condition": null
+        },
+        {
+            "id": "hyeDangEntranceF2ToHyeDangHumanityJc",
+            "name": "혜당관 2층 출입구-혜당관 인문관 분기점",
+            "from": "hyeDangEntranceF2",
+            "to": "hyeDangHumanityJc",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "hyeDangEntranceF2ToHyeDangEntranceF1",
+            "name": "혜당관 2층 출입구-혜당관 1층 출입구",
+            "from": "hyeDangEntranceF2",
+            "to": "hyeDangEntranceF1",
+            "kind": "outdoorPath",
+            "condition": "stair"
         }
     ]
 }

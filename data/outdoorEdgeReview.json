@@ -26,7 +26,8 @@
         "lawGraduateHyeDangBearStatueJcToLawGraduateEntranceF1",
         "lawGraduateHyeDangBearStatueJcToHyeDangBearStatueJc",
         "hyeDangEntranceF4ToHyeDangYardJc",
-        "hyeDangEngineering3JcToEngineering3EntranceF3"
+        "hyeDangEngineering3JcToEngineering3EntranceF3",
+        "hyeDangEntranceF2ToHyeDangHumanityJc"
     ],
     "confirmedNoDirectConnections": [
         {
@@ -39,13 +40,11 @@
         "법학관 주변 연결 순서는 7번-12번-15번-20번",
         "15번과 16번 사이에는 중간 연두점 없이 직접 연결",
         "곰상에서 노천마당 방향은 16번-혜당관 4층 출입구-18번 순서",
-        "19번은 제3공학관 위쪽 3층 출입구와 연결"
+        "19번은 제3공학관 위쪽 3층 출입구와 연결",
+        "혜당관 2층 출입구는 6번과 8번에만 직접 연결",
+        "혜당관 2층 출입구와 1층 출입구 사이는 계단"
     ],
     "unresolvedConnections": [
-        {
-            "area": "혜당관 2층 출입구 실외 연결",
-            "reason": "1층·4층 출입구와의 이동은 실내 그래프로 처리하며, 2층 출입구가 연결되는 실외 분기점은 별도 확인 필요"
-        },
         {
             "area": "혜당관 도서관 분기점-도서관 측 분기점",
             "reason": "도서관 방향 중간 노드와 정확한 연결 대상 확인 필요"
