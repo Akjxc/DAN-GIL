@@ -344,20 +344,6 @@
             "kind": "outdoorPath"
         },
         {
-            "id": "libraryBusinessHumanityJc",
-            "name": "인문관 정면 상경관 인문관 분기점",
-            "buildingId": null,
-            "floor": null,
-            "kind": "outdoorPath"
-        },
-        {
-            "id": "libraryEducationBusinessJc",
-            "name": "상경관 정면 사범관 상경관 분기점",
-            "buildingId": null,
-            "floor": null,
-            "kind": "outdoorPath"
-        },
-        {
             "id": "lawGraduateHyeDangBearStatueJc",
             "name": "법학관/대학원동 혜당관 곰상 분기점",
             "buildingId": null,
