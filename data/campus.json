@@ -211,6 +211,13 @@
             "kind": "entrance"
         },
         {
+            "id": "engineering1EntranceF4",
+            "name": "제1공학관 4층 출입구",
+            "buildingId": "engineering1",
+            "floor": 4,
+            "kind": "entrance"
+        },
+        {
             "id": "engineering2EntranceF1",
             "name": "제2공학관 1층 출입구",
             "buildingId": "engineering2",
@@ -225,6 +232,13 @@
             "kind": "entrance"
         },
         {
+            "id": "engineering2EntranceF3",
+            "name": "제2공학관 3층 출입구",
+            "buildingId": "engineering2",
+            "floor": 3,
+            "kind": "entrance"
+        },
+        {
             "id": "engineering3EntranceF1",
             "name": "제3공학관 1층 출입구",
             "buildingId": "engineering3",
@@ -236,6 +250,13 @@
             "name": "제3공학관 3층 출입구",
             "buildingId": "engineering3",
             "floor": 3,
+            "kind": "entrance"
+        },
+        {
+            "id": "engineering3EntranceF2",
+            "name": "제3공학관 2층 출입구",
+            "buildingId": "engineering3",
+            "floor": 2,
             "kind": "entrance"
         },
         {
@@ -323,20 +344,6 @@
             "kind": "outdoorPath"
         },
         {
-            "id": "libraryBusinessHumanityJc",
-            "name": "인문관 정면 상경관 인문관 분기점",
-            "buildingId": null,
-            "floor": null,
-            "kind": "outdoorPath"
-        },
-        {
-            "id": "libraryEducationBusinessJc",
-            "name": "상경관 정면 사범관 상경관 분기점",
-            "buildingId": null,
-            "floor": null,
-            "kind": "outdoorPath"
-        },
-        {
             "id": "lawGraduateHyeDangBearStatueJc",
             "name": "법학관/대학원동 혜당관 곰상 분기점",
             "buildingId": null,
@@ -407,15 +414,15 @@
             "kind": "entrance"
         },
         {
-            "id": "Engineering1Engineering2Jc",
-            "name": "1공학관 2공학관 분기점",
+            "id": "engineering1Engineering2Jc",
+            "name": "제1공학관 제2공학관 분기점",
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
         },
         {
             "id": "libraryEngineeringJc",
-            "name": "도서관, 2공학관, 3공학관 분기점",
+            "name": "도서관, 제2공학관, 제3공학관 분기점",
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -468,62 +475,6 @@
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
-        },
-        {
-            "id": "Engineering1F1",
-            "name": "1공학관 1층 출입구",
-            "buildingId": "engineering1",
-            "floor": 1,
-            "kind": "entrance"
-        },
-        {
-            "id": "Engineering1F2",
-            "name": "1공학관 2층 출입구",
-            "buildingId": "engineering1",
-            "floor": 2,
-            "kind": "entrance"
-        },
-        {
-            "id": "Engineering2F1",
-            "name": "2공학관 1층 출입구",
-            "buildingId": "engineering2",
-            "floor": 1,
-            "kind": "entrance"
-        },
-        {
-            "id": "Engineering2F2",
-            "name": "2공학관 2층 출입구",
-            "buildingId": "engineering2",
-            "floor": 2,
-            "kind": "entrance"
-        },
-        {
-            "id": "Engineering3F1",
-            "name": "3공학관 1층 출입구",
-            "buildingId": "engineering3",
-            "floor": 1,
-            "kind": "entrance"
-        },
-        {
-            "id": "Engineering3F3",
-            "name": "3공학관 3층 출입구",
-            "buildingId": "engineering3",
-            "floor": 3,
-            "kind": "entrance"
-        },
-        {
-            "id": "SocialF1",
-            "name": "사회과학관 1층 출입구",
-            "buildingId": "social",
-            "floor": 1,
-            "kind": "entrance"
-        },
-        {
-            "id": "SocialF2",
-            "name": "사회과학관 2층 출입구",
-            "buildingId": "social",
-            "floor": 2,
-            "kind": "entrance"
         }
     ],
     "edges": [
