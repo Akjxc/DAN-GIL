@@ -583,7 +583,7 @@
             "id": "BeomJungSoftwareJcToLibraryMainroadJc",
             "name": "범정관 소프트웨어ICT관 분기점-도서관 중앙로 분기점",
             "from": "beomJungSoftwareJc",
-            "to": "librarybeomJungJc",
+            "to": "libraryBeomJungJc",
             "kind": "outdoorPath",
             "condition": "slope"
         },
@@ -975,7 +975,7 @@
             "id": "softwareEntranceF3ToLibraryMainroadJc",
             "name": "소프트웨어ICT관 3층 출입구-도서관 중앙로 분기점",
             "from": "softwareEntranceF3",
-            "to": "librarybeomJungJc",
+            "to": "libraryBeomJungJc",
             "kind": "outdoorPath",
             "condition": "slope" 
         },
