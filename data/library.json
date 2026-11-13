@@ -1,0 +1,289 @@
+{
+    "note": [
+        "도서관 내부"
+    ],
+    "node": [
+        {
+            "id": "libraryF1Hall",
+            "name": "도서관 1층 복도",
+            "buildingId": "library",
+            "floor": 1,
+            "kind": "hall"
+        },
+        {
+            "id": "libraryStairF1",
+            "name": "도서관 1층 계단",
+            "buildingId": "library",
+            "floor": 1,
+            "kind": "stair"
+        },
+        {
+            "id": "libraryF2Hall",
+            "name": "도서관 2층 복도",
+            "buildingId": "library",
+            "floor": 2,
+            "kind": "hall"
+        },
+        {
+            "id": "libraryStairF2",
+            "name": "도서관 2층 계단",
+            "buildingId": "library",
+            "floor": 2,
+            "kind": "stair"
+        },
+        {
+            "id": "libraryF3Hall",
+            "name": "도서관 3층 복도",
+            "buildingId": "library",
+            "floor": 3,
+            "kind": "hall"
+        },
+        {
+            "id": "libraryStairF3",
+            "name": "도서관 3층 계단",
+            "buildingId": "library",
+            "floor": 3,
+            "kind": "stair"
+        },
+        {
+            "id": "libraryElevatorF3",
+            "name": "도서관 3층 엘리베이터",
+            "buildingId": "library",
+            "floor": 3,
+            "kind": "elevator"
+        },
+        {
+            "id": "libraryF4Hall",
+            "name": "도서관 4층 복도",
+            "buildingId": "library",
+            "floor": 4,
+            "kind": "hall"
+        },
+        {
+            "id": "libraryStairF4",
+            "name": "도서관 4층 계단",
+            "buildingId": "library",
+            "floor": 4,
+            "kind": "stair"
+        },
+        {
+            "id": "libraryElevatorF4",
+            "name": "도서관 4층 엘리베이터",
+            "buildingId": "library",
+            "floor": 4,
+            "kind": "elevator"
+        },
+        {
+            "id": "libraryF5Hall",
+            "name": "도서관 5층 복도",
+            "buildingId": "library",
+            "floor": 5,
+            "kind": "hall"
+        },
+        {
+            "id": "libraryStairF5",
+            "name": "도서관 5층 계단",
+            "buildingId": "library",
+            "floor": 5,
+            "kind": "stair"
+        },
+        {
+            "id": "libraryElevatorF5",
+            "name": "도서관 5층 엘리베이터",
+            "buildingId": "library",
+            "floor": 5,
+            "kind": "elevator"
+        },
+        {
+            "id": "libraryF6Hall",
+            "name": "도서관 6층 복도",
+            "buildingId": "library",
+            "floor": 6,
+            "kind": "hall"
+        },
+        {
+            "id": "libraryStairF6",
+            "name": "도서관 6층 계단",
+            "buildingId": "library",
+            "floor": 6,
+            "kind": "stair"
+        },
+        {
+            "id": "libraryElevatorF6",
+            "name": "도서관 6층 엘리베이터",
+            "buildingId": "library",
+            "floor": 6,
+            "kind": "elevator"
+        }
+    ],
+    "edges": [
+        {
+            "id": "libraryF1HallToStair",
+            "name": "도서관 1층 복도-계단",
+            "from": "libraryF1Hall",
+            "to": "libraryStairF1",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "libraryF1HallToEntrance",
+            "name": "도서관 1층 복도-출입구",
+            "from": "libraryF1Hall",
+            "to": "libraryEntranceF1",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "libraryF2HallToStair",
+            "name": "도서관 2층 복도-계단",
+            "from": "libraryF2Hall",
+            "to": "libraryStairF2",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "libraryF2HallToEntrance",
+            "name": "도서관 2층 복도-출입구",
+            "from": "libraryF2Hall",
+            "to": "libraryEntranceF2",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "libraryF3HallToStair",
+            "name": "도서관 3층 복도-계단",
+            "from": "libraryF3Hall",
+            "to": "libraryStairF3",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "libraryF3HallToElevator",
+            "name": "도서관 3층 복도-엘리베이터",
+            "from": "libraryF3Hall",
+            "to": "libraryElevatorF3",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "libraryF4HallToStair",
+            "name": "도서관 4층 복도-계단",
+            "from": "libraryF4Hall",
+            "to": "libraryStairF4",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "libraryF4HallToElevator",
+            "name": "도서관 4층 복도-엘리베이터",
+            "from": "libraryF4Hall",
+            "to": "libraryElevatorF4",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "libraryF5HallToStair",
+            "name": "도서관 5층 복도-계단",
+            "from": "libraryF5Hall",
+            "to": "libraryStairF5",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "libraryF5HallToElevator",
+            "name": "도서관 5층 복도-엘리베이터",
+            "from": "libraryF5Hall",
+            "to": "libraryElevatorF5",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "libraryF6HallToStair",
+            "name": "도서관 6층 복도-계단",
+            "from": "libraryF6Hall",
+            "to": "libraryStairF6",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "libraryF6HallToElevator",
+            "name": "도서관 6층 복도-엘리베이터",
+            "from": "libraryF6Hall",
+            "to": "libraryElevatorF6",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "libraryF3HallToEntrance",
+            "name": "도서관 3층 복도-출입구",
+            "from": "libraryF3Hall",
+            "to": "libraryEntranceF3",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "libraryStairF1ToF2",
+            "name": "퇴계기념중앙도서관 1층-2층 계단",
+            "from": "libraryStairF1",
+            "to": "libraryStairF2",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "libraryStairF2ToF3",
+            "name": "퇴계기념중앙도서관 2층-3층 계단",
+            "from": "libraryStairF2",
+            "to": "libraryStairF3",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "libraryStairF3ToF4",
+            "name": "퇴계기념중앙도서관 3층-4층 계단",
+            "from": "libraryStairF3",
+            "to": "libraryStairF4",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "libraryStairF4ToF5",
+            "name": "퇴계기념중앙도서관 4층-5층 계단",
+            "from": "libraryStairF4",
+            "to": "libraryStairF5",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "libraryStairF5ToF6",
+            "name": "퇴계기념중앙도서관 5층-6층 계단",
+            "from": "libraryStairF5",
+            "to": "libraryStairF6",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "libraryElevatorF3ToF4",
+            "name": "퇴계기념중앙도서관 3층-4층 엘리베이터",
+            "from": "libraryElevatorF3",
+            "to": "libraryElevatorF4",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "libraryElevatorF4ToF5",
+            "name": "퇴계기념중앙도서관 4층-5층 엘리베이터",
+            "from": "libraryElevatorF4",
+            "to": "libraryElevatorF5",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "libraryElevatorF5ToF6",
+            "name": "퇴계기념중앙도서관 5층-6층 엘리베이터",
+            "from": "libraryElevatorF5",
+            "to": "libraryElevatorF6",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        }
+    ]
+}

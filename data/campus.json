@@ -736,7 +736,7 @@
             "from": "lawGraduateEntranceF3",
             "to": "lawGraduateHyeDangBearStatueJc",
             "kind": "outdoorPath",
-            "condition": null
+            "condition": "flat"
         },
         {
             "id": "hyeDangHumanityJcToHumanityLawGraduateBearStatueJc",
@@ -744,7 +744,7 @@
             "from": "hyeDangHumanityJc",
             "to": "humanityLawGraduateBearStatueJc",
             "kind": "outdoorPath",
-            "condition": null
+            "condition": "slope"
         },
         {
             "id": "humanityLawGraduateBearStatueJcToLawGraduateEntranceF1",
@@ -752,7 +752,7 @@
             "from": "humanityLawGraduateBearStatueJc",
             "to": "lawGraduateEntranceF1",
             "kind": "outdoorPath",
-            "condition": null
+            "condition": "slope"
         },
         {
             "id": "lawGraduateHyeDangBearStatueJcToLawGraduateEntranceF1",
