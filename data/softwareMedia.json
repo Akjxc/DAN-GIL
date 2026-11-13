@@ -1,0 +1,335 @@
+{
+    "note": [
+        "소프트웨어ICT관/미디어센터 내부"
+    ],
+    "node": [
+        {
+            "id": "softwareMediaB1Hall",
+            "name": "소프트웨어ICT관/미디어센터 지하 1층 복도",
+            "buildingId": "softwareMedia",
+            "floor": -1,
+            "kind": "hall"
+        },
+        {
+            "id": "softwareMediaElevatorB1",
+            "name": "소프트웨어ICT관/미디어센터 지하 1층 엘리베이터",
+            "buildingId": "softwareMedia",
+            "floor": -1,
+            "kind": "elevator"
+        },
+        {
+            "id": "softwareMediaStairB1",
+            "name": "소프트웨어ICT관/미디어센터 지하 1층 계단",
+            "buildingId": "softwareMedia",
+            "floor": -1,
+            "kind": "stair"
+        },
+        {
+            "id": "softwareMediaF1Hall",
+            "name": "소프트웨어ICT관/미디어센터 1층 복도",
+            "buildingId": "softwareMedia",
+            "floor": 1,
+            "kind": "hall"
+        },
+        {
+            "id": "softwareMediaElevatorF1",
+            "name": "소프트웨어ICT관/미디어센터 1층 엘리베이터",
+            "buildingId": "softwareMedia",
+            "floor": 1,
+            "kind": "elevator"
+        },
+        {
+            "id": "softwareMediaStairF1",
+            "name": "소프트웨어ICT관/미디어센터 1층 계단",
+            "buildingId": "softwareMedia",
+            "floor": 1,
+            "kind": "stair"
+        },
+        {
+            "id": "softwareMediaF2Hall",
+            "name": "소프트웨어ICT관/미디어센터 2층 복도",
+            "buildingId": "softwareMedia",
+            "floor": 2,
+            "kind": "hall"
+        },
+        {
+            "id": "softwareMediaElevatorF2",
+            "name": "소프트웨어ICT관/미디어센터 2층 엘리베이터",
+            "buildingId": "softwareMedia",
+            "floor": 2,
+            "kind": "elevator"
+        },
+        {
+            "id": "softwareMediaStairF2",
+            "name": "소프트웨어ICT관/미디어센터 2층 계단",
+            "buildingId": "softwareMedia",
+            "floor": 2,
+            "kind": "stair"
+        },
+        {
+            "id": "softwareMediaF3Hall",
+            "name": "소프트웨어ICT관/미디어센터 3층 복도",
+            "buildingId": "softwareMedia",
+            "floor": 3,
+            "kind": "hall"
+        },
+        {
+            "id": "softwareMediaElevatorF3",
+            "name": "소프트웨어ICT관/미디어센터 3층 엘리베이터",
+            "buildingId": "softwareMedia",
+            "floor": 3,
+            "kind": "elevator"
+        },
+        {
+            "id": "softwareMediaStairF3",
+            "name": "소프트웨어ICT관/미디어센터 3층 계단",
+            "buildingId": "softwareMedia",
+            "floor": 3,
+            "kind": "stair"
+        },
+        {
+            "id": "softwareMediaF4Hall",
+            "name": "소프트웨어ICT관/미디어센터 4층 복도",
+            "buildingId": "softwareMedia",
+            "floor": 4,
+            "kind": "hall"
+        },
+        {
+            "id": "softwareMediaElevatorF4",
+            "name": "소프트웨어ICT관/미디어센터 4층 엘리베이터",
+            "buildingId": "softwareMedia",
+            "floor": 4,
+            "kind": "elevator"
+        },
+        {
+            "id": "softwareMediaStairF4",
+            "name": "소프트웨어ICT관/미디어센터 4층 계단",
+            "buildingId": "softwareMedia",
+            "floor": 4,
+            "kind": "stair"
+        },
+        {
+            "id": "softwareMediaF5Hall",
+            "name": "소프트웨어ICT관/미디어센터 5층 복도",
+            "buildingId": "softwareMedia",
+            "floor": 5,
+            "kind": "hall"
+        },
+        {
+            "id": "softwareMediaElevatorF5",
+            "name": "소프트웨어ICT관/미디어센터 5층 엘리베이터",
+            "buildingId": "softwareMedia",
+            "floor": 5,
+            "kind": "elevator"
+        },
+        {
+            "id": "softwareMediaStairF5",
+            "name": "소프트웨어ICT관/미디어센터 5층 계단",
+            "buildingId": "softwareMedia",
+            "floor": 5,
+            "kind": "stair"
+        }
+    ],
+    "edges": [
+        {
+            "id": "softwareMediaB1HallToElevator",
+            "name": "소프트웨어ICT관/미디어센터 지하 1층 복도-엘리베이터",
+            "from": "softwareMediaB1Hall",
+            "to": "softwareMediaElevatorB1",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "softwareMediaB1HallToStair",
+            "name": "소프트웨어ICT관/미디어센터 지하 1층 복도-계단",
+            "from": "softwareMediaB1Hall",
+            "to": "softwareMediaStairB1",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "softwareMediaB1HallToEntrance",
+            "name": "소프트웨어ICT관/미디어센터 지하 1층 복도-출입구",
+            "from": "softwareMediaB1Hall",
+            "to": "softwareEntranceB1",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "softwareMediaF1HallToElevator",
+            "name": "소프트웨어ICT관/미디어센터 1층 복도-엘리베이터",
+            "from": "softwareMediaF1Hall",
+            "to": "softwareMediaElevatorF1",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "softwareMediaF1HallToStair",
+            "name": "소프트웨어ICT관/미디어센터 1층 복도-계단",
+            "from": "softwareMediaF1Hall",
+            "to": "softwareMediaStairF1",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "softwareMediaF1HallToEntrance",
+            "name": "소프트웨어ICT관/미디어센터 1층 복도-출입구",
+            "from": "softwareMediaF1Hall",
+            "to": "softwareEntranceF1",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "softwareMediaF2HallToElevator",
+            "name": "소프트웨어ICT관/미디어센터 2층 복도-엘리베이터",
+            "from": "softwareMediaF2Hall",
+            "to": "softwareMediaElevatorF2",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "softwareMediaF2HallToStair",
+            "name": "소프트웨어ICT관/미디어센터 2층 복도-계단",
+            "from": "softwareMediaF2Hall",
+            "to": "softwareMediaStairF2",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "softwareMediaF3HallToElevator",
+            "name": "소프트웨어ICT관/미디어센터 3층 복도-엘리베이터",
+            "from": "softwareMediaF3Hall",
+            "to": "softwareMediaElevatorF3",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "softwareMediaF3HallToStair",
+            "name": "소프트웨어ICT관/미디어센터 3층 복도-계단",
+            "from": "softwareMediaF3Hall",
+            "to": "softwareMediaStairF3",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "softwareMediaF3HallToEntrance",
+            "name": "소프트웨어ICT관/미디어센터 3층 복도-출입구",
+            "from": "softwareMediaF3Hall",
+            "to": "softwareEntranceF3",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "softwareMediaF4HallToElevator",
+            "name": "소프트웨어ICT관/미디어센터 4층 복도-엘리베이터",
+            "from": "softwareMediaF4Hall",
+            "to": "softwareMediaElevatorF4",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "softwareMediaF4HallToStair",
+            "name": "소프트웨어ICT관/미디어센터 4층 복도-계단",
+            "from": "softwareMediaF4Hall",
+            "to": "softwareMediaStairF4",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "softwareMediaF5HallToElevator",
+            "name": "소프트웨어ICT관/미디어센터 5층 복도-엘리베이터",
+            "from": "softwareMediaF5Hall",
+            "to": "softwareMediaElevatorF5",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "softwareMediaF5HallToStair",
+            "name": "소프트웨어ICT관/미디어센터 5층 복도-계단",
+            "from": "softwareMediaF5Hall",
+            "to": "softwareMediaStairF5",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "softwareMediaElevatorB1ToF1",
+            "name": "소프트웨어ICT관/미디어센터 지하 1층-1층 엘리베이터",
+            "from": "softwareMediaElevatorB1",
+            "to": "softwareMediaElevatorF1",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "softwareMediaElevatorF1ToF2",
+            "name": "소프트웨어ICT관/미디어센터 1층-2층 엘리베이터",
+            "from": "softwareMediaElevatorF1",
+            "to": "softwareMediaElevatorF2",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "softwareMediaElevatorF2ToF3",
+            "name": "소프트웨어ICT관/미디어센터 2층-3층 엘리베이터",
+            "from": "softwareMediaElevatorF2",
+            "to": "softwareMediaElevatorF3",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "softwareMediaElevatorF3ToF4",
+            "name": "소프트웨어ICT관/미디어센터 3층-4층 엘리베이터",
+            "from": "softwareMediaElevatorF3",
+            "to": "softwareMediaElevatorF4",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "softwareMediaElevatorF4ToF5",
+            "name": "소프트웨어ICT관/미디어센터 4층-5층 엘리베이터",
+            "from": "softwareMediaElevatorF4",
+            "to": "softwareMediaElevatorF5",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "softwareMediaStairB1ToF1",
+            "name": "소프트웨어ICT관/미디어센터 지하 1층-1층 계단",
+            "from": "softwareMediaStairB1",
+            "to": "softwareMediaStairF1",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "softwareMediaStairF1ToF2",
+            "name": "소프트웨어ICT관/미디어센터 1층-2층 계단",
+            "from": "softwareMediaStairF1",
+            "to": "softwareMediaStairF2",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "softwareMediaStairF2ToF3",
+            "name": "소프트웨어ICT관/미디어센터 2층-3층 계단",
+            "from": "softwareMediaStairF2",
+            "to": "softwareMediaStairF3",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "softwareMediaStairF3ToF4",
+            "name": "소프트웨어ICT관/미디어센터 3층-4층 계단",
+            "from": "softwareMediaStairF3",
+            "to": "softwareMediaStairF4",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "softwareMediaStairF4ToF5",
+            "name": "소프트웨어ICT관/미디어센터 4층-5층 계단",
+            "from": "softwareMediaStairF4",
+            "to": "softwareMediaStairF5",
+            "kind": "indoorPath",
+            "condition": "stair"
+        }
+    ]
+}
