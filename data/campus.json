@@ -9,91 +9,152 @@
             "id": "softwareMedia",
             "name": "소프트웨어ICT관/미디어센터",
             "floors": [
-                -1, 1, 2, 3, 4, 5
+                -1,
+                1,
+                2,
+                3,
+                4,
+                5
             ]
         },
         {
             "id": "humanity",
             "name": "인문관",
             "floors": [
-                1, 2, 3, 4, 5, 6
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
             ]
         },
         {
             "id": "business",
             "name": "상경관",
             "floors": [
-                1, 2, 3, 4, 5, 6
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
             ]
         },
         {
             "id": "education",
             "name": "사범관",
             "floors": [
-                1, 2, 3, 4, 5, 6
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
             ]
         },
         {
             "id": "lawGraduate",
             "name": "법학관/대학원동",
             "floors": [
-                1, 2, 3, 4, 5, 6
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
             ]
         },
         {
             "id": "social",
             "name": "사회과학관",
             "floors": [
-                -1, 1, 2, 3, 4
+                -1,
+                1,
+                2,
+                3,
+                4
             ]
         },
         {
             "id": "engineering1",
             "name": "제1공학관",
             "floors": [
-                1, 2, 3, 4, 5
+                1,
+                2,
+                3,
+                4,
+                5
             ]
         },
         {
             "id": "engineering2",
             "name": "제2공학관",
             "floors": [
-                1, 2, 3, 4, 5
+                1,
+                2,
+                3,
+                4,
+                5
             ]
         },
         {
             "id": "engineering3",
             "name": "제3공학관",
             "floors": [
-                1, 2, 3, 4, 5
+                1,
+                2,
+                3,
+                4,
+                5
             ]
         },
         {
             "id": "international",
             "name": "국제관",
             "floors": [
-                -1, 1, 2, 3, 4, 5, 6
+                -1,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
             ]
         },
         {
             "id": "beomJung",
             "name": "범정관",
             "floors": [
-                1, 2, 3, 4, 5
+                1,
+                2,
+                3,
+                4,
+                5
             ]
         },
         {
             "id": "library",
             "name": "퇴계기념중앙도서관",
             "floors": [
-                1, 2, 3, 4, 5, 6
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
             ]
         },
         {
             "id": "hyeDang",
             "name": "혜당관",
             "floors": [
-                1, 2, 3, 4, 5, 6
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
             ]
         }
     ],
@@ -211,6 +272,13 @@
             "kind": "entrance"
         },
         {
+            "id": "engineering1EntranceF4",
+            "name": "제1공학관 4층 출입구",
+            "buildingId": "engineering1",
+            "floor": 4,
+            "kind": "entrance"
+        },
+        {
             "id": "engineering2EntranceF1",
             "name": "제2공학관 1층 출입구",
             "buildingId": "engineering2",
@@ -225,6 +293,13 @@
             "kind": "entrance"
         },
         {
+            "id": "engineering2EntranceF3",
+            "name": "제2공학관 3층 출입구",
+            "buildingId": "engineering2",
+            "floor": 3,
+            "kind": "entrance"
+        },
+        {
             "id": "engineering3EntranceF1",
             "name": "제3공학관 1층 출입구",
             "buildingId": "engineering3",
@@ -236,6 +311,13 @@
             "name": "제3공학관 3층 출입구",
             "buildingId": "engineering3",
             "floor": 3,
+            "kind": "entrance"
+        },
+        {
+            "id": "engineering3EntranceF2",
+            "name": "제3공학관 2층 출입구",
+            "buildingId": "engineering3",
+            "floor": 2,
             "kind": "entrance"
         },
         {
@@ -316,20 +398,6 @@
             "kind": "outdoorPath"
         },
         {
-            "id": "libraryBusinessHumanityJc",
-            "name": "인문관 정면 상경관 인문관 분기점",
-            "buildingId": null,
-            "floor": null,
-            "kind": "outdoorPath"
-        },
-        {
-            "id": "libraryEducationBusinessJc",
-            "name": "상경관 정면 사범관 상경관 분기점",
-            "buildingId": null,
-            "floor": null,
-            "kind": "outdoorPath"
-        },
-        {
             "id": "lawGraduateHyeDangBearStatueJc",
             "name": "법학관/대학원동 혜당관 곰상 분기점",
             "buildingId": null,
@@ -400,15 +468,22 @@
             "kind": "entrance"
         },
         {
-            "id": "Engineering1Engineering2Jc",
-            "name": "1공학관 2공학관 분기점",
+            "id": "engineering1Engineering2Jc",
+            "name": "제1공학관 제2공학관 분기점",
+            "buildingId": null,
+            "floor": null,
+            "kind": "outdoorPath"
+        },
+        {
+            "id": "beomJungEngineeringJc",
+            "name": "범정관 공학관 분기점",
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
         },
         {
             "id": "libraryEngineeringJc",
-            "name": "도서관, 2공학관, 3공학관 분기점",
+            "name": "도서관, 제2공학관, 제3공학관 분기점",
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -461,62 +536,6 @@
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
-        },
-        {
-            "id": "Engineering1F1",
-            "name": "1공학관 1층 출입구",
-            "buildingId": "engineering1",
-            "floor": 1,
-            "kind": "entrance"
-        },
-        {
-            "id": "Engineering1F2",
-            "name": "1공학관 2층 출입구",
-            "buildingId": "engineering1",
-            "floor": 2,
-            "kind": "entrance"
-        },
-        {
-            "id": "Engineering2F1",
-            "name": "2공학관 1층 출입구",
-            "buildingId": "engineering2",
-            "floor": 1,
-            "kind": "entrance"
-        },
-        {
-            "id": "Engineering2F2",
-            "name": "2공학관 2층 출입구",
-            "buildingId": "engineering2",
-            "floor": 2,
-            "kind": "entrance"
-        },
-        {
-            "id": "Engineering3F1",
-            "name": "3공학관 1층 출입구",
-            "buildingId": "engineering3",
-            "floor": 1,
-            "kind": "entrance"
-        },
-        {
-            "id": "Engineering3F3",
-            "name": "3공학관 3층 출입구",
-            "buildingId": "engineering3",
-            "floor": 3,
-            "kind": "entrance"
-        },
-        {
-            "id": "SocialF1",
-            "name": "사회과학관 1층 출입구",
-            "buildingId": "social",
-            "floor": 1,
-            "kind": "entrance"
-        },
-        {
-            "id": "SocialF2",
-            "name": "사회과학관 2층 출입구",
-            "buildingId": "social",
-            "floor": 2,
-            "kind": "entrance"
         }
     ],
     "edges": [
@@ -526,7 +545,7 @@
             "from": "mainGate",
             "to": "mainGateJc",
             "kind": "outdoorPath",
-            "condition": "slope" 
+            "condition": "slope"
         },
         {
             "id": "mainGateJcToDentalJc",
@@ -534,7 +553,7 @@
             "from": "mainGateJc",
             "to": "dentalJc",
             "kind": "outdoorPath",
-            "condition": "slope" 
+            "condition": "slope"
         },
         {
             "id": "mainGateJcToSoftwareEntranceB1Jc",
@@ -542,55 +561,247 @@
             "from": "mainGateJc",
             "to": "softwareEntranceB1Jc",
             "kind": "outdoorPath",
-            "condition": "slope" 
+            "condition": "slope"
         },
         {
-            "id": "softwareEntranceB1JcToSoftwareEntranceB1",
+            "id": "SoftwareEntranceB1JcToSoftwareEntranceB1",
             "name": "소프트웨어ICT관 지하1층 출입구 분기점-소프트웨어ICT관 지하1층 출입구",
             "from": "softwareEntranceB1Jc",
             "to": "softwareEntranceB1",
             "kind": "outdoorPath",
-            "condition": "slope" 
+            "condition": "slope"
         },
         {
-            "id": "softwareEntranceB1JcToBeomJungSoftwareJc",
+            "id": "SoftwareEntranceB1JcToBeomJungSoftwareJc",
             "name": "소프트웨어ICT관 지하1층 출입구 분기점-범정관 소프트웨어ICT관 분기점",
             "from": "softwareEntranceB1Jc",
             "to": "beomJungSoftwareJc",
             "kind": "outdoorPath",
-            "condition": "slope" 
+            "condition": "slope"
         },
         {
-            "id": "beomJungSoftwareJcToLibraryMainroadJc",
+            "id": "BeomJungSoftwareJcToLibraryMainroadJc",
             "name": "범정관 소프트웨어ICT관 분기점-도서관 중앙로 분기점",
             "from": "beomJungSoftwareJc",
             "to": "librarybeomJungJc",
             "kind": "outdoorPath",
-            "condition": "slope" 
+            "condition": "slope"
         },
         {
-            "id": "beomJungSoftwareJcToBeomJungEntranceJc",
+            "id": "BeomJungSoftwareJcToBeomJungEntranceJc",
             "name": "범정관 소프트웨어ICT관 분기점-범정관 입구 분기점",
             "from": "beomJungSoftwareJc",
             "to": "beomJungEntranceJc",
             "kind": "outdoorPath",
-            "condition": "slope" 
+            "condition": "slope"
         },
         {
-            "id": "beomJungEntranceJcToBeomJungSocialJc",
+            "id": "BeomJungEntranceJcToBeomJungSocialJc",
             "name": "범정관 입구 분기점-범정관 사회과학관 분기점",
             "from": "beomJungEntranceJc",
             "to": "beomJungSocialJc",
             "kind": "outdoorPath",
-            "condition": "flat" 
+            "condition": "slope"
         },
         {
-            "id": "beomJungEntranceJcToBeomJungEntranceF1",
+            "id": "BeomJungEntranceJcToBeomJungEntranceF1",
             "name": "범정관 입구 분기점-범정관 1층 출입구",
             "from": "beomJungEntranceJc",
             "to": "beomJungEntranceF1",
             "kind": "outdoorPath",
-            "condition": "flat" 
+            "condition": "slope"
+        },
+        {
+            "id": "educationEntranceF1ToEducationBusinessJc",
+            "name": "사범관 1층 출입구-사범관 상경관 계단 분기점",
+            "from": "educationEntranceF1",
+            "to": "educationBusinessJc",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "educationBusinessJcToBusinessEntranceF1",
+            "name": "사범관 상경관 계단 분기점-상경관 1층 출입구",
+            "from": "educationBusinessJc",
+            "to": "businessEntranceF1",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "businessEntranceF1ToBusinessHumanityJc",
+            "name": "상경관 1층 출입구-상경관 인문관 계단 분기점",
+            "from": "businessEntranceF1",
+            "to": "businessHumanityJc",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "businessHumanityJcToHumanityEntranceF1",
+            "name": "상경관 인문관 계단 분기점-인문관 1층 출입구",
+            "from": "businessHumanityJc",
+            "to": "humanityEntranceF1",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "educationBusinessEntranceF5ToBusinessHumanityEntranceF5",
+            "name": "사범관 상경관 5층 출입구-상경관 인문관 5층 출입구",
+            "from": "educationBusinessEntranceF5",
+            "to": "businessHumanityEntranceF5",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "businessHumanityEntranceF5ToBackwardJc",
+            "name": "상경관 인문관 5층 출입구-인문관 상경관 사범관 뒤쪽 분기점",
+            "from": "businessHumanityEntranceF5",
+            "to": "educationBusinessHumanityBackwardJc",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "backwardJcToLawGraduateHyeDangBearStatueJc",
+            "name": "인문관 상경관 사범관 뒤쪽 분기점-법학관/대학원동 혜당관 곰상 분기점",
+            "from": "educationBusinessHumanityBackwardJc",
+            "to": "lawGraduateHyeDangBearStatueJc",
+            "kind": "outdoorPath",
+            "condition": "slope"
+        },
+        {
+            "id": "backwardJcToLawGraduateEntranceF3",
+            "name": "인문관 상경관 사범관 뒤쪽 분기점-법학관/대학원동 3층 출입구",
+            "from": "educationBusinessHumanityBackwardJc",
+            "to": "lawGraduateEntranceF3",
+            "kind": "outdoorPath",
+            "condition": "slope"
+        },
+        {
+            "id": "humanityEntranceF1ToHyeDangHumanityJc",
+            "name": "인문관 1층 출입구-혜당관 인문관 분기점",
+            "from": "humanityEntranceF1",
+            "to": "hyeDangHumanityJc",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "hyeDangHumanityJcToHyeDangLibraryJc",
+            "name": "혜당관 인문관 분기점-혜당관 도서관 분기점",
+            "from": "hyeDangHumanityJc",
+            "to": "hyeDangLibraryJc",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "hyeDangLibraryJcToHyeDangEntranceF1",
+            "name": "혜당관 도서관 분기점-혜당관 1층 출입구",
+            "from": "hyeDangLibraryJc",
+            "to": "hyeDangEntranceF1",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "hyeDangEntranceF4ToHyeDangBearStatueJc",
+            "name": "혜당관 4층 출입구-혜당관 곰상 분기점",
+            "from": "hyeDangEntranceF4",
+            "to": "hyeDangBearStatueJc",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "hyeDangBearStatueJcToBearStatue",
+            "name": "혜당관 곰상 분기점-곰상",
+            "from": "hyeDangBearStatueJc",
+            "to": "bearStatue",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "hyeDangLibraryJcToHyeDangEngineering3Jc",
+            "name": "혜당관 도서관 분기점-혜당관 제3공학관 분기점",
+            "from": "hyeDangLibraryJc",
+            "to": "hyeDangEngineering3Jc",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "lawGraduateEntranceF3ToLawGraduateHyeDangBearStatueJc",
+            "name": "법학관/대학원동 3층 출입구-법학관/대학원동 혜당관 곰상 분기점",
+            "from": "lawGraduateEntranceF3",
+            "to": "lawGraduateHyeDangBearStatueJc",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "hyeDangHumanityJcToHumanityLawGraduateBearStatueJc",
+            "name": "혜당관 인문관 분기점-인문관 법학관/대학원동 곰상 분기점",
+            "from": "hyeDangHumanityJc",
+            "to": "humanityLawGraduateBearStatueJc",
+            "kind": "outdoorPath",
+            "condition": "slope"
+        },
+        {
+            "id": "humanityLawGraduateBearStatueJcToLawGraduateEntranceF1",
+            "name": "인문관 법학관/대학원동 곰상 분기점-법학관/대학원동 1층 출입구",
+            "from": "humanityLawGraduateBearStatueJc",
+            "to": "lawGraduateEntranceF1",
+            "kind": "outdoorPath",
+            "condition": "slope"
+        },
+        {
+            "id": "lawGraduateHyeDangBearStatueJcToLawGraduateEntranceF1",
+            "name": "법학관/대학원동 혜당관 곰상 분기점-법학관/대학원동 1층 출입구",
+            "from": "lawGraduateHyeDangBearStatueJc",
+            "to": "lawGraduateEntranceF1",
+            "kind": "outdoorPath",
+            "condition": "slope"
+        },
+        {
+            "id": "lawGraduateHyeDangBearStatueJcToHyeDangBearStatueJc",
+            "name": "법학관/대학원동 혜당관 곰상 분기점-혜당관 곰상 분기점",
+            "from": "lawGraduateHyeDangBearStatueJc",
+            "to": "hyeDangBearStatueJc",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "hyeDangBearStatueJcToHyeDangYardJc",
+            "name": "혜당관 곰상 분기점-혜당관 노천마당 분기점",
+            "from": "hyeDangBearStatueJc",
+            "to": "hyeDangYardJc",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "hyeDangEngineering3JcToEngineering3EntranceF3",
+            "name": "혜당관 제3공학관 분기점-제3공학관 3층 출입구",
+            "from": "hyeDangEngineering3Jc",
+            "to": "engineering3EntranceF3",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "hyeDangEntranceF2ToHumanityLawGraduateBearStatueJc",
+            "name": "혜당관 2층 출입구-인문관 법학관/대학원동 곰상 분기점",
+            "from": "hyeDangEntranceF2",
+            "to": "humanityLawGraduateBearStatueJc",
+            "kind": "outdoorPath",
+            "condition": "slope"
+        },
+        {
+            "id": "hyeDangEntranceF2ToHyeDangEntranceF1",
+            "name": "혜당관 2층 출입구-혜당관 1층 출입구",
+            "from": "hyeDangEntranceF2",
+            "to": "hyeDangEntranceF1",
+            "kind": "outdoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "educationBusinessEntranceF5ToBackwardJc",
+            "name": "사범관 상경관 5층 출입구-인문관 상경관 사범관 뒤쪽 분기점",
+            "from": "educationBusinessEntranceF5",
+            "to": "educationBusinessHumanityBackwardJc",
+            "kind": "outdoorPath",
+            "condition": "flat"
         },
         {
             "id": "dentalJcToParkingJc",
@@ -652,14 +863,14 @@
             "id": "beomJungSocialJcToEngineering1Engineering2Jc",
             "name": "범정관 사회과학관 분기점-제1공학관 제2공학관 분기점",
             "from": "beomJungSocialJc",
-            "to": "Engineering1Engineering2Jc",
+            "to": "engineering1Engineering2Jc",
             "kind": "outdoorPath",
             "condition": "stair"
         },
         {
             "id": "Engineering1Engineering2JcToEngineering1EntranceF2",
             "name": "제1공학관 제2공학관 분기점-제1공학관 2층 출입구",
-            "from": "Engineering1Engineering2Jc",
+            "from": "engineering1Engineering2Jc",
             "to": "engineering1EntranceF2",
             "kind": "outdoorPath",
             "condition": "flat"
@@ -667,7 +878,7 @@
         {
             "id": "Engineering1Engineering2JcToEngineering2EntranceF1",
             "name": "제1공학관 제2공학관 분기점-제2공학관 1층 출입구",
-            "from": "Engineering1Engineering2Jc",
+            "from": "engineering1Engineering2Jc",
             "to": "engineering2EntranceF1",
             "kind": "outdoorPath",
             "condition": "flat"
@@ -683,7 +894,7 @@
         {
             "id": "engineering1Engineering2JcToLibraryEngineeringJc",
             "name": "제1공학관 제2공학관 분기점-도서관 2공학관 3공학관 분기점",
-            "from": "Engineering1Engineering2Jc",
+            "from": "engineering1Engineering2Jc",
             "to": "libraryEngineeringJc",
             "kind": "outdoorPath",
             "condition": "stair"

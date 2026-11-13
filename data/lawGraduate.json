@@ -1,0 +1,329 @@
+{
+    "note": [
+        "법학관/대학원동 내부",
+        "1층부터 6층까지 엘리베이터와 계단 모두 이동 가능",
+        "출입구는 campus.json의 1층, 3층 출입구를 참조"
+    ],
+    "node": [
+        {
+            "id": "lawGraduateF1Hall",
+            "name": "법학관/대학원동 1층 복도",
+            "buildingId": "lawGraduate",
+            "floor": 1,
+            "kind": "hall"
+        },
+        {
+            "id": "lawGraduateElevatorF1",
+            "name": "법학관/대학원동 1층 엘베",
+            "buildingId": "lawGraduate",
+            "floor": 1,
+            "kind": "elevator"
+        },
+        {
+            "id": "lawGraduateStairF1",
+            "name": "법학관/대학원동 1층 계단",
+            "buildingId": "lawGraduate",
+            "floor": 1,
+            "kind": "stair"
+        },
+        {
+            "id": "lawGraduateF2Hall",
+            "name": "법학관/대학원동 2층 복도",
+            "buildingId": "lawGraduate",
+            "floor": 2,
+            "kind": "hall"
+        },
+        {
+            "id": "lawGraduateElevatorF2",
+            "name": "법학관/대학원동 2층 엘베",
+            "buildingId": "lawGraduate",
+            "floor": 2,
+            "kind": "elevator"
+        },
+        {
+            "id": "lawGraduateStairF2",
+            "name": "법학관/대학원동 2층 계단",
+            "buildingId": "lawGraduate",
+            "floor": 2,
+            "kind": "stair"
+        },
+        {
+            "id": "lawGraduateF3Hall",
+            "name": "법학관/대학원동 3층 복도",
+            "buildingId": "lawGraduate",
+            "floor": 3,
+            "kind": "hall"
+        },
+        {
+            "id": "lawGraduateElevatorF3",
+            "name": "법학관/대학원동 3층 엘베",
+            "buildingId": "lawGraduate",
+            "floor": 3,
+            "kind": "elevator"
+        },
+        {
+            "id": "lawGraduateStairF3",
+            "name": "법학관/대학원동 3층 계단",
+            "buildingId": "lawGraduate",
+            "floor": 3,
+            "kind": "stair"
+        },
+        {
+            "id": "lawGraduateF4Hall",
+            "name": "법학관/대학원동 4층 복도",
+            "buildingId": "lawGraduate",
+            "floor": 4,
+            "kind": "hall"
+        },
+        {
+            "id": "lawGraduateElevatorF4",
+            "name": "법학관/대학원동 4층 엘베",
+            "buildingId": "lawGraduate",
+            "floor": 4,
+            "kind": "elevator"
+        },
+        {
+            "id": "lawGraduateStairF4",
+            "name": "법학관/대학원동 4층 계단",
+            "buildingId": "lawGraduate",
+            "floor": 4,
+            "kind": "stair"
+        },
+        {
+            "id": "lawGraduateF5Hall",
+            "name": "법학관/대학원동 5층 복도",
+            "buildingId": "lawGraduate",
+            "floor": 5,
+            "kind": "hall"
+        },
+        {
+            "id": "lawGraduateElevatorF5",
+            "name": "법학관/대학원동 5층 엘베",
+            "buildingId": "lawGraduate",
+            "floor": 5,
+            "kind": "elevator"
+        },
+        {
+            "id": "lawGraduateStairF5",
+            "name": "법학관/대학원동 5층 계단",
+            "buildingId": "lawGraduate",
+            "floor": 5,
+            "kind": "stair"
+        },
+        {
+            "id": "lawGraduateF6Hall",
+            "name": "법학관/대학원동 6층 복도",
+            "buildingId": "lawGraduate",
+            "floor": 6,
+            "kind": "hall"
+        },
+        {
+            "id": "lawGraduateElevatorF6",
+            "name": "법학관/대학원동 6층 엘베",
+            "buildingId": "lawGraduate",
+            "floor": 6,
+            "kind": "elevator"
+        },
+        {
+            "id": "lawGraduateStairF6",
+            "name": "법학관/대학원동 6층 계단",
+            "buildingId": "lawGraduate",
+            "floor": 6,
+            "kind": "stair"
+        }
+    ],
+    "edges": [
+        {
+            "id": "lawGraduateF1HallToElevator",
+            "name": "법학관/대학원동 1층 복도-엘리베이터",
+            "from": "lawGraduateF1Hall",
+            "to": "lawGraduateElevatorF1",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "lawGraduateF1HallToStair",
+            "name": "법학관/대학원동 1층 복도-계단",
+            "from": "lawGraduateF1Hall",
+            "to": "lawGraduateStairF1",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "lawGraduateF2HallToElevator",
+            "name": "법학관/대학원동 2층 복도-엘리베이터",
+            "from": "lawGraduateF2Hall",
+            "to": "lawGraduateElevatorF2",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "lawGraduateF2HallToStair",
+            "name": "법학관/대학원동 2층 복도-계단",
+            "from": "lawGraduateF2Hall",
+            "to": "lawGraduateStairF2",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "lawGraduateF3HallToElevator",
+            "name": "법학관/대학원동 3층 복도-엘리베이터",
+            "from": "lawGraduateF3Hall",
+            "to": "lawGraduateElevatorF3",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "lawGraduateF3HallToStair",
+            "name": "법학관/대학원동 3층 복도-계단",
+            "from": "lawGraduateF3Hall",
+            "to": "lawGraduateStairF3",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "lawGraduateF4HallToElevator",
+            "name": "법학관/대학원동 4층 복도-엘리베이터",
+            "from": "lawGraduateF4Hall",
+            "to": "lawGraduateElevatorF4",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "lawGraduateF4HallToStair",
+            "name": "법학관/대학원동 4층 복도-계단",
+            "from": "lawGraduateF4Hall",
+            "to": "lawGraduateStairF4",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "lawGraduateF5HallToElevator",
+            "name": "법학관/대학원동 5층 복도-엘리베이터",
+            "from": "lawGraduateF5Hall",
+            "to": "lawGraduateElevatorF5",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "lawGraduateF5HallToStair",
+            "name": "법학관/대학원동 5층 복도-계단",
+            "from": "lawGraduateF5Hall",
+            "to": "lawGraduateStairF5",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "lawGraduateF6HallToElevator",
+            "name": "법학관/대학원동 6층 복도-엘리베이터",
+            "from": "lawGraduateF6Hall",
+            "to": "lawGraduateElevatorF6",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "lawGraduateF6HallToStair",
+            "name": "법학관/대학원동 6층 복도-계단",
+            "from": "lawGraduateF6Hall",
+            "to": "lawGraduateStairF6",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "lawGraduateF1HallToEntrance",
+            "name": "법학관/대학원동 1층 복도-출입구",
+            "from": "lawGraduateF1Hall",
+            "to": "lawGraduateEntranceF1",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "lawGraduateF3HallToEntrance",
+            "name": "법학관/대학원동 3층 복도-출입구",
+            "from": "lawGraduateF3Hall",
+            "to": "lawGraduateEntranceF3",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "lawGraduateElevatorF1ToF2",
+            "name": "법학관/대학원동 엘리베이터 1층-2층",
+            "from": "lawGraduateElevatorF1",
+            "to": "lawGraduateElevatorF2",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "lawGraduateStairF1ToF2",
+            "name": "법학관/대학원동 계단 1층-2층",
+            "from": "lawGraduateStairF1",
+            "to": "lawGraduateStairF2",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "lawGraduateElevatorF2ToF3",
+            "name": "법학관/대학원동 엘리베이터 2층-3층",
+            "from": "lawGraduateElevatorF2",
+            "to": "lawGraduateElevatorF3",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "lawGraduateStairF2ToF3",
+            "name": "법학관/대학원동 계단 2층-3층",
+            "from": "lawGraduateStairF2",
+            "to": "lawGraduateStairF3",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "lawGraduateElevatorF3ToF4",
+            "name": "법학관/대학원동 엘리베이터 3층-4층",
+            "from": "lawGraduateElevatorF3",
+            "to": "lawGraduateElevatorF4",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "lawGraduateStairF3ToF4",
+            "name": "법학관/대학원동 계단 3층-4층",
+            "from": "lawGraduateStairF3",
+            "to": "lawGraduateStairF4",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "lawGraduateElevatorF4ToF5",
+            "name": "법학관/대학원동 엘리베이터 4층-5층",
+            "from": "lawGraduateElevatorF4",
+            "to": "lawGraduateElevatorF5",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "lawGraduateStairF4ToF5",
+            "name": "법학관/대학원동 계단 4층-5층",
+            "from": "lawGraduateStairF4",
+            "to": "lawGraduateStairF5",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "lawGraduateElevatorF5ToF6",
+            "name": "법학관/대학원동 엘리베이터 5층-6층",
+            "from": "lawGraduateElevatorF5",
+            "to": "lawGraduateElevatorF6",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "lawGraduateStairF5ToF6",
+            "name": "법학관/대학원동 계단 5층-6층",
+            "from": "lawGraduateStairF5",
+            "to": "lawGraduateStairF6",
+            "kind": "indoorPath",
+            "condition": "stair"
+        }
+    ]
+}
