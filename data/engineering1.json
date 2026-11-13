@@ -4,11 +4,11 @@
     ],
     "node": [
         {
-            "id": "engineering1F1Jc",
-            "name": "제1공학관 1층 분기점",
+            "id": "engineering1F1Hall",
+            "name": "제1공학관 1층 복도",
             "buildingId": "engineering1",
             "floor": 1,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "engineering1ElevatorF1",
@@ -25,11 +25,11 @@
             "kind": "stair"
         },
         {
-            "id": "engineering1F2Jc",
-            "name": "제1공학관 2층 분기점",
+            "id": "engineering1F2Hall",
+            "name": "제1공학관 2층 복도",
             "buildingId": "engineering1",
             "floor": 2,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "engineering1ElevatorF2",
@@ -46,11 +46,11 @@
             "kind": "stair"
         },
         {
-            "id": "engineering1F3Jc",
-            "name": "제1공학관 3층 분기점",
+            "id": "engineering1F3Hall",
+            "name": "제1공학관 3층 복도",
             "buildingId": "engineering1",
             "floor": 3,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "engineering1ElevatorF3",
@@ -67,11 +67,11 @@
             "kind": "stair"
         },
         {
-            "id": "engineering1F4Jc",
-            "name": "제1공학관 4층 분기점",
+            "id": "engineering1F4Hall",
+            "name": "제1공학관 4층 복도",
             "buildingId": "engineering1",
             "floor": 4,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "engineering1ElevatorF4",
@@ -88,11 +88,11 @@
             "kind": "stair"
         },
         {
-            "id": "engineering1F5Jc",
-            "name": "제1공학관 5층 분기점",
+            "id": "engineering1F5Hall",
+            "name": "제1공학관 5층 복도",
             "buildingId": "engineering1",
             "floor": 5,
-            "kind": "junction"
+            "kind": "hall"
         },
         {
             "id": "engineering1ElevatorF5",
@@ -111,105 +111,169 @@
     ],
     "edges": [
         {
-            "id": "engineering1F1Jc",
-            "name": "제1공학관 1층 분기점-출입구",
-            "from": "engineering1F1Jc",
+            "id": "engineering1F1Hall",
+            "name": "제1공학관 1층 복도-출입구",
+            "from": "engineering1F1Hall",
             "to": "engineering1EntranceF1",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "engineering1F1JcToElevator",
-            "name": "제1공학관 1층 분기점-엘리베이터",
-            "from": "engineering1F1Jc",
+            "id": "engineering1F1HallToElevator",
+            "name": "제1공학관 1층 복도-엘리베이터",
+            "from": "engineering1F1Hall",
             "to": "engineering1ElevatorF1",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "engineering1F1JcToStair",
-            "name": "제1공학관 1층 분기점-계단",
-            "from": "engineering1F1Jc",
+            "id": "engineering1F1HallToStair",
+            "name": "제1공학관 1층 복도-계단",
+            "from": "engineering1F1Hall",
             "to": "engineering1StairF1",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "engineering1F2JcToElevator",
-            "name": "제1공학관 2층 분기점-엘리베이터",
-            "from": "engineering1F2Jc",
+            "id": "engineering1F2HallToElevator",
+            "name": "제1공학관 2층 복도-엘리베이터",
+            "from": "engineering1F2Hall",
             "to": "engineering1ElevatorF2",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "engineering1F2JcToStair",
-            "name": "제1공학관 2층 분기점-계단",
-            "from": "engineering1F2Jc",
+            "id": "engineering1F2HallToStair",
+            "name": "제1공학관 2층 복도-계단",
+            "from": "engineering1F2Hall",
             "to": "engineering1StairF2",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "engineering1F2JcToEntrance",
-            "name": "제1공학관 2층 분기점-출입구",
-            "from": "engineering1F2Jc",
+            "id": "engineering1F2HallToEntrance",
+            "name": "제1공학관 2층 복도-출입구",
+            "from": "engineering1F2Hall",
             "to": "engineering1EntranceF2",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "engineering1F3JcToElevator",
-            "name": "제1공학관 3층 분기점-엘리베이터",
-            "from": "engineering1F3Jc",
+            "id": "engineering1F3HallToElevator",
+            "name": "제1공학관 3층 복도-엘리베이터",
+            "from": "engineering1F3Hall",
             "to": "engineering1ElevatorF3",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "engineering1F3JcToStair",
-            "name": "제1공학관 3층 분기점-계단",
-            "from": "engineering1F3Jc",
+            "id": "engineering1F3HallToStair",
+            "name": "제1공학관 3층 복도-계단",
+            "from": "engineering1F3Hall",
             "to": "engineering1StairF3",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "engineering1F4JcToElevator",
-            "name": "제1공학관 4층 분기점-엘리베이터",
-            "from": "engineering1F4Jc",
+            "id": "engineering1F4HallToElevator",
+            "name": "제1공학관 4층 복도-엘리베이터",
+            "from": "engineering1F4Hall",
             "to": "engineering1ElevatorF4",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "engineering1F4JcToStair",
-            "name": "제1공학관 4층 분기점-계단",
-            "from": "engineering1F4Jc",
+            "id": "engineering1F4HallToStair",
+            "name": "제1공학관 4층 복도-계단",
+            "from": "engineering1F4Hall",
             "to": "engineering1StairF4",
             "kind": "indoorPath",
             "condition": "stair"
         },
         {
-            "id": "engineering1F4JcToEntrance",
-            "name": "제1공학관 4층 분기점-출입구",
-            "from": "engineering1F4Jc",
+            "id": "engineering1F4HallToEntrance",
+            "name": "제1공학관 4층 복도-출입구",
+            "from": "engineering1F4Hall",
             "to": "engineering1EntranceF4",
             "kind": "indoorPath",
             "condition": "flat"
         },
         {
-            "id": "engineering1F5JcToElevator",
-            "name": "제1공학관 5층 분기점-엘리베이터",
-            "from": "engineering1F5Jc",
+            "id": "engineering1F5HallToElevator",
+            "name": "제1공학관 5층 복도-엘리베이터",
+            "from": "engineering1F5Hall",
             "to": "engineering1ElevatorF5",
             "kind": "indoorPath",
             "condition": "elevator"
         },
         {
-            "id": "engineering1F5JcToStair",
-            "name": "제1공학관 5층 분기점-계단",
-            "from": "engineering1F5Jc",
+            "id": "engineering1F5HallToStair",
+            "name": "제1공학관 5층 복도-계단",
+            "from": "engineering1F5Hall",
+            "to": "engineering1StairF5",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "engineering1ElevatorF1ToF2",
+            "name": "제1공학관 1층-2층 엘리베이터",
+            "from": "engineering1ElevatorF1",
+            "to": "engineering1ElevatorF2",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "engineering1ElevatorF2ToF3",
+            "name": "제1공학관 2층-3층 엘리베이터",
+            "from": "engineering1ElevatorF2",
+            "to": "engineering1ElevatorF3",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "engineering1ElevatorF3ToF4",
+            "name": "제1공학관 3층-4층 엘리베이터",
+            "from": "engineering1ElevatorF3",
+            "to": "engineering1ElevatorF4",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "engineering1ElevatorF4ToF5",
+            "name": "제1공학관 4층-5층 엘리베이터",
+            "from": "engineering1ElevatorF4",
+            "to": "engineering1ElevatorF5",
+            "kind": "indoorPath",
+            "condition": "elevator"
+        },
+        {
+            "id": "engineering1StairF1ToF2",
+            "name": "제1공학관 1층-2층 계단",
+            "from": "engineering1StairF1",
+            "to": "engineering1StairF2",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "engineering1StairF2ToF3",
+            "name": "제1공학관 2층-3층 계단",
+            "from": "engineering1StairF2",
+            "to": "engineering1StairF3",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "engineering1StairF3ToF4",
+            "name": "제1공학관 3층-4층 계단",
+            "from": "engineering1StairF3",
+            "to": "engineering1StairF4",
+            "kind": "indoorPath",
+            "condition": "stair"
+        },
+        {
+            "id": "engineering1StairF4ToF5",
+            "name": "제1공학관 4층-5층 계단",
+            "from": "engineering1StairF4",
             "to": "engineering1StairF5",
             "kind": "indoorPath",
             "condition": "stair"
