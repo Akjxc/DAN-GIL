@@ -1,2 +1,17 @@
-# Local JetBrains IDE project settings
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# IDE
 .idea/
+.vscode/
+
+# 환경 변수
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
