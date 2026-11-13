@@ -8,19 +8,6 @@
         "실외 엣지는 기본 양방향으로 사용하는지 백엔드 규칙 확인 필요"
     ],
     "conditionPendingEdgeIds": [
-        "educationEntranceF1ToEducationBusinessJc",
-        "educationBusinessJcToBusinessEntranceF1",
-        "businessEntranceF1ToBusinessHumanityJc",
-        "businessHumanityJcToHumanityEntranceF1",
-        "educationBusinessEntranceF5ToBusinessHumanityEntranceF5",
-        "businessHumanityEntranceF5ToBackwardJc",
-        "humanityEntranceF1ToHyeDangHumanityJc",
-        "hyeDangHumanityJcToHyeDangLibraryJc",
-        "hyeDangLibraryJcToHyeDangEntranceF1",
-        "hyeDangEntranceF4ToHyeDangBearStatueJc",
-        "hyeDangBearStatueJcToBearStatue",
-        "backwardJcToHumanityLawGraduateBearStatueJc",
-        "lawGraduateEntranceF3ToHumanityLawGraduateBearStatueJc",
         "humanityLawGraduateBearStatueJcToLawGraduateHyeDangBearStatueJc",
         "lawGraduateHyeDangBearStatueJcToLawGraduateEntranceF1",
         "lawGraduateHyeDangBearStatueJcToHyeDangBearStatueJc",
@@ -42,7 +29,8 @@
         "19번은 제3공학관 위쪽 3층 출입구와 연결",
         "혜당관 2층 출입구는 6번과 8번에만 직접 연결",
         "혜당관 2층 출입구와 1층 출입구 사이는 계단",
-        "17번 혜당관 도서관 분기점과 19번 혜당관 제3공학관 분기점 사이는 야외 평지"
+        "17번 혜당관 도서관 분기점과 19번 혜당관 제3공학관 분기점 사이는 야외 평지",
+        "사범관 상경관 계단 분기점에서 인문관 상경관 사범관 뒤쪽 분기점 방향은 야외 평지"
     ],
     "unresolvedConnections": []
 }
