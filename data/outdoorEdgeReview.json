@@ -7,11 +7,7 @@
         "확인되지 않은 condition은 null로 유지",
         "실외 엣지는 기본 양방향으로 사용하는지 백엔드 규칙 확인 필요"
     ],
-    "conditionPendingEdgeIds": [
-        "lawGraduateEntranceF3ToLawGraduateHyeDangBearStatueJc",
-        "hyeDangHumanityJcToHumanityLawGraduateBearStatueJc",
-        "humanityLawGraduateBearStatueJcToLawGraduateEntranceF1"
-    ],
+    "conditionPendingEdgeIds": [],
     "confirmedNoDirectConnections": [
         {
             "from": "lawGraduateEntranceF3",
