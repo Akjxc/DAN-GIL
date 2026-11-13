@@ -652,6 +652,62 @@
             "to": "hyeDangEngineering3Jc",
             "kind": "outdoorPath",
             "condition": null
+        },
+        {
+            "id": "backwardJcToHumanityLawGraduateBearStatueJc",
+            "name": "인문관 상경관 사범관 뒤쪽 분기점-인문관 법학관/대학원동 곰상 분기점",
+            "from": "educationBusinessHumanityBackwardJc",
+            "to": "humanityLawGraduateBearStatueJc",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "lawGraduateEntranceF3ToHumanityLawGraduateBearStatueJc",
+            "name": "법학관/대학원동 3층 출입구-인문관 법학관/대학원동 곰상 분기점",
+            "from": "lawGraduateEntranceF3",
+            "to": "humanityLawGraduateBearStatueJc",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "humanityLawGraduateBearStatueJcToLawGraduateHyeDangBearStatueJc",
+            "name": "인문관 법학관/대학원동 곰상 분기점-법학관/대학원동 혜당관 곰상 분기점",
+            "from": "humanityLawGraduateBearStatueJc",
+            "to": "lawGraduateHyeDangBearStatueJc",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "lawGraduateHyeDangBearStatueJcToLawGraduateEntranceF1",
+            "name": "법학관/대학원동 혜당관 곰상 분기점-법학관/대학원동 1층 출입구",
+            "from": "lawGraduateHyeDangBearStatueJc",
+            "to": "lawGraduateEntranceF1",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "lawGraduateHyeDangBearStatueJcToHyeDangBearStatueJc",
+            "name": "법학관/대학원동 혜당관 곰상 분기점-혜당관 곰상 분기점",
+            "from": "lawGraduateHyeDangBearStatueJc",
+            "to": "hyeDangBearStatueJc",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "hyeDangEntranceF4ToHyeDangYardJc",
+            "name": "혜당관 4층 출입구-혜당관 노천마당 분기점",
+            "from": "hyeDangEntranceF4",
+            "to": "hyeDangYardJc",
+            "kind": "outdoorPath",
+            "condition": null
+        },
+        {
+            "id": "hyeDangEngineering3JcToEngineering3EntranceF3",
+            "name": "혜당관 제3공학관 분기점-제3공학관 3층 출입구",
+            "from": "hyeDangEngineering3Jc",
+            "to": "engineering3EntranceF3",
+            "kind": "outdoorPath",
+            "condition": null
         }
     ]
 }
