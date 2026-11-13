@@ -1,6 +1,82 @@
 import networkx as nx
+import re
 
 from backend.graph import load_graph
+
+
+BUILDING_ALIASES = {
+    "softwareMedia": ["소미관", "소프트웨어관", "소프트웨어ICT관", "미디어관", "미디어센터", "소프트웨어/미디어관"],
+    "engineering1": ["제1공학관", "1공학관"],
+    "engineering2": ["제2공학관", "2공학관"],
+    "engineering3": ["제3공학관", "3공학관"],
+    "library": ["도서관", "퇴계기념중앙도서관", "중앙도서관"],
+    "social": ["사회과학관", "사과관"],
+    "humanity": ["인문관"], "business": ["상경관"],
+    "education": ["사범관"], "hyeDang": ["혜당관", "학생회관"],
+    "lawGraduate": ["법학관", "대학원동", "법학관/대학원동"],
+    "beomJung": ["범정관"], "international": ["국제관"],
+}
+
+
+def place_info(graph, node_id):
+    """Return only fields accepted by the AI interface."""
+    node = graph.nodes[node_id]
+    return {"id": node_id, "name": node["name"],
+            "building_id": node.get("buildingId"), "floor": node.get("floor"),
+            "kind": node.get("kind")}
+
+
+def search_places(query, graph=None):
+    """Search IDs, names, building aliases and floors; keep ambiguous candidates.
+
+    A specified floor without a facility kind targets that floor's hall.
+    A building without a floor returns its entrances for user clarification.
+    """
+    if graph is None:
+        graph = load_graph()
+    normalize = lambda value: re.sub(r"\s+", "", value).casefold()
+    text = normalize(query)
+    if not text:
+        return {"matches": []}
+    exact = [i for i, n in graph.nodes(data=True)
+             if text in (normalize(i), normalize(n.get("name", "")))]
+    if exact:
+        return {"matches": [place_info(graph, i) for i in exact[:50]]}
+    if text in {"정문", "단국대정문", "단국대학교정문"} and "mainGate" in graph:
+        return {"matches": [place_info(graph, "mainGate")]}
+    # Do not silently turn an unmapped classroom into a building entrance.
+    if re.search(r"\d+호", text):
+        return {"matches": []}
+    floor_match = re.search(r"(지하|b)?(-?\d+)층", text)
+    floor = None
+    if floor_match:
+        floor = int(floor_match.group(2))
+        if floor_match.group(1):
+            floor = -abs(floor)
+    kind = next((value for word, value in [
+        ("엘리베이터", "elevator"), ("엘베", "elevator"), ("계단", "stair"),
+        ("복도", "hall"), ("출입구", "entrance"), ("입구", "entrance"),
+    ] if word in text), None)
+    hits = [(len(normalize(alias)), bid) for bid, aliases in BUILDING_ALIASES.items()
+            for alias in [bid, *aliases] if normalize(alias) in text]
+    longest = max((length for length, _ in hits), default=0)
+    buildings = {bid for length, bid in hits if length == longest}
+    if not buildings and text.startswith("공학관"):
+        buildings = {"engineering1", "engineering2", "engineering3"}
+    matches = []
+    for node_id, node in graph.nodes(data=True):
+        if buildings:
+            if node.get("buildingId") not in buildings:
+                continue
+            if floor is not None and node.get("floor") != floor:
+                continue
+            target_kind = kind or ("hall" if floor is not None else "entrance")
+            if node.get("kind") != target_kind:
+                continue
+        elif text not in normalize(node.get("name", "")):
+            continue
+        matches.append(place_info(graph, node_id))
+    return {"matches": sorted(matches, key=lambda n: n["id"])[:50]}
 
 def find_route(graph, start, end, excluded_kinds=None, excluded_conditions=None):
     #제외 조건을 전달하지 않으면 빈 목록 사용
