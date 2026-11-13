@@ -1,0 +1,11 @@
+[project]
+name = "dankil-backend"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn"
+]
+
+[tool.vercel]
+entrypoint = "backend.main:app"
