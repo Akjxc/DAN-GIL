@@ -162,6 +162,8 @@
         {
             "id": "mainGate",
             "name": "단국대 정문",
+            "latitude": 37.32330988480288,
+            "longitude": 127.12557343165443,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -169,6 +171,8 @@
         {
             "id": "bearStatue",
             "name": "곰상(평화의광장)",
+            "latitude": 37.31995442721189,
+            "longitude": 127.12893550263193,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -176,6 +180,8 @@
         {
             "id": "softwareEntranceB1",
             "name": "소프트웨어 ICT관 지하1층 출입구",
+            "latitude": 37.322596662112694,
+            "longitude": 127.12689227603678,
             "buildingId": "softwareMedia",
             "floor": -1,
             "kind": "entrance"
@@ -183,6 +189,8 @@
         {
             "id": "softwareEntranceF1",
             "name": "소프트웨어 ICT관 1층 출입구",
+            "latitude": 37.32283474394186,
+            "longitude": 127.12753577044177,
             "buildingId": "softwareMedia",
             "floor": 1,
             "kind": "entrance"
@@ -190,6 +198,8 @@
         {
             "id": "softwareEntranceF3",
             "name": "소프트웨어 ICT관 3층 출입구",
+            "latitude": 37.32254136668526,
+            "longitude": 127.12803733740643,
             "buildingId": "softwareMedia",
             "floor": 3,
             "kind": "entrance"
@@ -197,6 +207,8 @@
         {
             "id": "humanityEntranceF1",
             "name": "인문관 1층 출입구",
+            "latitude": 37.32174104085529,
+            "longitude": 127.12864521786699,
             "buildingId": "humanity",
             "floor": 1,
             "kind": "entrance"
@@ -204,6 +216,8 @@
         {
             "id": "businessEntranceF1",
             "name": "상경관 1층 출입구",
+            "latitude": 37.322299673967166,
+            "longitude": 127.1286518112243,
             "buildingId": "business",
             "floor": 1,
             "kind": "entrance"
@@ -211,6 +225,8 @@
         {
             "id": "educationEntranceF1",
             "name": "사범관 1층 출입구",
+            "latitude": 37.32284254205143,
+            "longitude": 127.12865555722723,
             "buildingId": "education",
             "floor": 1,
             "kind": "entrance"
@@ -218,6 +234,8 @@
         {
             "id": "educationBusinessEntranceF5",
             "name": "사범관 상경관 5층 출입구",
+            "latitude": 37.321886430463714,
+            "longitude": 127.12958753028045,
             "buildingId": null,
             "floor": null,
             "kind": "entrance"
@@ -225,6 +243,8 @@
         {
             "id": "businessHumanityEntranceF5",
             "name": "상경관 인문관 5층 출입구",
+            "latitude": 37.322717622260555,
+            "longitude": 127.1295974192392,
             "buildingId": null,
             "floor": null,
             "kind": "entrance"
@@ -232,6 +252,8 @@
         {
             "id": "lawGraduateEntranceF1",
             "name": "법학관/대학원동 1층 출입구",
+            "latitude": 37.320884742002654,
+            "longitude": 127.12893709189474,
             "buildingId": "lawGraduate",
             "floor": 1,
             "kind": "entrance"
@@ -239,6 +261,8 @@
         {
             "id": "lawGraduateEntranceF3",
             "name": "법학관/대학원동 3층 출입구",
+            "latitude": 37.321068713858395,
+            "longitude": 127.12961433148888,
             "buildingId": "lawGraduate",
             "floor": 3,
             "kind": "entrance"
@@ -246,6 +270,8 @@
         {
             "id": "socialEntranceF1",
             "name": "사회과학관 1층 출입구",
+            "latitude": 37.321478673732955,
+            "longitude": 127.12544346060452,
             "buildingId": "social",
             "floor": 1,
             "kind": "entrance"
@@ -253,6 +279,8 @@
         {
             "id": "socialEntranceF2",
             "name": "사회과학관 2층 출입구",
+            "latitude": 37.32136588326542,
+            "longitude": 127.12559558193611,
             "buildingId": "social",
             "floor": 2,
             "kind": "entrance"
@@ -260,6 +288,8 @@
         {
             "id": "engineering1EntranceF1",
             "name": "제1공학관 1층 출입구",
+            "latitude": 37.32112224209636,
+            "longitude": 127.12593645992405,
             "buildingId": "engineering1",
             "floor": 1,
             "kind": "entrance"
@@ -267,6 +297,8 @@
         {
             "id": "engineering1EntranceF2",
             "name": "제1공학관 2층 출입구",
+            "latitude": 37.32103427142068,
+            "longitude": 127.12604913397273,
             "buildingId": "engineering1",
             "floor": 2,
             "kind": "entrance"
@@ -274,6 +306,8 @@
         {
             "id": "engineering1EntranceF4",
             "name": "제1공학관 4층 출입구",
+            "latitude": 37.320784700119475,
+            "longitude": 127.12561153787178,
             "buildingId": "engineering1",
             "floor": 4,
             "kind": "entrance"
@@ -281,6 +315,8 @@
         {
             "id": "engineering2EntranceF1",
             "name": "제2공학관 1층 출입구",
+            "latitude": 37.320763594984925,
+            "longitude": 127.1263927842381,
             "buildingId": "engineering2",
             "floor": 1,
             "kind": "entrance"
@@ -288,6 +324,8 @@
         {
             "id": "engineering2EntranceF2",
             "name": "제2공학관 2층 출입구",
+            "latitude": 37.32067111569938,
+            "longitude": 127.12650827017058,
             "buildingId": "engineering2",
             "floor": 2,
             "kind": "entrance"
@@ -295,6 +333,8 @@
         {
             "id": "engineering2EntranceF3",
             "name": "제2공학관 3층 출입구",
+            "latitude": 37.320421546079665,
+            "longitude": 127.12607067466533,
             "buildingId": "engineering2",
             "floor": 3,
             "kind": "entrance"
@@ -302,6 +342,8 @@
         {
             "id": "engineering3EntranceF1",
             "name": "제3공학관 1층 출입구",
+            "latitude": 37.320400462106214,
+            "longitude": 127.12682935319877,
             "buildingId": "engineering3",
             "floor": 1,
             "kind": "entrance"
@@ -309,6 +351,8 @@
         {
             "id": "engineering3EntranceF3",
             "name": "제3공학관 3층 출입구",
+            "latitude": 37.32030345907815,
+            "longitude": 127.1269617533944,
             "buildingId": "engineering3",
             "floor": 3,
             "kind": "entrance"
@@ -316,6 +360,8 @@
         {
             "id": "engineering3EntranceF2",
             "name": "제3공학관 2층 출입구",
+            "latitude": 37.32003586445877,
+            "longitude": 127.12652976927826,
             "buildingId": "engineering3",
             "floor": 2,
             "kind": "entrance"
@@ -323,6 +369,8 @@
         {
             "id": "internationalEntranceF1",
             "name": "국제관 1층 출입구",
+            "latitude": 37.31907331793525,
+            "longitude": 127.1271768586556,
             "buildingId": "international",
             "floor": 1,
             "kind": "entrance"
@@ -330,6 +378,8 @@
         {
             "id": "hyeDangEntranceF1",
             "name": "혜당관 1층 출입구",
+            "latitude": 37.32055215722944,
+            "longitude": 127.12820319299595,
             "buildingId": "hyeDang",
             "floor": 1,
             "kind": "entrance"
@@ -337,6 +387,8 @@
         {
             "id": "hyeDangEntranceF2",
             "name": "혜당관 2층 출입구",
+            "latitude": 37.32078603978935,
+            "longitude": 127.12855897472905,
             "buildingId": "hyeDang",
             "floor": 2,
             "kind": "entrance"
@@ -344,6 +396,8 @@
         {
             "id": "hyeDangEntranceF4",
             "name": "혜당관 4층 출입구",
+            "latitude": 37.32046158577733,
+            "longitude": 127.12863457556605,
             "buildingId": "hyeDang",
             "floor": 4,
             "kind": "entrance"
@@ -351,6 +405,8 @@
         {
             "id": "educationBusinessHumanityBackwardJc",
             "name": "인문관 상경관 사범관 뒤쪽 분기점",
+            "latitude": 37.32194503454217,
+            "longitude": 127.1295537842472,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -358,6 +414,8 @@
         {
             "id": "humanityLawGraduateBearStatueJc",
             "name": "인문관 법학관/대학원동 곰상 분기점",
+            "latitude": 37.32142852005308,
+            "longitude": 127.12810314233856,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -365,6 +423,8 @@
         {
             "id": "mainGateJc",
             "name": "정문 분기점",
+            "latitude": 37.32287893723468,
+            "longitude": 127.12623555321355,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -372,6 +432,8 @@
         {
             "id": "dentalJc",
             "name": "치과대학 분기점",
+            "latitude": 37.322071122669584,
+            "longitude": 127.1254247014064,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -379,6 +441,8 @@
         {
             "id": "softwareEntranceB1Jc",
             "name": "소프트웨어ICT관 지하1층 출입구 분기점",
+            "latitude": 37.32262593957103,
+            "longitude": 127.12689796642344,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -386,6 +450,8 @@
         {
             "id": "educationBusinessJc",
             "name": "사범관 상경관 계단 분기점",
+            "latitude": 37.322585607095064,
+            "longitude": 127.12878486584881,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -393,6 +459,8 @@
         {
             "id": "businessHumanityJc",
             "name": "상경관 인문관 계단 분기점",
+            "latitude": 37.322026992436044,
+            "longitude": 127.12876134815929,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -400,6 +468,8 @@
         {
             "id": "lawGraduateHyeDangBearStatueJc",
             "name": "법학관/대학원동 혜당관 곰상 분기점",
+            "latitude": 37.32055787826172,
+            "longitude": 127.1291565327386,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -407,6 +477,8 @@
         {
             "id": "hyeDangBearStatueJc",
             "name": "혜당관 곰상 분기점",
+            "latitude": 37.32019569566837,
+            "longitude": 127.12871309611538,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -414,6 +486,8 @@
         {
             "id": "hyeDangYardJc",
             "name": "혜당관 노천마당 분기점",
+            "latitude": 37.319799796062625,
+            "longitude": 127.12820191505789,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -421,6 +495,8 @@
         {
             "id": "hyeDangHumanityJc",
             "name": "혜당관 인문관 분기점",
+            "latitude": 37.32131574145764,
+            "longitude": 127.12824115695368,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -428,6 +504,8 @@
         {
             "id": "hyeDangEngineering3Jc",
             "name": "혜당관 제3공학관 분기점",
+            "latitude": 37.320422354604204,
+            "longitude": 127.12741887407157,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -435,6 +513,8 @@
         {
             "id": "hyeDangLibraryJc",
             "name": "혜당관 도서관 분기점",
+            "latitude": 37.32084308469039,
+            "longitude": 127.12788496912023,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -442,6 +522,8 @@
         {
             "id": "beomJungSocialJc",
             "name": "범정관 사회과학관 분기점",
+            "latitude": 37.321649360375616,
+            "longitude": 127.1259232367674,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -449,6 +531,8 @@
         {
             "id": "beomJungEntranceJc",
             "name": "범정관 입구 분기점",
+            "latitude": 37.321997962552565,
+            "longitude": 127.12643715976128,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -456,6 +540,8 @@
         {
             "id": "beomJungSoftwareJc",
             "name": "범정관 소프트웨어ICT관 분기점",
+            "latitude": 37.32238265211878,
+            "longitude": 127.12690601906773,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -463,6 +549,8 @@
         {
             "id": "beomJungEntranceF1",
             "name": "범정관 1층 출입구",
+            "latitude": 37.3219618700632,
+            "longitude": 127.12648504874055,
             "buildingId": "beomJung",
             "floor": 1,
             "kind": "entrance"
@@ -470,6 +558,8 @@
         {
             "id": "engineering1Engineering2Jc",
             "name": "제1공학관 제2공학관 분기점",
+            "latitude": 37.32115991310853,
+            "longitude": 127.12652037158178,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -477,6 +567,8 @@
         {
             "id": "libraryEngineeringJc",
             "name": "도서관, 제2공학관, 제3공학관 분기점",
+            "latitude": 37.320808027540004,
+            "longitude": 127.12697106369616,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -484,6 +576,8 @@
         {
             "id": "libraryMainroadJc",
             "name": "도서관 중앙로 분기점",
+            "latitude": 37.321642813867825,
+            "longitude": 127.12782709279519,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -491,6 +585,8 @@
         {
             "id": "libraryBeomJungJc",
             "name": "도서관 범정관 분기점",
+            "latitude": 37.32154234377656,
+            "longitude": 127.1269948633722,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -498,6 +594,8 @@
         {
             "id": "libraryEntranceF1",
             "name": "도서관 1층 출입구",
+            "latitude": 37.321373158050164,
+            "longitude": 127.1272202213763,
             "buildingId": "library",
             "floor": 1,
             "kind": "entrance"
@@ -505,6 +603,8 @@
         {
             "id": "libraryEntranceF2",
             "name": "도서관 2층 출입구",
+            "latitude": 37.32130774835433,
+            "longitude": 127.12729908591076,
             "buildingId": "library",
             "floor": 2,
             "kind": "entrance"
@@ -512,6 +612,8 @@
         {
             "id": "libraryEntranceF3",
             "name": "도서관 3층 출입구",
+            "latitude": 37.32107313997747,
+            "longitude": 127.12761458878663,
             "buildingId": "library",
             "floor": 3,
             "kind": "entrance"
@@ -519,6 +621,8 @@
         {
             "id": "labJc",
             "name": "종합실험동 앞 분기점",
+            "latitude": 37.32026182619038,
+            "longitude": 127.12587015294454,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
@@ -526,6 +630,8 @@
         {
             "id": "parkingJc",
             "name": "주차빌딩 앞 분기점",
+            "latitude": 37.32064309869818,
+            "longitude": 127.12531796955216,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"
