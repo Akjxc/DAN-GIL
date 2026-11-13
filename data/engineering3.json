@@ -6,98 +6,107 @@
     {
       "id": "engineering3F1Jc",
       "name": "제3공학관 1층 분기점",
+      "buildingId": "engineering3",
       "floor": 1,
       "kind": "junction"
     },
     {
       "id": "engineering3ElevatorF1",
       "name": "제3공학관 1층 엘베",
+      "buildingId": "engineering3",
       "floor": 1,
       "kind": "elevator"
     },
     {
       "id": "engineering3StairF1",
       "name": "제3공학관 1층 계단",
+      "buildingId": "engineering3",
       "floor": 1,
       "kind": "stair"
     },
     {
       "id": "engineering3F2Jc",
       "name": "제3공학관 2층 분기점",
+      "buildingId": "engineering3",
       "floor": 2,
       "kind": "junction"
     },
     {
       "id": "engineering3ElevatorF2",
       "name": "제3공학관 2층 엘베",
+      "buildingId": "engineering3",
       "floor": 2,
       "kind": "elevator"
     },
     {
       "id": "engineering3StairF2",
       "name": "제3공학관 2층 계단",
+      "buildingId": "engineering3",
       "floor": 2,
       "kind": "stair"
     },
     {
       "id": "engineering3F3Jc",
       "name": "제3공학관 3층 분기점",
+      "buildingId": "engineering3",
       "floor": 3,
       "kind": "junction"
     },
     {
       "id": "engineering3ElevatorF3",
       "name": "제3공학관 3층 엘베",
+      "buildingId": "engineering3",
       "floor": 3,
       "kind": "elevator"
     },
     {
       "id": "engineering3StairF3",
       "name": "제3공학관 3층 계단",
+      "buildingId": "engineering3",
       "floor": 3,
       "kind": "stair"
     },
     {
       "id": "engineering3F4Jc",
       "name": "제3공학관 4층 분기점",
+      "buildingId": "engineering3",
       "floor": 4,
       "kind": "junction"
     },
     {
       "id": "engineering3ElevatorF4",
       "name": "제3공학관 4층 엘베",
+      "buildingId": "engineering3",
       "floor": 4,
       "kind": "elevator"
     },
     {
       "id": "engineering3StairF4",
       "name": "제3공학관 4층 계단",
+      "buildingId": "engineering3",
       "floor": 4,
       "kind": "stair"
     },
     {
       "id": "engineering3F5Jc",
       "name": "제3공학관 5층 분기점",
+      "buildingId": "engineering3",
       "floor": 5,
       "kind": "junction"
     },
     {
       "id": "engineering3ElevatorF5",
       "name": "제3공학관 5층 엘베",
+      "buildingId": "engineering3",
       "floor": 5,
       "kind": "elevator"
     },
     {
       "id": "engineering3StairF5",
       "name": "제3공학관 5층 계단",
+      "buildingId": "engineering3",
       "floor": 5,
       "kind": "stair"
-    },
-    {
-      "id": "engineering3PortalF2",
-      "name": "제3공학관 2층 포탈",
-      "floor": 2,
-      "kind": "portal"
     }
   ],
   "edges": [
@@ -142,12 +151,12 @@
       "condition": "stair"
     },
     {
-      "id": "engineering3F2JcToPortal",
-      "name": "제3공학관 2층 분기점-포탈",
+      "id": "engineering3F2JcToEntrance",
+      "name": "제3공학관 2층 분기점-출입구",
       "from": "engineering3F2Jc",
-      "to": "engineering3PortalF2",
+      "to": "engineering3EntranceF2",
       "kind": "indoorPath",
-      "condition": "portal"
+      "condition": "flat"
     },
     {
       "id": "engineering3F3JcToElevator",

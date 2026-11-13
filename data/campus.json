@@ -211,6 +211,13 @@
             "kind": "entrance"
         },
         {
+            "id": "engineering1EntranceF4",
+            "name": "제1공학관 4층 출입구",
+            "buildingId": "engineering1",
+            "floor": 4,
+            "kind": "entrance"
+        },
+        {
             "id": "engineering2EntranceF1",
             "name": "제2공학관 1층 출입구",
             "buildingId": "engineering2",
@@ -225,6 +232,13 @@
             "kind": "entrance"
         },
         {
+            "id": "engineering2EntranceF3",
+            "name": "제2공학관 3층 출입구",
+            "buildingId": "engineering2",
+            "floor": 3,
+            "kind": "entrance"
+        },
+        {
             "id": "engineering3EntranceF1",
             "name": "제3공학관 1층 출입구",
             "buildingId": "engineering3",
@@ -236,6 +250,13 @@
             "name": "제3공학관 3층 출입구",
             "buildingId": "engineering3",
             "floor": 3,
+            "kind": "entrance"
+        },
+        {
+            "id": "engineering3EntranceF2",
+            "name": "제3공학관 2층 출입구",
+            "buildingId": "engineering3",
+            "floor": 2,
             "kind": "entrance"
         },
         {
