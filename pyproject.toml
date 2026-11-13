@@ -6,6 +6,3 @@ dependencies = [
     "fastapi",
     "uvicorn"
 ]
-
-[tool.vercel]
-entrypoint = "backend.main:app"
