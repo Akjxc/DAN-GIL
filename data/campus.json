@@ -1034,6 +1034,22 @@
             "to": "libraryEntranceF2",
             "kind": "outdoorPath",
             "condition": "stair"
+        },
+        {
+            "id": "engineering1EntranceF4ToEngineering2EntranceF3",
+            "name": "제1공학관 4층 출입구-제2공학관 3층 출입구",
+            "from": "engineering1EntranceF4",
+            "to": "engineering2EntranceF3",
+            "kind": "indoorPath",
+            "condition": "flat"
+        },
+        {
+            "id": "engineering2EntranceF3ToEngineering3EntranceF2",
+            "name": "제2공학관 3층 출입구-제3공학관 2층 출입구",
+            "from": "engineering2EntranceF3",
+            "to": "engineering3EntranceF2",
+            "kind": "indoorPath",
+            "condition": "flat"
         }
     ]
 }
