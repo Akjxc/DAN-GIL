@@ -244,10 +244,20 @@ export default function CampusExperience() {
           <button className="swap" aria-label="출발지와 도착지 바꾸기" onClick={() => { setStart(end); setEnd(start); clear(); }}>⇅</button>
         </div>
         {placesError && <p className="mode-warning" role="status">{placesError}</p>}
+        </div>
+        {panelMode === 'chatbot' && <section id="panel-chatbot" className="panel-chat" role="tabpanel" aria-labelledby="tab-chatbot">
+          <div className="chat-intro"><span className="chat-intro-icon">✦</span><h2>말로 찾는 캠퍼스의 길</h2><p>출발지와 목적지를 알려주세요.<br/>이동 조건까지 함께 안내할게요.</p></div>
+          <div className="panel-messages" aria-live="polite" aria-busy={busy}>{messages.map((m,i) => <div className={'panel-message ' + m.role} key={i}>{m.role === 'bot' && <span className="bot-avatar" aria-hidden="true">D</span>}<p>{m.text}</p></div>)}{busy && <div className="panel-message bot"><span className="bot-avatar">D</span><p className="chat-typing">경로를 확인하고 있어요<span>···</span></p></div>}<div ref={chatBottomRef}/></div>
+          <form className="panel-chat-form" onSubmit={send}><label className="sr-only" htmlFor="panel-question">캠퍼스 길찾기 질문</label><textarea id="panel-question" rows={2} placeholder="예: 정문에서 곰상까지 계단 없이" value={input} maxLength={4000} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); send(e); } }}/><button disabled={busy || !input.trim()} aria-label="질문 보내기">↑</button></form>
+          <p className="chat-keyboard-hint">Enter로 전송 · Shift + Enter로 줄바꿈</p>
+        </section>}
+        <div className="manual-panel shared-route-controls">
+        {panelMode === 'manual' && <>
         <h3 className="section-label">이동 방식</h3><div className="mode-grid">{modes.map(m => <button key={m.id} style={{ '--mode-color': m.color }} className={mode === m.id ? 'mode selected' : 'mode'} onClick={() => choose(setMode, m.id)}><span>{m.icon}</span><b>{m.name}</b><small>{m.sub}</small></button>)}</div>
         {mode === 'accessible' && <p className="fine-print">휠체어 이용자를 위해 계단 구간을 제외하고 엘리베이터와 연결 통로를 이용합니다.</p>}
         {mode === 'indoor' && <p className="fine-print">실내 연결을 우선하고, 밖으로 나가야 하면 실외 이동 거리가 가장 짧은 길을 찾습니다.</p>}
         <button className="search-button" disabled={routeBusy} onClick={search}>{routeBusy ? '경로 계산 중…' : '경로 찾기'} <span>↗</span></button>
+        </>}
         {routeError && <p className="mode-warning" role="alert">경로를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</p>}
         <div className="results" aria-live="polite">
           {!searched ? <div className="empty-result"><span>⌁</span><b>다음 목적지를 정해보세요</b><p>출발지와 도착지를 선택하면<br/>이동 경로를 안내합니다.</p></div> :
@@ -262,12 +272,6 @@ export default function CampusExperience() {
           <ol>{buildGuidance(route, routeNames).map((step, index) => <li key={index}><span className="guide-number">{String(index + 1).padStart(2, '0')}</span><div><small style={step.highlightedException ? { color: ROUTE_EXCEPTION_COLOR } : undefined}>{step.label}</small><b>{step.title}</b>{step.detail && <p>{step.detail}</p>}</div></li>)}</ol>
         </section>}
         </div>
-        {panelMode === 'chatbot' && <section id="panel-chatbot" className="panel-chat" role="tabpanel" aria-labelledby="tab-chatbot">
-          <div className="chat-intro"><span className="chat-intro-icon">✦</span><h2>말로 찾는 캠퍼스의 길</h2><p>출발지와 목적지를 알려주세요.<br/>이동 조건까지 함께 안내할게요.</p></div>
-          <div className="panel-messages" aria-live="polite" aria-busy={busy}>{messages.map((m,i) => <div className={'panel-message ' + m.role} key={i}>{m.role === 'bot' && <span className="bot-avatar" aria-hidden="true">D</span>}<p>{m.text}</p></div>)}{busy && <div className="panel-message bot"><span className="bot-avatar">D</span><p className="chat-typing">경로를 확인하고 있어요<span>···</span></p></div>}<div ref={chatBottomRef}/></div>
-          <form className="panel-chat-form" onSubmit={send}><label className="sr-only" htmlFor="panel-question">캠퍼스 길찾기 질문</label><textarea id="panel-question" rows={2} placeholder="예: 정문에서 곰상까지 계단 없이" value={input} maxLength={4000} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); send(e); } }}/><button disabled={busy || !input.trim()} aria-label="질문 보내기">↑</button></form>
-          <p className="chat-keyboard-hint">Enter로 전송 · Shift + Enter로 줄바꿈</p>
-        </section>}
       </aside>
       <main className="map-panel"><div className="map-toolbar"><div><i /> 단국대학교 <b>죽전캠퍼스</b><span className="map-kind">{live ? '카카오맵' : '좌표 기반 캠퍼스맵'}</span></div><button onClick={() => { if (hasKakaoMapKey()) setLive(v => !v); else setMapError('카카오 지도를 사용하려면 frontend/.env에 VITE_KAKAO_MAP_KEY를 설정해 주세요.'); }}>{live ? '캠퍼스맵 보기' : '카카오맵 보기'} ↗</button></div>
         <div className="map-surface">{live ? <LiveMap routeColor={chosenMode.color} {...{route,start,end,showEntrances,filter}} onPick={setSelected} onError={e => { setMapError(e.message); setLive(false); }} /> : <div className="map-scroll"><svg className="campus-svg" viewBox="0 0 1060 960" style={{width: `${zoom * 100}%`, height: `${zoom * 100}%`}} aria-label="실제 입력 좌표로 배치한 캠퍼스 연결 지도">
