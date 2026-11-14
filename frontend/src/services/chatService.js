@@ -22,6 +22,12 @@ export async function sendChatMessage(message, messages = []) {
 
   const answer = await response.json().catch(() => null);
   if (!response.ok) {
+    if (response.status === 429) {
+      throw new Error(
+        answer?.detail?.message ||
+          "채팅 요청 한도에 도달했어요. 잠시 후 다시 시도해 주세요. 지도에서 ‘경로 찾기’는 계속 이용할 수 있어요.",
+      );
+    }
     throw new Error(
       answer?.detail?.message ??
         (response.status === 422

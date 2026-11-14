@@ -21,11 +21,27 @@ test('places, routes and chat preserve local paths and request data', async (t) 
   assert.equal(requests[1].options.signal, signal);
   assert.equal(requests[1].options.method, 'POST');
   assert.deepEqual(JSON.parse(requests[1].options.body), {
-    start_node_id: 'mainGate', end_node_id: 'mainGate', exclude_conditions: ['stair'], exclude_kinds: [],
+    start_node_id: 'mainGate', end_node_id: 'mainGate', exclude_conditions: ['stair'], allow_exceptions: true, exclude_kinds: [],
   });
   assert.deepEqual(JSON.parse(requests[2].options.body), {
     message: '안녕', history: [{ role: 'assistant', content: '어디로 가시나요?' }],
   });
+});
+
+test('route modes keep upstream indoor and exception options', async (t) => {
+  const requests = [];
+  t.mock.method(globalThis, 'fetch', async (url, options) => {
+    requests.push({ url, body: JSON.parse(options.body) });
+    return Response.json({ status: 'ok', nodes: [], edges: [] });
+  });
+  await requestRoute('start', 'end', false);
+  await requestRoute('start', 'end', false, undefined, 'indoor');
+  await requestRoute('start', 'end', true, undefined, 'indoor');
+  assert.deepEqual(requests, [
+    { url: '/api/routes', body: { start_node_id: 'start', end_node_id: 'end', exclude_conditions: [], allow_exceptions: false, exclude_kinds: [] } },
+    { url: '/api/routes', body: { start_node_id: 'start', end_node_id: 'end', exclude_conditions: [], allow_exceptions: true, exclude_kinds: ['outdoorPath'] } },
+    { url: '/api/routes', body: { start_node_id: 'start', end_node_id: 'end', exclude_conditions: ['stair'], allow_exceptions: true, exclude_kinds: ['outdoorPath'] } },
+  ]);
 });
 
 test('backend validation error remains visible to the route caller', async (t) => {

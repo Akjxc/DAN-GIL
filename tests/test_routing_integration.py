@@ -63,6 +63,17 @@ class RoutingIntegrationTests(unittest.TestCase):
         find_route(graph, "mainGate", "softwareMediaF3Hall", excluded_conditions=["stair"])
         self.assertTrue(nx.utils.graphs_equal(graph, original))
 
+    def test_map_route_reports_minimal_stair_exception(self):
+        request = FindRouteArgs(start_node_id="bearStatue", end_node_id="libraryF3Hall",
+                                exclude_conditions=["stair"], allow_exceptions=True)
+        strict = routes(request.model_copy(update={"allow_exceptions": False}))
+        self.assertEqual(strict["status"], "no_route")
+        fallback = routes(request)
+        self.assertEqual(fallback["status"], "ok")
+        exceptions = [edge for edge in fallback["edges"] if edge["is_exception"]]
+        self.assertEqual([edge["condition"] for edge in exceptions], ["stair"])
+        self.assertIn("계단 구간 1개", fallback["exception_notice"])
+
     def test_same_node_returns_one_node_and_no_edges(self):
         result = call_routing("find_route", {
             "start_node_id": "mainGate", "end_node_id": "mainGate",
