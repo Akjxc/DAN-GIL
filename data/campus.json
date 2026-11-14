@@ -252,8 +252,8 @@
         {
             "id": "lawGraduateEntranceF1",
             "name": "법학관/대학원동 1층 출입구",
-            "latitude": 37.32142852005308,
-            "longitude": 127.12810314233856,
+            "latitude": 37.32097062242819,
+            "longitude": 127.12867775091088,
             "buildingId": "lawGraduate",
             "floor": 1,
             "kind": "entrance"
@@ -647,6 +647,14 @@
         }
     ],
     "edges": [
+        {
+            "id": "hyeDangEngineering3JcToHyeDangYardJc",
+            "name": "혜당관 제3공학관 분기점-혜당관 노천마당 분기점",
+            "from": "hyeDangEngineering3Jc",
+            "to": "hyeDangYardJc",
+            "kind": "outdoorPath",
+            "condition": "slope"
+        },
         {
             "id": "humanityLawGraduateBearStatueJcToTennisHumanityLawGraduateJc",
             "name": "인문관 법학관/대학원동 곰상 분기점-테니스장 인문관 법학관/대학원동 분기점",
