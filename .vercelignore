@@ -5,6 +5,9 @@ __pycache__
 *.py[cod]
 .env
 .env.*
-frontend
+.vercel
+node_modules
+dist
+# Both Vercel projects share this file; keep frontend and data included.
 tests
 docs
