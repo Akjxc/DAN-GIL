@@ -1,15 +1,23 @@
-import { notices } from "../data/notices";
-export async function sendChatMessage(m) {
-  await new Promise((r) => setTimeout(r, 400));
-  let q = m.replace(/\s/g, "");
-  if (q.includes("편의점"))
-    return "시연 지도에서는 혜당관 인근에 Mock 편의점을 표시해요. 실제 매장 위치와 운영 여부는 학교 공식 안내를 확인해 주세요.";
-  if (q.includes("주차"))
-    return "캠퍼스 동측 주차빌딩 위치에 시연용 마커가 있어요. 시설 필터에서 주차장을 선택해 보세요.";
-  if (q.includes("공학관"))
-    return "도착지를 공학관으로 설정하면 선택한 모드에 맞춰 Mock 경로를 계산해요.";
-  if (q.includes("공지")) return notices.join(" ");
-  if (q.includes("계단") || q.includes("휠체어"))
-    return "간선에 계단·경사로 정보가 분리되어 있어요. 최소 보행 모드에서 엘리베이터와 가상 포탈 경로를 확인해 보세요.";
-  return "저는 미리 작성된 Mock 응답으로 동작해요. 길찾기, 시설, 접근성 경로를 물어보세요.";
+export async function sendChatMessage(message, history = []) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 90000);
+  try {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      signal: controller.signal,
+      body: JSON.stringify({ message, history: history.slice(-20) }),
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      const detail = data.detail;
+      throw new Error(typeof detail === 'string' ? detail : detail?.message || '채팅 요청을 처리하지 못했어요.');
+    }
+    if (typeof data.message !== 'string') throw new Error('응답 형식이 올바르지 않습니다.');
+    return data;
+  } catch (error) {
+    if (error.name === 'AbortError') throw new Error('답변 대기 시간이 길어졌어요. 다시 질문해 주세요.');
+    if (error instanceof TypeError) throw new Error('채팅 서버에 연결하지 못했어요. 백엔드 실행 상태를 확인해 주세요.');
+    throw error;
+  } finally { clearTimeout(timer); }
 }
