@@ -6,14 +6,6 @@ import { requestPlaces, requestRoute } from './services/routeService';
 
 const modes = [{ id: 'accessible', icon: '♿', name: '계단 없는 경로', sub: '엘리베이터·연결 통로', color: '#8660d9' }, { id: 'indoor', icon: (<svg viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 24V6l8-3 8 3v18M3 24h22M11 24v-6h6v6"/><path d="M10 9h1m6 0h1m-8 4h1m6 0h1"/></svg>), name: '실내 위주', sub: '실외 구간 최소화', color: '#169d78' }, { id: 'shortest', icon: (<svg viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="6" cy="22" r="3"/><circle cx="22" cy="6" r="3"/><path d="M8.5 19.5l11-11M12 8h6v6"/><path d="M4 14V7a3 3 0 0 1 3-3h7M14 24h7a3 3 0 0 0 3-3v-7" strokeOpacity=".25"/></svg>), name: '최단 경로', sub: '거리 기준', color: '#3778f6' }];
 const STAIR_EXCEPTION_COLOR = '#b45309';
-const LANDMARK_LABELS = {
-  mainGate: null,
-  bearStatue: null,
-  parkingJc: '주차빌딩 앞',
-  labJc: '종합실험동 앞',
-  hyeDangYardJc: '노천마당 앞',
-  dentalJc: '치과대학 방면',
-};
 
 
 function LiveMap({ route, start, end, showEntrances, filter, onPick, onError }) {
@@ -125,7 +117,7 @@ export default function CampusExperience() {
   const [searched, setSearched] = useState(false);
   const [routeBusy, setRouteBusy] = useState(false);
   const [routeError, setRouteError] = useState('');
-  const [routePlaces, setRoutePlaces] = useState(places);
+  const [routePlaces, setRoutePlaces] = useState([]);
   const [placesError, setPlacesError] = useState('');
   const routeRequest = useRef(null);
   const routeRevision = useRef(0);
@@ -133,7 +125,7 @@ export default function CampusExperience() {
     const controller = new AbortController();
     requestPlaces(controller.signal)
       .then(nodes => { if (!controller.signal.aborted) setRoutePlaces(nodes); })
-      .catch(() => { if (!controller.signal.aborted) setPlacesError('실내 장소 목록을 불러오지 못했어요. 백엔드 실행 상태를 확인한 뒤 새로고침해 주세요.'); });
+      .catch(() => { if (!controller.signal.aborted) setPlacesError('출발지와 도착지 목록을 불러오지 못했어요. 백엔드 실행 상태를 확인한 뒤 새로고침해 주세요.'); });
     return () => {
       controller.abort();
       routeRequest.current?.abort();
@@ -154,9 +146,7 @@ export default function CampusExperience() {
   const [messages, setMessages] = useState([{ role: 'bot', text: '안녕하세요! 캠퍼스에서 어디로 가시나요?', local: true }]);
   const routeNames = { ...byId, ...Object.fromEntries(routePlaces.map(n => [n.id,n])), ...Object.fromEntries((route?.nodes || []).map(n => [n.id,n])) };
   const selectedPlace = routeNames[selected];
-  const endpointOptions = Object.values(routeNames).filter(n =>
-    n.kind === 'entrance' || Object.hasOwn(LANDMARK_LABELS, n.id) || n.id === start || n.id === end,
-  );
+  const selectablePlace = routePlaces.some(n => n.id === selected);
   const chosenMode = modes.find(m => m.id === mode);
   const visible = (route ? route.nodes : places).filter(n => Number.isFinite(n.latitude) && Number.isFinite(n.longitude)).filter(n => [start, end].includes(n.id) || (showEntrances && (filter === 'all' || (filter === 'entrance' ? n.kind === 'entrance' : n.kind === 'outdoorPath'))));
   const clear = () => {
@@ -237,8 +227,8 @@ export default function CampusExperience() {
               <span className={`letter ${letter}`}>{letter}</span>
               <span>
                 <small>{label}</small>
-                <select aria-label={label} value={value} onChange={e => choose(setter, e.target.value)}>
-                  {endpointOptions.map(n => <option key={n.id} value={n.id}>{LANDMARK_LABELS[n.id] ?? n.name}</option>)}
+                <select aria-label={label} value={value} disabled={!routePlaces.length} onChange={e => choose(setter, e.target.value)}>
+                  {routePlaces.map(n => <option key={n.id} value={n.id}>{n.name}</option>)}
                 </select>
               </span>
             </label>
@@ -277,7 +267,7 @@ export default function CampusExperience() {
         </svg></div>}
         <div className="floating-map-label"><span>◉</span><div><b>죽전캠퍼스</b><small>{places.length}개 출입구·분기점 연결</small></div></div>
         {!live&&<div className="zoom-control"><button aria-label="확대" onClick={()=>setZoom(z=>Math.min(2,z+.25))}>+</button><button aria-label="축소" onClick={()=>setZoom(z=>Math.max(1,z-.25))}>−</button><button aria-label="지도 초기화" onClick={()=>setZoom(1)}>⌖</button></div>}
-        {selectedPlace&&<div className="place-card"><button className="close-card" aria-label="장소 닫기" onClick={()=>setSelected(null)}>×</button><span className="eyebrow">{selectedPlace.kind==='entrance'?'BUILDING ENTRANCE':'CAMPUS WAYPOINT'}</span><h3>{selectedPlace.name}</h3><p>{selectedPlace.floor!=null?`${selectedPlace.floor}층 · `:''}사용자 제공 좌표</p><div><button onClick={()=>{choose(setStart,selected);setSelected(null);}}>출발지로</button><button onClick={()=>{choose(setEnd,selected);setSelected(null);}}>도착지로</button></div></div>}
+        {selectedPlace&&<div className="place-card"><button className="close-card" aria-label="장소 닫기" onClick={()=>setSelected(null)}>×</button><span className="eyebrow">{selectedPlace.kind==='entrance'?'BUILDING ENTRANCE':'CAMPUS WAYPOINT'}</span><h3>{selectedPlace.name}</h3><p>{selectedPlace.floor!=null?`${selectedPlace.floor}층 · `:''}사용자 제공 좌표</p>{selectablePlace && <div><button onClick={()=>{choose(setStart,selected);setSelected(null);}}>출발지로</button><button onClick={()=>{choose(setEnd,selected);setSelected(null);}}>도착지로</button></div>}</div>}
         <div className="map-caption">{live?'Kakao Maps':'입력 좌표 기반 개략도 · 건물 도형은 실제 외곽선이 아닙니다'}</div></div>
         <div className="map-bottom"><button className="entrance-toggle" role="switch" aria-checked={showEntrances} onClick={() => { setShowEntrances(v => !v); setSelected(null); }}><span className={`toggle-track ${showEntrances ? 'on' : ''}`}><span /></span><span>{route ? '경로 장소' : '장소 이름'} {showEntrances ? '표시' : '숨김'}</span></button><div className="filter-buttons">{[['all','전체 보기'],['entrance','출입구'],['junction','분기점']].map(([id,label])=><button className={filter===id?'selected':''} key={id} onClick={()=>setFilter(id)}>{label}</button>)}</div><span><i className="legend-dot"/> 출입구 <i className="legend-line"/> 연결 보행로</span></div>
         {mapError&&<div className="map-feedback" role="status">{mapError}<button onClick={()=>setMapError('')} aria-label="알림 닫기">×</button></div>}

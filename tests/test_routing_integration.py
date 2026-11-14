@@ -36,12 +36,12 @@ class RoutingIntegrationTests(unittest.TestCase):
         executor.execute("search_places", {"query": "정문"})
         executor.execute("search_places", {"query": "소미관 3층"})
         result = executor.execute("find_route", {
-            "start_node_id": "mainGate", "end_node_id": "softwareMediaF3Hall",
+            "start_node_id": "mainGate", "end_node_id": "softwareEntranceF3",
             "exclude_conditions": ["stair"],
         })
         self.assertEqual(result["status"], "ok")
         self.assertEqual(result["nodes"][0]["id"], "mainGate")
-        self.assertEqual(result["nodes"][-1]["id"], "softwareMediaF3Hall")
+        self.assertEqual(result["nodes"][-1]["id"], "softwareEntranceF3")
         self.assertTrue(all(e["condition"] != "stair" for e in result["edges"]))
         self.assertEqual(len(result["edges"]), len(result["nodes"]) - 1)
         self.assertIsNone(result["distance_m"])
@@ -129,11 +129,26 @@ class RoutingIntegrationTests(unittest.TestCase):
         executor = ToolExecutor()
         executor.execute("search_places", {"query": "소미관 1층"})
         result = executor.execute("find_route", {
-            "start_node_id": "softwareMediaF1Hall", "end_node_id": "softwareMediaF1Hall",
+            "start_node_id": "softwareEntranceF1", "end_node_id": "softwareEntranceF1",
         })
         self.assertEqual(result["status"], "ok")
         self.assertEqual(result["metric"], "cost")
         self.assertEqual(result["total_cost"], 0)
+
+    def test_chat_endpoint_candidates_match_map_choices(self):
+        executor = ToolExecutor()
+        selectable = {node["id"]: node for node in places(endpoints_only=True)}
+        for query, node_id in [("곰상", "bearStatue"), ("주차빌딩 앞", "parkingJc"),
+                               ("도서관 3층", "libraryEntranceF3")]:
+            with self.subTest(query=query):
+                self.assertEqual(executor.execute("search_places", {"query": query})["matches"],
+                                 [selectable[node_id]])
+        for query in ("도서관 3층 복도", "libraryF3Hall", "혜당관 엘리베이터", "소미관 2층"):
+            with self.subTest(query=query):
+                self.assertEqual(executor.execute("search_places", {"query": query})["matches"], [])
+        self.assertEqual(executor.execute("find_route", {
+            "start_node_id": "bearStatue", "end_node_id": "libraryF3Hall",
+        })["code"], "search_places_first")
 
 
 if __name__ == "__main__":
