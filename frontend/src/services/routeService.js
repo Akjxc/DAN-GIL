@@ -13,6 +13,7 @@ export async function requestRoute(start, end, avoidStairs, signal) {
       start_node_id: start,
       end_node_id: end,
       exclude_conditions: avoidStairs ? ['stair'] : [],
+      allow_exceptions: avoidStairs,
       exclude_kinds: [],
     }),
   });

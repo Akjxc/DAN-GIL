@@ -70,7 +70,7 @@ class AgentTests(unittest.TestCase):
         self.assertEqual(reply.status, "route")
         self.assertEqual([n.id for n in reply.route.nodes], ["start", "end"])
         self.assertIsNone(reply.route.distance_m)
-        handler.assert_called_once_with(**ARGS, exclude_kinds=[])
+        handler.assert_called_once_with(**ARGS, exclude_kinds=[], allow_exceptions=False)
         # Full model content/signatures and matching call IDs are sent back.
         self.assertEqual(captured[1]["contents"][1], search.candidates[0].content)
         self.assertEqual(captured[1]["contents"][2].role, "user")
@@ -119,6 +119,20 @@ class AgentTests(unittest.TestCase):
         result = executor.execute("find_route", {**ARGS, "exclude_conditions": []})
         self.assertEqual(result["code"], "constraints_changed")
         self.assertEqual(executor.handlers["find_route"].call_count, 1)
+
+    def test_exception_route_includes_the_server_notice(self):
+        alternative = copy.deepcopy(ROUTE)
+        alternative["edges"][0].update(condition="stair", is_exception=True)
+        alternative["exception_notice"] = "대안 경로에 계단 구간 1개를 포함했어요."
+        agent, executor, _, _ = setup_agent([
+            calls_response(("search_places", {"query": "장소"})),
+            calls_response(("find_route", {**ARGS, "allow_exceptions": True})),
+            text_response("목적지까지 이동하세요."),
+        ], alternative)
+        reply = agent.chat(ChatRequest(message="계단을 피해서 가줘"), executor)
+        self.assertEqual(reply.status, "route")
+        self.assertTrue(reply.message.startswith(alternative["exception_notice"]))
+        self.assertTrue(reply.route.edges[0].is_exception)
 
     def test_bad_route_results_never_reach_map(self):
         """잘못된 경로 결과를 지도에 전달하지 않는지 확인."""
