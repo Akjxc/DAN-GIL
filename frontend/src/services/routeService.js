@@ -4,7 +4,7 @@ export async function requestPlaces(signal) {
   return response.json();
 }
 
-export async function requestRoute(start, end, avoidStairs, signal) {
+export async function requestRoute(start, end, avoidStairs, signal, mode = 'fast') {
   const response = await fetch('/api/routes', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -13,8 +13,8 @@ export async function requestRoute(start, end, avoidStairs, signal) {
       start_node_id: start,
       end_node_id: end,
       exclude_conditions: avoidStairs ? ['stair'] : [],
-      allow_exceptions: avoidStairs,
-      exclude_kinds: [],
+      allow_exceptions: avoidStairs || mode === 'indoor',
+      exclude_kinds: mode === 'indoor' ? ['outdoorPath'] : [],
     }),
   });
   const result = await response.json().catch(() => null);

@@ -4,7 +4,7 @@ import { loadKakaoMapSdk, hasKakaoMapKey } from './services/mapService';
 import { sendChatMessage } from './services/chatService';
 import { requestPlaces, requestRoute } from './services/routeService';
 
-const modes = [{ id: 'fast', icon: '↗', name: '추천 경로', sub: '캠퍼스 연결 경로', color: '#3778f6' }, { id: 'safe', icon: '☾', name: '안심 야간', sub: '조명 정보 준비 중', color: '#169d78' }, { id: 'walk', icon: '♧', name: '최소 보행', sub: '이동수단 정보 준비 중', color: '#8660d9' }];
+const modes = [{ id: 'fast', icon: '↗', name: '추천 경로', sub: '캠퍼스 연결 경로', color: '#3778f6' }, { id: 'indoor', icon: '⌂', name: '실내 위주', sub: '실외 구간 최소화', color: '#169d78' }, { id: 'accessible', icon: '♿', name: '계단 없는 경로', sub: '엘리베이터·연결 통로', color: '#8660d9' }];
 const STAIR_EXCEPTION_COLOR = '#b45309';
 
 
@@ -112,7 +112,7 @@ export default function CampusExperience() {
   const [start, setStart] = useState('humanityEntranceF1');
   const [end, setEnd] = useState('libraryEntranceF1');
   const [mode, setMode] = useState('fast');
-  const [avoid, setAvoid] = useState(false);
+  const avoid = mode === 'accessible';
   const [route, setRoute] = useState(null);
   const [searched, setSearched] = useState(false);
   const [routeBusy, setRouteBusy] = useState(false);
@@ -160,7 +160,7 @@ export default function CampusExperience() {
     routeRequest.current = controller;
     setRouteBusy(true);
     try {
-      const result = await requestRoute(start, end, avoid, controller.signal);
+      const result = await requestRoute(start, end, avoid, controller.signal, mode);
       if (controller.signal.aborted) return;
       setRoute(result && { ...result, path: result.nodes.map(n => n.id), mapSegments: routeMapSegments(result.nodes, result.edges) });
       setSearched(true);
@@ -190,15 +190,15 @@ export default function CampusExperience() {
     }
   }
   return <div className="experience">
-<header className="topbar"><a className="brand" href="#"><span className="brand-symbol d-path-logo"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 10h10c10 0 16 5 16 14s-6 14-16 14H13V10Z" fill="none" stroke="white" strokeWidth="4" strokeLinejoin="round"/><path d="M13 31h9V20h10" fill="none" stroke="#8ee4d2" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/><circle cx="13" cy="31" r="3" fill="white"/><circle cx="32" cy="20" r="3.5" fill="#8ee4d2"/></svg></span><span className="brand-wordmark"><b>단길</b><small>DKU SafePath <span>· 캠퍼스를 잇는 길</span></small></span></a><nav><button className="active" onClick={() => setAbout(false)}>길찾기</button><button onClick={() => { setFilter('entrance'); setAbout(false); }}>출입구 찾기</button><button onClick={() => setAbout(true)}>서비스 소개</button></nav><span className="campus-badge"><i /> 죽전캠퍼스</span></header>
+<header className="topbar"><a className="brand" href="#"><span className="brand-symbol d-path-logo"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 10h10c10 0 16 5 16 14s-6 14-16 14H13V10Z" fill="none" stroke="white" strokeWidth="4" strokeLinejoin="round"/><path d="M13 31h9V20h10" fill="none" stroke="#8ee4d2" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/><circle cx="13" cy="31" r="3" fill="white"/><circle cx="32" cy="20" r="3.5" fill="#8ee4d2"/></svg></span><span className="brand-wordmark"><b>DAN-GIL</b><small>단국대학교 캠퍼스 길찾기</small></span></a><span className="campus-badge"><i /> 죽전캠퍼스</span></header>
     <div className="page-heading"><div><span className="eyebrow">YOUR CAMPUS, YOUR WAY</span><h1>우리의 캠퍼스, 더 편안한 한 걸음.</h1><p>출입구부터 연결 통로까지, 나에게 맞는 길을 찾아보세요.</p></div><div className="heading-mark">DKU<span>WALK BETTER.</span></div></div>
     <div className="map-workspace">
       <aside className="search-panel"><div className="panel-title"><span className="mini-icon">⌁</span><div><h2>어디로 가시나요?</h2><p>캠퍼스 안의 길을 연결합니다</p></div></div>
-        <div className="location-fields">{[[start, setStart, '출발지', 'A'], [end, setEnd, '도착지', 'B']].map(([value, setter, label, letter]) => <label className="place-field" key={letter}><span className={`letter ${letter}`}>{letter}</span><span><small>{label}</small><select aria-label={label} value={value} onChange={e => choose(setter, e.target.value)}>{routePlaces.filter(n => !n.name.includes('분기점')).map(n => <option key={n.id} value={n.id}>{n.name}</option>)}</select></span></label>)}<button className="swap" aria-label="출발지와 도착지 바꾸기" onClick={() => { setStart(end); setEnd(start); clear(); }}>⇅</button></div>
+<div className="location-fields">{[[start, setStart, '출발지', 'A'], [end, setEnd, '도착지', 'B']].map(([value, setter, label, letter]) => <label className="place-field" key={letter}><span className={`letter ${letter}`}>{letter}</span><span><small>{label}</small><select aria-label={label} value={value} onChange={e => choose(setter, e.target.value)}>{routePlaces.filter(n => n.kind === 'entrance').map(n => <option key={n.id} value={n.id}>{n.name}</option>)}</select></span></label>)}<button className="swap" aria-label="출발지와 도착지 바꾸기" onClick={() => { setStart(end); setEnd(start); clear(); }}>⇅</button></div>
         {placesError && <p className="mode-warning" role="status">{placesError}</p>}
         <h3 className="section-label">이동 방식</h3><div className="mode-grid">{modes.map(m => <button key={m.id} className={mode === m.id ? 'mode selected' : 'mode'} onClick={() => choose(setMode, m.id)}><span>{m.icon}</span><b>{m.name}</b><small>{m.sub}</small></button>)}</div>
-<label className="check-row"><input type="checkbox" checked={avoid} onChange={e => choose(setAvoid, e.target.checked)} /><span>계단 없는 경로 우선</span></label><p className="fine-print">계단 없는 길이 없으면 계단 구간이 가장 적은 대안을 표시합니다.</p>
-        {mode !== 'fast' && <p className="mode-warning">{mode === 'safe' ? '조명 데이터가 없어 야간 안전성을 평가할 수 없습니다.' : '운행·대기시간 데이터가 없어 최소 보행을 계산할 수 없습니다.'} 현재는 기본 경로로 안내합니다.</p>}
+        {mode === 'accessible' && <p className="fine-print">휠체어 이용자를 위해 계단 구간을 제외하고 엘리베이터와 연결 통로를 이용합니다.</p>}
+        {mode === 'indoor' && <p className="fine-print">실내 연결을 우선하며, 필요한 실외 구간은 함께 안내합니다.</p>}
         <button className="search-button" disabled={routeBusy} onClick={search}>{routeBusy ? '경로 계산 중…' : '경로 찾기'} <span>↗</span></button>
         {routeError && <p className="mode-warning" role="alert">경로를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</p>}
         <div className="results" aria-live="polite">
