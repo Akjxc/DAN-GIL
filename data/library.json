@@ -197,7 +197,7 @@
             "from": "libraryF3Hall",
             "to": "libraryEntranceF3",
             "kind": "indoorPath",
-            "condition": "stair"
+            "condition": "flat"
         },
         {
             "id": "libraryStairF1ToF2",
