@@ -37,5 +37,6 @@ HTTP 200과 `status: "route"`가 나오면 성공이야. `message`에서 한국�
 - `ai_not_configured`가 나오면 키와 모델을 설정한 PowerShell 창에서 서버를 실행했는지 확인해.
 - Gemini 오류가 계속되면 서버를 `Ctrl+C`로 중지하고, 같은 창에서 `.\.venv\Scripts\python.exe -m backend.check_gemini`를 실행해. 모델 조회, 기본 응답, 도구 명세를 포함한 응답을 차례로 확인할 수 있어.
 - API 키 없이 백엔드 테스트를 실행하려면 `.\.venv\Scripts\python.exe -m unittest discover -s tests -v`를 사용해.
+- Agent 테스트 결과만 한글로 보려면 `.\.venv\Scripts\python.exe -m tests.test_agent`를 실행해.
 
 키는 저장소와 이슈에 올리지 말고 팀원에게 비공개로 전달해. 같은 프로젝트의 키로 보낸 요청은 그 프로젝트의 사용량과 크레딧에 반영돼.

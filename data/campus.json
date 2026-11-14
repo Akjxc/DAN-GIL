@@ -237,7 +237,7 @@
             "latitude": 37.321886430463714,
             "longitude": 127.12958753028045,
             "buildingId": null,
-            "floor": null,
+            "floor": 5,
             "kind": "entrance"
         },
         {
@@ -246,7 +246,7 @@
             "latitude": 37.322717622260555,
             "longitude": 127.1295974192392,
             "buildingId": null,
-            "floor": null,
+            "floor": 5,
             "kind": "entrance"
         },
         {
