@@ -22,6 +22,15 @@ KIND_MULTIPLIERS = {
     "outdoorPath": 10,
 }
 
+LANDMARK_LABELS = {
+    "mainGate": None,
+    "bearStatue": None,
+    "parkingJc": "주차빌딩 앞",
+    "labJc": "종합실험동 앞",
+    "hyeDangYardJc": "노천마당 앞",
+    "dentalJc": "치과대학 방면",
+}
+
 
 def outdoor_distance_m(graph, u, v):
     """위도·경도의 Haversine 거리(m). 길의 굴곡이나 높이는 반영하지 않음."""
@@ -116,7 +125,18 @@ def place_info(graph, node_id):
             "kind": node.get("kind")}
 
 
-def search_places(query, graph=None):
+def is_route_endpoint(graph, node_id):
+    node = graph.nodes[node_id]
+    return "name" in node and (node.get("kind") == "entrance" or node_id in LANDMARK_LABELS)
+
+
+def endpoint_info(graph, node_id):
+    place = place_info(graph, node_id)
+    place["name"] = LANDMARK_LABELS.get(node_id) or place["name"]
+    return place
+
+
+def search_places(query, graph=None, *, endpoints_only=False):
     """Search IDs, names, building aliases and floors; keep ambiguous candidates.
 
     A specified floor without a facility kind targets that floor's hall.
@@ -128,12 +148,18 @@ def search_places(query, graph=None):
     text = normalize(query)
     if not text:
         return {"matches": []}
+    if endpoints_only:
+        if any(text == normalize(node_id) and not is_route_endpoint(graph, node_id) for node_id in graph):
+            return {"matches": []}
+        graph = graph.subgraph(node_id for node_id in graph if is_route_endpoint(graph, node_id))
+    info = endpoint_info if endpoints_only else place_info
     exact = [i for i, n in graph.nodes(data=True)
-             if text in (normalize(i), normalize(n.get("name", "")))]
+             if text in (normalize(i), normalize(n.get("name", "")))
+             or (endpoints_only and text == normalize(LANDMARK_LABELS.get(i) or ""))]
     if exact:
-        return {"matches": [place_info(graph, i) for i in exact[:50]]}
+        return {"matches": [info(graph, i) for i in exact[:50]]}
     if text in {"정문", "단국대정문", "단국대학교정문"} and "mainGate" in graph:
-        return {"matches": [place_info(graph, "mainGate")]}
+        return {"matches": [info(graph, "mainGate")]}
     # Do not silently turn an unmapped classroom into a building entrance.
     if re.search(r"\d+호", text):
         return {"matches": []}
@@ -160,12 +186,14 @@ def search_places(query, graph=None):
                 continue
             if floor is not None and node.get("floor") != floor:
                 continue
-            target_kind = kind or ("hall" if floor is not None else "entrance")
+            target_kind = kind or ("hall" if floor is not None and not endpoints_only else "entrance")
             if node.get("kind") != target_kind:
                 continue
-        elif text not in normalize(node.get("name", "")):
+        elif text not in normalize(node.get("name", "")) and not (
+            endpoints_only and text in normalize(LANDMARK_LABELS.get(node_id) or "")
+        ):
             continue
-        matches.append(place_info(graph, node_id))
+        matches.append(info(graph, node_id))
     return {"matches": sorted(matches, key=lambda n: n["id"])[:50]}
 
 def find_route(graph, start, end, excluded_kinds=None, excluded_conditions=None):

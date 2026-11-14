@@ -1,0 +1,13 @@
+.git
+.venv
+venv
+__pycache__
+*.py[cod]
+.env
+.env.*
+.vercel
+node_modules
+dist
+# Both Vercel projects share this file; keep frontend and data included.
+tests
+docs

@@ -28,9 +28,18 @@ class SearchPlacesArgs(StrictModel):
 class FindRouteArgs(StrictModel):
     start_node_id: Text
     end_node_id: Text
+    metric: Literal["cost", "distance"] = Field(
+        default="cost", description="최단거리 요청은 distance, 일반 길찾기와 회피 조건은 cost."
+    )
     exclude_kinds: list[EdgeKind] = Field(default_factory=list, max_length=2)
     exclude_conditions: list[Condition] = Field(default_factory=list, max_length=4)
     allow_exceptions: bool = Field(default=False, strict=True, description="조건을 만족하는 길이 없을 때만 예외 구간을 최소화한 대안을 허용합니다.")
+
+    @property
+    def has_distance_conflict(self) -> bool:
+        return self.metric == "distance" and bool(
+            self.exclude_kinds or self.exclude_conditions or self.allow_exceptions
+        )
 
 
 class Place(StrictModel):
@@ -87,7 +96,8 @@ ARGUMENT_MODELS = {
 }
 DESCRIPTIONS = {
     "search_places": (
-        "지도에서 장소 이름, 별칭, 층으로 실제 노드 후보를 검색합니다. "
+        "지도에서 선택 가능한 출입구와 주요 장소를 이름, 별칭, 층으로 검색합니다. "
+        "건물과 층을 입력하면 해당 층의 출입구 후보를 찾습니다. "
         "출발지와 목적지는 이 도구의 결과로 확인하세요. 후보가 여러 개면 "
         "사용자가 구분할 정보를 요청하고 임의로 선택하지 마세요."
     ),
@@ -95,7 +105,9 @@ DESCRIPTIONS = {
         "확인된 두 노드 사이의 양방향 경로를 계산합니다. 노드 ID는 이번 요청의 "
         "search_places 결과에서 선택해야 합니다. exclude_kinds와 "
         "exclude_conditions에 해당하는 엣지는 먼저 제외합니다. "
-        "실외 거리와 실내 기본 비용에 조건별 가중치를 적용한 탐색 점수를 최소화합니다. "
+        "최단거리나 가장 짧은 길을 요청하면 metric=distance를 사용합니다. "
+        "거리 기준과 회피 조건을 함께 요청하면 사용자가 어느 쪽을 우선할지 질문하세요. "
+        "metric=cost는 실외 거리와 실내 기본 비용에 조건별 가중치를 적용합니다. "
         "계단을 못 쓰면 exclude_conditions에 stair를 넣으세요. "
         "'계단만 빼줘', '되도록 피하고 싶어'처럼 회피를 원하면 allow_exceptions를 true로 설정하세요. "
         "'계단은 못 써', '절대 포함하지 마' 같은 필수 조건이나 휠체어 요청이면 false로 설정하세요. "
@@ -146,24 +158,29 @@ def call_routing(name: str, arguments: dict, *, graph=None) -> dict:
     if graph is None:
         graph = module.load_graph()
     if name == "search_places":
-        return module.search_places(arguments["query"], graph=graph)
+        return module.search_places(arguments["query"], graph=graph, endpoints_only=True)
     if name != "find_route":
         raise ValueError("Unknown routing tool")
     excluded_kinds = arguments["exclude_kinds"]
     excluded_conditions = arguments["exclude_conditions"]
+    metric = arguments.get("metric", "cost")
     route_args = {
         "start": arguments["start_node_id"], "end": arguments["end_node_id"],
         "excluded_kinds": excluded_kinds, "excluded_conditions": excluded_conditions,
     }
+    distance_m = None
     try:
-        try:
-            path = module.find_route(graph, **route_args)
-        except nx.NetworkXNoPath:
-            if not arguments.get("allow_exceptions", False) or not (excluded_kinds or excluded_conditions):
-                raise
-            path = module.find_route_with_minimal_exceptions(graph, **route_args)
+        if metric == "distance":
+            path, distance_m = module.find_distance_route(graph, route_args["start"], route_args["end"])
+        else:
+            try:
+                path = module.find_route(graph, **route_args)
+            except nx.NetworkXNoPath:
+                if not arguments.get("allow_exceptions", False) or not (excluded_kinds or excluded_conditions):
+                    raise
+                path = module.find_route_with_minimal_exceptions(graph, **route_args)
     except nx.NetworkXNoPath:
-        return {"status": "no_route"}
+        return {"status": "no_route", "metric": "distance"} if metric == "distance" else {"status": "no_route"}
     except nx.NodeNotFound:
         return {"status": "invalid_request"}
     edges = []
@@ -172,16 +189,16 @@ def call_routing(name: str, arguments: dict, *, graph=None) -> dict:
         edge["is_exception"] = edge["kind"] in excluded_kinds or edge["condition"] in excluded_conditions
         edges.append(edge)
     return {
-        "status": "ok", "metric": "cost",
+        "status": "ok", "metric": metric,
         "total_cost": sum(
             module.base_edge_cost(graph, u, v, graph.edges[u, v])
             for u, v in zip(path, path[1:])
-        ),
+        ) if metric == "cost" else None,
         "nodes": [module.place_info(graph, node_id) for node_id in path],
         "edges": edges,
         "exception_notice": (exception_notice(edges, excluded_kinds, excluded_conditions)
                              if any(edge["is_exception"] for edge in edges) else None),
-        "distance_m": None, "duration_seconds": None,
+        "distance_m": distance_m, "duration_seconds": None,
     }
 
 
@@ -202,6 +219,8 @@ class ToolExecutor:
         except ValidationError:
             return {"status": "error", "code": "invalid_arguments"}
         if name == "find_route":
+            if args.has_distance_conflict:
+                return {"status": "error", "code": "distance_with_exclusions"}
             if not {args.start_node_id, args.end_node_id} <= self.known_node_ids:
                 return {"status": "error", "code": "search_places_first"}
             kinds, conditions = self.required_exclusions

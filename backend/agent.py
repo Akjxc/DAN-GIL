@@ -18,6 +18,8 @@ SYSTEM_INSTRUCTION = """
 현재 위치는 알 수 없다. '여기서'만 말하면 출발지를 질문한다.
 건물 이름만으로 층이나 출입구를 임의 선택하지 않는다.
 장소의 존재 여부와 ID는 매 요청마다 search_places로 확인한다.
+출발지와 목적지는 지도에서 선택 가능한 출입구와 주요 장소만 사용한다.
+건물과 층만 말하면 해당 층의 출입구를 찾는다. 복도·계단·엘리베이터를 출발지나 목적지로 요청하거나 해당 층에 출입구가 없으면, 선택 가능한 출입구를 검색해 사용자에게 다시 선택해 달라고 한다.
 경로 안내는 이번 요청에서 성공한 find_route 결과만 근거로 작성한다.
 이전 대화의 경로를 실제 계산 결과로 취급하지 않는다.
 사용자가 빼거나 피하고 싶은 구간은 제외 조건에 반영한다. '계단만 빼줘' 같은 회피 요청은 allow_exceptions=true를 사용한다.
@@ -26,6 +28,10 @@ SYSTEM_INSTRUCTION = """
 경로에 exception_notice가 있으면 대안 경로의 이동 순서를 설명한다. 안내 문구는 서버가 앞에 붙인다.
 휠체어 이용 가능 여부를 계단이 없다는 사실만으로 보장하지 않는다.
 도구 결과에 없는 거리, 시간, 방향, 주변 시설은 만들어내지 않는다.
+최단거리나 가장 짧은 길을 요청하면 find_route의 metric을 distance로 설정한다.
+사용자가 거리 기준과 회피 조건을 함께 요청하면 어느 쪽을 우선할지 먼저 질문한다.
+거리 기준 경로가 없으면 다른 기준으로 자동 재탐색하지 않는다.
+metric=distance의 distance_m은 등록 거리 또는 좌표로 계산한 거리의 합이다. 실측 거리라고 말하지 않는다.
 metric=hops는 통과 구간 수 기준이다. 최단 거리/최단 시간이라고 말하지 않는다.
 metric=cost는 실외 거리 10m당 1점, 실내 구간당 기본 1점에 조건별 가중치를 적용한 기준이다.
 total_cost는 '총 탐색 점수'로 설명한다. 실내 엣지별 기본 점수는 보정될 수 있다.
@@ -131,12 +137,22 @@ class RouteAgent:
                 result = executor.execute(call.name, call.args or {})
                 if result.get("status") == "error":
                     last_error = result["code"]
+                    if last_error == "distance_with_exclusions":
+                        return ChatResponse(
+                            status="reply",
+                            message="지금은 최단거리와 회피 조건을 함께 적용할 수 없어요. 어느 쪽을 우선할까요?",
+                        )
                     if last_error in {"routing_not_ready", "tool_failed", "invalid_tool_result"}:
                         return error_reply(last_error)
                 else:
                     last_error = None
                     if call.name == "find_route":
                         last_route = RouteResult.model_validate(result)
+                        if last_route.metric == "distance" and last_route.status == "no_route":
+                            return ChatResponse(
+                                status="no_route",
+                                message="거리 정보가 있는 구간만으로는 출발지와 목적지를 연결할 수 없어요.",
+                            )
                 results.append(types.Part(function_response=types.FunctionResponse(
                     id=call.id, name=call.name, response=result,
                 )))

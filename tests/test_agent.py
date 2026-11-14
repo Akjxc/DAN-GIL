@@ -12,8 +12,8 @@ from google.genai import types
 from google.genai import errors
 
 from backend.agent import AgentUnavailable, ChatRequest, RouteAgent, run_chat
-from backend.main import app
-from backend.tools import ToolExecutor
+from backend.main import app, routes
+from backend.tools import FindRouteArgs, ToolExecutor
 
 
 PLACES = [{"id": "start", "name": "출발지"}, {"id": "end", "name": "목적지"}]
@@ -70,11 +70,53 @@ class AgentTests(unittest.TestCase):
         self.assertEqual(reply.status, "route")
         self.assertEqual([n.id for n in reply.route.nodes], ["start", "end"])
         self.assertIsNone(reply.route.distance_m)
-        handler.assert_called_once_with(**ARGS, exclude_kinds=[], allow_exceptions=False)
+        handler.assert_called_once_with(**ARGS, metric="cost", exclude_kinds=[], allow_exceptions=False)
         # Full model content/signatures and matching call IDs are sent back.
         self.assertEqual(captured[1]["contents"][1], search.candidates[0].content)
         self.assertEqual(captured[1]["contents"][2].role, "user")
         self.assertEqual(captured[1]["contents"][2].parts[0].function_response.id, "call-0")
+
+    def test_distance_request_reuses_map_routing(self):
+        args = {"start_node_id": "bearStatue", "end_node_id": "libraryEntranceF3", "metric": "distance"}
+        agent, _, _, _ = setup_agent([
+            calls_response(
+                ("search_places", {"query": args["start_node_id"]}),
+                ("search_places", {"query": args["end_node_id"]}),
+            ),
+            calls_response(("find_route", args)),
+            text_response("거리 기준으로 찾았어요."),
+        ])
+        reply = agent.chat(ChatRequest(message="곰상에서 도서관 3층 출입구까지 최단거리로 찾아줘"), ToolExecutor())
+        manual = routes(FindRouteArgs(**args))
+        self.assertEqual(reply.status, "route")
+        self.assertEqual(reply.route.metric, "distance")
+        self.assertEqual(reply.route.distance_m, manual["distance_m"])
+        self.assertGreater(reply.route.distance_m, 0)
+        self.assertEqual([n.id for n in reply.route.nodes], [n["id"] for n in manual["nodes"]])
+        self.assertIsNone(reply.route.total_cost)
+
+    def test_distance_with_exclusions_asks_for_priority(self):
+        agent, executor, _, handler = setup_agent([
+            calls_response(("search_places", {"query": "출발지"})),
+            calls_response(("find_route", {**ARGS, "metric": "distance"})),
+        ])
+        reply = agent.chat(ChatRequest(message="계단 없이 최단거리로 찾아줘"), executor)
+        self.assertEqual(reply.status, "reply")
+        self.assertIn("우선", reply.message)
+        handler.assert_not_called()
+
+    def test_distance_without_measured_path_explains_why(self):
+        args = {"start_node_id": "bearStatue", "end_node_id": "engineering1EntranceF4", "metric": "distance"}
+        agent, _, _, _ = setup_agent([
+            calls_response(
+                ("search_places", {"query": args["start_node_id"]}),
+                ("search_places", {"query": args["end_node_id"]}),
+            ),
+            calls_response(("find_route", args)),
+        ])
+        reply = agent.chat(ChatRequest(message="제1공학관 4층 출입구까지 최단거리로 찾아줘"), ToolExecutor())
+        self.assertEqual(reply.status, "no_route")
+        self.assertIn("거리 정보", reply.message)
 
     def test_ambiguity_question_without_route(self):
         """장소가 모호하면 경로 계산 전에 되묻는지 확인."""
