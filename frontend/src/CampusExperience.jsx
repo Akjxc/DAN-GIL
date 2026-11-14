@@ -141,10 +141,13 @@ export default function CampusExperience() {
   const [live, setLive] = useState(hasKakaoMapKey());
   const [mapError, setMapError] = useState('');
   const [about, setAbout] = useState(false);
-  const [chat, setChat] = useState(false);
+  const [panelMode, setPanelMode] = useState('manual');
+  const chatBottomRef = useRef(null);
+
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
   const [messages, setMessages] = useState([{ role: 'bot', text: '안녕하세요! 캠퍼스에서 어디로 가시나요?', local: true }]);
+  useEffect(() => { if (panelMode === 'chatbot') chatBottomRef.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }, [messages, busy, panelMode]);
   const routeNames = { ...byId, ...Object.fromEntries(routePlaces.map(n => [n.id,n])), ...Object.fromEntries((route?.nodes || []).map(n => [n.id,n])) };
   const selectedPlace = routeNames[selected];
   const selectablePlace = routePlaces.some(n => n.id === selected);
@@ -221,7 +224,11 @@ export default function CampusExperience() {
 <header className="topbar"><a className="brand" href="#"><span className="brand-symbol d-path-logo"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 10h10c10 0 16 5 16 14s-6 14-16 14H13V10Z" fill="none" stroke="white" strokeWidth="4" strokeLinejoin="round"/><path d="M13 31h9V20h10" fill="none" stroke="#8ee4d2" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/><circle cx="13" cy="31" r="3" fill="white"/><circle cx="32" cy="20" r="3.5" fill="#8ee4d2"/></svg></span><span className="brand-wordmark"><b>DAN-GIL</b><small>단국대학교 캠퍼스 길찾기</small></span></a><span className="campus-badge"><i /> 죽전캠퍼스</span></header>
     <div className="page-heading"><div><span className="eyebrow">YOUR CAMPUS, YOUR WAY</span><h1>우리의 캠퍼스, 더 편안한 한 걸음.</h1><p>출입구부터 연결 통로까지, 나에게 맞는 길을 찾아보세요.</p></div><div className="heading-mark">DKU<span>WALK BETTER.</span></div></div>
     <div className="map-workspace">
-<aside className="search-panel"><div className="panel-title"><span className="mini-icon"><svg viewBox="0 0 28 28" width="29" height="29" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 11c0 6-8 12-8 12S6 17 6 11a8 8 0 1 1 16 0Z"/><circle cx="14" cy="11" r="2.8"/><path d="M7 23c-2 0-3 1-3 2h20c0-1-1-2-3-2" strokeOpacity=".3"/></svg></span><div><h2>어디로 가시나요?</h2><p>캠퍼스 안의 길을 연결합니다</p></div></div>
+<aside className="search-panel">
+        <div className="panel-tabs" role="tablist" aria-label="길찾기 입력 방식">
+{[['manual', '직접 입력', (<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="5" width="13" height="14" rx="3"/><path d="M7 9h5M7 13h2M13 17l1-4 5.5-5.5a1.8 1.8 0 0 1 2.5 2.5L16.5 16l-3.5 1ZM18 9l2 2"/></svg>)], ['chatbot', '챗봇', '✦']].map(([id, label, icon]) => <button key={id} id={'tab-' + id} role="tab" aria-selected={panelMode === id} aria-controls={'panel-' + id} tabIndex={panelMode === id ? 0 : -1} onClick={() => setPanelMode(id)} onKeyDown={e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); const next = id === 'manual' ? 'chatbot' : 'manual'; setPanelMode(next); document.getElementById('tab-' + next)?.focus(); } }}><span aria-hidden="true">{icon}</span>{label}</button>)}
+        </div>
+        <div id="panel-manual" className="manual-panel" role="tabpanel" aria-labelledby="tab-manual" hidden={panelMode !== 'manual'}><div className="panel-title"><span className="mini-icon"><svg viewBox="0 0 28 28" width="29" height="29" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 11c0 6-8 12-8 12S6 17 6 11a8 8 0 1 1 16 0Z"/><circle cx="14" cy="11" r="2.8"/><path d="M7 23c-2 0-3 1-3 2h20c0-1-1-2-3-2" strokeOpacity=".3"/></svg></span><div><h2>어디로 가시나요?</h2><p>캠퍼스 안의 길을 연결합니다</p></div></div>
         <div className="location-fields">
           {[[start, setStart, '출발지', 'A'], [end, setEnd, '도착지', 'B']].map(([value, setter, label, letter]) => (
             <label className="place-field" key={letter}>
@@ -254,6 +261,13 @@ export default function CampusExperience() {
         {route && <section className="walking-guide"><span className="eyebrow">단길 이동 안내</span><h3>목적지까지 이렇게 이동하세요</h3>
           <ol>{buildGuidance(route, routeNames).map((step, index) => <li key={index}><span className="guide-number">{String(index + 1).padStart(2, '0')}</span><div><small style={step.highlightedException ? { color: ROUTE_EXCEPTION_COLOR } : undefined}>{step.label}</small><b>{step.title}</b>{step.detail && <p>{step.detail}</p>}</div></li>)}</ol>
         </section>}
+        </div>
+        {panelMode === 'chatbot' && <section id="panel-chatbot" className="panel-chat" role="tabpanel" aria-labelledby="tab-chatbot">
+          <div className="chat-intro"><span className="chat-intro-icon">✦</span><h2>말로 찾는 캠퍼스의 길</h2><p>출발지와 목적지를 알려주세요.<br/>이동 조건까지 함께 안내할게요.</p></div>
+          <div className="panel-messages" aria-live="polite" aria-busy={busy}>{messages.map((m,i) => <div className={'panel-message ' + m.role} key={i}>{m.role === 'bot' && <span className="bot-avatar" aria-hidden="true">D</span>}<p>{m.text}</p></div>)}{busy && <div className="panel-message bot"><span className="bot-avatar">D</span><p className="chat-typing">경로를 확인하고 있어요<span>···</span></p></div>}<div ref={chatBottomRef}/></div>
+          <form className="panel-chat-form" onSubmit={send}><label className="sr-only" htmlFor="panel-question">캠퍼스 길찾기 질문</label><textarea id="panel-question" rows={2} placeholder="예: 정문에서 곰상까지 계단 없이" value={input} maxLength={4000} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); send(e); } }}/><button disabled={busy || !input.trim()} aria-label="질문 보내기">↑</button></form>
+          <p className="chat-keyboard-hint">Enter로 전송 · Shift + Enter로 줄바꿈</p>
+        </section>}
       </aside>
       <main className="map-panel"><div className="map-toolbar"><div><i /> 단국대학교 <b>죽전캠퍼스</b><span className="map-kind">{live ? '카카오맵' : '좌표 기반 캠퍼스맵'}</span></div><button onClick={() => { if (hasKakaoMapKey()) setLive(v => !v); else setMapError('카카오 지도를 사용하려면 frontend/.env에 VITE_KAKAO_MAP_KEY를 설정해 주세요.'); }}>{live ? '캠퍼스맵 보기' : '카카오맵 보기'} ↗</button></div>
         <div className="map-surface">{live ? <LiveMap routeColor={chosenMode.color} {...{route,start,end,showEntrances,filter}} onPick={setSelected} onError={e => { setMapError(e.message); setLive(false); }} /> : <div className="map-scroll"><svg className="campus-svg" viewBox="0 0 1060 960" style={{width: `${zoom * 100}%`, height: `${zoom * 100}%`}} aria-label="실제 입력 좌표로 배치한 캠퍼스 연결 지도">
@@ -276,7 +290,5 @@ export default function CampusExperience() {
     </div>
     <footer className="page-footer"><b>DKU SafePath</b><span>더 가까운 캠퍼스, 모두를 위한 이동.</span><small>단국대학교 학생 프로젝트 · Prototype</small></footer>
     {about&&<div className="modal-backdrop" onClick={()=>setAbout(false)}><section role="dialog" aria-modal="true" aria-label="서비스 소개" className="about-dialog" onClick={e=>e.stopPropagation()}><button onClick={()=>setAbout(false)} aria-label="닫기">×</button><span className="eyebrow">ABOUT SAFEPATH</span><h2>모두에게 열린 캠퍼스를 위해.</h2><p>DKU SafePath는 학생과 보행약자의 이동을 돕는 캠퍼스 길찾기 프로젝트입니다. 사용자 제공 좌표와 팀이 작성한 연결 정보를 활용합니다.</p><p>등록된 실외·실내 통로와 층간 연결을 바탕으로 경로를 계산합니다. 실내 이동은 경로 목록에서 확인할 수 있어요.</p></section></div>}
-    <button className="chat-launch" aria-label="채팅 도우미 열기" onClick={()=>setChat(v=>!v)}>{chat?'×':'✦'}<span>캠퍼스 도우미</span></button>
-    {chat&&<section className="chat-window" aria-label="캠퍼스 도우미"><header><span>✦ 캠퍼스 도우미</span><button aria-label="채팅 닫기" onClick={()=>setChat(false)}>×</button></header><div className="messages" aria-live="polite">{messages.map((m,i)=><p key={i} className={m.role}>{m.text}</p>)}{busy&&<p>답변을 준비하고 있어요…</p>}</div><form onSubmit={send}><input aria-label="질문" placeholder="캠퍼스에 대해 물어보세요" value={input} maxLength={4000} onChange={e=>setInput(e.target.value)}/><button disabled={busy||!input.trim()} aria-label="질문 보내기">↑</button></form></section>}
   </div>;
 }

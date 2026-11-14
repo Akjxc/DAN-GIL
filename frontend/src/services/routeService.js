@@ -1,7 +1,18 @@
 export async function requestPlaces(signal) {
   const response = await fetch('/api/places?endpoints_only=true', { signal });
   if (!response.ok) throw new Error('실내 장소 목록을 불러오지 못했습니다.');
-  return response.json();
+  const nodes = await response.json();
+  const landmarks = {
+    mainGate: '단국대 정문',
+    bearStatue: '곰상(평화의광장)',
+    parkingJc: '주차빌딩 앞',
+    labJc: '종합실험동 앞',
+    hyeDangYardJc: '노천마당 앞',
+    dentalJc: '치과대학 방면',
+  };
+  return nodes
+    .filter(node => node.kind === 'entrance' || Object.hasOwn(landmarks, node.id))
+    .map(node => ({ ...node, name: landmarks[node.id] || node.name }));
 }
 
 export async function requestRoute(start, end, avoidStairs, signal, mode = 'shortest') {
