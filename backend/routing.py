@@ -12,13 +12,13 @@ INDOOR_BASE_COST = 1.0
 
 CONDITION_COSTS = {
     "flat": 1,
-    "slope": 2,
-    "stair": 3,
-    "elevator": 2,
+    "slope": 3,
+    "stair": 5,
+    "elevator": 1,
 }
 
 KIND_MULTIPLIERS = {
-    "indoorPath": 1,
+    "indoorPath": 10,
     "outdoorPath": 1,
 }
 
@@ -223,9 +223,9 @@ def find_route_with_minimal_exceptions(graph, start, end, excluded_conditions=No
 
 if __name__ == "__main__":
     graph = load_graph()
-    start = "softwareEntranceF1"
-    end = "softwareEntranceF3"
-    excluded_kinds = []
+    start = "mainGate"
+    end = "bearStatue"
+    excluded_kinds = ["indoorPath"]
     excluded_conditions = []
 
     try:
