@@ -109,7 +109,7 @@ class RoutingNotReady(Exception):
     pass
 
 
-def call_routing(name: str, arguments: dict) -> dict:
+def call_routing(name: str, arguments: dict, *, graph=None) -> dict:
     """Adapt the team's NetworkX path list to the AI's structured result."""
     try:
         module = importlib.import_module("backend.routing")
@@ -119,7 +119,8 @@ def call_routing(name: str, arguments: dict) -> dict:
         raise
     import networkx as nx
 
-    graph = module.load_graph()
+    if graph is None:
+        graph = module.load_graph()
     if name == "search_places":
         return module.search_places(arguments["query"], graph=graph)
     if name != "find_route":

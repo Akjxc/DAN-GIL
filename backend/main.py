@@ -3,23 +3,29 @@ from fastapi import FastAPI, HTTPException
 from backend.agent import AgentUnavailable, ChatRequest, ChatResponse, run_chat
 from backend.tools import FindRouteArgs, call_routing
 from backend.graph import load_graph
-from backend.routing import base_edge_cost
+from backend.routing import place_info
 
 app = FastAPI()
 
 
+@app.get("/api/places")
+def places():
+    graph = load_graph()
+    return [place_info(graph, node_id) for node_id, node in graph.nodes(data=True) if "name" in node]
+
+
 @app.post("/api/routes")
 def routes(request: FindRouteArgs):
-    result = call_routing("find_route", request.model_dump())
+    graph = load_graph()
+    result = call_routing("find_route", request.model_dump(), graph=graph)
     if result["status"] == "invalid_request":
         raise HTTPException(status_code=400, detail="출발지 또는 도착지 ID가 올바르지 않습니다.")
     if result["status"] == "ok":
-        graph = load_graph()
         result["nodes"] = [dict(graph.nodes[node["id"]]) for node in result["nodes"]]
-        result["cost"] = sum(base_edge_cost(u["id"], v["id"], graph.edges[u["id"], v["id"]])
-                             for u, v in zip(result["nodes"], result["nodes"][1:]))
+        result["cost"] = result["total_cost"]
         result["cost_basis"] = "condition_demo_cost"
     return result
+
 
 @app.get("/api/health")
 def health():

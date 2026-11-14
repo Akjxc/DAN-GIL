@@ -18,8 +18,8 @@ CONDITION_COSTS = {
 }
 
 KIND_MULTIPLIERS = {
-    "indoorPath": 10,
-    "outdoorPath": 1,
+    "indoorPath": 1,
+    "outdoorPath": 10,
 }
 
 

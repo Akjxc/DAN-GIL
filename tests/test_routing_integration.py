@@ -6,8 +6,9 @@ from unittest.mock import patch
 import networkx as nx
 
 from backend.graph import load_graph
+from backend.main import places, routes
 from backend.routing import find_route, search_places
-from backend.tools import ToolExecutor, call_routing
+from backend.tools import FindRouteArgs, ToolExecutor, call_routing
 
 
 class RoutingIntegrationTests(unittest.TestCase):
@@ -71,6 +72,8 @@ class RoutingIntegrationTests(unittest.TestCase):
         self.assertEqual(result["edges"], [])
         self.assertEqual(result.get("total_cost"), 0)
 
+    @patch("backend.routing.KIND_MULTIPLIERS", {"outdoorPath": 1, "indoorPath": 1})
+    @patch("backend.routing.CONDITION_COSTS", {"flat": 1, "slope": 2, "stair": 3})
     def test_route_score_uses_distance_and_condition_without_claiming_total_meters(self):
         # At the equator 0.001 longitude degrees is about 111.19493 m.
         # A slope costs twice as much; indoor costs do not depend on coordinates.
@@ -98,6 +101,18 @@ class RoutingIntegrationTests(unittest.TestCase):
                 self.assertAlmostEqual(result["total_cost"], expected, places=5)
                 self.assertIsNone(result["distance_m"])
                 self.assertIsNone(result["duration_seconds"])
+
+    def test_map_route_supports_indoor_endpoints_and_returns_map_coordinates(self):
+        indoor_id = "softwareMediaF3Hall"
+        self.assertIn(indoor_id, {node["id"] for node in places()})
+        result = routes(FindRouteArgs(start_node_id="mainGate", end_node_id=indoor_id,
+                                      exclude_conditions=["stair"]))
+        self.assertEqual(result["status"], "ok")
+        self.assertEqual(result["cost"], result["total_cost"])
+        self.assertIsInstance(result["nodes"][0]["latitude"], float)
+        self.assertEqual(result["nodes"][-1]["id"], indoor_id)
+        self.assertNotIn("latitude", result["nodes"][-1])
+        self.assertTrue(all(edge["condition"] != "stair" for edge in result["edges"]))
 
     def test_executor_preserves_the_cost_metric_and_score(self):
         executor = ToolExecutor()
