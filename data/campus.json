@@ -450,8 +450,8 @@
         {
             "id": "softwareEntranceB1Jc",
             "name": "소프트웨어ICT관 지하1층 출입구 분기점",
-            "latitude": 37.32262593957103,
-            "longitude": 127.12689796642344,
+            "latitude": 37.32247964296923,
+            "longitude": 127.1267848974399,
             "buildingId": null,
             "floor": null,
             "kind": "outdoorPath"

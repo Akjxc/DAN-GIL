@@ -4,7 +4,7 @@ import { loadKakaoMapSdk, hasKakaoMapKey } from './services/mapService';
 import { sendChatMessage } from './services/chatService';
 import { requestPlaces, requestRoute } from './services/routeService';
 
-const modes = [{ id: 'accessible', icon: '♿', name: '계단 없는 경로', sub: '엘리베이터·연결 통로', color: '#8660d9' }, { id: 'indoor', icon: '⌂', name: '실내 위주', sub: '실외 구간 최소화', color: '#169d78' }, { id: 'shortest', icon: '↗', name: '최단 경로', sub: '거리 기준', color: '#3778f6' }];
+const modes = [{ id: 'accessible', icon: '♿', name: '계단 없는 경로', sub: '엘리베이터·연결 통로', color: '#8660d9' }, { id: 'indoor', icon: (<svg viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 24V6l8-3 8 3v18M3 24h22M11 24v-6h6v6"/><path d="M10 9h1m6 0h1m-8 4h1m6 0h1"/></svg>), name: '실내 위주', sub: '실외 구간 최소화', color: '#169d78' }, { id: 'shortest', icon: (<svg viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="6" cy="22" r="3"/><circle cx="22" cy="6" r="3"/><path d="M8.5 19.5l11-11M12 8h6v6"/><path d="M4 14V7a3 3 0 0 1 3-3h7M14 24h7a3 3 0 0 0 3-3v-7" strokeOpacity=".25"/></svg>), name: '최단 경로', sub: '거리 기준', color: '#3778f6' }];
 const STAIR_EXCEPTION_COLOR = '#b45309';
 const LANDMARK_LABELS = {
   mainGate: null,
@@ -230,7 +230,7 @@ export default function CampusExperience() {
 <header className="topbar"><a className="brand" href="#"><span className="brand-symbol d-path-logo"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 10h10c10 0 16 5 16 14s-6 14-16 14H13V10Z" fill="none" stroke="white" strokeWidth="4" strokeLinejoin="round"/><path d="M13 31h9V20h10" fill="none" stroke="#8ee4d2" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/><circle cx="13" cy="31" r="3" fill="white"/><circle cx="32" cy="20" r="3.5" fill="#8ee4d2"/></svg></span><span className="brand-wordmark"><b>DAN-GIL</b><small>단국대학교 캠퍼스 길찾기</small></span></a><span className="campus-badge"><i /> 죽전캠퍼스</span></header>
     <div className="page-heading"><div><span className="eyebrow">YOUR CAMPUS, YOUR WAY</span><h1>우리의 캠퍼스, 더 편안한 한 걸음.</h1><p>출입구부터 연결 통로까지, 나에게 맞는 길을 찾아보세요.</p></div><div className="heading-mark">DKU<span>WALK BETTER.</span></div></div>
     <div className="map-workspace">
-      <aside className="search-panel"><div className="panel-title"><span className="mini-icon">⌁</span><div><h2>어디로 가시나요?</h2><p>캠퍼스 안의 길을 연결합니다</p></div></div>
+<aside className="search-panel"><div className="panel-title"><span className="mini-icon"><svg viewBox="0 0 28 28" width="29" height="29" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 11c0 6-8 12-8 12S6 17 6 11a8 8 0 1 1 16 0Z"/><circle cx="14" cy="11" r="2.8"/><path d="M7 23c-2 0-3 1-3 2h20c0-1-1-2-3-2" strokeOpacity=".3"/></svg></span><div><h2>어디로 가시나요?</h2><p>캠퍼스 안의 길을 연결합니다</p></div></div>
         <div className="location-fields">
           {[[start, setStart, '출발지', 'A'], [end, setEnd, '도착지', 'B']].map(([value, setter, label, letter]) => (
             <label className="place-field" key={letter}>
