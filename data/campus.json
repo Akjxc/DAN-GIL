@@ -1144,6 +1144,14 @@
             "condition": "slope"
         },
         {
+            "id": "libraryBeomJungJcToLibraryEngineeringJc",
+            "name": "도서관 범정관 분기점-도서관, 제2공학관, 제3공학관 분기점",
+            "from": "libraryBeomJungJc",
+            "to": "libraryEngineeringJc",
+            "kind": "outdoorPath",
+            "condition": "flat"
+        },
+        {
             "id": "libraryBeomJungJcToEngineering1Engineering2Jc",
             "name": "도서관 범정관 분기점-도서관, 제2공학관, 제3공학관 분기점",
             "from": "libraryBeomJungJc",
