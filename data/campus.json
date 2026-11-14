@@ -888,14 +888,6 @@
             "condition": "slope"
         },
         {
-            "id": "hyeDangHumanityJcToHumanityLawGraduateBearStatueJc",
-            "name": "혜당관 인문관 분기점-인문관 법학관/대학원동 곰상 분기점",
-            "from": "hyeDangHumanityJc",
-            "to": "humanityLawGraduateBearStatueJc",
-            "kind": "outdoorPath",
-            "condition": "slope"
-        },
-        {
             "id": "humanityLawGraduateBearStatueJcToLawGraduateEntranceF1",
             "name": "인문관 법학관/대학원동 곰상 분기점-법학관/대학원동 1층 출입구",
             "from": "humanityLawGraduateBearStatueJc",
