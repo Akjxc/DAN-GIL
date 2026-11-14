@@ -6,6 +6,14 @@ import { requestPlaces, requestRoute } from './services/routeService';
 
 const modes = [{ id: 'fast', icon: '↗', name: '추천 경로', sub: '캠퍼스 연결 경로', color: '#3778f6' }, { id: 'indoor', icon: '⌂', name: '실내 위주', sub: '실외 구간 최소화', color: '#169d78' }, { id: 'accessible', icon: '♿', name: '계단 없는 경로', sub: '엘리베이터·연결 통로', color: '#8660d9' }];
 const STAIR_EXCEPTION_COLOR = '#b45309';
+const LANDMARK_LABELS = {
+  mainGate: null,
+  bearStatue: null,
+  parkingJc: '주차빌딩 앞',
+  labJc: '종합실험동 앞',
+  hyeDangYardJc: '노천마당 앞',
+  dentalJc: '치과대학 방면',
+};
 
 
 function LiveMap({ route, start, end, showEntrances, filter, onPick, onError }) {
@@ -146,7 +154,9 @@ export default function CampusExperience() {
   const [messages, setMessages] = useState([{ role: 'bot', text: '안녕하세요! 캠퍼스에서 어디로 가시나요?', local: true }]);
   const routeNames = { ...byId, ...Object.fromEntries(routePlaces.map(n => [n.id,n])), ...Object.fromEntries((route?.nodes || []).map(n => [n.id,n])) };
   const selectedPlace = routeNames[selected];
-  const endpointOptions = Object.values(routeNames).filter(n => n.kind === 'entrance' || n.id === start || n.id === end);
+  const endpointOptions = Object.values(routeNames).filter(n =>
+    n.kind === 'entrance' || Object.hasOwn(LANDMARK_LABELS, n.id) || n.id === start || n.id === end,
+  );
   const chosenMode = modes.find(m => m.id === mode);
   const visible = (route ? route.nodes : places).filter(n => Number.isFinite(n.latitude) && Number.isFinite(n.longitude)).filter(n => [start, end].includes(n.id) || (showEntrances && (filter === 'all' || (filter === 'entrance' ? n.kind === 'entrance' : n.kind === 'outdoorPath'))));
   const clear = () => {
@@ -221,7 +231,20 @@ export default function CampusExperience() {
     <div className="page-heading"><div><span className="eyebrow">YOUR CAMPUS, YOUR WAY</span><h1>우리의 캠퍼스, 더 편안한 한 걸음.</h1><p>출입구부터 연결 통로까지, 나에게 맞는 길을 찾아보세요.</p></div><div className="heading-mark">DKU<span>WALK BETTER.</span></div></div>
     <div className="map-workspace">
       <aside className="search-panel"><div className="panel-title"><span className="mini-icon">⌁</span><div><h2>어디로 가시나요?</h2><p>캠퍼스 안의 길을 연결합니다</p></div></div>
-<div className="location-fields">{[[start, setStart, '출발지', 'A'], [end, setEnd, '도착지', 'B']].map(([value, setter, label, letter]) => <label className="place-field" key={letter}><span className={`letter ${letter}`}>{letter}</span><span><small>{label}</small><select aria-label={label} value={value} onChange={e => choose(setter, e.target.value)}>{endpointOptions.map(n => <option key={n.id} value={n.id}>{n.name}</option>)}</select></span></label>)}<button className="swap" aria-label="출발지와 도착지 바꾸기" onClick={() => { setStart(end); setEnd(start); clear(); }}>⇅</button></div>
+        <div className="location-fields">
+          {[[start, setStart, '출발지', 'A'], [end, setEnd, '도착지', 'B']].map(([value, setter, label, letter]) => (
+            <label className="place-field" key={letter}>
+              <span className={`letter ${letter}`}>{letter}</span>
+              <span>
+                <small>{label}</small>
+                <select aria-label={label} value={value} onChange={e => choose(setter, e.target.value)}>
+                  {endpointOptions.map(n => <option key={n.id} value={n.id}>{LANDMARK_LABELS[n.id] ?? n.name}</option>)}
+                </select>
+              </span>
+            </label>
+          ))}
+          <button className="swap" aria-label="출발지와 도착지 바꾸기" onClick={() => { setStart(end); setEnd(start); clear(); }}>⇅</button>
+        </div>
         {placesError && <p className="mode-warning" role="status">{placesError}</p>}
         <h3 className="section-label">이동 방식</h3><div className="mode-grid">{modes.map(m => <button key={m.id} className={mode === m.id ? 'mode selected' : 'mode'} onClick={() => choose(setMode, m.id)}><span>{m.icon}</span><b>{m.name}</b><small>{m.sub}</small></button>)}</div>
         {mode === 'accessible' && <p className="fine-print">휠체어 이용자를 위해 계단 구간을 제외하고 엘리베이터와 연결 통로를 이용합니다.</p>}
