@@ -1,4 +1,5 @@
 import campus from '../../data/campus.json';
+import { dijkstra } from './algorithms/dijkstra';
 
 export const places = campus.nodes;
 export const byId = Object.fromEntries(places.map(n => [n.id, n]));
@@ -10,4 +11,8 @@ export function distance(a, b) {
   const dLon = (b.longitude - a.longitude) * rad;
   const h = Math.sin(dLat / 2) ** 2 + Math.cos(a.latitude * rad) * Math.cos(b.latitude * rad) * Math.sin(dLon / 2) ** 2;
   return 6371000 * 2 * Math.atan2(Math.sqrt(h), Math.sqrt(1 - h));
+}
+export function findRoute(start, end, avoidStairs) {
+  return dijkstra(places, links.filter(e => !avoidStairs || e.condition !== 'stair'), start, end,
+    e => distance(byId[e.from], byId[e.to]));
 }
