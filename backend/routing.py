@@ -155,13 +155,13 @@ if __name__ == "__main__":
     graph = load_graph()
 
     excluded_kinds = []
-    excluded_conditions = ["slope"]
+    excluded_conditions = []
     
     try:
         path = find_route(
             graph,
-            start="mainGate",
-            end="engineering1F5Hall",
+            start="beomJungSoftwareJc",
+            end="bearStatue",
             excluded_kinds=excluded_kinds,
             excluded_conditions=excluded_conditions
         )
