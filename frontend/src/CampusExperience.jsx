@@ -4,7 +4,8 @@ import { loadKakaoMapSdk, hasKakaoMapKey } from './services/mapService';
 import { sendChatMessage } from './services/chatService';
 import { requestPlaces, requestRoute } from './services/routeService';
 
-const modes = [{ id: 'fast', icon: '↗', name: '추천 경로', sub: '캠퍼스 연결 경로', color: '#3778f6' }, { id: 'safe', icon: '☾', name: '안심 야간', sub: '조명 정보 준비 중', color: '#169d78' }, { id: 'walk', icon: '♧', name: '최소 보행', sub: '이동수단 정보 준비 중', color: '#8660d9' }];
+const modes = [{ id: 'fast', icon: '↗', name: '추천 경로', sub: '캠퍼스 연결 경로', color: '#3778f6' }, { id: 'indoor', icon: '⌂', name: '실내 위주', sub: '실외 구간 최소화', color: '#169d78' }, { id: 'accessible', icon: '♿', name: '계단 없는 경로', sub: '엘리베이터·연결 통로', color: '#8660d9' }];
+const STAIR_EXCEPTION_COLOR = '#b45309';
 
 
 function LiveMap({ route, start, end, showEntrances, filter, onPick, onError }) {
@@ -43,9 +44,9 @@ function LiveMap({ route, start, end, showEntrances, filter, onPick, onError }) 
     });
     if (route?.mapSegments.length) {
       const bounds = new m.LatLngBounds();
-      for (const segment of route.mapSegments) {
-        const path = segment.map(n => new m.LatLng(n.latitude, n.longitude));
-        overlays.push(new m.Polyline({ map: instance, path, strokeWeight: 6, strokeColor: '#3778f6', strokeOpacity: 1 }));
+      for (const { nodes, stairException } of route.mapSegments) {
+        const path = nodes.map(n => new m.LatLng(n.latitude, n.longitude));
+        overlays.push(new m.Polyline({ map: instance, path, strokeWeight: 6, strokeColor: stairException ? STAIR_EXCEPTION_COLOR : '#3778f6', strokeOpacity: 1 }));
         path.forEach(p => bounds.extend(p));
       }
       instance.setBounds(bounds);
@@ -94,8 +95,10 @@ function buildGuidance(route, names) {
     const floor = destination?.floor;
     const floorLabel = floor == null ? '' : floor < 0 ? '지하 ' + Math.abs(floor) + '층' : floor + '층';
     const transport = edge.condition === 'elevator' ? '엘리베이터' : edge.condition === 'stair' ? '계단' : null;
+    const stairException = edge.condition === 'stair' && route.edges.slice(i, endIndex).some(segment => segment.is_exception);
     steps.push({
-      label: last ? '도착' : transport || (edge.kind === 'indoorPath' ? '실내 이동' : '실외 이동'),
+      label: stairException ? '예외 계단 구간' : last ? '도착' : transport || (edge.kind === 'indoorPath' ? '실내 이동' : '실외 이동'),
+      stairException,
       title: last ? destination.name + '에 도착합니다.' : transport && floorLabel ? transport + '로 ' + floorLabel + '까지 이동하세요.' : destination.name + (transport ? '에서 ' + transport + '를 이용하세요.' : ' 방향으로 이동하세요.'),
       detail: edge.condition === 'slope' ? '경사 구간' : !transport && !last && edge.kind === 'indoorPath' ? '연결된 복도를 따라 이동합니다.' : null,
     });
@@ -109,7 +112,7 @@ export default function CampusExperience() {
   const [start, setStart] = useState('humanityEntranceF1');
   const [end, setEnd] = useState('libraryEntranceF1');
   const [mode, setMode] = useState('fast');
-  const [avoid, setAvoid] = useState(false);
+  const avoid = mode === 'accessible';
   const [route, setRoute] = useState(null);
   const [searched, setSearched] = useState(false);
   const [routeBusy, setRouteBusy] = useState(false);
@@ -157,9 +160,9 @@ export default function CampusExperience() {
     routeRequest.current = controller;
     setRouteBusy(true);
     try {
-      const result = await requestRoute(start, end, avoid, controller.signal);
+      const result = await requestRoute(start, end, avoid, controller.signal, mode);
       if (controller.signal.aborted) return;
-      setRoute(result && { ...result, path: result.nodes.map(n => n.id), mapSegments: routeMapSegments(result.nodes) });
+      setRoute(result && { ...result, path: result.nodes.map(n => n.id), mapSegments: routeMapSegments(result.nodes, result.edges) });
       setSearched(true);
     } catch (error) {
       if (!controller.signal.aborted) {
@@ -187,27 +190,28 @@ export default function CampusExperience() {
     }
   }
   return <div className="experience">
-<header className="topbar"><a className="brand" href="#"><span className="brand-symbol d-path-logo"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 10h10c10 0 16 5 16 14s-6 14-16 14H13V10Z" fill="none" stroke="white" strokeWidth="4" strokeLinejoin="round"/><path d="M13 31h9V20h10" fill="none" stroke="#8ee4d2" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/><circle cx="13" cy="31" r="3" fill="white"/><circle cx="32" cy="20" r="3.5" fill="#8ee4d2"/></svg></span><span className="brand-wordmark"><b>단길</b><small>DKU SafePath <span>· 캠퍼스를 잇는 길</span></small></span></a><nav><button className="active" onClick={() => setAbout(false)}>길찾기</button><button onClick={() => { setFilter('entrance'); setAbout(false); }}>출입구 찾기</button><button onClick={() => setAbout(true)}>서비스 소개</button></nav><span className="campus-badge"><i /> 죽전캠퍼스</span></header>
+<header className="topbar"><a className="brand" href="#"><span className="brand-symbol d-path-logo"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 10h10c10 0 16 5 16 14s-6 14-16 14H13V10Z" fill="none" stroke="white" strokeWidth="4" strokeLinejoin="round"/><path d="M13 31h9V20h10" fill="none" stroke="#8ee4d2" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/><circle cx="13" cy="31" r="3" fill="white"/><circle cx="32" cy="20" r="3.5" fill="#8ee4d2"/></svg></span><span className="brand-wordmark"><b>DAN-GIL</b><small>단국대학교 캠퍼스 길찾기</small></span></a><span className="campus-badge"><i /> 죽전캠퍼스</span></header>
     <div className="page-heading"><div><span className="eyebrow">YOUR CAMPUS, YOUR WAY</span><h1>우리의 캠퍼스, 더 편안한 한 걸음.</h1><p>출입구부터 연결 통로까지, 나에게 맞는 길을 찾아보세요.</p></div><div className="heading-mark">DKU<span>WALK BETTER.</span></div></div>
     <div className="map-workspace">
       <aside className="search-panel"><div className="panel-title"><span className="mini-icon">⌁</span><div><h2>어디로 가시나요?</h2><p>캠퍼스 안의 길을 연결합니다</p></div></div>
-        <div className="location-fields">{[[start, setStart, '출발지', 'A'], [end, setEnd, '도착지', 'B']].map(([value, setter, label, letter]) => <label className="place-field" key={letter}><span className={`letter ${letter}`}>{letter}</span><span><small>{label}</small><select aria-label={label} value={value} onChange={e => choose(setter, e.target.value)}>{routePlaces.filter(n => !n.name.includes('분기점')).map(n => <option key={n.id} value={n.id}>{n.name}</option>)}</select></span></label>)}<button className="swap" aria-label="출발지와 도착지 바꾸기" onClick={() => { setStart(end); setEnd(start); clear(); }}>⇅</button></div>
+<div className="location-fields">{[[start, setStart, '출발지', 'A'], [end, setEnd, '도착지', 'B']].map(([value, setter, label, letter]) => <label className="place-field" key={letter}><span className={`letter ${letter}`}>{letter}</span><span><small>{label}</small><select aria-label={label} value={value} onChange={e => choose(setter, e.target.value)}>{routePlaces.filter(n => n.kind === 'entrance' || ['mainGate', 'bearStatue', 'parkingJc', 'labJc', 'hyeDangYardJc', 'dentalJc'].includes(n.id)).map(n => <option key={n.id} value={n.id}>{{ parkingJc: '주차빌딩 앞', labJc: '종합실험동 앞', hyeDangYardJc: '노천마당 앞', dentalJc: '치과대학 방면' }[n.id] || n.name}</option>)}</select></span></label>)}<button className="swap" aria-label="출발지와 도착지 바꾸기" onClick={() => { setStart(end); setEnd(start); clear(); }}>⇅</button></div>
         {placesError && <p className="mode-warning" role="status">{placesError}</p>}
         <h3 className="section-label">이동 방식</h3><div className="mode-grid">{modes.map(m => <button key={m.id} className={mode === m.id ? 'mode selected' : 'mode'} onClick={() => choose(setMode, m.id)}><span>{m.icon}</span><b>{m.name}</b><small>{m.sub}</small></button>)}</div>
-<label className="check-row"><input type="checkbox" checked={avoid} onChange={e => choose(setAvoid, e.target.checked)} /><span>계단 없는 경로 우선</span><span className="option-tag">접근성</span></label><p className="fine-print">휠체어 이용자를 위해 계단 구간을 제외하고 엘리베이터와 연결 통로를 이용합니다.</p>
-        {mode !== 'fast' && <p className="mode-warning">{mode === 'safe' ? '조명 데이터가 없어 야간 안전성을 평가할 수 없습니다.' : '운행·대기시간 데이터가 없어 최소 보행을 계산할 수 없습니다.'} 현재는 기본 경로로 안내합니다.</p>}
+        {mode === 'accessible' && <p className="fine-print">휠체어 이용자를 위해 계단 구간을 제외하고 엘리베이터와 연결 통로를 이용합니다.</p>}
+        {mode === 'indoor' && <p className="fine-print">실내 연결을 우선하며, 필요한 실외 구간은 함께 안내합니다.</p>}
         <button className="search-button" disabled={routeBusy} onClick={search}>{routeBusy ? '경로 계산 중…' : '경로 찾기'} <span>↗</span></button>
         {routeError && <p className="mode-warning" role="alert">경로를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</p>}
         <div className="results" aria-live="polite">
           {!searched ? <div className="empty-result"><span>⌁</span><b>다음 목적지를 정해보세요</b><p>출발지와 도착지를 선택하면<br/>이동 경로를 안내합니다.</p></div> :
             !route ? <p className="mode-warning">선택한 조건으로 이동할 수 있는 경로가 없습니다. 다른 출입구를 선택해 주세요.</p> :
-            <><div className="result-heading"><b>{start === end ? '같은 장소입니다' : '추천 경로'}</b><span>{avoid ? '계단 제외' : '캠퍼스 길찾기'}</span></div>
+            <><div className="result-heading"><b>{start === end ? '같은 장소입니다' : '추천 경로'}</b><span>{route.exception_notice ? '대안 경로' : avoid ? '계단 제외' : '캠퍼스 길찾기'}</span></div>
+              {route.exception_notice && <p className="mode-warning">{route.exception_notice}</p>}
               <div className="journey-endpoints"><p><span className="letter">A</span>{routeNames[start]?.name}</p><div className="journey-connector"/><p><span className="letter B">B</span>{routeNames[end]?.name}</p></div>
 <div className="route-stats">{route.edges.some(e => e.condition === 'stair') && <span>계단 <b>{route.edges.filter(e => e.condition === 'stair').length}구간</b></span>}{route.edges.some(e => e.condition === 'slope') && <span>경사 <b>{route.edges.filter(e => e.condition === 'slope').length}구간</b></span>}{route.edges.some(e => e.condition === 'elevator') && <span><b>엘리베이터 이용</b></span>}</div>
             </>}
         </div>
         {route && <section className="walking-guide"><span className="eyebrow">단길 이동 안내</span><h3>목적지까지 이렇게 이동하세요</h3>
-          <ol>{buildGuidance(route, routeNames).map((step, index) => <li key={index}><span className="guide-number">{String(index + 1).padStart(2, '0')}</span><div><small>{step.label}</small><b>{step.title}</b>{step.detail && <p>{step.detail}</p>}</div></li>)}</ol>
+          <ol>{buildGuidance(route, routeNames).map((step, index) => <li key={index}><span className="guide-number">{String(index + 1).padStart(2, '0')}</span><div><small style={step.stairException ? { color: STAIR_EXCEPTION_COLOR } : undefined}>{step.label}</small><b>{step.title}</b>{step.detail && <p>{step.detail}</p>}</div></li>)}</ol>
         </section>}
       </aside>
       <main className="map-panel"><div className="map-toolbar"><div><i /> 단국대학교 <b>죽전캠퍼스</b><span className="map-kind">{live ? '카카오맵' : '좌표 기반 캠퍼스맵'}</span></div><button onClick={() => { if (hasKakaoMapKey()) setLive(v => !v); else setMapError('카카오 지도를 사용하려면 frontend/.env에 VITE_KAKAO_MAP_KEY를 설정해 주세요.'); }}>{live ? '캠퍼스맵 보기' : '카카오맵 보기'} ↗</button></div>
@@ -215,9 +219,9 @@ export default function CampusExperience() {
           <defs><pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#cfdacf" /></pattern><filter id="pin-shadow"><feDropShadow dx="0" dy="4" stdDeviation="5" floodOpacity=".12" /></filter></defs><rect width="1060" height="960" fill="#edf2ea"/><rect width="1060" height="960" fill="url(#dots)"/><path d="M0 0H420Q120 220 110 480T0 950Z M780 0H1060V960H900Q710 780 870 500T780 0" fill="#dfebda"/><text x="870" y="840" className="park-label">캠퍼스 녹지</text><text x="50" y="890" className="north-label">N ↑</text>
           {links.map(e => { const a=position(byId[e.from]),b=position(byId[e.to]);return <g key={e.id}><line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="#d5ddd1" strokeWidth="21" strokeLinecap="round"/><line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke={e.kind === 'indoorPath' ? '#e3e1ee' : '#fff'} strokeWidth="14" strokeLinecap="round"/><line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke={e.condition==='stair'?'#d7a667': '#dce3db'} strokeWidth="2" strokeDasharray={e.condition==='stair'?'2 5':'4 8'}/></g>; })}
           {Object.entries(Object.groupBy(places.filter(n=>n.buildingId), n=>n.buildingId)).map(([id,ns]) => {const x=ns.reduce((s,n)=>s+position(n).x,0)/ns.length,y=ns.reduce((s,n)=>s+position(n).y,0)/ns.length;return <g key={id} className="map-building" transform={`translate(${x},${y})`}><rect x="-48" y="-27" width="96" height="54" rx="10"/><path d="M-38 -17H38M-38 -10H38" stroke="#dce3ec" strokeWidth="3"/><text y="7">{ns[0].name.split(/ [1-9지]/)[0]}</text></g>;})}
-          {route?.mapSegments.map(segment => {
-            const points = segment.map(node => { const p = position(node); return `${p.x},${p.y}`; }).join(' ');
-            return <g key={segment[0].id}><polyline points={points} fill="none" stroke="white" strokeWidth="13" strokeLinejoin="round" strokeLinecap="round"/><polyline points={points} fill="none" stroke={chosenMode.color} strokeWidth="7" strokeLinejoin="round" strokeLinecap="round"/></g>;
+          {route?.mapSegments.map(({ nodes, stairException }) => {
+            const points = nodes.map(node => { const p = position(node); return `${p.x},${p.y}`; }).join(' ');
+            return <g key={nodes[0].id}><polyline points={points} fill="none" stroke="white" strokeWidth="13" strokeLinejoin="round" strokeLinecap="round"/><polyline points={points} fill="none" stroke={stairException ? STAIR_EXCEPTION_COLOR : chosenMode.color} strokeWidth="7" strokeLinejoin="round" strokeLinecap="round"/></g>;
           })}
           {visible.map(n=>{const p=position(n),active=[start,end].includes(n.id);return <g key={n.id} role="button" tabIndex="0" aria-label={n.name} onClick={()=>setSelected(n.id)} onKeyDown={e=>{if(e.key==='Enter'||e.key===' ')setSelected(n.id);}} className="node-hit" transform={`translate(${p.x},${p.y})`}><title>{n.name}</title>{showEntrances && !active && <text className="route-place-label" y="-14" textAnchor="middle">{n.name}</text>}<circle r="14" fill="transparent"/><circle r={active?7:4} fill={active?'#3979ef':n.kind==='entrance'?'#fff':'#9eafa0'} stroke={active?'white':'#739281'} strokeWidth="2"/>{active&&<g transform="translate(0,-26)" filter="url(#pin-shadow)"><rect x="-18" y="-21" width="36" height="36" rx="13" fill={n.id===start?'#3478f6':'#142d4c'}/><text className="endpoint-text" y="3">{n.id===start?'A':'B'}</text></g>}</g>;})}
         </svg></div>}

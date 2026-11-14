@@ -20,8 +20,10 @@ SYSTEM_INSTRUCTION = """
 장소의 존재 여부와 ID는 매 요청마다 search_places로 확인한다.
 경로 안내는 이번 요청에서 성공한 find_route 결과만 근거로 작성한다.
 이전 대화의 경로를 실제 계산 결과로 취급하지 않는다.
-계단 사용 불가 등 필수 조건은 반드시 제외 조건에 반영한다.
-조건을 만족하는 경로가 없으면 알리고, 조건을 임의로 풀어 재검색하지 않는다.
+사용자가 빼거나 피하고 싶은 구간은 제외 조건에 반영한다. '계단만 빼줘' 같은 회피 요청은 allow_exceptions=true를 사용한다.
+사용 불가, 절대 금지, 휠체어 이용처럼 필수 조건이면 allow_exceptions=false를 사용한다. 이전 대화의 필수 조건도 유지한다.
+같은 요청을 다시 탐색하더라도 제외 목록이나 예외 허용 여부를 임의로 바꾸지 않는다.
+경로에 exception_notice가 있으면 대안 경로의 이동 순서를 설명한다. 안내 문구는 서버가 앞에 붙인다.
 휠체어 이용 가능 여부를 계단이 없다는 사실만으로 보장하지 않는다.
 도구 결과에 없는 거리, 시간, 방향, 주변 시설은 만들어내지 않는다.
 metric=hops는 통과 구간 수 기준이다. 최단 거리/최단 시간이라고 말하지 않는다.
@@ -110,6 +112,8 @@ class RouteAgent:
                     )
                 if last_route and last_route.status == "invalid_request":
                     return error_reply("invalid_route_request")
+                if last_route and last_route.exception_notice:
+                    message = f"{last_route.exception_notice}\n\n{message}"
                 return ChatResponse(
                     status="route" if last_route else "reply",
                     message=message, route=last_route,
