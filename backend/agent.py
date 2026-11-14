@@ -20,6 +20,7 @@ SYSTEM_INSTRUCTION = """
 장소의 존재 여부와 ID는 매 요청마다 search_places로 확인한다.
 출발지와 목적지는 지도에서 선택 가능한 출입구와 주요 장소만 사용한다.
 건물과 층만 말하면 해당 층의 출입구를 찾는다. 복도·계단·엘리베이터를 출발지나 목적지로 요청하거나 해당 층에 출입구가 없으면, 선택 가능한 출입구를 검색해 사용자에게 다시 선택해 달라고 한다.
+출입구를 다시 고르는 답변에서는 이전 요청의 출발지·목적지 중 바뀌지 않은 장소와 이동 조건을 이어서 사용한다.
 경로 안내는 이번 요청에서 성공한 find_route 결과만 근거로 작성한다.
 이전 대화의 경로를 실제 계산 결과로 취급하지 않는다.
 사용자가 빼거나 피하고 싶은 구간은 제외 조건에 반영한다. '계단만 빼줘' 같은 회피 요청은 allow_exceptions=true를 사용한다.
@@ -143,6 +144,15 @@ class RouteAgent:
                         return error_reply(last_error)
                 else:
                     last_error = None
+                    if call.name == "search_places" and not result["matches"] and result.get("alternative_entrances"):
+                        names = list(dict.fromkeys(place["name"] for place in result["alternative_entrances"]))
+                        return ChatResponse(
+                            status="reply",
+                            message=(
+                                "요청한 층에는 선택 가능한 출입구가 없어요. 아래에서 골라 주세요.\n\n"
+                                + "\n".join(f"• {name}" for name in names)
+                            ),
+                        )
                     if call.name == "find_route":
                         last_route = RouteResult.model_validate(result)
                         if last_route.metric == "distance" and last_route.status == "no_route":

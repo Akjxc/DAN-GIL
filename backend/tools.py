@@ -52,6 +52,7 @@ class Place(StrictModel):
 
 class SearchResult(StrictModel):
     matches: list[Place] = Field(max_length=50)
+    alternative_entrances: list[Place] = Field(default_factory=list, max_length=50)
 
 
 class RouteEdge(StrictModel):

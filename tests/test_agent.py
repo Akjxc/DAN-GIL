@@ -68,7 +68,7 @@ class AgentTests(unittest.TestCase):
         ])
         reply = agent.chat(ChatRequest(message="계단 없이 가줘"), executor)
         self.assertEqual(reply.status, "route")
-        self.assertEqual(reply.message, "경로를 찾았어요.")
+        self.assertEqual(reply.message, "경로를 찾았어요. 아래 안내를 확인하세요.")
         self.assertEqual([n.id for n in reply.route.nodes], ["start", "end"])
         self.assertIsNone(reply.route.distance_m)
         handler.assert_called_once_with(**ARGS, metric="cost", exclude_kinds=[], allow_exceptions=False)
@@ -118,6 +118,17 @@ class AgentTests(unittest.TestCase):
         reply = agent.chat(ChatRequest(message="제1공학관 4층 출입구까지 최단거리로 찾아줘"), ToolExecutor())
         self.assertEqual(reply.status, "no_route")
         self.assertIn("거리 정보", reply.message)
+
+    def test_missing_floor_lists_selectable_entrances(self):
+        agent, _, _, _ = setup_agent([
+            calls_response(("search_places", {"query": "인문관 2층 출입구"})),
+        ])
+        executor = ToolExecutor()
+        reply = agent.chat(ChatRequest(message="2공학관 3층에서 인문관 2층까지 실내 위주로 찾아줘"), executor)
+        self.assertEqual(reply.status, "reply")
+        self.assertIn("인문관 1층 출입구", reply.message)
+        self.assertIsNone(reply.route)
+        self.assertNotIn("humanityEntranceF1", executor.known_node_ids)
 
     def test_ambiguity_question_without_route(self):
         """장소가 모호하면 경로 계산 전에 되묻는지 확인."""
@@ -174,7 +185,7 @@ class AgentTests(unittest.TestCase):
         ], alternative)
         reply = agent.chat(ChatRequest(message="계단을 피해서 가줘"), executor)
         self.assertEqual(reply.status, "route")
-        self.assertEqual(reply.message, "경로를 찾았어요.")
+        self.assertEqual(reply.message, "경로를 찾았어요. 아래 안내를 확인하세요.")
         self.assertEqual(reply.route.exception_notice, alternative["exception_notice"])
         self.assertTrue(reply.route.edges[0].is_exception)
 

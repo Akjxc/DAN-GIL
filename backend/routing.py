@@ -196,6 +196,15 @@ def search_places(query, graph=None, *, endpoints_only=False):
         ):
             continue
         matches.append(info(graph, node_id))
+    if endpoints_only and not matches and floor is not None and buildings and kind in (None, "entrance"):
+        alternatives = [
+            info(graph, node_id) for node_id, node in graph.nodes(data=True)
+            if node.get("buildingId") in buildings and node.get("kind") == "entrance"
+        ]
+        if alternatives:
+            return {"matches": [], "alternative_entrances": sorted(alternatives, key=lambda n: (
+                n["building_id"], n["floor"] is None, n["floor"] or 0, n["name"],
+            ))[:50]}
     return {"matches": sorted(matches, key=lambda n: n["id"])[:50]}
 
 def find_route(graph, start, end, excluded_kinds=None, excluded_conditions=None):
