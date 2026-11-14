@@ -1,27 +1,45 @@
+<<<<<<< HEAD
+import json
+import os
+from urllib.parse import urlsplit
+
+from fastapi import APIRouter, FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+=======
 from fastapi import FastAPI, HTTPException
 from typing import Literal
 import networkx as nx
+>>>>>>> fde0c34a8cb74b74d9e53a6a706b6bf716c00bfe
 
 from backend.agent import AgentUnavailable, ChatRequest, ChatResponse, run_chat
 from backend.tools import FindRouteArgs, call_routing
 from backend.graph import load_graph
 from backend.routing import place_info, find_distance_route
 
-app = FastAPI()
+router = APIRouter()
 
 
+<<<<<<< HEAD
+@router.get("/api/places")
+=======
 class RouteRequest(FindRouteArgs):
     metric: Literal["cost", "distance"] = "cost"
 
 
 @app.get("/api/places")
+>>>>>>> fde0c34a8cb74b74d9e53a6a706b6bf716c00bfe
 def places():
     graph = load_graph()
     return [place_info(graph, node_id) for node_id, node in graph.nodes(data=True) if "name" in node]
 
 
+<<<<<<< HEAD
+@router.post("/api/routes")
+def routes(request: FindRouteArgs):
+=======
 @app.post("/api/routes")
 def routes(request: RouteRequest):
+>>>>>>> fde0c34a8cb74b74d9e53a6a706b6bf716c00bfe
     graph = load_graph()
     if request.metric == "distance":
         if request.exclude_kinds or request.exclude_conditions or request.allow_exceptions:
@@ -49,12 +67,12 @@ def routes(request: RouteRequest):
     return result
 
 
-@app.get("/api/health")
+@router.get("/api/health")
 def health():
     return {"status": "ok"}
 
 
-@app.post("/api/chat", response_model=ChatResponse)
+@router.post("/api/chat", response_model=ChatResponse)
 def chat(request: ChatRequest):
     try:
         return run_chat(request)
@@ -63,3 +81,35 @@ def chat(request: ChatRequest):
             status_code=exc.status_code,
             detail={"code": exc.code, "message": exc.message},
         ) from exc
+
+
+def create_app():
+    try:
+        origins = json.loads(os.environ.get('CORS_ALLOWED_ORIGINS', '[]'))
+        if not isinstance(origins, list):
+            raise ValueError
+        for origin in origins:
+            if not isinstance(origin, str):
+                raise ValueError
+            parsed = urlsplit(origin)
+            if (parsed.scheme not in ('http', 'https') or not parsed.hostname
+                    or '*' in parsed.netloc or parsed.username is not None or parsed.password is not None
+                    or parsed.path not in ('', '/') or parsed.query or parsed.fragment):
+                raise ValueError
+        origins = [origin.rstrip('/') for origin in origins]
+    except (ValueError, TypeError) as exc:
+        raise ValueError('CORS_ALLOWED_ORIGINS는 프론트 origin의 JSON 문자열 배열이어야 합니다.') from exc
+
+    application = FastAPI()
+    application.include_router(router)
+    application.add_middleware(
+        CORSMiddleware,
+        allow_origins=origins,
+        allow_credentials=False,
+        allow_methods=['GET', 'POST'],
+        allow_headers=['Content-Type'],
+    )
+    return application
+
+
+app = create_app()

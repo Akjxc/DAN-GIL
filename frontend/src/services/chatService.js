@@ -1,3 +1,5 @@
+import { apiUrl } from './apiClient.js';
+
 export async function sendChatMessage(message, messages = []) {
   const history = messages
     .filter(({ local }) => !local)
@@ -9,7 +11,7 @@ export async function sendChatMessage(message, messages = []) {
 
   let response;
   try {
-    response = await fetch("/api/chat", {
+    response = await fetch(apiUrl('/api/chat'), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message, history }),

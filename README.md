@@ -40,3 +40,17 @@ HTTP 200과 `status: "route"`가 나오면 성공이야. `message`에서 한국�
 - Agent 테스트 결과만 한글로 보려면 `.\.venv\Scripts\python.exe -m tests.test_agent`를 실행해.
 
 키는 저장소와 이슈에 올리지 말고 팀원에게 비공개로 전달해. 같은 프로젝트의 키로 보낸 요청은 그 프로젝트의 사용량과 크레딧에 반영돼.
+
+## Vercel 프론트·백엔드 연결
+
+같은 저장소의 `main`을 기존 `dangil-api`와 `dangil-frontend` 프로젝트에 연결한다. 운영 주소는 백엔드 `https://dangil-api.vercel.app`, 프론트 `https://dangil.vercel.app`이다.
+
+1. `dangil-api`의 Environment Variables에 `CORS_ALLOWED_ORIGINS`를 `["https://dangil.vercel.app"]`로 추가한다. 프론트 주소 뒤에 경로를 붙이지 않는다. 기존 `GEMINI_API_KEY`, `GEMINI_MODEL`은 백엔드에 유지한다.
+2. `dangil-frontend`의 Environment Variables에 `VITE_API_BASE_URL`을 `https://dangil-api.vercel.app`으로 추가한다. `/api`는 붙이지 않는다. 기존 카카오 JavaScript 키도 프론트에 유지한다.
+3. Production에 변수를 적용한다. Preview도 사용할 경우 해당 환경에도 API 주소를 설정하고, Preview 프론트 origin을 백엔드 허용 목록에 정확히 추가한다. 모든 `vercel.app` 주소를 허용하지 않는다.
+4. 코드가 GitHub 배포 브랜치에 올라간 다음 백엔드와 프론트를 각각 재배포한다. 프론트 Root Directory는 `frontend`, 백엔드는 저장소 루트다. 프론트는 루트 `data/`도 빌드에서 접근할 수 있어야 한다.
+5. 프론트에서 장소 목록·길찾기·채팅을 확인한다. 브라우저 Network에 실제 백엔드 URL이 표시되고 OPTIONS/POST가 성공해야 한다. 로그인 페이지나 HTML이 반환되면 대상 URL과 Vercel Deployment Protection을 확인한다.
+
+프론트 빌드에는 `VITE_API_BASE_URL`이 필수다. 환경변수를 바꾸면 다시 빌드·배포해야 한다. `VITE_` 값은 브라우저에 공개되므로 Gemini 키를 프론트 변수에 넣지 않는다. CORS 설정은 브라우저의 응답 읽기 허용 정책이며 API 인증을 대신하지 않는다. 설정이 없으면 서버는 실행되지만 다른 도메인에서 읽는 요청은 허용하지 않는다.
+
+로컬 개발에서는 `VITE_API_BASE_URL`을 비워 두고 Vite의 `/api` 프록시를 사용한다. 이 경우 별도 CORS 설정 없이 기존처럼 로컬 백엔드에 연결된다. 프론트 테스트는 `cd frontend` 후 `npm test`, 백엔드는 기존 unittest 명령으로 실행한다. 두 프로젝트는 별도 배포되므로 운영 배포의 커밋과 Ready 상태를 각각 확인한다.

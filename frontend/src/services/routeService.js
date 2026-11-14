@@ -1,11 +1,18 @@
+import { apiUrl } from './apiClient.js';
+
 export async function requestPlaces(signal) {
-  const response = await fetch('/api/places', { signal });
+  const response = await fetch(apiUrl('/api/places'), { signal });
   if (!response.ok) throw new Error('실내 장소 목록을 불러오지 못했습니다.');
   return response.json();
 }
 
+<<<<<<< HEAD
+export async function requestRoute(start, end, avoidStairs, signal, mode = 'fast') {
+  const response = await fetch(apiUrl('/api/routes'), {
+=======
 export async function requestRoute(start, end, avoidStairs, signal, mode = 'shortest') {
   const response = await fetch('/api/routes', {
+>>>>>>> fde0c34a8cb74b74d9e53a6a706b6bf716c00bfe
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     signal,
