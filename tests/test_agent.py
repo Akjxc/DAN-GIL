@@ -68,6 +68,7 @@ class AgentTests(unittest.TestCase):
         ])
         reply = agent.chat(ChatRequest(message="계단 없이 가줘"), executor)
         self.assertEqual(reply.status, "route")
+        self.assertEqual(reply.message, "경로를 찾았어요.")
         self.assertEqual([n.id for n in reply.route.nodes], ["start", "end"])
         self.assertIsNone(reply.route.distance_m)
         handler.assert_called_once_with(**ARGS, metric="cost", exclude_kinds=[], allow_exceptions=False)
@@ -173,7 +174,8 @@ class AgentTests(unittest.TestCase):
         ], alternative)
         reply = agent.chat(ChatRequest(message="계단을 피해서 가줘"), executor)
         self.assertEqual(reply.status, "route")
-        self.assertTrue(reply.message.startswith(alternative["exception_notice"]))
+        self.assertEqual(reply.message, "경로를 찾았어요.")
+        self.assertEqual(reply.route.exception_notice, alternative["exception_notice"])
         self.assertTrue(reply.route.edges[0].is_exception)
 
     def test_bad_route_results_never_reach_map(self):

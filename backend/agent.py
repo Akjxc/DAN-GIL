@@ -25,7 +25,7 @@ SYSTEM_INSTRUCTION = """
 사용자가 빼거나 피하고 싶은 구간은 제외 조건에 반영한다. '계단만 빼줘' 같은 회피 요청은 allow_exceptions=true를 사용한다.
 사용 불가, 절대 금지, 휠체어 이용처럼 필수 조건이면 allow_exceptions=false를 사용한다. 이전 대화의 필수 조건도 유지한다.
 같은 요청을 다시 탐색하더라도 제외 목록이나 예외 허용 여부를 임의로 바꾸지 않는다.
-경로에 exception_notice가 있으면 대안 경로의 이동 순서를 설명한다. 안내 문구는 서버가 앞에 붙인다.
+경로를 찾았으면 '경로를 찾았어요.'라고 짧게 답한다. 상세 경로와 예외 구간은 지도 화면에 표시된다.
 휠체어 이용 가능 여부를 계단이 없다는 사실만으로 보장하지 않는다.
 도구 결과에 없는 거리, 시간, 방향, 주변 시설은 만들어내지 않는다.
 최단거리나 가장 짧은 길을 요청하면 find_route의 metric을 distance로 설정한다.
@@ -37,8 +37,6 @@ outdoor_distance_m은 실외 구간의 좌표로 계산한 거리 합이다. 전
 metric=distance의 distance_m은 등록 거리 또는 좌표로 계산한 거리의 합이다. 실측 거리라고 말하지 않는다.
 metric=hops는 통과 구간 수 기준이다. 최단 거리/최단 시간이라고 말하지 않는다.
 metric=cost는 실외 거리 10m당 1점, 실내 구간당 기본 1점에 조건별 가중치를 적용한 기준이다.
-total_cost는 '총 탐색 점수'로 설명한다. 실내 엣지별 기본 점수는 보정될 수 있다.
-연속된 엘리베이터/계단 이동은 출발층과 도착층으로 묶어 설명할 수 있다.
 일반 대화에는 직접 답할 수 있지만 도구 실행 없이 경로를 만들어 안내하지 않는다.
 """.strip()
 
@@ -111,22 +109,18 @@ class RouteAgent:
             if not calls:
                 if last_error:
                     return error_reply(last_error)
+                if last_route:
+                    if last_route.status == "no_route":
+                        return ChatResponse(
+                            status="no_route", message="요청한 조건을 만족하는 경로가 없어요."
+                        )
+                    if last_route.status == "invalid_request":
+                        return error_reply("invalid_route_request")
+                    return ChatResponse(status="route", message="경로를 찾았어요. 아래 안내를 확인하세요.", route=last_route)
                 message = "\n".join(p.text for p in parts if p.text and not p.thought).strip()
                 if not message:
                     return error_reply("empty_response")
-                if last_route and last_route.status == "no_route":
-                    # Do not accidentally surface a previously successful route.
-                    return ChatResponse(
-                        status="no_route", message="요청한 조건을 만족하는 경로가 없어요."
-                    )
-                if last_route and last_route.status == "invalid_request":
-                    return error_reply("invalid_route_request")
-                if last_route and last_route.exception_notice:
-                    message = f"{last_route.exception_notice}\n\n{message}"
-                return ChatResponse(
-                    status="route" if last_route else "reply",
-                    message=message, route=last_route,
-                )
+                return ChatResponse(status="reply", message=message)
             if calls_used + len(calls) > self.max_calls:
                 return error_reply("step_limit")
             # Preserve the full model turn, including any thought signatures.
