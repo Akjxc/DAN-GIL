@@ -6,7 +6,7 @@ from unittest.mock import patch
 import networkx as nx
 
 from backend.graph import load_graph
-from backend.main import places, routes
+from backend.main import RouteRequest, places, routes
 from backend.routing import find_route, search_places
 from backend.tools import FindRouteArgs, ToolExecutor, call_routing
 
@@ -64,7 +64,7 @@ class RoutingIntegrationTests(unittest.TestCase):
         self.assertTrue(nx.utils.graphs_equal(graph, original))
 
     def test_map_route_reports_minimal_stair_exception(self):
-        request = FindRouteArgs(start_node_id="bearStatue", end_node_id="libraryF3Hall",
+        request = RouteRequest(start_node_id="bearStatue", end_node_id="libraryF3Hall",
                                 exclude_conditions=["stair"], allow_exceptions=True)
         strict = routes(request.model_copy(update={"allow_exceptions": False}))
         self.assertEqual(strict["status"], "no_route")
@@ -116,7 +116,7 @@ class RoutingIntegrationTests(unittest.TestCase):
     def test_map_route_supports_indoor_endpoints_and_returns_map_coordinates(self):
         indoor_id = "softwareMediaF3Hall"
         self.assertIn(indoor_id, {node["id"] for node in places()})
-        result = routes(FindRouteArgs(start_node_id="mainGate", end_node_id=indoor_id,
+        result = routes(RouteRequest(start_node_id="mainGate", end_node_id=indoor_id,
                                       exclude_conditions=["stair"]))
         self.assertEqual(result["status"], "ok")
         self.assertEqual(result["cost"], result["total_cost"])

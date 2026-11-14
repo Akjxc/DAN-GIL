@@ -1,15 +1,11 @@
-<<<<<<< HEAD
 import json
 import os
+from typing import Literal
 from urllib.parse import urlsplit
 
+import networkx as nx
 from fastapi import APIRouter, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-=======
-from fastapi import FastAPI, HTTPException
-from typing import Literal
-import networkx as nx
->>>>>>> fde0c34a8cb74b74d9e53a6a706b6bf716c00bfe
 
 from backend.agent import AgentUnavailable, ChatRequest, ChatResponse, run_chat
 from backend.tools import FindRouteArgs, call_routing
@@ -19,27 +15,18 @@ from backend.routing import place_info, find_distance_route
 router = APIRouter()
 
 
-<<<<<<< HEAD
-@router.get("/api/places")
-=======
 class RouteRequest(FindRouteArgs):
     metric: Literal["cost", "distance"] = "cost"
 
 
-@app.get("/api/places")
->>>>>>> fde0c34a8cb74b74d9e53a6a706b6bf716c00bfe
+@router.get("/api/places")
 def places():
     graph = load_graph()
     return [place_info(graph, node_id) for node_id, node in graph.nodes(data=True) if "name" in node]
 
 
-<<<<<<< HEAD
 @router.post("/api/routes")
-def routes(request: FindRouteArgs):
-=======
-@app.post("/api/routes")
 def routes(request: RouteRequest):
->>>>>>> fde0c34a8cb74b74d9e53a6a706b6bf716c00bfe
     graph = load_graph()
     if request.metric == "distance":
         if request.exclude_kinds or request.exclude_conditions or request.allow_exceptions:

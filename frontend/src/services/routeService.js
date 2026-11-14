@@ -6,13 +6,8 @@ export async function requestPlaces(signal) {
   return response.json();
 }
 
-<<<<<<< HEAD
-export async function requestRoute(start, end, avoidStairs, signal, mode = 'fast') {
-  const response = await fetch(apiUrl('/api/routes'), {
-=======
 export async function requestRoute(start, end, avoidStairs, signal, mode = 'shortest') {
-  const response = await fetch('/api/routes', {
->>>>>>> fde0c34a8cb74b74d9e53a6a706b6bf716c00bfe
+  const response = await fetch(apiUrl('/api/routes'), {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     signal,
