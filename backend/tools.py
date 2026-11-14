@@ -56,7 +56,8 @@ class RouteResult(StrictModel):
     status: Literal["ok", "no_route", "invalid_request"]
     nodes: list[Place] = Field(default_factory=list, max_length=1000)
     edges: list[RouteEdge] = Field(default_factory=list, max_length=1000)
-    metric: Literal["hops", "distance", "time"] = "hops"
+    metric: Literal["hops", "distance", "time", "cost"] = "hops"
+    total_cost: float | None = Field(default=None, ge=0, allow_inf_nan=False)
     distance_m: float | None = Field(default=None, ge=0, allow_inf_nan=False)
     duration_seconds: float | None = Field(default=None, ge=0, allow_inf_nan=False)
 
@@ -89,6 +90,7 @@ DESCRIPTIONS = {
         "확인된 두 노드 사이의 양방향 경로를 계산합니다. 노드 ID는 이번 요청의 "
         "search_places 결과에서 선택해야 합니다. exclude_kinds와 "
         "exclude_conditions에 해당하는 엣지는 반드시 제외합니다. "
+        "실외 거리와 실내 기본 비용에 조건별 가중치를 적용한 탐색 점수를 최소화합니다. "
         "계단을 못 쓰면 exclude_conditions에 stair를 넣으세요. "
         "경로가 없더라도 사용자의 제외 조건을 임의로 해제하지 마세요."
     ),
@@ -134,7 +136,11 @@ def call_routing(name: str, arguments: dict) -> dict:
     except nx.NodeNotFound:
         return {"status": "invalid_request"}
     return {
-        "status": "ok", "metric": "hops",
+        "status": "ok", "metric": "cost",
+        "total_cost": sum(
+            module.base_edge_cost(graph, u, v, graph.edges[u, v])
+            for u, v in zip(path, path[1:])
+        ),
         "nodes": [module.place_info(graph, node_id) for node_id in path],
         "edges": [
             {key: graph.edges[u, v][key] for key in ("id", "from", "to", "kind", "condition")}

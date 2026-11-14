@@ -1,8 +1,14 @@
-import networkx as nx
+import math
 import re
+
+import networkx as nx
 
 from backend.graph import load_graph
 
+
+EARTH_RADIUS_M = 6_371_000
+OUTDOOR_METERS_PER_POINT = 10.0
+INDOOR_BASE_COST = 1.0
 
 CONDITION_COSTS = {
     "flat": 1,
@@ -17,9 +23,50 @@ KIND_MULTIPLIERS = {
 }
 
 
-def base_edge_cost(u, v, edge):
-    """Return a positive demonstration cost, not measured distance or time."""
-    return CONDITION_COSTS[edge["condition"]] * KIND_MULTIPLIERS[edge["kind"]]
+def outdoor_distance_m(graph, u, v):
+    """위도·경도의 Haversine 거리(m). 길의 굴곡이나 높이는 반영하지 않음."""
+    coordinates = []
+    for node_id in (u, v):
+        node = graph.nodes[node_id]
+        latitude = node.get("latitude")
+        longitude = node.get("longitude")
+        if (
+            type(latitude) not in (int, float)
+            or type(longitude) not in (int, float)
+            or not math.isfinite(latitude)
+            or not math.isfinite(longitude)
+            or not -90 <= latitude <= 90
+            or not -180 <= longitude <= 180
+        ):
+            raise ValueError(f"실외 노드 {node_id!r}의 위도·경도를 확인해주세요.")
+        coordinates.append((math.radians(latitude), math.radians(longitude)))
+
+    (lat1, lon1), (lat2, lon2) = coordinates
+    haversine = (
+        math.sin((lat2 - lat1) / 2) ** 2
+        + math.cos(lat1) * math.cos(lat2) * math.sin((lon2 - lon1) / 2) ** 2
+    )
+    # 부동소수점 오차로 asin의 입력이 범위를 벗어나지 않도록 제한.
+    return 2 * EARTH_RADIUS_M * math.asin(math.sqrt(min(1.0, max(0.0, haversine))))
+
+
+def base_edge_cost(graph, u, v, edge):
+    """실외는 10m당 1점, 실내는 기본 1점에 조건·실내외 가중치를 적용.
+
+    실내 엣지의 base_cost로 가중치를 곱하기 전 기본 점수를 보정할 수 있음.
+    반환값은 탐색 점수이며, 실내 좌표나 거리 정보는 필요하지 않음.
+    """
+    kind = edge["kind"]
+    if kind == "outdoorPath":
+        base_cost = outdoor_distance_m(graph, u, v) / OUTDOOR_METERS_PER_POINT
+    elif kind == "indoorPath":
+        base_cost = edge.get("base_cost", INDOOR_BASE_COST)
+        if type(base_cost) not in (int, float) or not math.isfinite(base_cost) or base_cost <= 0:
+            raise ValueError(f"실내 엣지 {u!r} → {v!r}의 base_cost는 유한한 양수여야 합니다.")
+    else:
+        raise ValueError(f"지원하지 않는 엣지 kind: {kind!r}")
+
+    return base_cost * CONDITION_COSTS[edge["condition"]] * KIND_MULTIPLIERS[kind]
 
 
 BUILDING_ALIASES = {
@@ -122,12 +169,15 @@ def find_route(graph, start, end, excluded_kinds=None, excluded_conditions=None)
         filter_edge=allow_edge
     )
 
+    def edge_cost(u, v, edge):
+        return base_edge_cost(graph, u, v, edge)
+
     # 출발지부터 도착지까지 방문하는 노드 ID 목록 반환
     return nx.shortest_path(
         filtered_graph,
         source=start,
         target=end,
-        weight=base_edge_cost,
+        weight=edge_cost,
     )
 
 # 조건을 위반하는 예외 구간을 최소화하는 경로 탐색 함수
@@ -142,15 +192,15 @@ def find_route_with_minimal_exceptions(graph, start, end, excluded_conditions=No
         excluded_conditions = []
 
     max_base_cost = max(
-        (base_edge_cost(u, v, edge) for u, v, edge in graph.edges(data=True)),
+        (base_edge_cost(graph, u, v, edge) for u, v, edge in graph.edges(data=True)),
         default=0,
     )
-    # 기본 비용이 양수이므로 최적 경로는 노드를 반복 방문하지 않음.
+    # 기본 비용이 음수가 아니므로 최적 경로 중 노드를 반복 방문하지 않는 경로가 존재.
     # 예외 한 번의 벌점을 모든 단순 경로의 기본 비용 상한보다 크게 설정.
     penalty = (graph.number_of_nodes() - 1) * max_base_cost + 1
 
     def edge_cost(u, v, edge):
-        base_cost = base_edge_cost(u, v, edge)
+        base_cost = base_edge_cost(graph, u, v, edge)
         violates_kind = (
             edge["kind"] in excluded_kinds
         )
@@ -173,8 +223,8 @@ def find_route_with_minimal_exceptions(graph, start, end, excluded_conditions=No
 
 if __name__ == "__main__":
     graph = load_graph()
-    start = "mainGate"
-    end = "bearStatue"
+    start = "softwareEntranceF1"
+    end = "softwareEntranceF3"
     excluded_kinds = []
     excluded_conditions = []
 
@@ -209,7 +259,7 @@ if __name__ == "__main__":
 
             for u, v in zip(path, path[1:]):
                 edge = graph.edges[u, v]
-                base_cost = base_edge_cost(u, v, edge)
+                base_cost = base_edge_cost(graph, u, v, edge)
                 is_exception = (
                     edge["condition"] in excluded_conditions
                     or edge["kind"] in excluded_kinds
@@ -219,11 +269,11 @@ if __name__ == "__main__":
                 print(
                     u, "→", v,
                     "|", edge["kind"], "|", edge["condition"],
-                    "| 기본 비용:", base_cost, "| 예외:", is_exception,
+                    "| 탐색 점수:", f"{base_cost:.2f}", "| 예외:", is_exception,
                 )
 
             print("예외 구간 수:", exception_count)
-            print("기본 비용 합 (시연용):", total_base_cost)
+            print("총 탐색 점수:", f"{total_base_cost:.2f}")
     except nx.NetworkXNoPath:
         print("예외를 허용해도 목적지까지 연결되는 경로가 없습니다.")
     except nx.NodeNotFound:

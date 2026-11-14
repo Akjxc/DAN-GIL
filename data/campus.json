@@ -655,6 +655,14 @@
             "condition": "slope"
         },
         {
+            "id": "mainGateJcToBeomJungSoftwareJc",
+            "name": "정문 분기점-범정관 소프트웨어ICT관 분기점",
+            "from": "mainGateJc",
+            "to": "beomJungSoftwareJc",
+            "kind": "outdoorPath",
+            "condition": "slope"
+        },
+        {
             "id": "mainGateJcToSoftwareEntranceB1Jc",
             "name": "정문 분기점-소프트웨어ICT관 지하1층 출입구 분기점",
             "from": "mainGateJc",
