@@ -21,7 +21,7 @@ class DiagnosticTests(unittest.TestCase):
         with redirect_stdout(io.StringIO()) as output:
             code = run_checks(client, "unknown-model")
         self.assertEqual(code, 1)
-        self.assertIn("MODEL_NOT_LISTED", output.getvalue())
+        self.assertIn("목록에 설정한 모델이 없습니다", output.getvalue())
         client.models.generate_content.assert_not_called()
 
     def test_basic_success_and_tool_failure_are_distinguished(self):
@@ -35,8 +35,8 @@ class DiagnosticTests(unittest.TestCase):
         with redirect_stdout(io.StringIO()) as output:
             code = run_checks(client, "test-flash")
         self.assertEqual(code, 1)
-        self.assertIn("PLAIN: OK", output.getvalue())
-        self.assertIn("WITH_TOOLS: FAILED HTTP 504", output.getvalue())
+        self.assertIn("[2/3] 기본 요청 (도구 없이) 성공", output.getvalue())
+        self.assertIn("[3/3] 도구 명세 포함 요청 실패 (HTTP 504)", output.getvalue())
         self.assertNotIn("private-data", output.getvalue())
         first, second = client.models.generate_content.call_args_list
         self.assertIsNone(first.kwargs["config"].tools)
