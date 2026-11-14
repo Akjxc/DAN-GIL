@@ -234,8 +234,8 @@
         {
             "id": "educationBusinessEntranceF5",
             "name": "사범관 상경관 5층 출입구",
-            "latitude": 37.321886430463714,
-            "longitude": 127.12958753028045,
+            "latitude": 37.322717622260555,
+            "longitude": 127.1295974192392,
             "buildingId": null,
             "floor": 5,
             "kind": "entrance"
@@ -243,8 +243,8 @@
         {
             "id": "businessHumanityEntranceF5",
             "name": "상경관 인문관 5층 출입구",
-            "latitude": 37.322717622260555,
-            "longitude": 127.1295974192392,
+            "latitude": 37.321886430463714,
+            "longitude": 127.12958753028045,
             "buildingId": null,
             "floor": 5,
             "kind": "entrance"

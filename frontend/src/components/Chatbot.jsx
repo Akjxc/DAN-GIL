@@ -16,7 +16,7 @@ export default function Chatbot() {
     setInput("");
     setBusy(true);
     let r = await sendChatMessage(text);
-    setMsgs((x) => [...x, { role: "bot", text: r }]);
+    setMsgs((x) => [...x, { role: "bot", text: r.message }]);
     setBusy(false);
   }
   return (
