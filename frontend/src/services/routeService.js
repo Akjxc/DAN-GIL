@@ -1,3 +1,9 @@
+export async function requestPlaces(signal) {
+  const response = await fetch('/api/places', { signal });
+  if (!response.ok) throw new Error('실내 장소 목록을 불러오지 못했습니다.');
+  return response.json();
+}
+
 export async function requestRoute(start, end, avoidStairs, signal) {
   const response = await fetch('/api/routes', {
     method: 'POST',
@@ -10,9 +16,11 @@ export async function requestRoute(start, end, avoidStairs, signal) {
       exclude_kinds: [],
     }),
   });
-  if (!response.ok) throw new Error('경로 서버에 연결하지 못했습니다. 백엔드 실행 상태를 확인해 주세요.');
-  const result = await response.json();
-  if (result.status === 'no_route') return null;
-  if (result.status !== 'ok') throw new Error('올바른 경로를 받지 못했습니다.');
-  return { ...result, path: result.nodes.map(n => n.id) };
+  const result = await response.json().catch(() => null);
+  if (!response.ok) {
+    throw new Error(typeof result?.detail === 'string' ? result.detail : '경로 서버에 연결하지 못했습니다. 백엔드 실행 상태를 확인해 주세요.');
+  }
+  if (result?.status === 'no_route') return null;
+  if (result?.status !== 'ok') throw new Error('올바른 경로를 받지 못했습니다.');
+  return result;
 }
