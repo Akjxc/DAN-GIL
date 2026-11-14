@@ -83,6 +83,31 @@ BUILDING_ALIASES = {
 }
 
 
+def find_distance_route(graph, start, end):
+    """Minimize known distances; never substitute a demo cost for missing meters.
+
+    Explicit distance_m (or distance) takes precedence. Otherwise use the
+    endpoint coordinate distance. Edges with neither are excluded.
+    """
+    if start not in graph or end not in graph:
+        raise nx.NodeNotFound("Unknown route endpoint")
+    measured_graph = nx.Graph()
+    measured_graph.add_nodes_from(graph.nodes)
+    for u, v, edge in graph.edges(data=True):
+        value = edge.get("distance_m", edge.get("distance"))
+        if type(value) in (int, float) and math.isfinite(value) and value >= 0:
+            meters = value
+        else:
+            try:
+                meters = outdoor_distance_m(graph, u, v)
+            except ValueError:
+                continue
+        measured_graph.add_edge(u, v, distance_m=meters)
+    path = nx.shortest_path(measured_graph, start, end, weight="distance_m")
+    total = sum(measured_graph.edges[u, v]["distance_m"] for u, v in zip(path, path[1:]))
+    return path, total
+
+
 def place_info(graph, node_id):
     """Return only fields accepted by the AI interface."""
     node = graph.nodes[node_id]
