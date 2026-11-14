@@ -1,0 +1,10 @@
+.git
+.venv
+venv
+__pycache__
+*.py[cod]
+.env
+.env.*
+frontend
+tests
+docs
