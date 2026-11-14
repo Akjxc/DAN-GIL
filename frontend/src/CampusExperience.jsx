@@ -59,7 +59,7 @@ export default function CampusExperience() {
   const [chat, setChat] = useState(false);
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
-  const [messages, setMessages] = useState([{ role: 'bot', text: '안녕하세요! 캠퍼스 이동을 도와드릴게요. 현재 답변은 미리 작성된 Mock 안내입니다.' }]);
+  const [messages, setMessages] = useState([{ role: 'bot', text: '안녕하세요! 캠퍼스에서 어디로 가시나요?', local: true }]);
   const chosenMode = modes.find(m => m.id === mode);
   const visible = places.filter(n => filter === 'all' || (filter === 'entrance' ? n.kind === 'entrance' : n.kind !== 'entrance'));
   const points = route?.path.map(id => { const p = position(byId[id]); return `${p.x},${p.y}`; }).join(' ');
@@ -71,9 +71,14 @@ export default function CampusExperience() {
     if (!input.trim() || busy) return;
     const text = input.trim(); setInput(''); setBusy(true);
     setMessages(m => [...m, { role: 'user', text }]);
-    try { const answer = await sendChatMessage(text); setMessages(m => [...m, { role: 'bot', text: answer }]); }
-    catch { setMessages(m => [...m, { role: 'bot', text: '응답을 불러오지 못했어요. 다시 시도해 주세요.' }]); }
-    finally { setBusy(false); }
+    try {
+      const answer = await sendChatMessage(text, messages);
+      setMessages(m => [...m, { role: 'bot', text: answer.message, local: answer.status === 'error' }]);
+    } catch (error) {
+      setMessages(m => [...m, { role: 'bot', text: error.message, local: true }]);
+    } finally {
+      setBusy(false);
+    }
   }
   return <div className="experience">
     <header className="topbar"><a className="brand" href="#"><span className="brand-symbol">↗</span><span>DKU <b>SafePath</b><small>단국대학교 캠퍼스 내비게이션</small></span></a><nav><button className="active" onClick={() => setAbout(false)}>길찾기</button><button onClick={() => { setFilter('entrance'); setAbout(false); }}>출입구 찾기</button><button onClick={() => setAbout(true)}>서비스 소개</button></nav><span className="campus-badge"><i /> 죽전캠퍼스</span></header>
@@ -113,6 +118,6 @@ export default function CampusExperience() {
     <footer className="page-footer"><b>DKU SafePath</b><span>더 가까운 캠퍼스, 모두를 위한 이동.</span><small>단국대학교 학생 프로젝트 · Prototype</small></footer>
     {about&&<div className="modal-backdrop" onClick={()=>setAbout(false)}><section role="dialog" aria-modal="true" aria-label="서비스 소개" className="about-dialog" onClick={e=>e.stopPropagation()}><button onClick={()=>setAbout(false)} aria-label="닫기">×</button><span className="eyebrow">ABOUT SAFEPATH</span><h2>모두에게 열린 캠퍼스를 위해.</h2><p>DKU SafePath는 학생과 보행약자의 이동을 돕는 캠퍼스 길찾기 프로젝트입니다. 사용자 제공 좌표와 팀이 작성한 연결 정보를 활용합니다.</p><p>현재 화면은 실외·건물 간 연결을 탐색합니다. 실측 시간, 조명 상태, 시설 위치 및 실내 층간 길찾기는 추후 데이터 연동이 필요합니다.</p></section></div>}
     <button className="chat-launch" aria-label="채팅 도우미 열기" onClick={()=>setChat(v=>!v)}>{chat?'×':'✦'}<span>캠퍼스 도우미</span></button>
-    {chat&&<section className="chat-window" aria-label="캠퍼스 도우미"><header><span>✦ 캠퍼스 도우미<small>Mock 응답 · 실제 AI 분석 아님</small></span><button aria-label="채팅 닫기" onClick={()=>setChat(false)}>×</button></header><div className="messages" aria-live="polite">{messages.map((m,i)=><p key={i} className={m.role}>{m.text}</p>)}{busy&&<p>답변을 준비하고 있어요…</p>}</div><form onSubmit={send}><input aria-label="질문" placeholder="캠퍼스에 대해 물어보세요" value={input} onChange={e=>setInput(e.target.value)}/><button disabled={busy||!input.trim()} aria-label="질문 보내기">↑</button></form></section>}
+    {chat&&<section className="chat-window" aria-label="캠퍼스 도우미"><header><span>✦ 캠퍼스 도우미</span><button aria-label="채팅 닫기" onClick={()=>setChat(false)}>×</button></header><div className="messages" aria-live="polite">{messages.map((m,i)=><p key={i} className={m.role}>{m.text}</p>)}{busy&&<p>답변을 준비하고 있어요…</p>}</div><form onSubmit={send}><input aria-label="질문" placeholder="캠퍼스에 대해 물어보세요" value={input} maxLength={4000} onChange={e=>setInput(e.target.value)}/><button disabled={busy||!input.trim()} aria-label="질문 보내기">↑</button></form></section>}
   </div>;
 }

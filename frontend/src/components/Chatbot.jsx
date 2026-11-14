@@ -7,17 +7,24 @@ export default function Chatbot() {
     [msgs, setMsgs] = useState([
       {
         role: "bot",
-        text: "안녕하세요! Mock 데이터로 동작하는 캠퍼스 도우미예요. 무엇을 찾고 계신가요?",
+        text: "안녕하세요! 캠퍼스에서 어디로 가시나요?",
+        local: true,
       },
     ]);
   async function send(text = input) {
-    if (!text.trim() || busy) return;
+    text = text.trim();
+    if (!text || busy) return;
     setMsgs((x) => [...x, { role: "user", text }]);
     setInput("");
     setBusy(true);
-    let r = await sendChatMessage(text);
-    setMsgs((x) => [...x, { role: "bot", text: r }]);
-    setBusy(false);
+    try {
+      const answer = await sendChatMessage(text, msgs);
+      setMsgs((x) => [...x, { role: "bot", text: answer.message, local: answer.status === "error" }]);
+    } catch (error) {
+      setMsgs((x) => [...x, { role: "bot", text: error.message, local: true }]);
+    } finally {
+      setBusy(false);
+    }
   }
   return (
     <>
@@ -31,7 +38,6 @@ export default function Chatbot() {
             <span>✦</span>
             <div>
               <b>SafePath 도우미</b>
-              <small>● Mock 응답 모드</small>
             </div>
             <button onClick={() => setOpen(false)}>—</button>
           </header>
@@ -65,12 +71,12 @@ export default function Chatbot() {
           >
             <input
               value={input}
+              maxLength={4000}
               onChange={(e) => setInput(e.target.value)}
               placeholder="캠퍼스에 대해 물어보세요"
             />
             <button>➤</button>
           </form>
-          <footer>AI 분석이 아닌 미리 작성된 Mock 응답입니다.</footer>
         </section>
       )}
     </>
