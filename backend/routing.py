@@ -4,6 +4,24 @@ import re
 from backend.graph import load_graph
 
 
+CONDITION_COSTS = {
+    "flat": 1,
+    "slope": 2,
+    "stair": 3,
+    "elevator": 2,
+}
+
+KIND_MULTIPLIERS = {
+    "indoorPath": 1,
+    "outdoorPath": 1,
+}
+
+
+def base_edge_cost(u, v, edge):
+    """Return a positive demonstration cost, not measured distance or time."""
+    return CONDITION_COSTS[edge["condition"]] * KIND_MULTIPLIERS[edge["kind"]]
+
+
 BUILDING_ALIASES = {
     "softwareMedia": ["소미관", "소프트웨어관", "소프트웨어ICT관", "미디어관", "미디어센터", "소프트웨어/미디어관"],
     "engineering1": ["제1공학관", "1공학관"],
@@ -108,12 +126,13 @@ def find_route(graph, start, end, excluded_kinds=None, excluded_conditions=None)
     return nx.shortest_path(
         filtered_graph,
         source=start,
-        target=end
+        target=end,
+        weight=base_edge_cost,
     )
 
 # 조건을 위반하는 예외 구간을 최소화하는 경로 탐색 함수
 # 기준 1. 제외 조건을 어기는 구간이 가장 적은 경로
-# 기준 2. 예외 구간 수가 같다면 전체 이동 구간이 가장 적은 경로
+# 기준 2. 예외 구간 수가 같다면 기본 비용 합이 가장 작은 경로
 # 기존 함수는 제외 조건에 해당하는 엣지를 탐색에서 제거. 
 # 해당 함수는 해당 엣지를 이용할 수 있게 두되, 예외 비용을 부여
 def find_route_with_minimal_exceptions(graph, start, end, excluded_conditions=None, excluded_kinds=None):
@@ -122,9 +141,16 @@ def find_route_with_minimal_exceptions(graph, start, end, excluded_conditions=No
     if excluded_conditions is None:
         excluded_conditions = []
 
-    penalty = graph.number_of_nodes()
+    max_base_cost = max(
+        (base_edge_cost(u, v, edge) for u, v, edge in graph.edges(data=True)),
+        default=0,
+    )
+    # 기본 비용이 양수이므로 최적 경로는 노드를 반복 방문하지 않음.
+    # 예외 한 번의 벌점을 모든 단순 경로의 기본 비용 상한보다 크게 설정.
+    penalty = (graph.number_of_nodes() - 1) * max_base_cost + 1
 
     def edge_cost(u, v, edge):
+        base_cost = base_edge_cost(u, v, edge)
         violates_kind = (
             edge["kind"] in excluded_kinds
         )
@@ -132,16 +158,11 @@ def find_route_with_minimal_exceptions(graph, start, end, excluded_conditions=No
             edge["condition"] in excluded_conditions
         )
 
-        # 예외 구간 비용: 1 + penalty
-        # penalty는 예외 구간 수를 먼저 최소화하기 위한 값
-        # 노드를 반복 방문하지 않는 경로의 이동 구간은 최대 N-1
-        # 따라서 예외 한번에 N점을 추가하면 길이를 줄이려고 예외를 하나 더 사용하는 경로가 선택되지 않음
-        # 같은 간선이 kind와 condition 모두 위반해도 예외 구간 1개로 간주 
+        # 같은 간선이 kind와 condition을 모두 위반해도 예외 구간 1개로 간주.
         if violates_kind or violates_condition:
-            return 1 + penalty
+            return base_cost + penalty
 
-        # 일반 구간 비용: 1
-        return 1 
+        return base_cost
 
     return nx.shortest_path(
         graph,
@@ -151,63 +172,59 @@ def find_route_with_minimal_exceptions(graph, start, end, excluded_conditions=No
     )
 
 if __name__ == "__main__":
-    # graph.py에서 만든 함수로 지도 그래프를 불러옴
     graph = load_graph()
-
+    start = "mainGate"
+    end = "bearStatue"
     excluded_kinds = []
     excluded_conditions = []
-    
+
     try:
-        path = find_route(
-            graph,
-            start="beomJungSoftwareJc",
-            end="bearStatue",
-            excluded_kinds=excluded_kinds,
-            excluded_conditions=excluded_conditions
-        )
+        try:
+            path = find_route(
+                graph, start, end,
+                excluded_kinds=excluded_kinds,
+                excluded_conditions=excluded_conditions,
+            )
+        except nx.NetworkXNoPath:
+            print("설정한 제외 조건을 모두 지키는 경로가 없습니다.")
+            approval = input(
+                f"kind={excluded_kinds}, condition={excluded_conditions} 조건의 "
+                "예외 구간을 최소화해서 다시 찾을까요? (y/n): "
+            ).strip().casefold()
+            path = None
+            if approval == "y":
+                path = find_route_with_minimal_exceptions(
+                    graph, start, end,
+                    excluded_kinds=excluded_kinds,
+                    excluded_conditions=excluded_conditions,
+                )
+            else:
+                print("재탐색을 취소했습니다.")
 
-        print("경로: ", path)
-        print("이동 구간 수: ", len(path) - 1)
-        # 예를 들어 path가 ["A", "B", "C"]라면 A→B→C로 이동
-        # 노드는 3개지만 이동 구간은 2개이므로 len(path) - 1로 구간 수를 계산
+        if path is not None:
+            print("경로:", path)
+            print("이동 구간 수:", len(path) - 1)
+            total_base_cost = 0
+            exception_count = 0
 
-        print("경로에 사용된 구간 조건:")
-        # zip(path, path[1:])는 경로에서 연속한 두 노드씩 꺼내는 표현
-        for u, v in zip(path, path[1:]):
-            edge = graph.edges[u, v]
-            print(u, "->", v, "|", edge["kind"], "|", edge["condition"])
-
-    except nx.NetworkXNoPath:
-        print("예외 구간 최소화 함수 호출")
-        path = find_route_with_minimal_exceptions(
-            graph,
-            start="mainGate",
-            end="engineering1F5Hall",
-            excluded_kinds=excluded_kinds,
-            excluded_conditions=excluded_conditions
-        )
-        print("경로:", path)
-
-        exception_count = 0
-
-        for u, v in zip(path, path[1:]):
-            edge = graph.edges[u, v]
-
-            is_exception = (
-                edge["condition"] in excluded_conditions
-                or edge["kind"] in excluded_kinds
+            for u, v in zip(path, path[1:]):
+                edge = graph.edges[u, v]
+                base_cost = base_edge_cost(u, v, edge)
+                is_exception = (
+                    edge["condition"] in excluded_conditions
+                    or edge["kind"] in excluded_kinds
+                )
+                total_base_cost += base_cost
+                exception_count += int(is_exception)
+                print(
+                    u, "→", v,
+                    "|", edge["kind"], "|", edge["condition"],
+                    "| 기본 비용:", base_cost, "| 예외:", is_exception,
                 )
 
-            if is_exception:
-                exception_count += 1
-
-            print(
-                u, "→", v,
-                "|", edge["kind"],
-                "|", edge["condition"],
-                "| 예외:", is_exception,
-            )
-        print("예외 구간 수:", exception_count)
-        print("전체 이동 구간 수:", len(path) - 1)
+            print("예외 구간 수:", exception_count)
+            print("기본 비용 합 (시연용):", total_base_cost)
+    except nx.NetworkXNoPath:
+        print("예외를 허용해도 목적지까지 연결되는 경로가 없습니다.")
     except nx.NodeNotFound:
         print("출발지 또는 목적지 ID 찾을 수 없음")
