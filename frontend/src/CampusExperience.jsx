@@ -120,6 +120,7 @@ export default function CampusExperience() {
   const [routePlaces, setRoutePlaces] = useState(places);
   const [placesError, setPlacesError] = useState('');
   const routeRequest = useRef(null);
+  const routeRevision = useRef(0);
   useEffect(() => {
     const controller = new AbortController();
     requestPlaces(controller.signal)
@@ -144,16 +145,32 @@ export default function CampusExperience() {
   const [busy, setBusy] = useState(false);
   const [messages, setMessages] = useState([{ role: 'bot', text: '안녕하세요! 캠퍼스에서 어디로 가시나요?', local: true }]);
   const routeNames = { ...byId, ...Object.fromEntries(routePlaces.map(n => [n.id,n])), ...Object.fromEntries((route?.nodes || []).map(n => [n.id,n])) };
+  const selectedPlace = routeNames[selected];
+  const endpointOptions = Object.values(routeNames).filter(n => n.kind === 'entrance' || n.id === start || n.id === end);
   const chosenMode = modes.find(m => m.id === mode);
   const visible = (route ? route.nodes : places).filter(n => Number.isFinite(n.latitude) && Number.isFinite(n.longitude)).filter(n => [start, end].includes(n.id) || (showEntrances && (filter === 'all' || (filter === 'entrance' ? n.kind === 'entrance' : n.kind === 'outdoorPath'))));
   const clear = () => {
+    routeRevision.current++;
     routeRequest.current?.abort();
+    routeRequest.current = null;
     setRouteBusy(false);
     setRouteError('');
     setRoute(null);
     setSearched(false);
   };
   const choose = (setter, value) => { setter(value); clear(); };
+  function displayRoute(result, source) {
+    const nodes = result?.nodes.map(node => ({ ...byId[node.id], ...node }));
+    setRoute(result && {
+      ...result,
+      nodes,
+      source,
+      path: nodes.map(node => node.id),
+      mapSegments: routeMapSegments(nodes, result.edges),
+    });
+    setSelected(null);
+    setSearched(true);
+  }
   async function search() {
     clear();
     const controller = new AbortController();
@@ -162,8 +179,7 @@ export default function CampusExperience() {
     try {
       const result = await requestRoute(start, end, avoid, controller.signal, mode);
       if (controller.signal.aborted) return;
-      setRoute(result && { ...result, path: result.nodes.map(n => n.id), mapSegments: routeMapSegments(result.nodes, result.edges) });
-      setSearched(true);
+      displayRoute(result, 'search');
     } catch (error) {
       if (!controller.signal.aborted) {
         setRouteError(error instanceof TypeError ? '경로 서버에 연결하지 못했어요. 백엔드 실행 상태를 확인해 주세요.' : error.message);
@@ -179,10 +195,21 @@ export default function CampusExperience() {
     event.preventDefault();
     if (!input.trim() || busy) return;
     const text = input.trim(); setInput(''); setBusy(true);
+    const revision = routeRevision.current;
     setMessages(m => [...m, { role: 'user', text }]);
     try {
       const answer = await sendChatMessage(text, messages);
       setMessages(m => [...m, { role: 'bot', text: answer.message, local: answer.status === 'error' }]);
+      if (revision === routeRevision.current) {
+        if (answer.status === 'route' && answer.route?.nodes.length) {
+          clear();
+          setStart(answer.route.nodes[0].id);
+          setEnd(answer.route.nodes.at(-1).id);
+          displayRoute(answer.route, 'chat');
+        } else if (answer.status === 'no_route' && route?.source === 'chat') {
+          clear();
+        }
+      }
     } catch (error) {
       setMessages(m => [...m, { role: 'bot', text: error.message, local: true }]);
     } finally {
@@ -194,7 +221,7 @@ export default function CampusExperience() {
     <div className="page-heading"><div><span className="eyebrow">YOUR CAMPUS, YOUR WAY</span><h1>우리의 캠퍼스, 더 편안한 한 걸음.</h1><p>출입구부터 연결 통로까지, 나에게 맞는 길을 찾아보세요.</p></div><div className="heading-mark">DKU<span>WALK BETTER.</span></div></div>
     <div className="map-workspace">
       <aside className="search-panel"><div className="panel-title"><span className="mini-icon">⌁</span><div><h2>어디로 가시나요?</h2><p>캠퍼스 안의 길을 연결합니다</p></div></div>
-<div className="location-fields">{[[start, setStart, '출발지', 'A'], [end, setEnd, '도착지', 'B']].map(([value, setter, label, letter]) => <label className="place-field" key={letter}><span className={`letter ${letter}`}>{letter}</span><span><small>{label}</small><select aria-label={label} value={value} onChange={e => choose(setter, e.target.value)}>{routePlaces.filter(n => n.kind === 'entrance').map(n => <option key={n.id} value={n.id}>{n.name}</option>)}</select></span></label>)}<button className="swap" aria-label="출발지와 도착지 바꾸기" onClick={() => { setStart(end); setEnd(start); clear(); }}>⇅</button></div>
+<div className="location-fields">{[[start, setStart, '출발지', 'A'], [end, setEnd, '도착지', 'B']].map(([value, setter, label, letter]) => <label className="place-field" key={letter}><span className={`letter ${letter}`}>{letter}</span><span><small>{label}</small><select aria-label={label} value={value} onChange={e => choose(setter, e.target.value)}>{endpointOptions.map(n => <option key={n.id} value={n.id}>{n.name}</option>)}</select></span></label>)}<button className="swap" aria-label="출발지와 도착지 바꾸기" onClick={() => { setStart(end); setEnd(start); clear(); }}>⇅</button></div>
         {placesError && <p className="mode-warning" role="status">{placesError}</p>}
         <h3 className="section-label">이동 방식</h3><div className="mode-grid">{modes.map(m => <button key={m.id} className={mode === m.id ? 'mode selected' : 'mode'} onClick={() => choose(setMode, m.id)}><span>{m.icon}</span><b>{m.name}</b><small>{m.sub}</small></button>)}</div>
         {mode === 'accessible' && <p className="fine-print">휠체어 이용자를 위해 계단 구간을 제외하고 엘리베이터와 연결 통로를 이용합니다.</p>}
@@ -204,7 +231,7 @@ export default function CampusExperience() {
         <div className="results" aria-live="polite">
           {!searched ? <div className="empty-result"><span>⌁</span><b>다음 목적지를 정해보세요</b><p>출발지와 도착지를 선택하면<br/>이동 경로를 안내합니다.</p></div> :
             !route ? <p className="mode-warning">선택한 조건으로 이동할 수 있는 경로가 없습니다. 다른 출입구를 선택해 주세요.</p> :
-            <><div className="result-heading"><b>{start === end ? '같은 장소입니다' : '추천 경로'}</b><span>{route.exception_notice ? '대안 경로' : avoid ? '계단 제외' : '캠퍼스 길찾기'}</span></div>
+            <><div className="result-heading"><b>{start === end ? '같은 장소입니다' : '추천 경로'}</b><span>{route.exception_notice ? '대안 경로' : route.source === 'chat' ? '챗봇 경로' : avoid ? '계단 제외' : '캠퍼스 길찾기'}</span></div>
               {route.exception_notice && <p className="mode-warning">{route.exception_notice}</p>}
               <div className="journey-endpoints"><p><span className="letter">A</span>{routeNames[start]?.name}</p><div className="journey-connector"/><p><span className="letter B">B</span>{routeNames[end]?.name}</p></div>
 <div className="route-stats">{route.edges.some(e => e.condition === 'stair') && <span>계단 <b>{route.edges.filter(e => e.condition === 'stair').length}구간</b></span>}{route.edges.some(e => e.condition === 'slope') && <span>경사 <b>{route.edges.filter(e => e.condition === 'slope').length}구간</b></span>}{route.edges.some(e => e.condition === 'elevator') && <span><b>엘리베이터 이용</b></span>}</div>
@@ -221,13 +248,13 @@ export default function CampusExperience() {
           {Object.entries(Object.groupBy(places.filter(n=>n.buildingId), n=>n.buildingId)).map(([id,ns]) => {const x=ns.reduce((s,n)=>s+position(n).x,0)/ns.length,y=ns.reduce((s,n)=>s+position(n).y,0)/ns.length;return <g key={id} className="map-building" transform={`translate(${x},${y})`}><rect x="-48" y="-27" width="96" height="54" rx="10"/><path d="M-38 -17H38M-38 -10H38" stroke="#dce3ec" strokeWidth="3"/><text y="7">{ns[0].name.split(/ [1-9지]/)[0]}</text></g>;})}
           {route?.mapSegments.map(({ nodes, stairException }) => {
             const points = nodes.map(node => { const p = position(node); return `${p.x},${p.y}`; }).join(' ');
-            return <g key={nodes[0].id}><polyline points={points} fill="none" stroke="white" strokeWidth="13" strokeLinejoin="round" strokeLinecap="round"/><polyline points={points} fill="none" stroke={stairException ? STAIR_EXCEPTION_COLOR : chosenMode.color} strokeWidth="7" strokeLinejoin="round" strokeLinecap="round"/></g>;
+            return <g key={nodes[0].id}><polyline points={points} fill="none" stroke="white" strokeWidth="13" strokeLinejoin="round" strokeLinecap="round"/><polyline points={points} fill="none" stroke={stairException ? STAIR_EXCEPTION_COLOR : route.source === 'chat' ? modes[0].color : chosenMode.color} strokeWidth="7" strokeLinejoin="round" strokeLinecap="round"/></g>;
           })}
           {visible.map(n=>{const p=position(n),active=[start,end].includes(n.id);return <g key={n.id} role="button" tabIndex="0" aria-label={n.name} onClick={()=>setSelected(n.id)} onKeyDown={e=>{if(e.key==='Enter'||e.key===' ')setSelected(n.id);}} className="node-hit" transform={`translate(${p.x},${p.y})`}><title>{n.name}</title>{showEntrances && !active && <text className="route-place-label" y="-14" textAnchor="middle">{n.name}</text>}<circle r="14" fill="transparent"/><circle r={active?7:4} fill={active?'#3979ef':n.kind==='entrance'?'#fff':'#9eafa0'} stroke={active?'white':'#739281'} strokeWidth="2"/>{active&&<g transform="translate(0,-26)" filter="url(#pin-shadow)"><rect x="-18" y="-21" width="36" height="36" rx="13" fill={n.id===start?'#3478f6':'#142d4c'}/><text className="endpoint-text" y="3">{n.id===start?'A':'B'}</text></g>}</g>;})}
         </svg></div>}
         <div className="floating-map-label"><span>◉</span><div><b>죽전캠퍼스</b><small>{places.length}개 출입구·분기점 연결</small></div></div>
         {!live&&<div className="zoom-control"><button aria-label="확대" onClick={()=>setZoom(z=>Math.min(2,z+.25))}>+</button><button aria-label="축소" onClick={()=>setZoom(z=>Math.max(1,z-.25))}>−</button><button aria-label="지도 초기화" onClick={()=>setZoom(1)}>⌖</button></div>}
-        {selected&&<div className="place-card"><button className="close-card" aria-label="장소 닫기" onClick={()=>setSelected(null)}>×</button><span className="eyebrow">{byId[selected].kind==='entrance'?'BUILDING ENTRANCE':'CAMPUS WAYPOINT'}</span><h3>{byId[selected].name}</h3><p>{byId[selected].floor!=null?`${byId[selected].floor}층 · `:''}사용자 제공 좌표</p><div><button onClick={()=>{choose(setStart,selected);setSelected(null);}}>출발지로</button><button onClick={()=>{choose(setEnd,selected);setSelected(null);}}>도착지로</button></div></div>}
+        {selectedPlace&&<div className="place-card"><button className="close-card" aria-label="장소 닫기" onClick={()=>setSelected(null)}>×</button><span className="eyebrow">{selectedPlace.kind==='entrance'?'BUILDING ENTRANCE':'CAMPUS WAYPOINT'}</span><h3>{selectedPlace.name}</h3><p>{selectedPlace.floor!=null?`${selectedPlace.floor}층 · `:''}사용자 제공 좌표</p><div><button onClick={()=>{choose(setStart,selected);setSelected(null);}}>출발지로</button><button onClick={()=>{choose(setEnd,selected);setSelected(null);}}>도착지로</button></div></div>}
         <div className="map-caption">{live?'Kakao Maps':'입력 좌표 기반 개략도 · 건물 도형은 실제 외곽선이 아닙니다'}</div></div>
         <div className="map-bottom"><button className="entrance-toggle" role="switch" aria-checked={showEntrances} onClick={() => { setShowEntrances(v => !v); setSelected(null); }}><span className={`toggle-track ${showEntrances ? 'on' : ''}`}><span /></span><span>{route ? '경로 장소' : '장소 이름'} {showEntrances ? '표시' : '숨김'}</span></button><div className="filter-buttons">{[['all','전체 보기'],['entrance','출입구'],['junction','분기점']].map(([id,label])=><button className={filter===id?'selected':''} key={id} onClick={()=>setFilter(id)}>{label}</button>)}</div><span><i className="legend-dot"/> 출입구 <i className="legend-line"/> 연결 보행로</span></div>
         {mapError&&<div className="map-feedback" role="status">{mapError}<button onClick={()=>setMapError('')} aria-label="알림 닫기">×</button></div>}

@@ -169,7 +169,10 @@ def run_chat(request: ChatRequest) -> ChatResponse:
         if exc.code == 504:
             raise AgentUnavailable(504, "ai_provider_timeout", "Gemini가 요청 처리 시간 초과(504)를 반환했어요.") from exc
         if exc.code == 429:
-            raise AgentUnavailable(429, "ai_rate_limited", "AI 사용량 한도에 도달했어요. 잠시 후 다시 시도해 주세요.") from exc
+            raise AgentUnavailable(
+                429, "ai_rate_limited",
+                "Gemini 요청 한도에 도달했어요. 잠시 후 채팅을 다시 시도해 주세요. 지도에서 ‘경로 찾기’는 계속 이용할 수 있어요.",
+            ) from exc
         # Do not forward provider messages: they can contain request data.
         if exc.code == 404:
             raise AgentUnavailable(502, "ai_model_unavailable", "설정한 GEMINI_MODEL을 찾을 수 없거나 현재 API에서 지원하지 않아요. 계정에서 사용 가능한 모델 ID를 확인해 주세요.") from exc
