@@ -661,7 +661,7 @@
             "from": "tennisHumanityLawGraduateJc",
             "to": "lawGraduateHyeDangBearStatueJc",
             "kind": "outdoorPath",
-            "condition": "slope"
+            "condition": "flat"
         },
         {
             "id": "backwardJcToHumanityLawGraduateBearStatueJc",
