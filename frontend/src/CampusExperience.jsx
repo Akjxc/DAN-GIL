@@ -16,7 +16,7 @@ const LANDMARK_LABELS = {
 };
 
 
-function LiveMap({ route, start, end, showEntrances, filter, onPick, onError }) {
+function LiveMap({ route, start, end, showEntrances, filter, routeColor, onPick, onError }) {
   const el = useRef(null);
   const [map, setMap] = useState(null);
   useEffect(() => {
@@ -54,7 +54,7 @@ function LiveMap({ route, start, end, showEntrances, filter, onPick, onError }) 
       const bounds = new m.LatLngBounds();
       for (const { nodes, stairException } of route.mapSegments) {
         const path = nodes.map(n => new m.LatLng(n.latitude, n.longitude));
-        overlays.push(new m.Polyline({ map: instance, path, strokeWeight: 6, strokeColor: stairException ? STAIR_EXCEPTION_COLOR : '#3778f6', strokeOpacity: 1 }));
+        overlays.push(new m.Polyline({ map: instance, path, strokeWeight: 6, strokeColor: stairException ? STAIR_EXCEPTION_COLOR : routeColor, strokeOpacity: 1 }));
         path.forEach(p => bounds.extend(p));
       }
       instance.setBounds(bounds);
@@ -86,7 +86,7 @@ function LiveMap({ route, start, end, showEntrances, filter, onPick, onError }) 
     const resize = new ResizeObserver(() => instance.relayout());
     resize.observe(el.current);
     return () => { overlays.forEach(o => o.setMap(null)); resize.disconnect(); };
-  }, [map, route, start, end, showEntrances, filter, onPick]);
+  }, [map, route, start, end, showEntrances, filter, routeColor, onPick]);
   return <div className="live-map" ref={el} />;
 }
 
@@ -246,7 +246,7 @@ export default function CampusExperience() {
           <button className="swap" aria-label="출발지와 도착지 바꾸기" onClick={() => { setStart(end); setEnd(start); clear(); }}>⇅</button>
         </div>
         {placesError && <p className="mode-warning" role="status">{placesError}</p>}
-        <h3 className="section-label">이동 방식</h3><div className="mode-grid">{modes.map(m => <button key={m.id} className={mode === m.id ? 'mode selected' : 'mode'} onClick={() => choose(setMode, m.id)}><span>{m.icon}</span><b>{m.name}</b><small>{m.sub}</small></button>)}</div>
+        <h3 className="section-label">이동 방식</h3><div className="mode-grid">{modes.map(m => <button key={m.id} style={{ '--mode-color': m.color }} className={mode === m.id ? 'mode selected' : 'mode'} onClick={() => choose(setMode, m.id)}><span>{m.icon}</span><b>{m.name}</b><small>{m.sub}</small></button>)}</div>
         {mode === 'accessible' && <p className="fine-print">휠체어 이용자를 위해 계단 구간을 제외하고 엘리베이터와 연결 통로를 이용합니다.</p>}
         {mode === 'indoor' && <p className="fine-print">실내 연결을 우선하며, 필요한 실외 구간은 함께 안내합니다.</p>}
         <button className="search-button" disabled={routeBusy} onClick={search}>{routeBusy ? '경로 계산 중…' : '경로 찾기'} <span>↗</span></button>
@@ -265,7 +265,7 @@ export default function CampusExperience() {
         </section>}
       </aside>
       <main className="map-panel"><div className="map-toolbar"><div><i /> 단국대학교 <b>죽전캠퍼스</b><span className="map-kind">{live ? '카카오맵' : '좌표 기반 캠퍼스맵'}</span></div><button onClick={() => { if (hasKakaoMapKey()) setLive(v => !v); else setMapError('카카오 지도를 사용하려면 frontend/.env에 VITE_KAKAO_MAP_KEY를 설정해 주세요.'); }}>{live ? '캠퍼스맵 보기' : '카카오맵 보기'} ↗</button></div>
-        <div className="map-surface">{live ? <LiveMap {...{route,start,end,showEntrances,filter}} onPick={setSelected} onError={e => { setMapError(e.message); setLive(false); }} /> : <div className="map-scroll"><svg className="campus-svg" viewBox="0 0 1060 960" style={{width: `${zoom * 100}%`, height: `${zoom * 100}%`}} aria-label="실제 입력 좌표로 배치한 캠퍼스 연결 지도">
+        <div className="map-surface">{live ? <LiveMap routeColor={chosenMode.color} {...{route,start,end,showEntrances,filter}} onPick={setSelected} onError={e => { setMapError(e.message); setLive(false); }} /> : <div className="map-scroll"><svg className="campus-svg" viewBox="0 0 1060 960" style={{width: `${zoom * 100}%`, height: `${zoom * 100}%`}} aria-label="실제 입력 좌표로 배치한 캠퍼스 연결 지도">
           <defs><pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#cfdacf" /></pattern><filter id="pin-shadow"><feDropShadow dx="0" dy="4" stdDeviation="5" floodOpacity=".12" /></filter></defs><rect width="1060" height="960" fill="#edf2ea"/><rect width="1060" height="960" fill="url(#dots)"/><path d="M0 0H420Q120 220 110 480T0 950Z M780 0H1060V960H900Q710 780 870 500T780 0" fill="#dfebda"/><text x="870" y="840" className="park-label">캠퍼스 녹지</text><text x="50" y="890" className="north-label">N ↑</text>
           {links.map(e => { const a=position(byId[e.from]),b=position(byId[e.to]);return <g key={e.id}><line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="#d5ddd1" strokeWidth="21" strokeLinecap="round"/><line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke={e.kind === 'indoorPath' ? '#e3e1ee' : '#fff'} strokeWidth="14" strokeLinecap="round"/><line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke={e.condition==='stair'?'#d7a667': '#dce3db'} strokeWidth="2" strokeDasharray={e.condition==='stair'?'2 5':'4 8'}/></g>; })}
           {Object.entries(Object.groupBy(places.filter(n=>n.buildingId), n=>n.buildingId)).map(([id,ns]) => {const x=ns.reduce((s,n)=>s+position(n).x,0)/ns.length,y=ns.reduce((s,n)=>s+position(n).y,0)/ns.length;return <g key={id} className="map-building" transform={`translate(${x},${y})`}><rect x="-48" y="-27" width="96" height="54" rx="10"/><path d="M-38 -17H38M-38 -10H38" stroke="#dce3ec" strokeWidth="3"/><text y="7">{ns[0].name.split(/ [1-9지]/)[0]}</text></g>;})}
