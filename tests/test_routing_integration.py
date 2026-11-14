@@ -44,7 +44,8 @@ class RoutingIntegrationTests(unittest.TestCase):
         self.assertTrue(all(e["condition"] != "stair" for e in result["edges"]))
         self.assertEqual(len(result["edges"]), len(result["nodes"]) - 1)
         self.assertIsNone(result["distance_m"])
-        self.assertEqual(result["metric"], "hops")
+        self.assertEqual(result["metric"], "cost")
+        self.assertGreater(result["total_cost"], 0)
 
     def test_missing_node_and_impossible_exclusions(self):
         arguments = {"start_node_id": "mainGate", "end_node_id": "softwareMediaF3Hall",
@@ -68,6 +69,45 @@ class RoutingIntegrationTests(unittest.TestCase):
         })
         self.assertEqual(len(result["nodes"]), 1)
         self.assertEqual(result["edges"], [])
+        self.assertEqual(result.get("total_cost"), 0)
+
+    def test_route_score_uses_distance_and_condition_without_claiming_total_meters(self):
+        # At the equator 0.001 longitude degrees is about 111.19493 m.
+        # A slope costs twice as much; indoor costs do not depend on coordinates.
+        for kind, condition, longitude, base_cost, expected in [
+            ("outdoorPath", "flat", 0.001, None, 11.11949),
+            ("outdoorPath", "slope", 0.001, None, 22.23899),
+            ("outdoorPath", "flat", 0, None, 0),
+            ("indoorPath", "flat", 0.001, None, 1),
+            ("indoorPath", "stair", 0.001, 4, 12),
+        ]:
+            with self.subTest(kind=kind, condition=condition, base_cost=base_cost):
+                graph = nx.Graph()
+                graph.add_node("s", name="Start", latitude=0, longitude=0)
+                graph.add_node("t", name="End", latitude=0, longitude=longitude)
+                graph.add_edge("s", "t", id="st", **{"from": "s", "to": "t"},
+                               kind=kind, condition=condition)
+                if base_cost is not None:
+                    graph.edges["s", "t"]["base_cost"] = base_cost
+                with patch("backend.routing.load_graph", return_value=graph):
+                    result = call_routing("find_route", {
+                        "start_node_id": "s", "end_node_id": "t",
+                        "exclude_kinds": [], "exclude_conditions": [],
+                    })
+                self.assertEqual(result["metric"], "cost")
+                self.assertAlmostEqual(result["total_cost"], expected, places=5)
+                self.assertIsNone(result["distance_m"])
+                self.assertIsNone(result["duration_seconds"])
+
+    def test_executor_preserves_the_cost_metric_and_score(self):
+        executor = ToolExecutor()
+        executor.execute("search_places", {"query": "소미관 1층"})
+        result = executor.execute("find_route", {
+            "start_node_id": "softwareMediaF1Hall", "end_node_id": "softwareMediaF1Hall",
+        })
+        self.assertEqual(result["status"], "ok")
+        self.assertEqual(result["metric"], "cost")
+        self.assertEqual(result["total_cost"], 0)
 
 
 if __name__ == "__main__":
