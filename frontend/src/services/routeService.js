@@ -4,7 +4,7 @@ export async function requestPlaces(signal) {
   return response.json();
 }
 
-export async function requestRoute(start, end, avoidStairs, signal, mode = 'fast') {
+export async function requestRoute(start, end, avoidStairs, signal, mode = 'shortest') {
   const response = await fetch('/api/routes', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -12,6 +12,7 @@ export async function requestRoute(start, end, avoidStairs, signal, mode = 'fast
     body: JSON.stringify({
       start_node_id: start,
       end_node_id: end,
+      metric: mode === 'shortest' ? 'distance' : 'cost',
       exclude_conditions: avoidStairs ? ['stair'] : [],
       allow_exceptions: avoidStairs || mode === 'indoor',
       exclude_kinds: mode === 'indoor' ? ['outdoorPath'] : [],

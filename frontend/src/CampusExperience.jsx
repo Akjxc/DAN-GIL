@@ -4,7 +4,7 @@ import { loadKakaoMapSdk, hasKakaoMapKey } from './services/mapService';
 import { sendChatMessage } from './services/chatService';
 import { requestPlaces, requestRoute } from './services/routeService';
 
-const modes = [{ id: 'fast', icon: '↗', name: '추천 경로', sub: '캠퍼스 연결 경로', color: '#3778f6' }, { id: 'indoor', icon: '⌂', name: '실내 위주', sub: '실외 구간 최소화', color: '#169d78' }, { id: 'accessible', icon: '♿', name: '계단 없는 경로', sub: '엘리베이터·연결 통로', color: '#8660d9' }];
+const modes = [{ id: 'accessible', icon: '♿', name: '계단 없는 경로', sub: '엘리베이터·연결 통로', color: '#8660d9' }, { id: 'indoor', icon: '⌂', name: '실내 위주', sub: '실외 구간 최소화', color: '#169d78' }, { id: 'shortest', icon: '↗', name: '최단 경로', sub: '거리 기준', color: '#3778f6' }];
 const STAIR_EXCEPTION_COLOR = '#b45309';
 const LANDMARK_LABELS = {
   mainGate: null,
@@ -119,7 +119,7 @@ function buildGuidance(route, names) {
 export default function CampusExperience() {
   const [start, setStart] = useState('humanityEntranceF1');
   const [end, setEnd] = useState('libraryEntranceF1');
-  const [mode, setMode] = useState('fast');
+  const [mode, setMode] = useState('shortest');
   const avoid = mode === 'accessible';
   const [route, setRoute] = useState(null);
   const [searched, setSearched] = useState(false);
