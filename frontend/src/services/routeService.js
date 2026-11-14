@@ -12,10 +12,9 @@ export async function requestRoute(start, end, avoidStairs, signal, mode = 'shor
     body: JSON.stringify({
       start_node_id: start,
       end_node_id: end,
-      metric: mode === 'shortest' ? 'distance' : 'cost',
+      metric: mode === 'shortest' ? 'distance' : mode === 'indoor' ? 'indoor_priority' : 'cost',
       exclude_conditions: avoidStairs ? ['stair'] : [],
-      allow_exceptions: avoidStairs || mode === 'indoor',
-      exclude_kinds: mode === 'indoor' ? ['outdoorPath'] : [],
+      allow_exceptions: avoidStairs,
     }),
   });
   const result = await response.json().catch(() => null);

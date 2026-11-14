@@ -83,6 +83,17 @@ class RoutingIntegrationTests(unittest.TestCase):
         self.assertEqual(result["edges"], [])
         self.assertEqual(result.get("total_cost"), 0)
 
+    def test_indoor_priority_prefers_shorter_outdoor_distance_even_with_more_edges(self):
+        args = FindRouteArgs(start_node_id="mainGate", end_node_id="libraryEntranceF3")
+        current = routes(args.model_copy(update={"exclude_kinds": ["outdoorPath"], "allow_exceptions": True}))
+        indoor = routes(args.model_copy(update={"metric": "indoor_priority"}))
+        self.assertEqual(indoor["status"], "ok")
+        self.assertEqual(indoor["metric"], "indoor_priority")
+        self.assertGreater(sum(edge["is_exception"] for edge in indoor["edges"]),
+                           sum(edge["is_exception"] for edge in current["edges"]))
+        self.assertAlmostEqual(indoor["outdoor_distance_m"], 314.3, delta=0.1)
+        self.assertIsNone(indoor["distance_m"])
+
     @patch("backend.routing.KIND_MULTIPLIERS", {"outdoorPath": 1, "indoorPath": 1})
     @patch("backend.routing.CONDITION_COSTS", {"flat": 1, "slope": 2, "stair": 3})
     def test_route_score_uses_distance_and_condition_without_claiming_total_meters(self):

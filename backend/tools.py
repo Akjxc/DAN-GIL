@@ -28,8 +28,8 @@ class SearchPlacesArgs(StrictModel):
 class FindRouteArgs(StrictModel):
     start_node_id: Text
     end_node_id: Text
-    metric: Literal["cost", "distance"] = Field(
-        default="cost", description="최단거리 요청은 distance, 일반 길찾기와 회피 조건은 cost."
+    metric: Literal["cost", "distance", "indoor_priority"] = Field(
+        default="cost", description="최단거리는 distance, 실내 우선은 indoor_priority, 일반 길찾기는 cost."
     )
     exclude_kinds: list[EdgeKind] = Field(default_factory=list, max_length=2)
     exclude_conditions: list[Condition] = Field(default_factory=list, max_length=4)
@@ -67,9 +67,10 @@ class RouteResult(StrictModel):
     status: Literal["ok", "no_route", "invalid_request"]
     nodes: list[Place] = Field(default_factory=list, max_length=1000)
     edges: list[RouteEdge] = Field(default_factory=list, max_length=1000)
-    metric: Literal["hops", "distance", "time", "cost"] = "hops"
+    metric: Literal["hops", "distance", "time", "cost", "indoor_priority"] = "hops"
     total_cost: float | None = Field(default=None, ge=0, allow_inf_nan=False)
     distance_m: float | None = Field(default=None, ge=0, allow_inf_nan=False)
+    outdoor_distance_m: float | None = Field(default=None, ge=0, allow_inf_nan=False)
     duration_seconds: float | None = Field(default=None, ge=0, allow_inf_nan=False)
     exception_notice: str | None = None
 
@@ -106,6 +107,8 @@ DESCRIPTIONS = {
         "search_places 결과에서 선택해야 합니다. exclude_kinds와 "
         "exclude_conditions에 해당하는 엣지는 먼저 제외합니다. "
         "최단거리나 가장 짧은 길을 요청하면 metric=distance를 사용합니다. "
+        "실내 위주 요청에는 metric=indoor_priority를 사용합니다. 실외 거리 합을 최소화하며 명시한 제외 조건은 모두 지킵니다. "
+        "단순한 실내 우선 요청에서는 실외를 exclude_kinds에 넣지 않고 allow_exceptions는 false로 설정하세요. "
         "거리 기준과 회피 조건을 함께 요청하면 사용자가 어느 쪽을 우선할지 질문하세요. "
         "metric=cost는 실외 거리와 실내 기본 비용에 조건별 가중치를 적용합니다. "
         "계단을 못 쓰면 exclude_conditions에 stair를 넣으세요. "
@@ -168,10 +171,12 @@ def call_routing(name: str, arguments: dict, *, graph=None) -> dict:
         "start": arguments["start_node_id"], "end": arguments["end_node_id"],
         "excluded_kinds": excluded_kinds, "excluded_conditions": excluded_conditions,
     }
-    distance_m = None
+    distance_m = outdoor_distance_m = None
     try:
         if metric == "distance":
             path, distance_m = module.find_distance_route(graph, route_args["start"], route_args["end"])
+        elif metric == "indoor_priority":
+            path, outdoor_distance_m = module.find_indoor_priority_route(graph, **route_args)
         else:
             try:
                 path = module.find_route(graph, **route_args)
@@ -183,22 +188,24 @@ def call_routing(name: str, arguments: dict, *, graph=None) -> dict:
         return {"status": "no_route", "metric": "distance"} if metric == "distance" else {"status": "no_route"}
     except nx.NodeNotFound:
         return {"status": "invalid_request"}
+    exception_kinds = ["outdoorPath"] if metric == "indoor_priority" else excluded_kinds
+    exception_conditions = [] if metric == "indoor_priority" else excluded_conditions
     edges = []
     for u, v in zip(path, path[1:]):
         edge = {key: graph.edges[u, v][key] for key in ("id", "from", "to", "kind", "condition")}
-        edge["is_exception"] = edge["kind"] in excluded_kinds or edge["condition"] in excluded_conditions
+        edge["is_exception"] = edge["kind"] in exception_kinds or edge["condition"] in exception_conditions
         edges.append(edge)
     return {
         "status": "ok", "metric": metric,
         "total_cost": sum(
             module.base_edge_cost(graph, u, v, graph.edges[u, v])
             for u, v in zip(path, path[1:])
-        ) if metric == "cost" else None,
+        ) if metric != "distance" else None,
         "nodes": [module.place_info(graph, node_id) for node_id in path],
         "edges": edges,
-        "exception_notice": (exception_notice(edges, excluded_kinds, excluded_conditions)
+        "exception_notice": (exception_notice(edges, exception_kinds, exception_conditions)
                              if any(edge["is_exception"] for edge in edges) else None),
-        "distance_m": distance_m, "duration_seconds": None,
+        "distance_m": distance_m, "outdoor_distance_m": outdoor_distance_m, "duration_seconds": None,
     }
 
 
@@ -250,7 +257,9 @@ class ToolExecutor:
                         raise ValueError("Route endpoints differ from request")
                     for edge in result.edges:
                         excluded = edge.kind in args.exclude_kinds or edge.condition in args.exclude_conditions
-                        if excluded != edge.is_exception or (excluded and not args.allow_exceptions):
+                        indoor_priority = args.metric == "indoor_priority"
+                        exception = edge.kind == "outdoorPath" if indoor_priority else excluded
+                        if exception != edge.is_exception or (excluded and (indoor_priority or not args.allow_exceptions)):
                             raise ValueError("Route violates requested exclusions")
             # Ensure the provider receives JSON data, never a NetworkX object.
             return json.loads(result.model_dump_json(by_alias=True))

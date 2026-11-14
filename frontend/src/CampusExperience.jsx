@@ -239,7 +239,7 @@ export default function CampusExperience() {
         {placesError && <p className="mode-warning" role="status">{placesError}</p>}
         <h3 className="section-label">이동 방식</h3><div className="mode-grid">{modes.map(m => <button key={m.id} style={{ '--mode-color': m.color }} className={mode === m.id ? 'mode selected' : 'mode'} onClick={() => choose(setMode, m.id)}><span>{m.icon}</span><b>{m.name}</b><small>{m.sub}</small></button>)}</div>
         {mode === 'accessible' && <p className="fine-print">휠체어 이용자를 위해 계단 구간을 제외하고 엘리베이터와 연결 통로를 이용합니다.</p>}
-        {mode === 'indoor' && <p className="fine-print">실내 연결을 우선하며, 필요한 실외 구간은 함께 안내합니다.</p>}
+        {mode === 'indoor' && <p className="fine-print">실내 연결을 우선하고, 밖으로 나가야 하면 실외 이동 거리가 가장 짧은 길을 찾습니다.</p>}
         <button className="search-button" disabled={routeBusy} onClick={search}>{routeBusy ? '경로 계산 중…' : '경로 찾기'} <span>↗</span></button>
         {routeError && <p className="mode-warning" role="alert">경로를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</p>}
         <div className="results" aria-live="polite">

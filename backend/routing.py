@@ -1,5 +1,7 @@
 import math
 import re
+from heapq import heappop, heappush
+from itertools import count
 
 import networkx as nx
 
@@ -273,6 +275,44 @@ def find_route_with_minimal_exceptions(graph, start, end, excluded_conditions=No
         target=end,
         weight=edge_cost
     )
+
+def find_indoor_priority_route(graph, start, end, excluded_kinds=None, excluded_conditions=None):
+    """Prefer an indoor-only route, otherwise minimize outdoor meters then total cost."""
+    kinds = set(excluded_kinds or ())
+    conditions = set(excluded_conditions or ())
+    try:
+        path = find_route(graph, start, end, kinds | {"outdoorPath"}, conditions)
+        return path, 0.0
+    except nx.NetworkXNoPath:
+        if "outdoorPath" in kinds:
+            raise
+
+    # Dijkstra orders routes by (outdoor meters, total cost).
+    order = count()
+    best = {start: (0.0, 0.0)}
+    previous = {}
+    pending = [(best[start], next(order), start)]
+    while pending:
+        score, _, node = heappop(pending)
+        if score != best[node]:
+            continue
+        if node == end:
+            path = [end]
+            while path[-1] != start:
+                path.append(previous[path[-1]])
+            return path[::-1], score[0]
+        for neighbor, edge in graph[node].items():
+            if edge["kind"] in kinds or edge["condition"] in conditions:
+                continue
+            meters = outdoor_distance_m(graph, node, neighbor) if edge["kind"] == "outdoorPath" else 0.0
+            cost = base_edge_cost(graph, node, neighbor, edge)
+            candidate = (score[0] + meters, score[1] + cost)
+            if neighbor not in best or candidate < best[neighbor]:
+                best[neighbor] = candidate
+                previous[neighbor] = node
+                heappush(pending, (candidate, next(order), neighbor))
+    raise nx.NetworkXNoPath(f"No path from {start} to {end}")
+
 
 if __name__ == "__main__":
     graph = load_graph()
