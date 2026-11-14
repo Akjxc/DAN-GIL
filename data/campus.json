@@ -653,7 +653,7 @@
             "from": "hyeDangEngineering3Jc",
             "to": "hyeDangYardJc",
             "kind": "outdoorPath",
-            "condition": "slope"
+            "condition": "stair"
         },
         {
             "id": "humanityLawGraduateBearStatueJcToTennisHumanityLawGraduateJc",
