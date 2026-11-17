@@ -100,13 +100,13 @@ Gemini는 사용자의 대화형 요청에서 출발지, 도착지, 이동 조�
 
 ```mermaid
 flowchart TD
-    UI[React 웹 화면] --> API[FastAPI]
-    API -->|자연어 요청| Agent[Gemini Agent]
-    API -->|직접 경로 요청| Tools[Pydantic 검증 및 도구 실행]
-    Agent -->|장소 검색·경로 도구 호출| Tools
-    Tools --> Graph[NetworkX 경로 탐색]
-    Data[캠퍼스·건물별 JSON] --> Graph
-    Graph --> Result[노드·구간·예외 정보]
+    UI["React 웹 화면"] --> API["FastAPI"]
+    API -->|"자연어 요청"| Agent["Gemini Agent"]
+    API -->|"직접 경로 요청"| Tools["Pydantic 검증 및 도구 실행"]
+    Agent -->|"장소 검색·경로 도구 호출"| Tools
+    Tools --> Graph["NetworkX 경로 탐색"]
+    Data["캠퍼스·건물별 JSON"] --> Graph
+    Graph --> Result["노드·구간·예외 정보"]
     Result --> UI
 ```
 
